@@ -1,6 +1,9 @@
-# laravel-cms
-laravel version 6.0
+# description
+  - CMS Admin same Wordpress Admin :)
 
+# laravel-cms
+  - version 6.0
+  
 
 # COMING SOON
 
