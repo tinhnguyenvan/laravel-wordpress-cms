@@ -1,5 +1,6 @@
 # description
     - Laravel Admin same CMS Wordpress :)
+    - Admin template: https://coreui.io/
 
 # laravel-cms
     - version 6.0
