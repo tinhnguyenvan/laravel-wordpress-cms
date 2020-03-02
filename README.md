@@ -1,3 +1,10 @@
+# description
+    - Laravel Admin same CMS Wordpress :)
+
+# laravel-cms
+    - version 6.0
+  
+![Laravel CMS](https://tweb.com.vn/wp-content/uploads/2020/01/laravel-cms.png)
 
 # install & setup 
     - update vendor cmd: composer install
@@ -46,3 +53,4 @@
     - generate code: https://laravelarticle.com/laravel-custom-id-generator
     - image: http://image.intervention.io/getting_started/introduction
     - autocomplete: http://easyautocomplete.com/guide#sec-trigger-event
+
