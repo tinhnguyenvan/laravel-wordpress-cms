@@ -45,8 +45,7 @@
       "config/helpers.php"
     ],
     "psr-4": {
-      "App\\": "app/",
-      "TinhNguyenVan\\ShortLink\\": "packages/tinhnguyenvan/shortlink/src/"
+      "App\\": "app/"
     },
     "classmap": [
       "database/seeds",
