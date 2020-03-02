@@ -1,0 +1,14 @@
+{
+    "name": "tinhnguyenvan/shortlink",
+    "description": "Create url from public to shortlink and tracking url shortlink",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tình Nguyễn Văn",
+            "email": "tinhnguyenvan91@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
