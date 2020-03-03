@@ -5,9 +5,16 @@
 # laravel-cms
     - version 6.0
   
+### Page Login
 ![Page Login](https://tweb.com.vn/wp-content/uploads/2020/02/cms-admin-login-1536x855.png)
+
+### Page Config
 ![Page Config](https://tweb.com.vn/wp-content/uploads/2020/02/cms-admin-cau-hinh-1536x855.png)
+
+### Page Product
 ![Page Product](https://tweb.com.vn/wp-content/uploads/2020/01/laravel-cms.png)
+
+### Page Category
 ![Page Category](https://tweb.com.vn/wp-content/uploads/2020/02/cms-admin-danh-muc-sp-1536x855.png)
 
 # install & setup 
