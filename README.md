@@ -1,3 +1,6 @@
+# laravel-wordpress-cms
+    - version 6.0
+
 # description
     - Laravel Admin same CMS Wordpress :)
     - Demo link: https://cms.tweb.com.vn
@@ -28,9 +31,6 @@
         ├── vendor
         ├── webpack.mix.js
         └── yarn.lock
-        
-# laravel-cms
-    - version 6.0
 
 # Install theme
     - Step 1: Download theme default: https://github.com/tinhnguyenvan/laravel-wordpress-cms-theme-default
