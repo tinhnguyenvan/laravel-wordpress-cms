@@ -1,1 +1,0 @@
-{{ !empty($items) ? $items->links() : '' }}

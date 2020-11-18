@@ -1,0 +1,774 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, nav ul, nav li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+ol, ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* start editing from here */
+a {
+    text-decoration: none;
+}
+
+.txt-rt {
+    text-align: right;
+}
+
+/* text align right */
+.txt-lt {
+    text-align: left;
+}
+
+/* text align left */
+.txt-center {
+    text-align: center;
+}
+
+/* text align center */
+.float-rt {
+    float: right;
+}
+
+/* float right */
+.float-lt {
+    float: left;
+}
+
+/* float left */
+.clear {
+    clear: both;
+}
+
+/* clear float */
+.pos-relative {
+    position: relative;
+}
+
+/* Position Relative */
+.pos-absolute {
+    position: absolute;
+}
+
+/* Position Absolute */
+.vertical-base {
+    vertical-align: baseline;
+}
+
+/* vertical align baseline */
+.vertical-top {
+    vertical-align: top;
+}
+
+/* vertical align top */
+nav.vertical ul li {
+    display: block;
+}
+
+/* vertical menu */
+nav.horizontal ul li {
+    display: inline-block;
+}
+
+/* horizontal menu */
+img {
+    max-width: 100%;
+}
+
+/*end reset*/
+
+body {
+    padding: 0;
+    margin: 0;
+    background: #3498db;
+    font-family: 'Lato', sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+label {
+    margin: 0;
+}
+
+.main {
+    padding: 65px 0;
+}
+
+.main h1 {
+    font-family: 'Fugaz One', cursive;
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 38px;
+}
+
+.content {
+    width: 26%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 35px 20px 25px 20px;
+}
+
+p.footer {
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    margin-top: 38px;
+}
+
+p.footer a {
+    color: #000;
+}
+
+p.footer a:hover {
+    color: #fff;
+}
+
+.stepsForm {
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 1;
+}
+
+.stepsForm .sf-error {
+    border: solid 1px #C00 !important;
+}
+
+.stepsForm .sf-error + span {
+    border-color: #C00 !important;
+}
+
+.stepsForm #sf-msg {
+    display: inline-block;
+    padding: 0;
+}
+
+.stepsForm .sf-msg-error {
+    color: #c00;
+}
+
+.stepsForm .sf-msg-success {
+    color: #090;
+}
+
+.stepsForm .sf-steps {
+    width: 100%;
+    box-sizing: border-box;
+    height: auto;
+    padding: 0 1rem;
+}
+
+.stepsForm .sf-steps .sf-steps-content {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+.stepsForm .sf-steps-content > div {
+    display: inline-block;
+    padding: 10px 12px;
+    background: #CCC;
+    color: #FFF;
+    cursor: pointer;
+    position: relative;
+    font-size: 16px;
+    overflow: hidden;
+    margin: 0 5px;
+}
+
+.stepsForm .sf-steps-center > div {
+    display: inline-block;
+
+    background: #CCC;
+    color: #FFF;
+    cursor: pointer;
+    position: relative;
+
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.stepsForm .sf-steps-content > div.sf-active {
+    background: #2096cd;
+}
+
+.stepsForm .sf-steps-content > div > span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: #AAA;
+    padding: 0;
+    font-size: 24px;
+}
+
+.stepsForm .sf-steps-content > div > i {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 1rem;
+}
+
+.stepsForm .sf-steps-content > div.sf-active > span {
+    background: #1b7fad;
+}
+
+.stepsForm .sf-steps-content > div > span:after {
+    content: '';
+    display: block;
+    width: 10px;
+    position: absolute;
+    right: -10px;
+    height: 100%;
+    top: 0;
+
+}
+
+
+.stepsForm .sf-steps-form {
+    display: block;
+    position: relative;
+
+}
+
+.stepsForm .sf-steps-navigation {
+    padding: 0 1rem;
+}
+
+.stepsForm .sf-button {
+    padding: 10px 20px;
+    background: #2096cd;
+    color: #FFF;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.stepsForm .sf-content {
+    width: 100%;
+    box-sizing: border-box;
+    display: none;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    margin-top: 30px;
+}
+
+.stepsForm .sf-content > li {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 0px !important;
+    padding: 0px 0;
+}
+
+.stepsForm input[type=text], .stepsForm input[type=tel], .stepsForm input[type=email], .stepsForm input[type=password] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: solid 1px #CCC;
+    outline: none;
+}
+
+.stepsForm textarea {
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+    padding: 10px;
+    border: solid 1px #CCC;
+    outline: none;
+    overflow: auto;
+    resize: none;
+    font-family: inherit;
+}
+
+.stepsForm label.sf-select {
+    position: relative;
+    display: block;
+}
+
+.stepsForm label.sf-select > select {
+    width: 100%;
+    font-size: 13px;
+    box-sizing: border-box;
+    padding: 10px;
+    border: solid 1px #CCC;
+    outline: none;
+    color: #B1A9A9;
+}
+
+.stepsForm label.sf-select > span {
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+    right: 1px;
+    top: 1px;
+    bottom: 1px;
+    width: 45px;
+    pointer-events: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #e8e8e8;
+    border-left: solid 1px #DDD;
+}
+
+.stepsForm label.sf-select > span::after {
+    content: "";
+    display: inline-block;
+    width: 17%;
+    height: 17%;
+    -webkit-transform: rotate(-45deg) translate(-38%, 54%);
+    -moz-transform: rotate(-45deg) translate(-38%, 54%);
+    -ms-transform: rotate(-45deg) translate(-38%, 54%);
+    -o-transform: rotate(-45deg) translate(-38%, 54%);
+    transform: rotate(-45deg) translate(-38%, 54%);
+    border: 0 solid #fff;
+    border-left-width: .25em;
+    border-bottom-width: .25em;
+}
+
+.stepsForm label.sf-select > select:focus + span {
+    background-color: #2096cd;
+}
+
+.stepsForm .sf-radio, .stepsForm .sf-check {
+    font-size: 16px;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    color: #9E9C9C;
+}
+
+.stepsForm .sf-radio label, .stepsForm .sf-check label {
+    display: inline-block;
+    margin-right: 0;
+    font-size: 13px;
+    color: #9E9C9C;
+    line-height: 1.8em;
+}
+
+.stepsForm .sf-radio label input[type=radio], .stepsForm .sf-check label input[type=checkbox] {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    height: 10px
+}
+
+.stepsForm .sf-radio label input[type=radio] + span, .stepsForm .sf-check label input[type=checkbox] + span {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    border: 1px solid #cecece;
+    text-align: center;
+    vertical-align: top;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.stepsForm .sf-radio label input[type=radio] + span::after, .stepsForm .sf-check label input[type=checkbox] + span::after {
+    content: "";
+    display: inline-block;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms
+}
+
+.stepsForm .sf-radio label input[type=radio]:focus + span, .stepsForm .sf-check label input[type=checkbox]:focus + span, .stepsForm .sf-radio label input[type=radio]:active + span, .stepsForm .sf-check label input[type=checkbox]:active + span {
+    border-color: #2096cd
+}
+
+.stepsForm .sf-radio label input[type=radio]:checked + span::after, .stepsForm .sf-check label input[type=checkbox]:checked + span::after {
+    opacity: 1
+}
+
+.stepsForm .sf-radio label input[type=radio].error + span, .stepsForm .sf-check label input[type=checkbox].error + span {
+    border-color: #e2513f;
+    border-width: 2px
+}
+
+.stepsForm .sf-radio label input[type=radio] + span {
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+
+}
+
+.stepsForm .sf-radio label input[type=radio] + span::after {
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    border-radius: 1em;
+    background-color: #2096cd
+}
+
+.stepsForm .sf-radio label input[type=radio]:checked + span::after {
+    border: .2em solid #fff
+}
+
+.stepsForm .sf-check label input[type=checkbox] + span {
+
+    -moz-box-shadow: 0 0 5px #ddd;
+    -webkit-box-shadow: 0 0 5px #ddd;
+    box-shadow: 0 0 5px #ddd
+}
+
+.stepsForm .sf-check label input[type=checkbox] + span::after {
+    height: 50%;
+    width: 79%;
+    background-color: transparent;
+    border: 0 solid #2096cd;
+    vertical-align: bottom;
+    -webkit-transform: rotate(-45deg) translate(85%, -107%);
+    -moz-transform: rotate(-45deg) translate(85%, -107%);
+    -ms-transform: rotate(-45deg) translate(85%, -107%);
+    -o-transform: rotate(-45deg) translate(85%, -107%);
+    transform: rotate(-45deg) translate(85%, -107%);
+}
+
+.stepsForm .sf-check label input[type=checkbox]:checked + span::after {
+    border-left-width: .2em;
+    border-bottom-width: .2em
+}
+
+.stepsForm input[type=text]:focus, .stepsForm input[type=tel]:focus, .stepsForm input[type=password]:focus, .stepsForm input[type=email]:focus, .stepsForm label.sf-select > select:focus, .stepsForm textarea:focus {
+    border-color: #2096cd;
+
+}
+
+.stepsForm input, .stepsForm select, .stepsForm textarea, .stepsForm button {
+    font-size: 13px;
+}
+
+.sf-shadow input, .sf-shadow select, .sf-shadow textarea {
+
+}
+
+.stepsForm .sf_columns {
+    min-height: 30px;
+    display: inline-block;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    float: left;
+}
+
+.sf-align-right {
+    text-align: right;
+}
+
+.sf-align-center {
+}
+
+.sf-align-center > span#sf-msg {
+    display: block;
+    clear: both;
+    margin-bottom: 10px;
+}
+
+.sf-align-center > button {
+    display: inline-block;
+    clear: both;
+    margin-bottom: 10px;
+}
+
+.stepsForm .column_1 {
+    width: 16.666666667%;
+}
+
+.stepsForm .column_2 {
+    width: 33.333333334%;
+}
+
+.stepsForm .column_3 {
+    width: 50%;
+}
+
+.stepsForm .column_4 {
+    width: 66.666666667%;
+}
+
+.stepsForm .column_5 {
+    width: 83.333333334%;
+}
+
+.stepsForm .column_6 {
+    width: 100%;
+}
+
+.sf-radio label {
+    margin-left: 10px;
+}
+
+.sf-radio {
+    margin: 0px 0 0 0 !important;
+}
+
+.sf_columns.column_3 {
+    margin: 0 0 20px 0px !important;
+}
+
+.stepsForm .column_6 {
+    margin-bottom: 20px !important;
+}
+
+/*-- responsive media queries --*/
+@media (max-width: 1440px) {
+    .content {
+        width: 30%;
+    }
+}
+
+@media (max-width: 1366px) {
+    .stepsForm .sf-steps-content > div {
+        padding: 10px 12px 10px 11px;
+    }
+}
+
+@media (max-width: 1280px) {
+    .content {
+        width: 33%;
+    }
+}
+
+@media (max-width: 1080px) {
+    .stepsForm .sf-steps-content > div {
+        padding: 8px 9px 8px 9px;
+    }
+
+    .stepsForm .sf-steps-content > div {
+        font-size: 14px;
+    }
+
+    .content {
+        width: 34%;
+    }
+
+    p.footer {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .main {
+        padding: 70px 0;
+    }
+
+    .content {
+        width: 36%;
+    }
+
+    .stepsForm textarea {
+        height: 85px;
+    }
+}
+
+@media (max-width: 991px) {
+    .content {
+        width: 37.5%;
+    }
+
+    .main h1 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 800px) {
+    .content {
+        width: 46.5%;
+    }
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 736px) {
+    .content {
+        width: 49.5%;
+    }
+}
+
+@media (max-width: 667px) {
+    .content {
+        width: 55%;
+    }
+
+    .main h1 {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 640px) {
+    .stepsForm .sf-steps-content > div {
+        margin: 0 3px;
+    }
+
+    p.footer {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 600px) {
+    .content {
+        width: 59%;
+    }
+}
+
+@media (max-width: 568px) {
+    .content {
+        width: 62%;
+    }
+}
+
+@media (max-width: 480px) {
+    p.footer {
+        font-size: 13px;
+        line-height: 1.8em;
+        width: 90%;
+        margin: 40px auto 0 auto;
+    }
+
+    .content {
+        width: 74%;
+        padding: 30px 9px 20px 9px;
+    }
+
+    .main h1 {
+        font-size: 24px;
+    }
+
+    .main {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 414px) {
+    .main h1 {
+        font-size: 21px;
+    }
+
+    .main {
+        padding: 50px 0;
+    }
+
+    .content {
+        width: 84%;
+    }
+
+    .stepsForm .sf-steps-content > div {
+        margin: 0 2px;
+    }
+}
+
+@media (max-width: 384px) {
+    .content {
+        padding: 30px 0px 20px 0px;
+        width: 91%;
+    }
+
+    .stepsForm .sf-button {
+        padding: 7px 10px;
+    }
+}
+
+@media (max-width: 375px) {
+    .stepsForm .sf-steps-content > div {
+        padding: 8px 8px 8px 8px;
+    }
+}
+
+@media (max-width: 320px) {
+    .stepsForm .sf-steps-content > div {
+        margin: 0 0px;
+        font-size: 13px;
+        padding: 5px 6px 5px 6px;
+    }
+
+    .stepsForm .sf-steps {
+        padding: 0 14px;
+    }
+
+    .stepsForm input[type=text], .stepsForm input[type=tel], .stepsForm input[type=email], .stepsForm input[type=password] {
+        padding: 8px;
+    }
+
+    .stepsForm .sf-button {
+        padding: 7px 13px;
+    }
+
+    .stepsForm label.sf-select > select {
+        padding: 7px;
+    }
+
+    .stepsForm .sf-radio label input[type=radio] + span, .stepsForm .sf-check label input[type=checkbox] + span {
+        margin-right: 7px;
+    }
+
+    .stepsForm label.sf-select > span {
+        width: 34px;
+    }
+
+    .main h1 {
+        font-size: 19px;
+    }
+
+    p.footer {
+        margin: 30px auto 0 auto;
+    }
+}
