@@ -2,14 +2,63 @@
     - Laravel Admin same CMS Wordpress :)
     - Demo link: https://cms.tweb.com.vn
 
+    ├── README.md
+    ├── etc
+    │   └── cicd
+    └── src
+        ├── app
+        ├── artisan
+        ├── bootstrap
+        ├── composer.json
+        ├── composer.lock
+        ├── config
+        ├── database
+        ├── package-lock.json
+        ├── package.json
+        ├── packages
+        ├── phpunit.xml
+        ├── public
+        ├── resources
+        ├── routes
+        ├── server.php
+        ├── storage
+        ├── tests
+        ├── themes
+        ├──└── default
+        ├── vendor
+        ├── webpack.mix.js
+        └── yarn.lock
+        
 # laravel-cms
     - version 6.0
 
 # Install theme
-    - php artisan theme:install {--name=}
+    - Step 1: Download theme default: https://github.com/tinhnguyenvan/laravel-wordpress-cms-theme-default
+        default/
+        ├── README.md
+        ├── lang
+        │   └── vi
+        ├── public
+        │   ├── css
+        │   ├── img
+        │   ├── js
+        │   ├── manifest.json
+        │   ├── screen_shot.png
+        │   └── vendor
+        └── views
+            ├── home
+            ├── layouts
+            ├── page
+            ├── post
+            ├── product
+            ├── search
+            └── tag
     
-    - ex: php artisan theme:install --name=default
+    - Step 2: php artisan theme:install {--name=}
+    
+            - ex: php artisan theme:install --name=default
 
+    
 # Remove theme
     - php artisan theme:remove {--name=}
     
