@@ -32,9 +32,13 @@ class Member extends Authenticatable
 
     public const MEMBER_TYPE_NORMAL = 0;
     public const MEMBER_TYPE_EXPERT = 1;
+    public const MEMBER_TYPE_EDUCATOR = 2;
+    public const MEMBER_TYPE_SCHOOL = 3;
     public const MEMBER_TYPE_LIST = [
         self::MEMBER_TYPE_NORMAL => 'Member',
         self::MEMBER_TYPE_EXPERT => 'Expert',
+        self::MEMBER_TYPE_EDUCATOR => 'Educator',
+        self::MEMBER_TYPE_SCHOOL => 'School',
     ];
 
     /**
