@@ -25,9 +25,9 @@
     <script src="{{ asset("console/js/jquery-simple-tree-table.js") }}" type="text/javascript"></script>
     <script src="{{ asset("console/js/pace.min.js") }}" type="text/javascript"></script>
     <script src="{{ asset("console/js/perfect-scrollbar.min.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("console/plugin/highcharts/highcharts.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("console/plugin/highcharts/exporting.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("console/plugin/ckeditor/ckeditor.js") }}" type="text/javascript"></script>
+    <script src="{{ asset("common/plugin/highcharts/highcharts.js") }}" type="text/javascript"></script>
+    <script src="{{ asset("common/plugin/highcharts/exporting.js") }}" type="text/javascript"></script>
+    <script src="{{ asset("common/plugin/ckeditor/ckeditor.js") }}" type="text/javascript"></script>
     <script src="{{ asset("console/js/coreui.min.js") }}" type="text/javascript"></script>
     <script src="{{ asset("console/js/jquery.pjax.js") }}" type="text/javascript"></script>
     <script src="{{ asset("console/js/function.js") }}" type="text/javascript"></script>
