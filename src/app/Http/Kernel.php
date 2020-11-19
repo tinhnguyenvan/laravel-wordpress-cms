@@ -80,6 +80,7 @@ class Kernel extends HttpKernel
             ShareErrorsFromSession::class,
             VerifyCsrfToken::class,
             SubstituteBindings::class,
+            Localization::class,
         ],
         'api' => [
             'throttle:60,1',
