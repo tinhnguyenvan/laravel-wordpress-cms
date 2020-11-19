@@ -14,6 +14,8 @@ return [
     'member_type' => 'Member type',
     'member_type.0' => 'Member',
     'member_type.1' => 'Expert',
+    'member_type.2' => 'Educator',
+    'member_type.3' => 'School',
     'status.3' => 'Chờ kích hoạt',
     'status.1' => 'Đã kích hoạt',
     'status.5' => 'Đã khóa',

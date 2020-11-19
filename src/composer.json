@@ -1,107 +1,108 @@
 {
-  "name": "tinhnguyenvan/laravel-cms",
-  "type": "project",
-  "description": "CMS Laravel sample wordpress",
-  "keywords": [
-    "tinhnguyenvan",
-    "framework",
-    "laravel cms",
-    "laravel cms wordpress",
-    "laravel"
-  ],
-  "license": "MIT",
-  "require": {
-    "php": "^7.2",
-    "ext-json": "*",
-    "astrotomic/laravel-translatable": "^11.9",
-    "darryldecode/cart": "^4.1",
-    "fideloper/proxy": "^4.0",
-    "friendsofphp/php-cs-fixer": "^2.16",
-    "guzzlehttp/guzzle": "^6.5",
-    "haruncpi/laravel-id-generator": "^1.0",
-    "intervention/image": "^2.5",
-    "kreait/laravel-firebase": "^1.0",
-    "laracademy/generators": "^2.1",
-    "laravel/framework": "^6.2",
-    "laravel/socialite": "^4.3",
-    "laravel/telescope": "^3.1",
-    "laravel/tinker": "^1.0",
-    "laravel/ui": "^1.1",
-    "maatwebsite/excel": "^3.1",
-    "simplesoftwareio/simple-qrcode": "~2",
-    "spatie/laravel-permission": "^3.7",
-    "spatie/laravel-pjax": "^2.1",
-    "tinhphp/classified": "dev-master",
-    "tinhphp/school": "dev-master",
-    "tinhphp/tool": "dev-master",
-    "willvincent/laravel-rateable": "^2.2"
-  },
-  "require-dev": {
-    "facade/ignition": "^1.4",
-    "fzaninotto/faker": "^1.4",
-    "mockery/mockery": "^1.0",
-    "nunomaduro/collision": "^3.0",
-    "mpociot/laravel-apidoc-generator": "^4.8",
-    "phpunit/phpunit": "^8.0"
-  },
-  "config": {
-    "optimize-autoloader": true,
-    "preferred-install": "dist",
-    "sort-packages": true
-  },
-  "extra": {
-    "laravel": {
-      "aliases": {
-      },
-      "dont-discover": []
-    }
-  },
-  "autoload": {
-    "files": [
-      "config/helpers.php"
+    "name": "tinhnguyenvan/laravel-cms",
+    "type": "project",
+    "description": "CMS Laravel sample wordpress",
+    "keywords": [
+        "tinhnguyenvan",
+        "framework",
+        "laravel cms",
+        "laravel cms wordpress",
+        "laravel"
     ],
-    "psr-4": {
-      "App\\": "app/"
+    "license": "MIT",
+    "require": {
+        "php": "^7.2",
+        "ext-json": "*",
+        "astrotomic/laravel-translatable": "^11.9",
+        "darryldecode/cart": "^4.1",
+        "fideloper/proxy": "^4.0",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "guzzlehttp/guzzle": "^6.5",
+        "haruncpi/laravel-id-generator": "^1.0",
+        "intervention/image": "^2.5",
+        "kreait/laravel-firebase": "^1.0",
+        "laracademy/generators": "^2.1",
+        "laravel/framework": "^6.2",
+        "laravel/socialite": "^4.3",
+        "laravel/telescope": "^3.1",
+        "laravel/tinker": "^1.0",
+        "laravel/ui": "^1.1",
+        "maatwebsite/excel": "^3.1",
+        "simplesoftwareio/simple-qrcode": "~2",
+        "spatie/laravel-permission": "^3.7",
+        "spatie/laravel-pjax": "^2.1",
+        "tinhphp/classified": "dev-master",
+        "tinhphp/school": "dev-master",
+        "tinhphp/tool": "dev-master",
+        "willvincent/laravel-rateable": "^2.2",
+        "ext-gettext": "*"
     },
-    "classmap": [
-      "database/seeds",
-      "database/factories"
+    "require-dev": {
+        "facade/ignition": "^1.4",
+        "fzaninotto/faker": "^1.4",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "^3.0",
+        "mpociot/laravel-apidoc-generator": "^4.8",
+        "phpunit/phpunit": "^8.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "aliases": {
+            },
+            "dont-discover": []
+        }
+    },
+    "autoload": {
+        "files": [
+            "config/helpers.php"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/",
+            "TinhPHP\\School\\": "./packages/tinhphp/school/src/",
+            "TinhPHP\\Tool\\": "./packages/tinhphp/tool/src/",
+            "TinhPHP\\Classified\\": "./packages/tinhphp/classified/src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./packages/tinhphp/school"
+        },
+        {
+            "type": "path",
+            "url": "./packages/tinhphp/tool"
+        },
+        {
+            "type": "path",
+            "url": "./packages/tinhphp/classified"
+        }
     ]
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Tests\\": "tests/",
-      "TinhPHP\\School\\": "./packages/tinhphp/school/src/",
-      "TinhPHP\\Tool\\": "./packages/tinhphp/tool/src/",
-      "TinhPHP\\Classified\\": "./packages/tinhphp/classified/src/"
-    }
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "scripts": {
-    "post-autoload-dump": [
-      "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-      "@php artisan package:discover --ansi"
-    ],
-    "post-root-package-install": [
-      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-    ],
-    "post-create-project-cmd": [
-      "@php artisan key:generate --ansi"
-    ]
-  },
-  "repositories": [
-    {
-      "type": "path",
-      "url": "./packages/tinhphp/school"
-    },
-    {
-      "type": "path",
-      "url": "./packages/tinhphp/tool"
-    },
-    {
-      "type": "path",
-      "url": "./packages/tinhphp/classified"
-    }
-  ]
 }

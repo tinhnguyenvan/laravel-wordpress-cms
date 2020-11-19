@@ -14,6 +14,8 @@ return [
     'member_type' => 'Member type',
     'member_type.0' => 'Member',
     'member_type.1' => 'Expert',
+    'member_type.2' => 'Educator',
+    'member_type.3' => 'School',
     'status.3' => 'Waiting active',
     'status.1' => 'Active sucess',
     'status.5' => 'Block',

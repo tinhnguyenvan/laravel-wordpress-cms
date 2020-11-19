@@ -31,6 +31,7 @@ class MemberController extends AdminController
         $items = Member::query()->where($condition)->orderBy($sortBy, $sortType)->paginate($this->page_number);
         $filter = $this->memberService->filter($request->all());
         $data = [
+            'title' => trans('nav.menu_left.member_list'),
             'items' => $items,
             'filter' => $filter,
         ];
@@ -38,17 +39,23 @@ class MemberController extends AdminController
         return view('admin/member.index', $this->render($data));
     }
 
-    public function setStatusExpert(Request $request, $id)
+    public function show(Request $request, $id)
     {
+        $member = Member::query()->findOrFail($id);
+        $data = [
+            'title' => trans('common.edit') . ' ID: ' . $member->id,
+            'member' => $member
+        ];
+
+        return view('admin/member.show', $this->render($data));
+    }
+
+    public function setMemberType(Request $request, $id)
+    {
+        $memberType = $request->input('member_type');
         $member = Member::query()->findOrFail($id);
 
         if (!empty($member)) {
-            if (Member::MEMBER_TYPE_NORMAL == $member->member_type) {
-                $memberType = Member::MEMBER_TYPE_EXPERT;
-            } else {
-                $memberType = Member::MEMBER_TYPE_NORMAL;
-            }
-
             Member::query()->where('id', $id)->update(['member_type' => $memberType]);
             $request->session()->flash('success', trans('common.edit.success'));
         } else {

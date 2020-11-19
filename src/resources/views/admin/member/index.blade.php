@@ -19,29 +19,29 @@
 
             <table class="table table-responsive-sm table-bordered table-hover font12">
                 <thead>
-                <tr style="font-size: 12px">
+                <tr class="bg-light">
+                    <th>ID</th>
                     <th>{{ trans('member.fullname') }}</th>
                     <th style="width: 200px">{{ trans('member.tags') }}</th>
                     <th>{{ trans('member.source') }}</th>
                     <th style="width: 120px">{{ trans('member.member_type') }}</th>
                     <th style="width: 150px">{{ trans('common.updated_at') }}</th>
-                    <th style="width: 130px"></th>
+                    <th style="width: 100px"></th>
                 </tr>
                 </thead>
                 <tbody>
                 @if ($items->count() > 0)
                     @foreach ($items as $item)
                         <tr>
+                            <td>{{ $item->id }}</td>
                             <td>
-                                {{ $item->fullname }}
+                                {{ !empty($item->fullname) ? $item->fullname : 'No name' }}
+                                <a href="{{ admin_url('members/'.$item->id) }}"><i class="fa fa-cog"></i> </a>
                                 <p>
-                                    {{ $item->email }}
-                                    <label class="label label-{{ $item->status_color }} btn-sm">
-                                        <i class="fa fa-check-circle-o"></i>
-                                        {{ $item->status_text }}
-                                    </label>
+                                    <i class="fa fa-phone"></i> {{ !empty($item->phone) ? $item->phone : '--' }}
+                                    <br>
+                                    <i class="fa fa-envelope"></i> {{ !empty($item->email) ? $item->email : '--' }}
                                 </p>
-                                <p>{{ $item->phone }}</p>
                             </td>
                             <td>
                                 {!!  $item->tags_label !!}
@@ -60,27 +60,17 @@
                                     @endforeach
                                 @endif
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <label class="label label-{{ $item->member_type_color }}">
                                     {{ \App\Models\Member::MEMBER_TYPE_LIST[$item->member_type] }}
                                 </label>
                             </td>
                             <td style="font-size: 12px">{{ $item->updated_at ? $item->updated_at->format(config('app.date_format')) : '' }}</td>
                             <td class="text-center">
-                                <form method="post"
-                                      action="{{ admin_url('members/set-status-expert/'.$item->id ) }}">
-                                    @csrf
-                                    @method('PUT')
-                                    @if($item->member_type == \App\Models\Member::MEMBER_TYPE_NORMAL)
-                                        <button style="font-size: 10px" class="btn btn-primary btn-sm" type="submit">
-                                            <i class="fa fa-level-up"></i> Upgrade Expert
-                                        </button>
-                                    @else
-                                        <button style="font-size: 10px" class="btn btn-warning btn-sm" type="submit">
-                                            <i class="fa fa-level-down"></i> Downgrade Expert
-                                        </button>
-                                </form>
-                                @endif
+                                <label class="label label-{{ $item->status_color }} btn-sm">
+                                    <i class="fa fa-check-circle-o"></i>
+                                    {{ $item->status_text }}
+                                </label>
                             </td>
                         </tr>
                     @endforeach

@@ -173,8 +173,14 @@ class Member extends Authenticatable
             case self::MEMBER_TYPE_EXPERT:
                 $text = 'success';
                 break;
-            default:
+            case self::MEMBER_TYPE_SCHOOL:
                 $text = 'primary';
+                break;
+            case self::MEMBER_TYPE_EDUCATOR:
+                $text = 'info';
+                break;
+            default:
+                $text = 'default';
                 break;
         }
 

@@ -48,10 +48,10 @@ Route::middleware(['auth.console'])->group(
         Route::put('/members/tags/{id}', 'MemberController@putTags');
         Route::post('/members/active/{id}', 'MemberController@active');
         Route::put('/members/update-reset-password/{id}', 'MemberController@updateResetPassword');
-        Route::get('/members/set-status-expert/{id}', function () {
+        Route::get('/members/set-member-type/{id}', function () {
             return redirect(admin_url('members'));
         });
-        Route::put('/members/set-status-expert/{id}', 'MemberController@setStatusExpert');
+        Route::put('/members/set-member-type/{id}', 'MemberController@setMemberType');
 
         // media
         Route::delete('medias/destroy-multi', 'MediaController@destroyMulti');
