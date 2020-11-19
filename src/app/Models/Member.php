@@ -10,6 +10,8 @@ use App\Models\MemberTag;
 
 /**
  * @method static find(int|string|null $memberId)
+ * @method static active()
+ * @method static type($type)
  */
 class Member extends Authenticatable
 {
@@ -102,6 +104,26 @@ class Member extends Authenticatable
      * @var array
      */
     protected $dates = ['birthday', 'deleted_at', 'created_at', 'updated_at'];
+
+    /**
+     * @param $query
+     * @param $type
+     * @return mixed
+     */
+    public function scopeType($query, $type)
+    {
+        return $query->where('member_type', $type);
+    }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('status', self::STATUS_ACTIVE);
+    }
+
 
     public static function dropDownStatus()
     {
