@@ -74,13 +74,15 @@ class ThemeInstallCommand extends Command
 
         // language
         $this->info('- START COPY LANGUAGE');
-
-        $fileLanguage = 'layout_' . $theme . '.php';
-        $targetLanguage = base_path('themes/' . $theme . '/lang/vi/' . $fileLanguage);
-        $linkLanguage = base_path('resources/lang/vi/' . $fileLanguage);
-        $this->warn('- from: ' . $targetLanguage);
-        $this->warn('- to: ' . $linkLanguage);
-        File::copy($targetLanguage, $linkLanguage);
+        $languages = ['vi', 'en'];
+        foreach ($languages as $language) {
+            $fileLanguage = 'layout_' . $theme . '.php';
+            $targetLanguage = base_path('themes/' . $theme . '/lang/' . $language . '/' . $fileLanguage);
+            $linkLanguage = base_path('resources/lang/' . $language . '/' . $fileLanguage);
+            $this->warn('- from: ' . $targetLanguage);
+            $this->warn('- to: ' . $linkLanguage);
+            File::copy($targetLanguage, $linkLanguage);
+        }
         $this->info('- COMPLETED COPY LANGUAGE');
 
         $this->info('- FINAL INSTALLED');

@@ -74,16 +74,18 @@ class ThemeRemoveCommand extends Command
 
         // language
         $this->info('- START REMOVE LANGUAGE');
-
-        $fileLanguage = 'layout_' . $theme . '.php';
-        $linkLanguage = base_path('resources/lang/vi/' . $fileLanguage);
-        $this->warn('- to: ' . $linkLanguage);
-        if ($env != 'production') {
-            if (File::isDirectory($linkLanguage)) {
-                unlink($linkLanguage);
+        $languages = ['vi', 'en'];
+        foreach ($languages as $language) {
+            $fileLanguage = 'layout_' . $theme . '.php';
+            $linkLanguage = base_path('resources/lang/' . $language . '/' . $fileLanguage);
+            $this->warn('- to: ' . $linkLanguage);
+            if ($env != 'production') {
+                if (File::isDirectory($linkLanguage)) {
+                    unlink($linkLanguage);
+                }
+            } else {
+                File::delete($linkLanguage);
             }
-        } else {
-            File::delete($linkLanguage);
         }
 
         $this->info('- COMPLETED REMOVE LANGUAGE');

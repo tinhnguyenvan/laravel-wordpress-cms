@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Post;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Str;
 
 class ConvertPostMultiLanguageCommand extends Command
 {
@@ -35,12 +36,15 @@ class ConvertPostMultiLanguageCommand extends Command
     public function handle()
     {
         $this->comment('welcome convert post');
-        $posts = Post::all();
+        App::setLocale('en');
+        $posts = Post::query()->get();
         if ($posts->count() > 0) {
             foreach ($posts as $post) {
+                //print_r($post->toArray());
                 $this->info($post->title);
+                $this->info('- slug:' . $post->title);
                 $title = $post->title;
-                $slug = $post->slug;
+                $slug = Str::slug($post->title);
                 $summary = $post->summary;
                 $detail = $post->detail;
 
