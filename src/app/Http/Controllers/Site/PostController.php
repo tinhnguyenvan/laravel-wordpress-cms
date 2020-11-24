@@ -47,7 +47,7 @@ final class PostController extends SiteController
 
     public function view($slugCategory, $slugPost)
     {
-        $post = Post::query()->where('slug', $slugPost)->first();
+        $post = Post::query()->whereTranslation('slug', $slugPost)->first();
 
         if (empty($post)) {
             return redirect(base_url('404.html'));
