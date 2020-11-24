@@ -20,6 +20,7 @@ yarn-error.log
 !/themes/empty
 /themes/*
 /resources/lang/vi/layout_*.php
+/resources/lang/en/layout_*.php
 /public/layout/
 /resources/views/layout/
 /config/config_package*.php
