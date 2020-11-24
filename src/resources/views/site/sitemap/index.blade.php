@@ -18,7 +18,7 @@
 
     @foreach ($posts as $post)
         <url>
-            <loc>{{ \App\Models\Post::link($post) }}</loc>
+            <loc>{{ $post->link }}</loc>
             <lastmod>{{ gmdate('Y-m-d\TH:i:s\Z',strtotime($post->updated_at)) }}</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.6</priority>

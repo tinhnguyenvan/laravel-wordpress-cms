@@ -74,8 +74,7 @@ class ThemeInstallCommand extends Command
 
         // language
         $this->info('- START COPY LANGUAGE');
-        $languages = ['vi', 'en'];
-        foreach ($languages as $language) {
+        foreach (config('app.languages') as $language) {
             $fileLanguage = 'layout_' . $theme . '.php';
             $targetLanguage = base_path('themes/' . $theme . '/lang/' . $language . '/' . $fileLanguage);
             $linkLanguage = base_path('resources/lang/' . $language . '/' . $fileLanguage);

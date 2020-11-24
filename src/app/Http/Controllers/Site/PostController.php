@@ -45,9 +45,9 @@ final class PostController extends SiteController
         return view($this->layout . 'post.index', $this->render($data));
     }
 
-    public function view(Request $request, $slugCategory, $slugPost)
+    public function view(Request $request, $slugCategory, $slugPost, $id)
     {
-        $post = Post::query()->where('slug', $slugPost)->first();
+        $post = Post::query()->find($id);
 
         if (empty($post)) {
             return redirect(base_url('404.html'));

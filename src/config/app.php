@@ -5,6 +5,7 @@ return [
      * customr
      */
     'date_format' => 'd/m/Y H:i A',
+    'languages' => ['en', 'vi'],
     /*
     |--------------------------------------------------------------------------
     | Application Name

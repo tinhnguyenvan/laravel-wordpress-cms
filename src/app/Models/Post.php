@@ -109,22 +109,17 @@ class Post extends Model implements TranslatableContract
         return $html;
     }
 
-    public static function link($item)
-    {
-        $prefix = config('constant.URL_PREFIX_POST') . '/';
-
-        $prefix .= $item->category->slug ?? 'no-category';
-
-        return base_url($prefix . '/' . $item->slug . '.html');
-    }
-
     public function getLinkAttribute()
     {
         $prefix = config('constant.URL_PREFIX_POST') . '/';
 
         $prefix .= $this->category->slug ?? 'no-category';
 
-        return base_url($prefix . '/' . $this->slug . '.html');
+        if(empty($this->slug)) {
+            $this->slug = '1';
+        }
+
+        return base_url($prefix . '/' . $this->slug . '-i'.$this->id.'.html');
     }
 
     public static function image($item)

@@ -74,8 +74,7 @@ class ThemeRemoveCommand extends Command
 
         // language
         $this->info('- START REMOVE LANGUAGE');
-        $languages = ['vi', 'en'];
-        foreach ($languages as $language) {
+        foreach (config('app.languages') as $language) {
             $fileLanguage = 'layout_' . $theme . '.php';
             $linkLanguage = base_path('resources/lang/' . $language . '/' . $fileLanguage);
             $this->warn('- to: ' . $linkLanguage);
