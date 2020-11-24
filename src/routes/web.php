@@ -62,7 +62,7 @@ Route::namespace('Site')->group(
         // post
         Route::get('/' . config('constant.URL_PREFIX_POST'), 'PostController@index');
         Route::get(
-            '/' . config('constant.URL_PREFIX_POST') . '/{slugCategory}/{slugPost}-i{id}.html',
+            '/' . config('constant.URL_PREFIX_POST') . '/{slugCategory}/{slugPost}.html',
             'PostController@view'
         );
         Route::get('/' . config('constant.URL_PREFIX_POST') . '/{slugPost}.html', 'PostController@view');

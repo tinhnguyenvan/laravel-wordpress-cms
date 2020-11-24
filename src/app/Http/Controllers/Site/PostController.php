@@ -45,9 +45,9 @@ final class PostController extends SiteController
         return view($this->layout . 'post.index', $this->render($data));
     }
 
-    public function view(Request $request, $slugCategory, $slugPost, $id)
+    public function view($slugCategory, $slugPost)
     {
-        $post = Post::query()->find($id);
+        $post = Post::query()->where('slug', $slugPost)->first();
 
         if (empty($post)) {
             return redirect(base_url('404.html'));
@@ -64,7 +64,9 @@ final class PostController extends SiteController
         // update view
         Post::query()->increment('views');
 
-        $items = Post::query()->where(['category_id' => $post->category_id])->orderByDesc('id')->paginate($this->page_number);
+        $items = Post::query()->where(['category_id' => $post->category_id])->orderByDesc('id')->paginate(
+            $this->page_number
+        );
 
         // check bookmark
         $isBookmark = 0;

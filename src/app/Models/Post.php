@@ -119,7 +119,7 @@ class Post extends Model implements TranslatableContract
             $this->slug = '1';
         }
 
-        return base_url($prefix . '/' . $this->slug . '-i'.$this->id.'.html');
+        return base_url($prefix . '/' . $this->slug .'.html');
     }
 
     public static function image($item)
