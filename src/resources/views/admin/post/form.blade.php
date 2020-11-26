@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="card-body collapse show" id="collapseExample">
-                        @include('admin.element.form.input', ['name' => 'title', 'text' => trans('post.title'), 'value' => $post->title ?? ''])
+                        @include('admin.element.form.input-multi-lang', ['name' => 'title', 'text' => trans('post.title'), 'value' => $post ?? '', 'is_multi_lang' => true])
 
                         <div class="form-group">
                             <label class="col-form-label" for="title">{{ trans('post.category_id') }}</label>

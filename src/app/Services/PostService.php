@@ -14,8 +14,11 @@ namespace App\Services;
 use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\PostTag;
+use App\Models\PostTranslation;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -44,7 +47,7 @@ class PostService extends BaseService
         $validator = Validator::make(
             $params,
             [
-                'title' => 'required|min:5|max:255',
+                'category_id' => 'required',
             ]
         );
 
@@ -57,18 +60,27 @@ class PostService extends BaseService
 
     public function beforeSave(&$formData = [], $isNews = false)
     {
-        if (empty($formData['slug'])) {
-            $formData['slug'] = $formData['title'];
+        foreach (config('app.languages') as $code) {
+            // slug
+            if (empty($formData[$code]['slug'])) {
+                $slug = $formData[$code]['title'];
+            } else {
+                $slug = $formData[$code]['slug'];
+            }
+
+            if ($isNews) {
+                $myPost = PostTranslation::query()->where('locale', $code)->where('slug', $slug)->first();
+                if (!empty($myPost->slug)) {
+                    $slug .= '-' . rand(0, 1000);
+                }
+            }
+
+            $formData[$code]['slug'] = Str::slug($slug);
         }
 
-        $formData['slug'] = Str::slug($formData['slug']);
 
         if ($isNews) {
             $formData['creator_id'] = Auth::id() ?? 0;
-            $countSlug = Post::query()->where('slug', $formData['slug'])->count();
-            if ($countSlug > 0) {
-                $formData['slug'] .= '-' . $countSlug;
-            }
         } else {
             $formData['editor_id'] = Auth::id() ?? 0;
         }

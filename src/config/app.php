@@ -6,6 +6,10 @@ return [
      */
     'date_format' => 'd/m/Y H:i A',
     'languages' => ['en', 'vi'],
+    'language_text' => [
+        'en' => '🇬🇧 English',
+        'vi' => '🇻🇳 Tiếng việt'
+    ],
     /*
     |--------------------------------------------------------------------------
     | Application Name

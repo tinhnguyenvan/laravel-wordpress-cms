@@ -45,18 +45,15 @@
         <li class="c-header-nav-item dropdown d-md-down-none mx-2 show">
             <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                aria-expanded="false">
-                {{ config('app.locale') == 'vi' ?  '🇻🇳' : '🇬🇧' }} Language
+                {{config('app.language_text')[config('app.locale')] }}   |
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a target="_top" class="dropdown-item @if(request()->cookie('locale') == 'vi') text-danger @endif"
-                   href="{{ request()->fullUrlWithQuery(['lang'=> 'vi']) }}">
-                    🇻🇳 Vietnamese
-                </a>
-
-                <a target="_top" class="dropdown-item @if(request()->cookie('locale') == 'en') text-danger @endif"
-                   href="{{ request()->fullUrlWithQuery(['lang'=> 'en']) }}">
-                    🇬🇧 English
-                </a>
+                @foreach(config('app.language_text') as $lang => $textLanguage)
+                    <a target="_top" class="dropdown-item @if(request()->cookie('locale') == $lang) text-danger @endif"
+                       href="{{ request()->fullUrlWithQuery(['lang'=> $lang]) }}">
+                        {{ $textLanguage }}
+                    </a>
+                @endforeach
             </div>
         </li>
         <li class="nav-item dropdown">

@@ -30,7 +30,7 @@ class AdminController extends Controller
         $manifest = @json_decode(file_get_contents(public_path('layout/' . $this->theme . '/manifest.json')), true);
         $this->data = [
             'manifest' => $manifest,
-            'title' => env('APP_NAME'),
+            'title' => ucfirst(str_replace('_',' ', request()->segment(2))),
             'config' => $config,
             'theme' => $this->theme,
         ];
