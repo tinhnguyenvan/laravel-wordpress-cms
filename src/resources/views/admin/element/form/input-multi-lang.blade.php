@@ -34,7 +34,7 @@
                            name="{{$lang}}[{{$name}}]"
                            id="{{$name}}"
                            placeholder="[{{$text}}: {{ $textLanguage }}]"
-                           value="{{ old($name, $value->translate($lang)->$name) }}"
+                           value="{{ old($name, $value->translate($lang)->$name ?? '') }}"
                            class="form-control {{ $class ?? '' }}"
                            autocomplete="off"/>
                 </div>

@@ -34,7 +34,7 @@
                               placeholder="[{{$text}}: {{ $textLanguage }}]"
                               id="{{$id ?? $name}}"
                               rows="{{ $rows ?? 5 }}"
-                              class="form-control {{ $class ?? '' }}">{{ old($name, $value->translate($lang)->$name) }}</textarea>
+                              class="form-control {{ $class ?? '' }}">{{ old($name, $value->translate($lang)->$name ?? '') }}</textarea>
                 </div>
             </div>
         @endforeach
