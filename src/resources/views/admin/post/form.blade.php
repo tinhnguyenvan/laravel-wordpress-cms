@@ -31,16 +31,8 @@
                             </div>
                         </div>
 
-                        @include('admin.element.form.textarea', ['name' => 'summary', 'text' => trans('post.summary'), 'value' => $post->summary ?? ''])
-
-                        <div class="form-group">
-                            <label class="col-form-label" for="editor1">{{ trans('post.detail') }}</label>
-                            <div class="controls">
-                                <textarea class="form-control" id="editor1" name="detail">
-                                    {{ old('detail',$post->detail??'') }}
-                                </textarea>
-                            </div>
-                        </div>
+                        @include('admin.element.form.textarea-multi-lang', ['name' => 'summary', 'text' => trans('post.summary'), 'value' => $post ?? ''])
+                        @include('admin.element.form.textarea-multi-lang', ['name' => 'detail', 'class' => 'ckeditor', 'text' => trans('post.detail'), 'value' => $post ?? ''])
 
                         @include('admin.element.form.image', ['name' => 'image_id', 'image_id' => $post->image_id ?? '', 'image_url' => $post->image_url ?? ''])
                         @include('admin.element.form.tags', ['name' => 'tags', 'text' => trans('common.tags'), 'value' => $post->tags ?? ''])

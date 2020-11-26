@@ -53,9 +53,9 @@
                         @include('admin.element.form.textarea', ['name' => 'summary', 'text' => trans('product.summary'), 'value' => $product->summary ?? ''])
 
                         <div class="form-group">
-                            <label class="col-form-label" for="editor1">{{ trans('product.detail') }}</label>
+                            <label class="col-form-label" for="detail">{{ trans('product.detail') }}</label>
                             <div class="controls">
-                                <textarea class="form-control" id="editor1"
+                                <textarea class="form-control ckeditor" id="detail"
                                           name="detail">{{ old('detail', $product->detail ?? '') }}</textarea>
                             </div>
                         </div>

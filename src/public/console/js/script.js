@@ -43,64 +43,10 @@ $(document).ready(function () {
             $.cookie('sidebar_minimizer', sidebar_minimizer, {expires: 365, path: '/'});
         });
 
-        if (jQuery('#editor1').length > 0) {
-            CKEDITOR.replace('editor1', {
+        if (jQuery('.ckeditor').length > 0) {
+            CKEDITOR.replaceClass('ckeditor', {
                 filebrowserUploadUrl: configs.filebrowserUploadUrl,
                 filebrowserUploadMethod: 'form',
-            });
-        }
-        if (jQuery('#editor2').length > 0) {
-            CKEDITOR.replace('editor2', {
-                filebrowserUploadUrl: configs.filebrowserUploadUrl,
-                filebrowserUploadMethod: 'form'
-            });
-        }
-        if (jQuery('#editor3').length > 0) {
-            CKEDITOR.replace('editor3', {
-                filebrowserUploadUrl: configs.filebrowserUploadUrl,
-                filebrowserUploadMethod: 'form'
-            });
-        }
-
-        if (jQuery('#editor4').length > 0) {
-            CKEDITOR.replace('editor4', {
-                filebrowserUploadUrl: configs.filebrowserUploadUrl,
-                filebrowserUploadMethod: 'form'
-            });
-        }
-
-        if (jQuery('#editor5').length > 0) {
-            CKEDITOR.replace('editor5', {
-                filebrowserUploadUrl: configs.filebrowserUploadUrl,
-                filebrowserUploadMethod: 'form'
-            });
-        }
-
-        if (jQuery('#editor6').length > 0) {
-            CKEDITOR.replace('editor6', {
-                filebrowserUploadUrl: configs.filebrowserUploadUrl,
-                filebrowserUploadMethod: 'form'
-            });
-        }
-
-        if (jQuery('#editor7').length > 0) {
-            CKEDITOR.replace('editor7', {
-                filebrowserUploadUrl: configs.filebrowserUploadUrl,
-                filebrowserUploadMethod: 'form'
-            });
-        }
-
-        if (jQuery('#editor8').length > 0) {
-            CKEDITOR.replace('editor8', {
-                filebrowserUploadUrl: configs.filebrowserUploadUrl,
-                filebrowserUploadMethod: 'form'
-            });
-        }
-
-        if (jQuery('#editor9').length > 0) {
-            CKEDITOR.replace('editor9', {
-                filebrowserUploadUrl: configs.filebrowserUploadUrl,
-                filebrowserUploadMethod: 'form'
             });
         }
 

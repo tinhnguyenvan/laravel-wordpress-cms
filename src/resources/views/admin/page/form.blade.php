@@ -47,7 +47,7 @@
                         <div class="form-group">
                             <label class="col-form-label" for="description">{{ trans('page.detail') }}</label>
                             <div class="controls">
-                                <textarea class="form-control" id="editor1" rows="5"
+                                <textarea class="form-control ckeditor" id="detail" rows="5"
                                           name="detail">{{ old('detail', $page->detail ?? '') }}</textarea>
                             </div>
                         </div>
