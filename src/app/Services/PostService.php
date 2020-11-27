@@ -16,9 +16,7 @@ use App\Models\PostCategory;
 use App\Models\PostTag;
 use App\Models\PostTranslation;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -225,8 +223,7 @@ class PostService extends BaseService
             )->with('category.children');
         }
         $object->orderBy($sortBy, $sortType);
-        $items = $object->paginate(config('constant.PAGE_NUMBER'));
 
-        return $items;
+        return $object->paginate(config('constant.PAGE_NUMBER'));
     }
 }
