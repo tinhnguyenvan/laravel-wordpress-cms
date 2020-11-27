@@ -42,7 +42,7 @@
         + php artisan db:seed --class=RegionsTableSeeder
         + php artisan db:seed --class=UsersTableSeeder
     
-    - login admin: http://localhost:8000/admin
+    - login admin: https://cms.tweb.com.vn/admin
         + u: admin@gmail.com
         + p: 123456789
         
