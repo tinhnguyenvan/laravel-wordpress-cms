@@ -9,7 +9,7 @@ use Illuminate\Database\Migrations\Migration;
  * @author https://tableplus.com
  * @source https://github.com/TablePlus/tabledump
  */
-class CreatePagesTable extends Migration
+class CreateTablePages extends Migration
 {
     /**
      * Run the migrations.
