@@ -3,7 +3,12 @@
 
 # description
     - Laravel Admin same CMS Wordpress :)
+    
     - Demo link: https://cms.tweb.com.vn
+    
+    - Admin: https://cms.tweb.com.vn/admin
+        - user: admin@gmail.com
+        - password: 123456789
 
     ├── README.md
     ├── etc
