@@ -46,10 +46,6 @@
         + php artisan migrate
         + php artisan db:seed --class=RegionsTableSeeder
         + php artisan db:seed --class=UsersTableSeeder
-    
-    - login admin: https://cms.tweb.com.vn/admin
-        + u: admin@gmail.com
-        + p: 123456789
         
     - link media
         + php artisan storage:link
