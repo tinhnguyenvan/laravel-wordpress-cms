@@ -102,6 +102,14 @@
         {
             "type": "path",
             "url": "./packages/tinhphp/woocommerce"
+        },
+        {
+            "type": "path",
+            "url": "./packages/tinhphp/tool"
+        },
+        {
+            "type": "path",
+            "url": "./packages/tinhphp/classified"
         }
     ]
 }
