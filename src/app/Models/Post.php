@@ -115,7 +115,7 @@ class Post extends Model implements TranslatableContract
 
         $prefix .= $this->category->slug ?? 'no-category';
 
-        if(empty($this->slug)) {
+        if (empty($this->slug)) {
             $this->slug = '1';
         }
 

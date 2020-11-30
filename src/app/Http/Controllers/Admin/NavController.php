@@ -13,7 +13,6 @@ use App\Services\NavPositionService;
 use App\Services\NavService;
 use App\Services\PageService;
 use App\Services\PostCategoryService;
-use App\Services\ProductCategoryService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -26,7 +25,6 @@ use Illuminate\Support\Facades\Cookie;
  * @property NavPositionService     $navPositionService
  * @property PageService            $pageService
  * @property PostCategoryService    $postCategoryService
- * @property ProductCategoryService $productCategoryService
  */
 class NavController extends AdminController
 {
@@ -34,8 +32,7 @@ class NavController extends AdminController
         PageService $pageService,
         NavService $navService,
         NavPositionService $navPositionService,
-        PostCategoryService $postCategoryService,
-        ProductCategoryService $productCategoryService
+        PostCategoryService $postCategoryService
     ) {
         parent::__construct();
         $this->middleware(['permission:' . RolePermission::SETTING_SHOW]);
@@ -43,7 +40,6 @@ class NavController extends AdminController
         $this->navPositionService = $navPositionService;
         $this->pageService = $pageService;
         $this->postCategoryService = $postCategoryService;
-        $this->productCategoryService = $productCategoryService;
     }
 
     public function index(Request $request)
@@ -75,7 +71,6 @@ class NavController extends AdminController
     {
         $data = [
             'dropdownPostCategory' => $this->postCategoryService->dropdown(),
-            'dropdownProductCategory' => $this->productCategoryService->dropdown(),
             'dropdownPage' => $this->pageService->dropdown(),
             'dropdown' => $this->navService->dropdown(),
             'nav' => new Nav(),
@@ -110,7 +105,6 @@ class NavController extends AdminController
     {
         $data = [
             'dropdownPostCategory' => $this->postCategoryService->dropdown(),
-            'dropdownProductCategory' => $this->productCategoryService->dropdown(),
             'dropdownPage' => $this->pageService->dropdown(),
             'dropdown' => $this->navService->dropdown(),
             'nav' => Nav::query()->findOrFail($id),

@@ -70,16 +70,6 @@
                             </div>
                         </div>
 
-                        <div style="{{$nav->type == \App\Models\Nav::TYPE_CATEGORY_PRODUCT ? '' : 'display: none'}}"
-                             class="form-group form-group-general form-group-{{ \App\Models\Nav::TYPE_CATEGORY_PRODUCT }}">
-                            <label class="col-form-label" for="type_category_product">
-                                {{ trans('nav.type.category_product') }}
-                            </label>
-                            <div class="controls">
-                                @include('admin.element.form.select', ['name' => 'type_category_product', 'data' => $dropdownProductCategory, 'selected' => old('type_category_product', ( $nav->value ?? '')), 'attr' => 'onChange=chooseNavSetTextForTitle(this);'])
-                            </div>
-                        </div>
-
                         @include('admin.element.form.input', ['name' => 'title', 'text' => trans('nav.title'), 'value' => $nav->title ?? ''])
                         @include('admin.element.form.input', ['name' => 'order_by', 'text' => trans('nav.order_by'), 'value' => $nav->order_by ?? ''])
 
