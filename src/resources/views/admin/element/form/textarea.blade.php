@@ -4,6 +4,6 @@
     @endif
     <div class="controls">
         <textarea name="{{$name}}" id="{{$id ?? $name}}" rows="{{ $rows ?? 5 }}"
-                  class="form-control">{{ old($name, $value) }}</textarea>
+                  class="form-control {{ $class ?? '' }}">{{ old($name, $value) }}</textarea>
     </div>
 </div>
