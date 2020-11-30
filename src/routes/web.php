@@ -69,15 +69,6 @@ Route::namespace('Site')->group(
         Route::get('/' . config('constant.URL_PREFIX_POST') . '/{slugCategory}', 'PostController@index');
         Route::post('/' . config('constant.URL_PREFIX_POST') . '/bookmark', 'PostController@postBookmark');
 
-        // product
-        Route::get(
-            '/' . config('constant.URL_PREFIX_PRODUCT') . '/{slugProductCategory}/{slugProduct}.html',
-            'ProductController@view'
-        );
-        Route::get('/' . config('constant.URL_PREFIX_PRODUCT') . '/{slugProduct}.html', 'ProductController@view');
-        Route::get('/' . config('constant.URL_PREFIX_PRODUCT') . '/{slugCategory}', 'ProductController@index');
-        Route::get('/' . config('constant.URL_PREFIX_PRODUCT'), 'ProductController@index');
-
         // page
         Route::get('/' . config('constant.URL_PREFIX_PAGE') . '/{slugCategory}', 'PageController@view');
         Route::get('404.html', 'PageController@notfound');
@@ -86,15 +77,6 @@ Route::namespace('Site')->group(
         // tag
         Route::get('/' . config('constant.URL_PREFIX_TAG') . '/{slug}', 'TagController@index');
         Route::get('search', 'SearchController@index');
-
-        // cart
-        Route::get('cart', 'CartController@index');
-        Route::get('cart/delete/{id}', 'CartController@delete');
-        Route::get('cart/checkout/{token_checkout}', 'CartController@checkout');
-        Route::get('cart/checkout-success/{token_checkout}', 'CartController@checkoutSuccess');
-        Route::get('cart/checkout-error/{token_checkout}', 'CartController@checkoutError');
-        Route::post('cart/add', 'CartController@add');
-        Route::post('cart/checkout/{token_checkout}', 'CartController@checkoutSave');
 
         // sitemap
         Route::get('sitemap.xml', 'SitemapController@index');

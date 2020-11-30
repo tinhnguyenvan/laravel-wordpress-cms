@@ -14,7 +14,6 @@
         "php": "^7.2",
         "ext-json": "*",
         "astrotomic/laravel-translatable": "^11.9",
-        "darryldecode/cart": "^4.1",
         "fideloper/proxy": "^4.0",
         "friendsofphp/php-cs-fixer": "^2.16",
         "guzzlehttp/guzzle": "^6.5",
@@ -34,6 +33,7 @@
         "tinhphp/classified": "dev-master",
         "tinhphp/school": "dev-master",
         "tinhphp/tool": "dev-master",
+        "tinhphp/woocommerce": "dev-master",
         "willvincent/laravel-rateable": "^2.2",
         "ext-gettext": "*"
     },
@@ -52,7 +52,13 @@
     },
     "extra": {
         "laravel": {
+            "providers": [
+                "TinhPHP\\Woocommerce\\WoocommerceServiceProvider",
+                "TinhPHP\\School\\SchoolServiceProvider"
+            ],
             "aliases": {
+                "Woocommerce": "TinhPHP\\Woocommerce\\Facades\\WoocommerceFacade",
+                "School": "TinhPHP\\School\\Facades\\SchoolFacade"
             },
             "dont-discover": []
         }
@@ -71,10 +77,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/",
-            "TinhPHP\\School\\": "./packages/tinhphp/school/src/",
-            "TinhPHP\\Tool\\": "./packages/tinhphp/tool/src/",
-            "TinhPHP\\Classified\\": "./packages/tinhphp/classified/src/"
+            "Tests\\": "tests/"
         }
     },
     "minimum-stability": "dev",
@@ -98,11 +101,7 @@
         },
         {
             "type": "path",
-            "url": "./packages/tinhphp/tool"
-        },
-        {
-            "type": "path",
-            "url": "./packages/tinhphp/classified"
+            "url": "./packages/tinhphp/woocommerce"
         }
     ]
 }

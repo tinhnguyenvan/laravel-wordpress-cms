@@ -43,7 +43,7 @@ $(document).ready(function () {
             $.cookie('sidebar_minimizer', sidebar_minimizer, {expires: 365, path: '/'});
         });
 
-        if (jQuery('.ckeditor').length > 0) {
+        if ($('.ckeditor').length > 0) {
             CKEDITOR.replaceClass('ckeditor', {
                 filebrowserUploadUrl: configs.filebrowserUploadUrl,
                 filebrowserUploadMethod: 'form',
@@ -53,7 +53,6 @@ $(document).ready(function () {
         /**
          * js table tree item
          */
-
         if ($('.simple-tree-table').length > 0) {
             let data_opened = $('.simple-tree-table').attr('data-opened');
             let opened = 'all';

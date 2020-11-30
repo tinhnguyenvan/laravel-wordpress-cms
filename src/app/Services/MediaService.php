@@ -11,11 +11,8 @@ use App\Models\Media;
 use App\Models\Member;
 use App\Models\Post;
 use App\Models\PostCategory;
-use App\Models\Product;
-use App\Models\ProductCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -228,12 +225,6 @@ class MediaService extends BaseService
                     break;
                 case Media::OBJECT_TYPE_POST_CATEGORY:
                     $myObject = PostCategory::query()->find($params['object_id']);
-                    break;
-                case Media::OBJECT_TYPE_PRODUCT:
-                    $myObject = Product::query()->find($params['object_id']);
-                    break;
-                case Media::OBJECT_TYPE_PRODUCT_CATEGORY:
-                    $myObject = ProductCategory::query()->find($params['object_id']);
                     break;
                 case Media::OBJECT_TYPE_ADS:
                     $myObject = Ads::query()->find($params['object_id']);

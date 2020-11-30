@@ -11,11 +11,8 @@ use App\Models\Comment;
 use App\Models\Contact;
 use App\Models\Media;
 use App\Models\Post;
-use App\Models\Product;
 use App\Models\RolePermission;
-use App\Models\SaleOrder;
 use App\Models\User;
-use Illuminate\Support\Facades\Session;
 
 class DashboardController extends AdminController
 {
@@ -53,12 +50,6 @@ class DashboardController extends AdminController
                 'link' => admin_url('comments'),
             ],
             [
-                'icon' => 'fa fa-cube',
-                'total' => Product::query()->count(),
-                'title' => trans('common.nav.product'),
-                'link' => admin_url('products'),
-            ],
-            [
                 'icon' => 'fa fa-image',
                 'total' => Ads::query()->count(),
                 'title' => trans('common.nav.ads'),
@@ -69,12 +60,6 @@ class DashboardController extends AdminController
                 'total' => Contact::query()->count(),
                 'title' => trans('common.nav.contact'),
                 'link' => admin_url('contacts'),
-            ],
-            [
-                'icon' => 'nav-icon fa fa-shopping-cart',
-                'total' => SaleOrder::query()->count(),
-                'title' => trans('common.nav.cart'),
-                'link' => admin_url('orders'),
             ],
         ];
 

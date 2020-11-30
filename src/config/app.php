@@ -194,9 +194,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        // TinhPHP\School\SchoolServiceProvider::class,
-        // TinhPHP\Tool\ToolServiceProvider::class,
-        // TinhPHP\Classified\ClassifiedServiceProvider::class,
     ],
 
     /*
@@ -250,7 +247,5 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        // 'School' => TinhPHP\School\Facades\SchoolFacade::class,
-        // 'Tool' => TinhPHP\Classified\Facades\ClassifiedFacade::class,
     ],
 ];

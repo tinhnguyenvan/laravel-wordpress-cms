@@ -72,13 +72,6 @@ Route::middleware(['auth.console'])->group(
         // plugins
         Route::get('plugins', 'ThemeController@index');
 
-        // order
-        Route::get('orders/report', 'OrderController@report');
-        Route::get('orders/get-report', 'OrderController@getReport');
-        Route::resource('orders', 'OrderController');
-        Route::post('orders/resent-mail/{id}', 'OrderController@resentMail');
-        Route::post('orders/status/{id}', 'OrderController@status');
-
         // config
         Route::resource('configs', 'ConfigController');
 
@@ -90,11 +83,6 @@ Route::middleware(['auth.console'])->group(
         Route::delete('post_tags/destroy-multi', 'PostTagController@destroyMulti');
         Route::resource('post_tags', 'PostTagController');
         Route::resource('post_categories', 'PostCategoryController');
-
-        // product
-        Route::delete('products/destroy-multi', 'ProductController@destroyMulti');
-        Route::resource('products', 'ProductController');
-        Route::resource('product_categories', 'ProductCategoryController');
 
         // comment
         Route::delete('comments/destroy-multi', 'CommentController@destroyMulti');

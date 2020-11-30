@@ -33,45 +33,7 @@ return [
                 ],
             ]
         ],
-        [
-            'title' => 'nav.menu_left.products',
-            'url' => '',
-            'icon' => 'fa fa-cube',
-            'child' => [
-                [
-                    'title' => 'nav.menu_left.product_categories',
-                    'url' => 'product_categories',
-                    'icon' => 'fa fa-sitemap',
-                ],
-                [
-                    'title' => 'nav.menu_left.product_list',
-                    'url' => 'products',
-                    'icon' => 'fa fa-list',
-                ],
-                [
-                    'title' => 'nav.menu_left.add',
-                    'url' => 'products/create',
-                    'icon' => 'icon-plus',
-                ],
-            ]
-        ],
-        [
-            'title' => 'nav.menu_left.woocommerces',
-            'url' => '',
-            'icon' => 'fa fa-shopping-bag',
-            'child' => [
-                [
-                    'title' => 'nav.menu_left.orders_list',
-                    'url' => 'orders',
-                    'icon' => 'fa fa-shopping-cart',
-                ],
-                [
-                    'title' => 'nav.menu_left.orders_report',
-                    'url' => 'orders/report',
-                    'icon' => 'icon-chart',
-                ],
-            ]
-        ],
+
         [
             'title' => 'nav.menu_left.pages',
             'url' => 'pages',
@@ -201,9 +163,9 @@ return [
     'PAGE_NUMBER' => 10,
     'MAX_FILE_UPLOAD' => 2,
     'MAX_FILE_SIZE_UPLOAD' => 1000, // 100px
-    'URL_PREFIX_PRODUCT' => 'product',
+    'URL_PREFIX_PRODUCT' => 'collections',
     'URL_PREFIX_CLASSIFIED' => 'classified',
-    'URL_PREFIX_POST' => 'post',
+    'URL_PREFIX_POST' => 'blog',
     'URL_PREFIX_COLLEGE' => 'college',
     'URL_PREFIX_SCHOOL' => 'school',
     'URL_PREFIX_SCHOLARSHIPS' => 'scholarships',
