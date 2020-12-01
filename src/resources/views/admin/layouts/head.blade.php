@@ -13,7 +13,7 @@
         'base_url': '{{ base_url() }}',
         'admin_url': '{{ base_url('admin') }}',
         'MAX_FILE_UPLOAD': '{{ @config('constant.MAX_FILE_UPLOAD') }}',
-        'filebrowserUploadUrl': '{{ admin_url('ckeditor/upload?_token='. csrf_token()) }}'
+        'link_media_upload': '{{ admin_url('media/upload?_token='. csrf_token()) }}'
       };
     </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -25,9 +25,15 @@
     <script src="{{ asset("console/js/jquery-simple-tree-table.js") }}" type="text/javascript"></script>
     <script src="{{ asset("console/js/pace.min.js") }}" type="text/javascript"></script>
     <script src="{{ asset("console/js/perfect-scrollbar.min.js") }}" type="text/javascript"></script>
+
+    <!-- highcharts -->
     <script src="{{ asset("common/plugin/highcharts/highcharts.js") }}" type="text/javascript"></script>
     <script src="{{ asset("common/plugin/highcharts/exporting.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("common/plugin/ckeditor/ckeditor.js") }}" type="text/javascript"></script>
+
+    <!-- summernote -->
+    <link rel="stylesheet" href="{{ asset("common/plugin/summernote-0.8.18/summernote.css") }}">
+    <script src="{{ asset("common/plugin/summernote-0.8.18/summernote.js") }}" type="text/javascript"></script>
+
     <script src="{{ asset("console/js/coreui.min.js") }}" type="text/javascript"></script>
     <script src="{{ asset("console/js/jquery.pjax.js") }}" type="text/javascript"></script>
     <script src="{{ asset("console/js/function.js") }}" type="text/javascript"></script>

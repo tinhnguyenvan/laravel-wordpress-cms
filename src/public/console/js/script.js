@@ -44,10 +44,34 @@ $(document).ready(function () {
         });
 
         if ($('.ckeditor').length > 0) {
-            CKEDITOR.replaceClass('ckeditor', {
-                filebrowserUploadUrl: configs.filebrowserUploadUrl,
-                filebrowserUploadMethod: 'form',
-            });
+            $('.ckeditor').each(function (index) {
+                let $summernote = $('.ckeditor').eq(index);
+                $summernote.summernote({
+                    placeholder: 'Input content',
+                    width: '100%',
+                    height: 200,
+                    callbacks: {
+                        onImageUpload: function (files) {
+                            let data = new FormData();
+                            data.append("upload", files[0]);
+                            $.ajax({
+                                data: data,
+                                type: "POST",
+                                url: configs.link_media_upload,
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                success: function (url) {
+                                    console.log(url);
+                                    $summernote.summernote('insertImage', url, function ($image) {
+                                        $image.attr('src', url);
+                                    });
+                                }
+                            });
+                        }
+                    }
+                });
+            })
         }
 
         /**

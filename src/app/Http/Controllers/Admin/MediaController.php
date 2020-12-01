@@ -92,12 +92,7 @@ class MediaController extends AdminController
             $msg = trans('error_file_invalid');
         }
 
-        $CKEditorFuncNum = $request->input('CKEditorFuncNum');
-
-        $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
-
-        @header('Content-type: text/html; charset=utf-8');
-        echo $response;
+        echo $url;
     }
 
     public function show($id)

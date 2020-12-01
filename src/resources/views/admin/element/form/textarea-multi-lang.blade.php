@@ -32,7 +32,7 @@
                 <div class="input-group">
                     <textarea name="{{$lang}}[{{$name}}]"
                               placeholder="[{{$text}}: {{ $textLanguage }}]"
-                              id="{{$id ?? $name}}"
+                              id="input-lang-{{$name}}-{{$lang}}"
                               rows="{{ $rows ?? 5 }}"
                               class="form-control {{ $class ?? '' }}">{{ old($name, $value->translate($lang)->$name ?? '') }}</textarea>
                 </div>

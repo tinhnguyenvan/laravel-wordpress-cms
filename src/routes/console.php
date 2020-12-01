@@ -57,8 +57,8 @@ Route::middleware(['auth.console'])->group(
         Route::delete('medias/destroy-multi', 'MediaController@destroyMulti');
         Route::resource('medias', 'MediaController');
 
-        // ckeditor
-        Route::post('ckeditor/upload', 'MediaController@upload');
+        // media
+        Route::post('media/upload', 'MediaController@upload');
 
         // roles
         Route::get('roles', 'RoleController@index');
