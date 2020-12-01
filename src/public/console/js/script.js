@@ -61,11 +61,15 @@ $(document).ready(function () {
                                 cache: false,
                                 contentType: false,
                                 processData: false,
-                                success: function (url) {
-                                    console.log(url);
-                                    $summernote.summernote('insertImage', url, function ($image) {
-                                        $image.attr('src', url);
-                                    });
+                                success: function (data) {
+                                    if (parseInt(data.status) === 0) {
+                                        alert(data.message);
+                                    } else {
+                                        let src = data.url;
+                                        $summernote.summernote('insertImage', src, function ($image) {
+                                            $image.attr('src', src);
+                                        });
+                                    }
                                 }
                             });
                         }

@@ -77,6 +77,7 @@ class MediaController extends AdminController
     public function upload(Request $request)
     {
         $url = '';
+        $status = 0;
         if ($request->file('upload')) {
             $objectFile = $request->file('upload');
 
@@ -84,7 +85,9 @@ class MediaController extends AdminController
 
             if (1 == $upload['status']) {
                 $url = asset('storage' . $upload['content']['file_name']);
+
                 $msg = 'Image uploaded successfully';
+                $status = 1;
             } else {
                 $msg = trans('common.upload.error');
             }
@@ -92,7 +95,11 @@ class MediaController extends AdminController
             $msg = trans('error_file_invalid');
         }
 
-        echo $url;
+        return [
+            'status' => $status,
+            'url' => $url,
+            'message' => $msg
+        ];
     }
 
     public function show($id)
