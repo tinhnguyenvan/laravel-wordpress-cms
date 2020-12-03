@@ -10,5 +10,5 @@ return [
     'updated_at' => 'Updated at',
     'template_id' => 'Template',
     'template_default' => 'Default',
-    'template_contact' => 'Form Contact',
+    'template_contact' => 'Contact Form',
 ];

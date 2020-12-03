@@ -5,6 +5,7 @@
  */
 
 return [
+    'MENU_APP' => [],
     'MENU_ADMIN' => [
         [
             'title' => 'nav.menu_left.posts',
@@ -31,6 +32,18 @@ return [
                     'url' => 'post_tags',
                     'icon' => 'icon-tag',
                 ],
+                [
+                    'title' => 'nav.menu_left.comments',
+                    'url' => 'comments',
+                    'icon' => 'fa fa-comment-o',
+                    'child' => []
+                ],
+                [
+                    'title' => 'nav.menu_left.bookmarks',
+                    'url' => 'bookmarks',
+                    'icon' => 'fa fa-bookmark',
+                    'child' => []
+                ],
             ]
         ],
 
@@ -40,18 +53,7 @@ return [
             'icon' => 'fa fa-copy',
             'child' => []
         ],
-        [
-            'title' => 'nav.menu_left.comments',
-            'url' => 'comments',
-            'icon' => 'fa fa-comment-o',
-            'child' => []
-        ],
-        [
-            'title' => 'nav.menu_left.bookmarks',
-            'url' => 'bookmarks',
-            'icon' => 'fa fa-bookmark',
-            'child' => []
-        ],
+
         [
             'title' => 'nav.menu_left.medias',
             'url' => 'medias',
@@ -142,7 +144,7 @@ return [
         [
             'title' => 'nav.menu_left.contact',
             'url' => '',
-            'icon' => 'fa fa-support',
+            'icon' => 'fa fa-envelope',
             'child' => [
                 [
                     'title' => 'nav.menu_left.contact_list',

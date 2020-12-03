@@ -48,12 +48,6 @@ Route::namespace('Site')->group(
                 Route::get('member/my-services', 'MemberController@myServices');
                 Route::get('member/my-service-payment-status', 'MemberController@myServicePaymentStatus');
                 Route::get('member/notifications', 'MemberController@notifications');
-                Route::get(
-                    'member/notification/{id}/make-read',
-                    function () {
-                        return redirect(base_url('member/notifications'));
-                    }
-                );
                 Route::put('member/notification/{id}/make-read', 'MemberController@makeReadNotification');
                 Route::get('member/logout', 'MemberController@logout');
             }

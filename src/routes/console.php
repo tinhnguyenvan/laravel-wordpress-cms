@@ -15,12 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'LoginController@index');
 Route::get('/login', 'LoginController@index');
-Route::get(
-    '/auth',
-    function () {
-        return redirect(admin_url('login'));
-    }
-);
 Route::post('/auth', 'LoginController@auth');
 
 Route::middleware(['auth.console'])->group(
@@ -48,9 +42,6 @@ Route::middleware(['auth.console'])->group(
         Route::put('/members/tags/{id}', 'MemberController@putTags');
         Route::post('/members/active/{id}', 'MemberController@active');
         Route::put('/members/update-reset-password/{id}', 'MemberController@updateResetPassword');
-        Route::get('/members/set-member-type/{id}', function () {
-            return redirect(admin_url('members'));
-        });
         Route::put('/members/set-member-type/{id}', 'MemberController@setMemberType');
 
         // media

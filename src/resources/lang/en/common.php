@@ -11,7 +11,7 @@ return [
     'nav.ads' => 'Ads',
     'nav.tag' => 'Tags',
     'nav.comment' => 'Comments',
-    'nav.contact' => 'Form contact',
+    'nav.contact' => 'Contact Form',
     'nav.cart' => 'Order',
     'nav.classifieds' => 'Classifieds',
     'nav.role' => 'Role',
