@@ -13998,6 +13998,7 @@ canvas {
 
     .sidebar-minimized .sidebar .nav-item {
         width: 50px;
+        margin-left: 0;
         overflow: hidden;
     }
 
