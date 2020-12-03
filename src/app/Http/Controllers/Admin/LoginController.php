@@ -57,7 +57,7 @@ class LoginController extends Controller
         $myUser = User::query()->where($condition)->first();
 
         if (!empty($myUser) && $myUser->id > 0) {
-            if (Auth::guard('admin')->attempt($credentials)) {
+            if (Auth::guard('admin')->attempt($credentials, true)) {
                 $theme = ConfigService::getValue('theme_active');
                 $this->userService->initData($theme);
 
