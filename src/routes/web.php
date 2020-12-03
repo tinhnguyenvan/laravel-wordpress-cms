@@ -1,21 +1,16 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
+use App\Http\Controllers\Admin\LoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/install', 'InstallController@index');
 Route::post('/install', 'InstallController@install');
 Route::get('/install/migrate', 'InstallController@migrate');
+
+Route::get('admin', [LoginController::class, 'index'])->name('admin.login');
+Route::get('admin/login', [LoginController::class, 'index'])->name('admin.login');
+Route::post('admin/auth', [LoginController::class, 'auth'])->name('admin.auth');
 
 Route::namespace('Site')->group(
     function () {
