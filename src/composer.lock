@@ -7280,12 +7280,22 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/tinhphp/affiliate",
-                "reference": "5a9aa7b3db3e6f5eaecfdcee70ca313f9bb63ad4"
+                "reference": "ee02bf641251384515297281444b38772d54d43f"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "TinhPHP\\Affiliate\\AffiliateServiceProvider"
+                    ],
+                    "aliases": {
+                        "Affiliate": "TinhPHP\\Affiliate\\Facades\\ClassifiedFacade"
+                    }
+                }
+            },
             "autoload": {
                 "psr-4": {
-                    "TinhPHP\\Affiliate\\": "src"
+                    "TinhPHP\\Affiliate\\": "src/"
                 }
             },
             "authors": [
@@ -7304,7 +7314,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/tinhphp/classified",
-                "reference": "c1e1de5a04b7f2606b81100a572b0576b14640c7"
+                "reference": "b7e220c6567d40ed8c5511df3455aa0046b327ad"
             },
             "type": "library",
             "extra": {
@@ -7375,7 +7385,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/tinhphp/tool",
-                "reference": "76d1d5db73d9ac0df18600c7abef1d20fed68042"
+                "reference": "68a8be3de6a7b169c173ae2242ef6dd3e47dee21"
             },
             "require": {
                 "maatwebsite/excel": "^3.1"
