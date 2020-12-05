@@ -71,6 +71,8 @@ return [
     'menu_left.contacts' => 'Contact',
     'menu_left.navs' => 'Nav',
     'menu_left.classified_categories' => 'Classified categories',
+    'menu_left.woocommerce' => 'Woocommerce',
+    'menu_left.affiliate' => 'Affiliate',
 
     'setting' => 'Setting',
     'user_profile' => 'Hồ sơ của bạn',
