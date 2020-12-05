@@ -1,7 +1,7 @@
 <div class="sidebar">
     <nav class="sidebar-nav">
         <ul class="nav">
-            <li class="nav-item" style="margin-left: 0">
+            <li class="nav-item" style="padding-left: 0">
                 <a class="nav-link active" href="<?= admin_url('dashboard')?>">
                     <i class="nav-icon icon-speedometer"></i> Dashboard
                 </a>

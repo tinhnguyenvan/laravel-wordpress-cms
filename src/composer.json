@@ -12,6 +12,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "ext-gettext": "*",
         "ext-json": "*",
         "astrotomic/laravel-translatable": "^11.9",
         "fideloper/proxy": "^4.0",
@@ -30,12 +31,12 @@
         "simplesoftwareio/simple-qrcode": "~2",
         "spatie/laravel-permission": "^3.7",
         "spatie/laravel-pjax": "^2.1",
+        "tinhphp/affiliate": "dev-master",
         "tinhphp/classified": "dev-master",
         "tinhphp/school": "dev-master",
         "tinhphp/tool": "dev-master",
         "tinhphp/woocommerce": "dev-master",
-        "willvincent/laravel-rateable": "^2.2",
-        "ext-gettext": "*"
+        "willvincent/laravel-rateable": "^2.2"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
@@ -53,12 +54,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "TinhPHP\\Woocommerce\\WoocommerceServiceProvider",
-                "TinhPHP\\School\\SchoolServiceProvider"
+
             ],
             "aliases": {
-                "Woocommerce": "TinhPHP\\Woocommerce\\Facades\\WoocommerceFacade",
-                "School": "TinhPHP\\School\\Facades\\SchoolFacade"
+
             },
             "dont-discover": []
         }
@@ -110,6 +109,10 @@
         {
             "type": "path",
             "url": "./packages/tinhphp/classified"
+        },
+        {
+            "type": "path",
+            "url": "./packages/tinhphp/affiliate"
         }
     ]
 }
