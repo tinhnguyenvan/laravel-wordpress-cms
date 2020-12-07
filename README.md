@@ -1,5 +1,5 @@
 # laravel-wordpress-cms
-    - version 6.0
+    - version 1.0.1
 
 # description
     - Laravel Admin same CMS Wordpress :)
