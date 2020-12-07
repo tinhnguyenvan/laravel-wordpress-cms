@@ -33,8 +33,12 @@
             @endforeach
 
             @if(!empty(@config('constant.MENU_APP')))
+                @php($plugins = explode(',', Cookie::get('plugin')))
                 <li class="nav-title"><i class="nav-icon fa fa-rocket"></i> MENU EXTRAS</li>
                 @foreach(@config('constant.MENU_APP') as $item)
+                    @if(!in_array($item['plugin'], $plugins))
+                        @continue
+                    @endif
                     <li class="nav-item @if(!empty($item['child'])) nav-dropdown @endif">
                         <a class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif"
                            href="@if(!empty($item['child'])) javascript:void(0) @else {{ admin_url($item['url'])}} @endif">

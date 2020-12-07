@@ -8,7 +8,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\ConfigService;
-use Illuminate\Support\Facades\Session;
 
 /**
  * Class SiteController.
@@ -16,7 +15,7 @@ use Illuminate\Support\Facades\Session;
 class AdminController extends Controller
 {
     public $page_number;
-    protected $data;
+    protected array $data;
     protected $theme = 'default';
 
     public function __construct()
@@ -30,9 +29,9 @@ class AdminController extends Controller
         $manifest = @json_decode(file_get_contents(public_path('layout/' . $this->theme . '/manifest.json')), true);
         $this->data = [
             'manifest' => $manifest,
-            'title' => ucfirst(str_replace('_',' ', request()->segment(2))),
+            'title' => ucfirst(str_replace('_', ' ', request()->segment(2))),
             'config' => $config,
-            'theme' => $this->theme,
+            'theme' => $this->theme
         ];
     }
 

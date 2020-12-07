@@ -7,12 +7,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Plugin;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use App\Services\ConfigService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 /**
  * @property UserService $userService
@@ -56,14 +58,14 @@ class LoginController extends Controller
         if (!empty($myUser) && $myUser->id > 0) {
             if (Auth::guard('admin')->attempt($credentials, true)) {
                 $theme = ConfigService::getValue('theme_active');
+                $plugin = Plugin::query()->where('status', 1)->get(['code'])->toArray();
+                if (!empty($plugin)) {
+                    $plugin = implode(',', array_column($plugin, 'code'));
+                }
                 $this->userService->initData($theme);
-
-                return redirect(admin_url('dashboard'))->withCookie(
-                    'theme',
-                    $theme,
-                    config('constant.COOKIE_EXPIRED'),
-                    '/'
-                );
+                return redirect(admin_url('dashboard'))
+                    ->withCookie('plugin', $plugin, config('constant.COOKIE_EXPIRED'), '/')
+                    ->withCookie('theme', $theme, config('constant.COOKIE_EXPIRED'), '/');
             } else {
                 $request->session()->flash('error', trans('user.login.error'));
             }

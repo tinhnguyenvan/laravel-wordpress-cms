@@ -12,7 +12,7 @@ if (!function_exists('base_url')) {
      *
      * @return string
      */
-    function base_url($path = '', $parameters = [])
+    function base_url($path = '', $parameters = []): string
     {
         return url($path, $parameters, true);
     }
@@ -27,14 +27,14 @@ if (!function_exists('admin_url')) {
      *
      * @return string
      */
-    function admin_url($path = 'dashboard', $parameters = [])
+    function admin_url($path = 'dashboard', $parameters = []): string
     {
         return url('admin/' . $path, $parameters, true);
     }
 }
 
 if (!function_exists('create_line')) {
-    function create_line($num = 0)
+    function create_line($num = 0): string
     {
         $line = '';
         for ($i = 0; $i < $num; ++$i) {
