@@ -73,6 +73,8 @@ return [
     'menu_left.classified_categories' => 'Classified categories',
     'menu_left.woocommerce' => 'Woocommerce',
     'menu_left.affiliate' => 'Affiliate',
+    'menu_left.users' => 'User',
+    'menu_left.tools' => 'Tools',
 
     'setting' => 'Setting',
     'user_profile' => 'Profile',
