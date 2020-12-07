@@ -18,7 +18,7 @@ class CreatePostCategory extends Migration
      */
     public function up()
     {
-        Schema::create('post_categories', function (Blueprint $table) {
+        Schema::create('web_post_categories', function (Blueprint $table) {
             $table->bigInteger('id')->unsigned()->autoIncrement();
             $table->integer('parent_id')->nullable()->default(0);
             $table->string('title', 255)->nullable();

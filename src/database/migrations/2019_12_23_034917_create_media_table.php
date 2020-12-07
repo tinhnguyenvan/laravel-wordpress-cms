@@ -18,7 +18,7 @@ class CreateMediaTable extends Migration
      */
     public function up()
     {
-        Schema::create('medias', function (Blueprint $table) {
+        Schema::create('master_medias', function (Blueprint $table) {
             $table->bigInteger('id')->unsigned()->autoIncrement();
             $table->string('model_type', 255);
             $table->bigInteger('model_id')->unsigned();

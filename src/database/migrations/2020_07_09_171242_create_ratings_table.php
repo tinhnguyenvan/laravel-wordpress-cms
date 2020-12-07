@@ -11,7 +11,7 @@ class CreateRatingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ratings', function (Blueprint $table) {
+        Schema::create('web_ratings', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->integer('rating');
@@ -19,7 +19,7 @@ class CreateRatingsTable extends Migration
             $table->bigInteger('member_id')->unsigned();
             $table->index('rateable_id');
             $table->index('rateable_type');
-            $table->foreign('member_id')->references('id')->on('members');
+            $table->foreign('member_id')->references('id')->on('master_members');
             $table->softDeletes();
         });
     }
@@ -29,6 +29,6 @@ class CreateRatingsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('ratings');
+        Schema::drop('web_ratings');
     }
 }

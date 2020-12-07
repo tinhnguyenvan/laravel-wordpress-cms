@@ -18,7 +18,7 @@ class CreateTableAds extends Migration
      */
     public function up()
     {
-        Schema::create('ads', function (Blueprint $table) {
+        Schema::create('web_ads', function (Blueprint $table) {
             $table->bigInteger('id')->unsigned()->autoIncrement();
             $table->string('position', 255)->nullable();
             $table->string('title', 255)->nullable();

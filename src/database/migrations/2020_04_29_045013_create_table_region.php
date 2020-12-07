@@ -13,7 +13,7 @@ class CreateTableRegion extends Migration
      */
     public function up()
     {
-        Schema::create('regions', function (Blueprint $table) {
+        Schema::create('master_regions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code', 24)->nullable()->default(null);
             $table->string('name', 255)->nullable()->default(null);

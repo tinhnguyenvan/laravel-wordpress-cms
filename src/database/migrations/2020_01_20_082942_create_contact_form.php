@@ -14,7 +14,7 @@ class CreateContactForm extends Migration
      */
     public function up()
     {
-        Schema::create('contact_form', function (Blueprint $table) {
+        Schema::create('web_contact_form', function (Blueprint $table) {
             $table->integer('id');
             $table->string('title')->nullable()->default('');
             $table->string('slug')->nullable()->default('');
@@ -28,7 +28,7 @@ class CreateContactForm extends Migration
             $table->engine = 'InnoDB';
         });
 
-        DB::table('contact_form')->insert([
+        DB::table('web_contact_form')->insert([
             'id' => 1,
             'title' => 'Form contact',
             'slug' => 'form_contact',
@@ -42,6 +42,6 @@ class CreateContactForm extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contact_form');
+        Schema::dropIfExists('web_contact_form');
     }
 }

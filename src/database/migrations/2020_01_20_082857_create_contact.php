@@ -18,7 +18,7 @@ class CreateContact extends Migration
      */
     public function up()
     {
-        Schema::create('contact', function (Blueprint $table) {
+        Schema::create('web_contact', function (Blueprint $table) {
             $table->bigInteger('id')->unsigned()->autoIncrement();
             $table->string('fullname', 255)->nullable();
             $table->string('phone', 20)->nullable();

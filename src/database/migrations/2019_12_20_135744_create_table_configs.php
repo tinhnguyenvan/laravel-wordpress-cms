@@ -13,7 +13,7 @@ class CreateTableConfigs extends Migration
      */
     public function up()
     {
-        Schema::create('configs', function (Blueprint $table) {
+        Schema::create('master_configs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('value')->nullable();

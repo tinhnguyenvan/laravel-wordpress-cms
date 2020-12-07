@@ -13,7 +13,7 @@ class CreateSocialAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('member_social_accounts', function (Blueprint $table) {
+        Schema::create('master_member_social_accounts', function (Blueprint $table) {
             $table->integer('member_id');
             $table->string('provider_id');
             $table->string('provider');

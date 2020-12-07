@@ -18,7 +18,7 @@ class CreateComment extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('web_comments', function (Blueprint $table) {
             $table->bigInteger('id')->unsigned()->autoIncrement();
             $table->bigInteger('post_id');
             $table->bigInteger('rating_id')->default(0);

@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('master_users', function (Blueprint $table) {
             $table->bigInteger('id')->unsigned()->autoIncrement();
             $table->integer('role_id')->default(0);
             $table->string('name', 255);

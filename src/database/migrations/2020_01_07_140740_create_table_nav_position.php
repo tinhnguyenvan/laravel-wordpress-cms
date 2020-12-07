@@ -18,7 +18,7 @@ class CreateTableNavPosition extends Migration
      */
     public function up()
     {
-        Schema::create('nav_positions', function (Blueprint $table) {
+        Schema::create('web_nav_positions', function (Blueprint $table) {
             $table->bigInteger('id')->unsigned()->autoIncrement();
             $table->string('title', 255)->nullable();
             $table->string('slug', 255)->nullable();

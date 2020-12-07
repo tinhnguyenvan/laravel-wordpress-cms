@@ -13,7 +13,7 @@ class CreateTableMember extends Migration
      */
     public function up()
     {
-        Schema::create('members', function (Blueprint $table) {
+        Schema::create('master_members', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->smallInteger('source')->nullable()->default(0);
             $table->string('source_id')->nullable()->default('');
@@ -25,6 +25,7 @@ class CreateTableMember extends Migration
             $table->string('phone', 20)->nullable()->default('');
             $table->string('email', 50)->nullable()->default('');
             $table->string('address', 50)->nullable()->default('');
+            $table->smallInteger('member_type')->nullable()->default(1);
             $table->smallInteger('status')->nullable()->default(1);
             $table->integer('image_id')->nullable()->default(0);
             $table->string('image_url')->nullable()->default('');

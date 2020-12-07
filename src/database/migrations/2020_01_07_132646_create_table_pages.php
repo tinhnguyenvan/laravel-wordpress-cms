@@ -18,7 +18,7 @@ class CreateTablePages extends Migration
      */
     public function up()
     {
-        Schema::create('pages', function (Blueprint $table) {
+        Schema::create('web_pages', function (Blueprint $table) {
             $table->bigInteger('id')->unsigned()->autoIncrement();
             $table->smallInteger('template_id')->nullable()->default(0);
             $table->string('title', 255)->nullable();

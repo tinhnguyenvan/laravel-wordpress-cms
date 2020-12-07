@@ -18,7 +18,7 @@ class CreateTablePost extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('web_posts', function (Blueprint $table) {
             $table->bigInteger('id')->unsigned()->autoIncrement();
             $table->integer('category_id')->nullable()->default(0)->index();
             $table->integer('image_id')->nullable()->default(0);
