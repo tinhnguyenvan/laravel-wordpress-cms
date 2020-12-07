@@ -5,9 +5,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth.console'])->group(
     function () {
         Route::get('/dashboard', 'DashboardController@index');
-        Route::get('/configs', 'ConfigController@index');
-        Route::post('/configs/save', 'ConfigController@save');
-        Route::post('/configs/test', 'ConfigController@test');
         Route::get('/logout', 'UserController@logout');
 
         // user
@@ -46,9 +43,15 @@ Route::middleware(['auth.console'])->group(
         Route::get('themes/css', 'ThemeController@css');
 
         // plugins
-        Route::get('plugins', 'PluginController@index');
+        Route::get('plugins', 'PluginController@index')->name('admin.plugins.index');
+        Route::put('plugins/{id}/update-status', 'PluginController@updateStatus');
+        Route::match(['get'], 'plugins/{id}/update-status', function () {
+            Route::redirect('plugins', 'plugins/{id}/update-status', 301);
+        });
 
         // config
+        Route::post('/configs/save', 'ConfigController@save');
+        Route::post('/configs/test', 'ConfigController@test');
         Route::resource('configs', 'ConfigController');
 
         //post

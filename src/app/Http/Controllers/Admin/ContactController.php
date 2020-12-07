@@ -70,9 +70,10 @@ class ContactController extends AdminController
     /**
      * delete multi.
      *
+     * @param Request $request
      * @return RedirectResponse
      */
-    public function destroyMulti(Request $request)
+    public function destroyMulti(Request $request): RedirectResponse
     {
         $params = $request->all();
 
