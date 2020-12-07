@@ -11,7 +11,6 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use App\Services\ConfigService;
 use App\Services\UserService;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,8 +19,6 @@ use Illuminate\Support\Facades\Auth;
  */
 class LoginController extends Controller
 {
-    use AuthenticatesUsers;
-
     /**
      * Where to redirect users after login.
      *
@@ -34,7 +31,7 @@ class LoginController extends Controller
         $this->userService = $userServices;
     }
 
-    public function index(Request $request)
+    public function index()
     {
         if (Auth::guard('admin')->check()) {
             return redirect(admin_url('dashboard'));
