@@ -13570,7 +13570,7 @@ canvas {
     position: relative;
     margin: 0;
     transition: background .3s ease-in-out;
-    padding-left: 12px;
+    text-indent: 8px;
 }
 
 .sidebar .nav-dropdown-items {

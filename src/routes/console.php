@@ -46,7 +46,7 @@ Route::middleware(['auth.console'])->group(
         Route::get('themes/css', 'ThemeController@css');
 
         // plugins
-        Route::get('plugins', 'ThemeController@index');
+        Route::get('plugins', 'PluginController@index');
 
         // config
         Route::resource('configs', 'ConfigController');

@@ -108,11 +108,11 @@ return [
                     'url' => 'configs',
                     'icon' => 'fa fa-cogs',
                 ],
-                //                [
-                //                    'title' => 'nav.menu_left.plugins',
-                //                    'url' => 'plugins',
-                //                    'icon' => 'fa fa-unlock',
-                //                ],
+                [
+                    'title' => 'nav.menu_left.plugins',
+                    'url' => 'plugins',
+                    'icon' => 'fa fa-unlock',
+                ],
             ]
         ],
         [

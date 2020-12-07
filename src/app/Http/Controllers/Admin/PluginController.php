@@ -11,25 +11,27 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Services\ConfigService;
+use App\Models\Plugin;
+use App\Services\PluginService;
 
 /**
- * Class ConfigController.
+ * Class PluginController.
  *
- * @property ConfigService $configService
+ * @property PluginService $pluginService
  */
 class PluginController extends AdminController
 {
-    public function __construct(ConfigService $configService)
+    public function __construct(PluginService $pluginService)
     {
         parent::__construct();
-        $this->configService = $configService;
+        $this->pluginService = $pluginService;
     }
 
     public function index()
     {
+        $items = Plugin::all();
         $data = [
-            'plugins' => [],
+            'items' => $items,
             'title' => trans('nav.menu_left.plugins'),
         ];
 

@@ -87,7 +87,7 @@
         + php artisan make:controller Site/SitemapController
         
     - create model: 
-        + php artisan generate:modelfromtable --table=ps_school_my_application_plan_fields --folder=App/Models --singular
+        + php artisan generate:modelfromtable --table=master_plugins --folder=App/Models --singular
         
     - create mail
         + php artisan make:mail ShoppingCart
