@@ -15,7 +15,7 @@ use App\Services\ConfigService;
 class AdminController extends Controller
 {
     public $page_number;
-    protected array $data;
+    protected $data;
     protected $theme = 'default';
 
     public function __construct()
