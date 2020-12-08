@@ -1,37 +1,109 @@
 ## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/tinhnguyenvan/laravel-wordpress-cms/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+- Laravel Admin same CMS Wordpress :)
+    
+- Demo link: [https://cms.tweb.com.vn](https://cms.tweb.com.vn)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+# Install & setup 
+    - Step 1:
+		COMPOSER_MEMORY_LIMIT=-1 composer install
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+    - Step 2: migration
+    	php artisan migrate
+      	php artisan db:seed --class=UsersTableSeeder
+        
+    - Step 3: link media
+		php artisan storage:link
 
-```markdown
-Syntax highlighted code block
+# Login Admin
+ 
+- Demo link: [https://cms.tweb.com.vn/admin](https://cms.tweb.com.vn/admin)
+    - user: admin@gmail.com
+    - password: 123456789
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
+# Install theme
+- Step 1: Download theme default: https://github.com/tinhnguyenvan/laravel-wordpress-cms-theme-default
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
 ```
+	default/
+        ├── README.md
+        ├── lang
+        │   └── vi
+        │   └── en
+        ├── public
+        │   ├── css
+        │   ├── img
+        │   ├── js
+        │   ├── manifest.json
+        │   ├── screen_shot.png
+        │   └── vendor
+        └── views
+            ├── home
+            ├── layouts
+            ├── page
+            ├── post
+            ├── product
+            ├── search
+            └── tag
+```
+            
+- Step 2: cài đặt theme
+	- php artisan theme:install {--name=}
+    
+	- Example: php artisan theme:install --name=default
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+# Remove theme
+    - php artisan theme:remove {--name=}
 
-### Jekyll Themes
+# Generate
+    - create controller
+        + php artisan make:controller Admin/SchoolCollegeTypeController --resource --model=Models/SchoolCollegeType
+        + php artisan make:controller Site/SitemapController
+        
+    - create model: 
+        + php artisan generate:modelfromtable --table=master_plugins --folder=App/Models --singular
+        
+    - create mail
+        + php artisan make:mail ShoppingCart
+        
+    - create job
+        + php artisan make:job ShoppingCartJob
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/tinhnguyenvan/laravel-wordpress-cms/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
+ 
+# PHP auto fix cs
+    - preview
+        + ./vendor/bin/php-cs-fixer fix --diff --dry-run -v
+    
+    - auto fixed
+        + ./vendor/bin/php-cs-fixer fix
+        
+# Queue
+    - default:
+        + php artisan queue:work
+        + php artisan queue:listen
+    - set queue name
+        + php artisan queue:work --queue=admin
+        
+    * Nếu không dùng rabbitmq thì config .env QUEUE_CONNECTION=sync
+        
+# Integrate third-party
+    - generators: https://github.com/laracademy/generators
+    - cart: https://github.com/darryldecode/laravelshoppingcart
+    - permission: https://github.com/spatie/laravel-permission
+    - generate code: https://laravelarticle.com/laravel-custom-id-generator
+    - image: http://image.intervention.io/getting_started/introduction
+    - autocomplete: http://easyautocomplete.com/guide#sec-trigger-event
+    - jquery cookie: https://github.com/carhartl/jquery-cookie
+    - simple qrcode: https://www.simplesoftware.io/simple-qrcode/
+    - generator: https://www.simplesoftware.io/simple-qrcode/
+    - api genera doc: https://github.com/mpociot/laravel-apidoc-generator
+    - excel: https://docs.laravel-excel.com/3.1/getting-started/
+    - datetime: https://flatpickr.js.org/getting-started/
+    - rating: https://github.com/willvincent/laravel-rateable
+    - timeline: https://bootsnipp.com/tags/timeline
+    - development package: https://laravelpackage.com/02-development-environment.html#installing-composer
+    - multi language: https://docs.astrotomic.info/laravel-translatable/
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
