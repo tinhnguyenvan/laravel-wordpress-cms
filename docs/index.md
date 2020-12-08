@@ -24,7 +24,7 @@
 
 
 # Install theme
-- Step 1: Download theme default: https://github.com/tinhnguyenvan/laravel-wordpress-cms-theme-default
+- Step 1: Download theme default: [https://github.com/tinhnguyenvan/laravel-wordpress-cms-theme-default](https://github.com/tinhnguyenvan/laravel-wordpress-cms-theme-default)
 
 ```
 	default/
