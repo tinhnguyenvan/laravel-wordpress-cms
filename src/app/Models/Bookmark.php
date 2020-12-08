@@ -13,7 +13,7 @@ class Bookmark extends Model
      *
      * @var string
      */
-    protected $table = 'bookmarks';
+    protected $table = 'web_bookmarks';
 
     /**
      * Attributes that should be mass-assignable.

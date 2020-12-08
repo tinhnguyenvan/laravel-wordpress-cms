@@ -17,7 +17,7 @@ class RegionsTableSeeder extends Seeder
         $regions = json_decode($regions, true);
 
         foreach ($regions as $key => $region) {
-            DB::table('regions')->insert(
+            DB::table('master_regions')->insert(
                 [
                     'code' => $region['code'],
                     'name' => $region['name'],

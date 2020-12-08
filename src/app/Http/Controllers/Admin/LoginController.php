@@ -60,11 +60,13 @@ class LoginController extends Controller
                 $theme = ConfigService::getValue('theme_active');
                 $plugin = Plugin::query()->where('status', 1)->get(['code'])->toArray();
                 if (!empty($plugin)) {
-                    $plugin = implode(',', array_column($plugin, 'code'));
+                    $plugins = implode(',', array_column($plugin, 'code'));
+                } else {
+                    $plugins = '';
                 }
                 $this->userService->initData($theme);
                 return redirect(admin_url('dashboard'))
-                    ->withCookie('plugin', $plugin, config('constant.COOKIE_EXPIRED'), '/')
+                    ->withCookie('plugin', $plugins, config('constant.COOKIE_EXPIRED'), '/')
                     ->withCookie('theme', $theme, config('constant.COOKIE_EXPIRED'), '/');
             } else {
                 $request->session()->flash('error', trans('user.login.error'));

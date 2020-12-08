@@ -33,7 +33,7 @@ class Comment extends Model
      *
      * @var string
      */
-    protected $table = 'comments';
+    protected $table = 'web_comments';
 
     /**
      * Attributes that should be mass-assignable.

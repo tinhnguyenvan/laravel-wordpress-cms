@@ -15,7 +15,7 @@ class Region extends Model
      *
      * @var string
      */
-    protected $table = 'regions';
+    protected $table = 'master_regions';
 
     /**
      * Attributes that should be mass-assignable.

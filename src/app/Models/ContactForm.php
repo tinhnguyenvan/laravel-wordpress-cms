@@ -14,7 +14,7 @@ class ContactForm extends Model
      *
      * @var string
      */
-    protected $table = 'contact_form';
+    protected $table = 'web_contact_form';
 
     /**
      * Attributes that should be mass-assignable.

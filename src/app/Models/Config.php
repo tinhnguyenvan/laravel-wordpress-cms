@@ -11,7 +11,7 @@ class Config extends Model
      *
      * @var string
      */
-    protected $table = 'configs';
+    protected $table = 'master_configs';
 
     /**
      * Attributes that should be mass-assignable.

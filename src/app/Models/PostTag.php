@@ -19,7 +19,7 @@ class PostTag extends Model
      *
      * @var string
      */
-    protected $table = 'post_tags';
+    protected $table = 'web_post_tags';
 
     /**
      * Attributes that should be mass-assignable.

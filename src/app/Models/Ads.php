@@ -24,7 +24,7 @@ class Ads extends Model
      *
      * @var string
      */
-    protected $table = 'ads';
+    protected $table = 'web_ads';
 
     /**
      * Attributes that should be mass-assignable.

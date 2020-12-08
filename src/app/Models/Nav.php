@@ -23,7 +23,7 @@ class Nav extends Model
      *
      * @var string
      */
-    protected $table = 'navs';
+    protected $table = 'web_navs';
 
     /**
      * Attributes that should be mass-assignable.

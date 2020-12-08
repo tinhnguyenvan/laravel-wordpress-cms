@@ -13,7 +13,7 @@ class CreateMemberTags extends Migration
      */
     public function up()
     {
-        Schema::create('member_tags', function (Blueprint $table) {
+        Schema::create('master_member_tags', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('parent_id')->default(0);
             $table->string('name')->default('')->nullable();
@@ -32,6 +32,6 @@ class CreateMemberTags extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('member_tags');
+        Schema::dropIfExists('master_member_tags');
     }
 }

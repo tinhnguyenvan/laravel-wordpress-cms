@@ -15,7 +15,7 @@ class MemberSocialAccount extends Model
      *
      * @var string
      */
-    protected $table = 'member_social_accounts';
+    protected $table = 'master_member_social_accounts';
 
     /**
      * Attributes that should be mass-assignable.

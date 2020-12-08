@@ -14,7 +14,7 @@ class NavPosition extends Model
      *
      * @var string
      */
-    protected $table = 'nav_positions';
+    protected $table = 'web_nav_positions';
 
     /**
      * Attributes that should be mass-assignable.

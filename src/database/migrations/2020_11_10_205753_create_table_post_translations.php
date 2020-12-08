@@ -14,7 +14,7 @@ class CreateTablePostTranslations extends Migration
     public function up()
     {
         Schema::create(
-            'post_translations',
+            'web_post_translations',
             function (Blueprint $table) {
                 $table->increments('id');
                 $table->integer('post_id')->unsigned();
@@ -38,6 +38,6 @@ class CreateTablePostTranslations extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_translations');
+        Schema::dropIfExists('web_post_translations');
     }
 }

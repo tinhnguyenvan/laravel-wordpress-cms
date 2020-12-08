@@ -43,7 +43,7 @@ class Media extends Model
      *
      * @var string
      */
-    protected $table = 'medias';
+    protected $table = 'master_medias';
 
     /**
      * Attributes that should be mass-assignable.

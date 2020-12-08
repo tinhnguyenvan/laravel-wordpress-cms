@@ -38,7 +38,7 @@ class Post extends Model implements TranslatableContract
      *
      * @var string
      */
-    protected $table = 'posts';
+    protected $table = 'web_posts';
 
     /**
      * Attributes that should be mass-assignable.

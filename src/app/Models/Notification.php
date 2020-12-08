@@ -14,7 +14,7 @@ class Notification extends Model
      *
      * @var string
      */
-    protected $table = 'notifications';
+    protected $table = 'web_notifications';
 
     /**
      * Attributes that should be mass-assignable.

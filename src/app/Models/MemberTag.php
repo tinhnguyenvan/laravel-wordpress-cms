@@ -14,7 +14,7 @@ class MemberTag extends Model
      *
      * @var string
      */
-    protected $table = 'member_tags';
+    protected $table = 'master_member_tags';
 
     /**
      * Attributes that should be mass-assignable.

@@ -11,7 +11,7 @@ class PasswordResets extends Model
      *
      * @var string
      */
-    protected $table = 'password_resets';
+    protected $table = 'master_password_resets';
 
     /**
      * Attributes that should be mass-assignable.

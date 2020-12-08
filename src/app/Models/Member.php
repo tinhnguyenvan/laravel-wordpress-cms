@@ -48,7 +48,7 @@ class Member extends Authenticatable
      *
      * @var string
      */
-    protected $table = 'members';
+    protected $table = 'master_members';
 
     /**
      * Attributes that should be mass-assignable.
