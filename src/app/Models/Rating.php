@@ -14,7 +14,7 @@ class Rating extends Model
      *
      * @var string
      */
-    protected $table = 'web_ratings';
+    protected $table = 'ratings';
 
     /**
      * Attributes that should be mass-assignable.

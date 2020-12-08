@@ -11,7 +11,7 @@ class CreateRatingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('web_ratings', function (Blueprint $table) {
+        Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->integer('rating');
@@ -29,6 +29,6 @@ class CreateRatingsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('web_ratings');
+        Schema::drop('ratings');
     }
 }
