@@ -61,6 +61,22 @@
 # Remove theme
     - php artisan theme:remove {--name=}
 
+
+# Plugin
+
+1. **Laravel Package Woocommerce**
+
+	- [https://github.com/tinhnguyenvan/laravel-wordpress-cms-package-woocommerce](https://github.com/tinhnguyenvan/laravel-wordpress-cms-package-woocommerce)
+
+		[![Latest Version on Packagist](https://img.shields.io/packagist/v/tinhphp/woocommerce.svg?style=flat-square)](https://packagist.org/packages/tinhphp/woocommerce)
+		
+		[![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+		
+		![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tinhphp/woocommerce/run-tests?label=tests)
+		
+		[![Total Downloads](https://img.shields.io/packagist/dt/tinhphp/woocommerce.svg?style=flat-square)](https://packagist.org/packages/tinhphp/woocommerce)
+
+
 # Generate
     - create controller
         + php artisan make:controller Admin/SchoolCollegeTypeController --resource --model=Models/SchoolCollegeType
