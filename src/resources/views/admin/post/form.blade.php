@@ -25,10 +25,13 @@
                         @include('admin.element.form.input-multi-lang', ['name' => 'title', 'text' => trans('post.title'), 'value' => $post ?? '', 'is_multi_lang' => true])
 
                         <div class="form-group">
-                            <label class="col-form-label" for="title">{{ trans('post.category_id') }}</label>
+                            <label class="col-form-label required" for="title">{{ trans('post.category_id') }}</label>
                             <div class="controls">
                                 @include('admin.element.form.select', ['name' => 'category_id', 'data' => $dropdownCategory, 'selected' => old('category_id', ($post->category_id ?? 0))])
                             </div>
+                            @if(empty($dropdownCategory))
+                                <a target="_blank" href="{{ admin_url('post_categories/create') }}"><i class="fa fa-plus"></i> Add category</a>
+                            @endif
                         </div>
 
                         @include('admin.element.form.textarea-multi-lang', ['name' => 'summary', 'text' => trans('post.summary'), 'value' => $post ?? ''])

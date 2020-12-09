@@ -8,7 +8,6 @@ class PostTranslation extends Model
 {
     protected $table = 'web_post_translations';
 
-
     protected $fillable = [
         'title',
         'summary',
