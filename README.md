@@ -1,5 +1,6 @@
 # Laravel Wordpress CMS
-- Version 1.0.1
+- Version **Laravel** 7.1
+- Version **Laravel Wordpress CMS** 1.0
 
 
 ## Welcome to GitHub Pages
@@ -10,25 +11,35 @@
 
 
 # Install & setup
-    - Step 1:
+- **Step 1**:
+
 		COMPOSER_MEMORY_LIMIT=-1 composer install
 
-    - Step 2: migration
-    	php artisan migrate
-      	php artisan db:seed --class=UsersTableSeeder
+- **Step 2**: migration database
 
-    - Step 3: link media
+		php artisan migrate
+
+  		php artisan db:seed --class=UsersTableSeeder
+
+- **Step 3**: link media
+
 		php artisan storage:link
 
 # Login Admin
 
 - Demo link: [https://cms.tweb.com.vn/admin](https://cms.tweb.com.vn/admin)
-    - user: admin@gmail.com
-    - password: 123456789
+    - **user**: admin@gmail.com
+    - **password**: 123456789
 
+	![](https://user-images.githubusercontent.com/6789649/101598079-32c8f400-3a2a-11eb-82e9-29b1c227ba81.png)
 
-# Install theme
-- Step 1: Download theme default: [https://github.com/tinhnguyenvan/laravel-wordpress-cms-theme-default](https://github.com/tinhnguyenvan/laravel-wordpress-cms-theme-default)
+	![](https://user-images.githubusercontent.com/6789649/101597906-eb426800-3a29-11eb-931c-4a7e4c7e55a4.png)
+
+# Theme
+
+### 1. Install theme
+
+- **Step 1**: Download theme default: [https://github.com/tinhnguyenvan/laravel-wordpress-cms-theme-default](https://github.com/tinhnguyenvan/laravel-wordpress-cms-theme-default)
 
 ```
 	default/
@@ -53,13 +64,17 @@
             └── tag
 ```
 
-- Step 2: cài đặt theme
-	- php artisan theme:install {--name=}
+- **Step 2**: cài đặt theme
 
-	- Example: php artisan theme:install --name=default
+		php artisan theme:install {--name=}
 
-# Remove theme
-    - php artisan theme:remove {--name=}
+- Example: 
+
+		php artisan theme:install --name=default
+
+### 2. Remove theme
+
+	    	php artisan theme:remove {--name=}
 
 
 # Plugin
@@ -101,29 +116,49 @@
         + ./vendor/bin/php-cs-fixer fix
 
 # Queue
-    - default:
-        + php artisan queue:work
-        + php artisan queue:listen
-    - set queue name
-        + php artisan queue:work --queue=admin
 
-    * Nếu không dùng rabbitmq thì config .env QUEUE_CONNECTION=sync
+- default:
+
+    	php artisan queue:work
+    	php artisan queue:listen
+
+- set queue name
+
+    	php artisan queue:work --queue=admin
+
+- ***Nếu không dùng rabbitmq thì config .env `QUEUE_CONNECTION=sync`***
 
 # Integrate third-party
-    - generators: https://github.com/laracademy/generators
-    - cart: https://github.com/darryldecode/laravelshoppingcart
-    - permission: https://github.com/spatie/laravel-permission
-    - generate code: https://laravelarticle.com/laravel-custom-id-generator
-    - image: http://image.intervention.io/getting_started/introduction
-    - autocomplete: http://easyautocomplete.com/guide#sec-trigger-event
-    - jquery cookie: https://github.com/carhartl/jquery-cookie
-    - simple qrcode: https://www.simplesoftware.io/simple-qrcode/
-    - generator: https://www.simplesoftware.io/simple-qrcode/
-    - api genera doc: https://github.com/mpociot/laravel-apidoc-generator
-    - excel: https://docs.laravel-excel.com/3.1/getting-started/
-    - datetime: https://flatpickr.js.org/getting-started/
-    - rating: https://github.com/willvincent/laravel-rateable
-    - timeline: https://bootsnipp.com/tags/timeline
-    - development package: https://laravelpackage.com/02-development-environment.html#installing-composer
-    - multi language: https://docs.astrotomic.info/laravel-translatable/
+- generators: [https://github.com/laracademy/generators](https://github.com/laracademy/generators)
+
+- cart: [https://github.com/darryldecode/laravelshoppingcart](https://github.com/darryldecode/laravelshoppingcart)
+
+- permission: [https://github.com/spatie/laravel-permission](https://github.com/spatie/laravel-permission)
+
+- generate code: [https://laravelarticle.com/laravel-custom-id-generator](https://laravelarticle.com/laravel-custom-id-generator)
+
+- image: [http://image.intervention.io/getting_started/introduction](http://image.intervention.io/getting_started/introduction)
+
+- autocomplete: [http://easyautocomplete.com/guide#sec-trigger-event](http://easyautocomplete.com/guide#sec-trigger-event)
+
+- jquery cookie: [https://github.com/carhartl/jquery-cookie](https://github.com/carhartl/jquery-cookie)
+
+- simple qrcode: [https://www.simplesoftware.io/simple-qrcode/](https://www.simplesoftware.io/simple-qrcode/)
+
+- generator: [https://www.simplesoftware.io/simple-qrcode/](https://www.simplesoftware.io/simple-qrcode/)
+
+- api genera doc: [https://github.com/mpociot/laravel-apidoc-generator](https://github.com/mpociot/laravel-apidoc-generator)
+
+- excel: [https://docs.laravel-excel.com/3.1/getting-started/](https://docs.laravel-excel.com/3.1/getting-started/)
+
+- datetime: [https://flatpickr.js.org/getting-started/](https://flatpickr.js.org/getting-started/)
+
+- rating: [https://github.com/willvincent/laravel-rateable](https://github.com/willvincent/laravel-rateable)
+
+- timeline: [https://bootsnipp.com/tags/timeline](https://bootsnipp.com/tags/timeline)
+
+- development package: [https://laravelpackage.com/02-development-environment.html#installing-composer](https://laravelpackage.com/02-development-environment.html#installing-composer)
+
+- multi language: [https://docs.astrotomic.info/laravel-translatable/](https://docs.astrotomic.info/laravel-translatable/)
+
 
