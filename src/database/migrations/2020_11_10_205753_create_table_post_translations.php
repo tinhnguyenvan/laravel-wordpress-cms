@@ -26,6 +26,7 @@ class CreateTablePostTranslations extends Migration
                 $table->text('seo_title')->nullable();
                 $table->text('seo_description')->nullable();
 
+                $table->timestamps();
                 $table->unique(['post_id', 'locale']);
             }
         );
