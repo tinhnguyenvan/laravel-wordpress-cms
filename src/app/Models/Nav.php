@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Spatie\Translatable\HasTranslations;
 
 class Nav extends Model
 {
@@ -85,5 +85,11 @@ class Nav extends Model
         return Nav::query()->where(['position' => $position])
             ->orderByRaw('CASE WHEN parent_id = 0 THEN id ELSE parent_id END, parent_id,id')
             ->get();
+    }
+
+
+    public function subCategory(): HasMany
+    {
+        return $this->hasMany('App\Models\Nav', 'parent_id');
     }
 }

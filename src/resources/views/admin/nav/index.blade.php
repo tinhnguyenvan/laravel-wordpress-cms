@@ -52,23 +52,43 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @if ($items->count() > 0)
-                            @foreach ($items as $item)
-                                @include('admin.nav.item', compact('item'))
-                                @php($itemSub = \App\Models\Nav::query()->where(['parent_id' => $item->id])->orderBy('order_by')->get())
-                                @if ($itemSub->count() > 0)
-                                    @foreach ($itemSub as $item)
-                                        @include('admin.nav.item', compact('item'))
-                                        @php($itemSub2 = \App\Models\Nav::query()->where(['parent_id' => $item->id])->orderBy('order_by')->get())
-                                        @if ($itemSub2->count() > 0)
-                                            @foreach ($itemSub2 as $item)
-                                                @include('admin.nav.item', compact('item'))
-                                            @endforeach
+                        @foreach($items as $item)
+                            <tr data-node-id="{{$item->id}}" data-node-pid="{{$item->parent_id}}">
+                                <td>
+                                    <a href="{{ admin_url('navs/'.$item->id.'/edit') }}">
+                                        {{ $item->title }}
+                                    </a>
+                                </td>
+                                <td>--</td>
+                                <td>
+                                    {{ $item->created_at->format(config('app.date_format')) }}
+                                </td>
+                                <td class="text-center">
+                                    {{ $item->order_by ?? 0 }}
+                                </td>
+                                <td class="text-right">
+                                    <form method="post" action="{{ admin_url('navs/'.$item->id ) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        @if($item->level < 2)
+                                            <a href="{{ admin_url('navs/create?parent_id='.$item->id.'&position='.$position) }}"
+                                               class="btn btn-sm btn-primary">
+                                                <i class="fa fa-sitemap"></i> {{ trans('nav.add_menu_child') }}
+                                            </a>
                                         @endif
-                                    @endforeach
-                                @endif
-                            @endforeach
-                        @endif
+
+                                        <button class="btn btn-danger btn-sm" type="submit">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+
+                            @if(count($item->subCategory))
+                                @include('admin.nav.item',['items' => $item->subCategory])
+                            @endif
+
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
