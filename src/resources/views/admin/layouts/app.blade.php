@@ -38,7 +38,9 @@
     </main>
 </div>
 @include('admin.layouts.footer')
-@include('admin.element.error')
-@include('admin.element.success')
+<div id="alert-message-footer">
+    @include('admin.element.error')
+    @include('admin.element.success')
+</div>
 </body>
 </html>

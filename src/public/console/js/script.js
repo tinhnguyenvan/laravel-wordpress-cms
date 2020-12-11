@@ -13,6 +13,11 @@ $(document).ready(function () {
     });
 
     function initializeMyPlugin() {
+        // remove message footer
+        setInterval(function () {
+            $('#alert-message-footer').hide(300);
+        }, 5000);
+
         // initialize plugins
         $.ajaxSetup({
             headers: {

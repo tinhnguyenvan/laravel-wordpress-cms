@@ -58,14 +58,17 @@
         </div>
     </div>
 </div>
-<script src="<?= asset("console/js/jquery.min.js") ?>"></script>
-<script src="<?= asset("console/js/popper.min.js") ?>"></script>
-<script src="<?= asset("console/js/bootstrap.min.js") ?>"></script>
-<script src="<?= asset("console/js/pace.min.js") ?>"></script>
-<script src="<?= asset("console/js/perfect-scrollbar.min.js") ?>"></script>
-<script src="<?= asset("console/js/coreui.min.js") ?>"></script>
+<script src="{{ asset("console/js/jquery.min.js") }}"></script>
+<script src="{{ asset("console/js/popper.min.js") }}"></script>
+<script src="{{ asset("console/js/bootstrap.min.js") }}"></script>
+<script src="{{ asset("console/js/pace.min.js") }}"></script>
+<script src="{{ asset("console/js/perfect-scrollbar.min.js") }}"></script>
+<script src="{{ asset("console/js/coreui.min.js") }}"></script>
+<script src="{{ asset("console/js/script.js") }}" type="text/javascript"></script>
 
-@include('admin.element.error')
-@include('admin.element.success')
+<div id="alert-message-footer">
+    @include('admin.element.error')
+    @include('admin.element.success')
+</div>
 </body>
 </html>
