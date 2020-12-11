@@ -46,7 +46,7 @@
                             </td>
                             <td class="text-center">
                                 @if($item->image_url)
-                                    <img src="{{ asset('storage'.$item->image_url) }}" class="img-table img-thumbnail"/>
+                                    <img src="{{ asset('storage'.$item->image_url) }}" class="img-table img-thumbnail" alt="img"/>
                                 @endif
                             </td>
                             <td>
