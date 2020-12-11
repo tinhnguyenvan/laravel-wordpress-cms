@@ -99,23 +99,6 @@ return [
             ]
         ],
         [
-            'title' => 'nav.menu_left.setting',
-            'url' => '',
-            'icon' => 'fa fa-sliders',
-            'child' => [
-                [
-                    'title' => 'nav.menu_left.configs',
-                    'url' => 'configs',
-                    'icon' => 'fa fa-cogs',
-                ],
-                [
-                    'title' => 'nav.menu_left.plugins',
-                    'url' => 'plugins',
-                    'icon' => 'fa fa-unlock',
-                ],
-            ]
-        ],
-        [
             'title' => 'nav.menu_left.user',
             'url' => '',
             'icon' => 'fa fa-users',
@@ -155,6 +138,23 @@ return [
                     'title' => 'nav.menu_left.contact_update',
                     'url' => 'contact_forms/1/edit',
                     'icon' => 'icon-plus',
+                ],
+            ]
+        ],
+        [
+            'title' => 'nav.menu_left.setting',
+            'url' => '',
+            'icon' => 'fa fa-sliders',
+            'child' => [
+                [
+                    'title' => 'nav.menu_left.configs',
+                    'url' => 'configs',
+                    'icon' => 'fa fa-cogs',
+                ],
+                [
+                    'title' => 'nav.menu_left.plugins',
+                    'url' => 'plugins',
+                    'icon' => 'fa fa-unlock',
                 ],
             ]
         ],
