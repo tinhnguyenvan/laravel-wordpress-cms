@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\DatabaseNotification;
 
 /**
  * @method static find($id)
  */
-class Notification extends Model
+class Notification extends DatabaseNotification
 {
     /**
      * The database table used by the model.

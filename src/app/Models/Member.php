@@ -235,4 +235,10 @@ class Member extends Authenticatable
     {
         return $this->email;
     }
+
+
+    public function notifications()
+    {
+        return $this->morphMany(Notification::class, 'notifiable')->orderBy('created_at', 'desc');
+    }
 }
