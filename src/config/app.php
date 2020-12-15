@@ -2,7 +2,7 @@
 
 return [
     /**
-     * customr
+     * custom
      */
     'date_format' => 'd/m/Y H:i A',
     'languages' => ['en', 'vi'],
@@ -10,6 +10,8 @@ return [
         'en' => '🇬🇧 English',
         'vi' => '🇻🇳 Tiếng việt'
     ],
+
+    'cron_log' => env('CRON_LOG'),
     /*
     |--------------------------------------------------------------------------
     | Application Name

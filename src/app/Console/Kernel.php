@@ -4,6 +4,7 @@ namespace App\Console;
 
 use App\Console\Commands\ThemeInstallCommand;
 use App\Console\Commands\ThemeRemoveCommand;
+use App\Jobs\SchedulerJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -28,10 +29,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')
-        //          ->hourly();
-
-        // backup database
-        // $schedule->command('db:backup')->twiceDaily(0,12);
+        //          ->hourly()
+        //            ->runInBackground()
+        //            ->appendOutputTo($logFile);
     }
 
     /**

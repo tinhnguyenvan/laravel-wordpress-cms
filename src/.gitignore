@@ -24,3 +24,4 @@ yarn-error.log
 /resources/views/layout/
 /config/config_package*.php
 .php_cs.cache
+/composer.lock
