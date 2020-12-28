@@ -29,10 +29,6 @@
         "spatie/laravel-permission": "^3.7",
         "spatie/laravel-pjax": "^2.1",
         "tinhphp/woocommerce": "dev-master",
-        "tinhphp/classified": "dev-master",
-        "tinhphp/affiliate": "dev-master",
-        "tinhphp/tool": "dev-master",
-        "tinhphp/school": "dev-master",
         "willvincent/laravel-rateable": "^2.2"
     },
     "require-dev": {
