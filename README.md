@@ -11,6 +11,13 @@
 
 
 # Install & setup
+
+###OPTION 1:
+  
+  	php artisan install
+
+###OPTION 2:
+
 - **Step 1**:
 
 		COMPOSER_MEMORY_LIMIT=-1 composer install
