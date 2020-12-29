@@ -32,6 +32,10 @@
 
 		php artisan storage:link
 
+- **Step 4**: add schedule crontab
+
+    * * * * * cd /Users/tinhnguyen/Sites/my/laravel-wordpress-cms/src && php artisan schedule:run >> /dev/null 2>&1
+
 # Login Admin
 
 - Demo link: [https://cms.tweb.com.vn/admin](https://cms.tweb.com.vn/admin)
