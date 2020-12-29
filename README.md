@@ -34,7 +34,9 @@
 
 - **Step 4**: add schedule crontab
 
-    * * * * * cd /Users/tinhnguyen/Sites/my/laravel-wordpress-cms/src && php artisan schedule:run >> /dev/null 2>&1
+    * * * * * cd /var/www/html && php artisan schedule:run >> /dev/null 2>&1
+	
+		- todo update path "/var/www/html"
 
 # Login Admin
 

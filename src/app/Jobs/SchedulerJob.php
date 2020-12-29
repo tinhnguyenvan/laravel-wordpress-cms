@@ -29,7 +29,9 @@ class SchedulerJob extends Job
     {
         set_time_limit(0);
         $command = $this->data['command'];
-        Log::info('- cmd: '.$command);
+        $text = '- php artisan ' . $command;
+        echo $text . PHP_EOL;
+        Log::info($text);
 
         Artisan::call($command);
     }
