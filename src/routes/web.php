@@ -14,7 +14,7 @@ Route::post('admin/auth', [LoginController::class, 'auth'])->name('admin.auth');
 
 Route::namespace('Site')->group(
     function () {
-        Route::get('/', 'HomeController@index');
+        //Route::get('/', 'HomeController@index');
 
         // user
         Route::get('users/activemail', 'UserController@activeMail');
