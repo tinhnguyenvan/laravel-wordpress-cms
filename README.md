@@ -133,7 +133,7 @@
 - default:
 
     	php artisan queue:work
-    	php artisan queue:listen
+    	php artisan queue:listen --timeout=0
 
 - set queue name
 
