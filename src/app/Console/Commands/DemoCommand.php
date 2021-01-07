@@ -36,6 +36,5 @@ class DemoCommand extends Command
     public function handle()
     {
         // migration
-        Log::info('Demo CMD: ' . now());
     }
 }
