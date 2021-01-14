@@ -32,7 +32,14 @@
                             @endforeach
                         </ul>
                     @else
-                        <div class="alert alert-danger">{{ trans('nav.alert.add_nav_position') }}</div>
+                        <div class="alert alert-danger">
+                            {{ trans('nav.alert.add_nav_position') }}
+                            <hr />
+                            <a class="btn btn-small btn-primary"  href="{{ admin_url('nav_positions') }}">
+                                <i class="fa fa-plus"></i>
+                            Add
+                            </a>
+                        </div>
                     @endif
                 </div>
                 <div class="col-lg-9">

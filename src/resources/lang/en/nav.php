@@ -75,6 +75,7 @@ return [
     'menu_left.affiliate' => 'Affiliate',
     'menu_left.users' => 'User',
     'menu_left.tools' => 'Tools',
+    'menu_left.nav_positions' => 'Nav positions',
 
     'setting' => 'Setting',
     'user_profile' => 'Profile',

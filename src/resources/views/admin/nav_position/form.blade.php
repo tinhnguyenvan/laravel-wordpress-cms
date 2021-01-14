@@ -24,7 +24,7 @@
 
                     <div class="card-body collapse show" id="collapseExample">
                         <div class="form-group">
-                            <label class="col-form-label" for="title">{{ trans('nav..title') }}</label>
+                            <label class="col-form-label" for="title">{{ trans('nav.title') }}</label>
                             <div class="controls">
                                 <input type="text"
                                        name="title"
@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-form-label" for="slug">{{ trans('nav..slug') }}</label>
+                            <label class="col-form-label" for="slug">{{ trans('nav.slug') }}</label>
                             <div class="controls">
                                 <input type="text" name="slug" id="slug"
                                        value="{{ old('slug', $nav_position->slug ?? '') }}" class="form-control">

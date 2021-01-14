@@ -23,12 +23,12 @@
                         <th class="width-check-item">ID</th>
                         <th>
                             <a href="">
-                                {{ trans('nav..title') }}
+                                {{ trans('nav.title') }}
                             </a>
                         </th>
 
-                        <th>{{ trans('nav..slug') }}</th>
-                        <th>{{ trans('nav..created_at') }}</th>
+                        <th>{{ trans('nav.slug') }}</th>
+                        <th>{{ trans('nav.created_at') }}</th>
                         <th style="width: 180px"></th>
                     </tr>
                     </thead>
@@ -52,7 +52,7 @@
                                 <td class="text-center">
                                     <a class="btn btn-primary" href="{{admin_url('navs/create?position='.$item->id)}}">
                                         <i class="icon-plus"></i>
-                                        {{trans('nav..button.add_menu')}}
+                                        {{trans('nav.button.add_menu')}}
                                     </a>
                                 </td>
                             </tr>
