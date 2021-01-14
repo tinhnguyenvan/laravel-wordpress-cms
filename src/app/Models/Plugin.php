@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Plugin extends Model
 {
 
+    public const STASTUS_ACTIVE = 1;
     /**
      * The database table used by the model.
      *

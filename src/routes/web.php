@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Admin\LoginController;
+use App\Models\Plugin;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/install', 'InstallController@index');
@@ -14,7 +15,12 @@ Route::post('admin/auth', [LoginController::class, 'auth'])->name('admin.auth');
 
 Route::namespace('Site')->group(
     function () {
-        //Route::get('/', 'HomeController@index');
+
+        // check show plugin
+        $countPlugin = Plugin::query()->where('status', 1)->count();
+        if($countPlugin == 0) {
+            Route::get('/', 'HomeController@index');
+        }
 
         // user
         Route::get('users/activemail', 'UserController@activeMail');

@@ -55,6 +55,7 @@ class InstallCommand extends Command
         if (!Storage::exists($pathPackageWoocommerce)) {
             $fileUrl = 'https://github.com/tinhnguyenvan/laravel-wordpress-cms-package-woocommerce.git';
             shell_exec('git clone ' . $fileUrl . ' ' . $pathPackageWoocommerce);
+            Artisan::call('package_woocommerce:install');
         } else {
             $this->error('- Folder plugin woocommerce exist: ' . $pathPackageWoocommerce);
         }
