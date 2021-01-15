@@ -1,7 +1,27 @@
 <div class="row table-filter">
     @if (!empty($filter['form']))
-        <div class="col-md-3">
-            <div class="dropdown">
+        <div class="col-md-6">
+            <div class="dropdown" style="display: inline-block">
+                <button class="btn btn-secondary dropdown-toggle" id="dropdownMenu5"
+                        type="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="true">
+                    Sort by
+                    <i class="fa fa-sort" aria-hidden="true"></i>
+                </button>
+                <div class="dropdown-menu">
+                    <form method="get">
+                        <button class="dropdown-item" name="sort_by" value="id asc">
+                            ID Oldest <i class="fa fa-sort-numeric-asc pull-right"></i>
+                        </button>
+                        <button class="dropdown-item" name="sort_by" value="id desc">
+                            ID Newest <i class="fa fa-sort-numeric-desc pull-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="dropdown" style="display: inline-block">
                 <button class="btn btn-secondary dropdown-toggle" id="dropdownMenu5"
                         type="button"
                         data-toggle="dropdown"
@@ -38,7 +58,7 @@
             </div>
         </div>
     @endif
-    <div class="col-md-9">
+    <div class="col-md-6">
         <form method="get">
             <div class="input-group">
                 <input class="form-control" id="filter-key" name="search" value="{{ request('search') }}"
@@ -61,7 +81,8 @@
             @foreach($filter['active'] as $key => $item)
                 @if(!empty($item))
                     {{ $filter['form'][$key]['text'] }}:
-                    <span class="label label-primary" style="margin-right: 5px">{{$filter['form'][$key]['data'][$item]}}</span>
+                    <span class="label label-primary"
+                          style="margin-right: 5px">{{$filter['form'][$key]['data'][$item]}}</span>
                     @php
                         $checkRemove = 1
                     @endphp

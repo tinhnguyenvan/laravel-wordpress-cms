@@ -10,9 +10,3 @@
 | contains the "console" middleware group. Now create something great!
 |
 */
-
-use Illuminate\Support\Facades\Route;
-
-Route::apiResources([
-    'products' => 'ProductController',
-]);
