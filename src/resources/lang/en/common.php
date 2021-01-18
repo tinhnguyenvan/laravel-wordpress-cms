@@ -47,6 +47,7 @@ return [
     'search.keyword' => 'Enter your search term',
     'form' => 'Form',
     'save' => 'Save',
+    'save_close' => 'Save & Close',
     'cancel' => 'Cancel',
     'trash' => 'Trash',
     'list' => 'List',

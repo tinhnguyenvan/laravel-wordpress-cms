@@ -47,6 +47,7 @@ return [
     'search.keyword' => 'Nhập từ khóa cần tìm',
     'form' => 'Form',
     'save' => 'Lưu lại',
+    'save_close' => 'Lưu lại & Thoát',
     'cancel' => 'Hủy',
     'trash' => 'Thùng rác',
     'list' => 'Danh sách',
