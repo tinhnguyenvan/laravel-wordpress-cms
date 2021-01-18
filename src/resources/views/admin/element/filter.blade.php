@@ -15,9 +15,18 @@
                         <button class="dropdown-item" name="sort_by" value="id asc">
                             ID Oldest <i class="fa fa-sort-numeric-asc pull-right"></i>
                         </button>
+
                         <button class="dropdown-item" name="sort_by" value="id desc">
                             ID Newest <i class="fa fa-sort-numeric-desc pull-right"></i>
                         </button>
+
+                        @if (!empty($filter['sort_by']))
+                            @foreach($filter['sort_by'] as $sortKey => $sortItem)
+                                <button class="dropdown-item" name="sort_by" value="{{ $sortItem['value'] }}">
+                                    {!! $sortItem['name'] !!}
+                                </button>
+                            @endforeach
+                        @endif
                     </form>
                 </div>
             </div>
