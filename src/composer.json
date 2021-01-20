@@ -28,7 +28,7 @@
         "simplesoftwareio/simple-qrcode": "~2",
         "spatie/laravel-permission": "^3.7",
         "spatie/laravel-pjax": "^2.1",
-        "tinhphp/woocommerce": "dev-master",
+        "tinhphp/woocommerce": "*",
         "willvincent/laravel-rateable": "^2.2"
     },
     "require-dev": {
