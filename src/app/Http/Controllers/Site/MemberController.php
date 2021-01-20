@@ -77,7 +77,6 @@ final class MemberController extends SiteController
         $params = $request->only('email', 'password', 'member_type');
         $credentials = $params;
         $credentials['status'] = Member::STATUS_ACTIVE;
-
         if (auth(RolePermission::GUARD_NAME_WEB)->attempt($credentials)) {
             $member = Member::query()->where('id', auth(RolePermission::GUARD_NAME_WEB)->id())->first();
             $conditionSocial = [
@@ -97,7 +96,7 @@ final class MemberController extends SiteController
             $request->session()->flash('error', trans('member.login.error'));
         }
 
-        return back()->withErrors(trans('member.login.not_exist'));
+        return back()->withInput()->withErrors(trans('member.login.not_exist'));
     }
 
     public function register()
@@ -153,6 +152,7 @@ final class MemberController extends SiteController
         }
 
         if ($isValidator) {
+            $params['member_type'] = Member::MEMBER_TYPE_NORMAL;
             if (empty($member)) {
                 $member = $this->memberService->create($params);
             } else {

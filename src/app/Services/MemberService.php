@@ -11,6 +11,7 @@ use App\Models\Config;
 use App\Models\Member;
 use Firebase\JWT\JWT;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
@@ -241,25 +242,25 @@ class MemberService extends BaseService
             return null;
         }
 
-        $config = Config::query()->where('name', 'company_name')->first();
-        Mail::send(
-            new MemberMail(
-                [
-                    'action' => MemberMail::ACTION_ACTIVE_MEMBER,
-                    'name' => $myObject->email,
-                    'email' => $myObject->email,
-                    'company_name' => $config->value ?? '',
-                    'link_active' => $this->linkActive($myObject),
-                ]
-            )
-        );
+        try {
+            $config = Config::query()->where('name', 'company_name')->first();
+            Mail::send(
+                new MemberMail(
+                    [
+                        'action' => MemberMail::ACTION_ACTIVE_MEMBER,
+                        'name' => $myObject->email,
+                        'email' => $myObject->email,
+                        'company_name' => $config->value ?? '',
+                        'link_active' => $this->linkActive($myObject),
+                    ]
+                )
+            );
+        } catch (\Exception $e) {
+            Log::emergency($e->getMessage());
+        }
     }
 
-    /**
-     * @param $user
-     *
-     * @return string
-     */
+
     public function linkActive($user)
     {
         return base_url('member/activemail?email=' . $user->email . '&code=' . sha1(base64_encode($user->id)));
