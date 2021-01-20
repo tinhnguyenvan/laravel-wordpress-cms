@@ -198,6 +198,11 @@ $(document).ready(function () {
             dateFormat: "Y-m-d h:i K",
         });
 
+        $(".date-picker").flatpickr({
+            enableTime: true,
+            dateFormat: "Y-m-d",
+        });
+
         $(".year-picker").flatpickr({
             mode: "range",
             dateFormat: "Y",
