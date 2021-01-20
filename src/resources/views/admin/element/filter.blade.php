@@ -89,9 +89,10 @@
             <hr style="margin-top: 10px"/>
             @foreach($filter['active'] as $key => $item)
                 @if(!empty($item))
-                    {{ $filter['form'][$key]['text'] }}:
-                    <span class="label label-primary"
-                          style="margin-right: 5px">{{$filter['form'][$key]['data'][$item]}}</span>
+                    <i class="fa fa-filter"></i> {{ $filter['form'][$key]['text'] }}:
+                    <span class=" text-primary" style="margin-right: 5px">
+                        {{$filter['form'][$key]['data'][$item]}}
+                    </span>
                     @php
                         $checkRemove = 1
                     @endphp

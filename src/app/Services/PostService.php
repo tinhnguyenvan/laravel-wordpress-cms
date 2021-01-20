@@ -145,7 +145,7 @@ class PostService extends BaseService
             'status' => $params['status'] ?? 0,
         ];
 
-        $category = $data = PostCategory::all('id', 'title')->toArray();
+        $category = PostCategory::all('id', 'title')->toArray();
 
         $form = [
             'category_id' => [
