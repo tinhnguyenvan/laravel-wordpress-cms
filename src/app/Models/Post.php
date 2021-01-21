@@ -10,6 +10,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use willvincent\Rateable\Rateable;
 use Astrotomic\Translatable\Translatable;
 
+/**
+ * Class Post
+ * @package App\Models
+ *
+  * @method static active()
+ */
 class Post extends Model implements TranslatableContract
 {
     use SoftDeletes;
@@ -80,6 +86,16 @@ class Post extends Model implements TranslatableContract
      * @var array
      */
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
+
 
     /**
      * @return BelongsTo
