@@ -3,11 +3,10 @@
         <ul class="nav">
             <li class="nav-item" style="padding-left: 0">
                 <a class="nav-link active" href="<?= admin_url('dashboard')?>">
-                    <i class="nav-icon icon-speedometer"></i> Dashboard
+                    <i class="nav-icon icon-home"></i> Home
                 </a>
             </li>
 
-            <li class="nav-title"><i class="nav-icon fa fa-sitemap"></i> MENU MAIN</li>
             @foreach(@config('constant.MENU_ADMIN') as $item)
                 <li class="nav-item @if(!empty($item['child'])) nav-dropdown @endif">
                     <a class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif"
@@ -34,7 +33,7 @@
 
             @if(!empty(@config('constant.MENU_APP')))
                 @php($plugins = explode(',', Cookie::get('plugin')))
-                <li class="nav-title"><i class="nav-icon fa fa-rocket"></i> MENU EXTRAS</li>
+                <li class="nav-title"> APPS</li>
                 @foreach(@config('constant.MENU_APP') as $item)
                     @if(!in_array($item['plugin'], $plugins))
                         @continue
