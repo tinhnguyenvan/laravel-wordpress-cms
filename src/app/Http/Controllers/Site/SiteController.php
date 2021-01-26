@@ -34,6 +34,7 @@ class SiteController extends Controller
         $this->data['title'] = $this->data['config']['seo_title'] ?? 'Home';
         $this->data['description'] = $this->data['config']['seo_description'] ?? 'Home';
         $this->data['keyword'] = $this->data['config']['seo_keyword'] ?? 'Home';
+        $this->data['og_image'] = $this->data['config']['logo'] ?? '';
         $manifest = @json_decode(file_get_contents(public_path('layout/' . $this->theme . '/manifest.json')), true);
         $this->data['manifest'] = $manifest;
         $this->page_number = config('constant.PAGE_NUMBER');
