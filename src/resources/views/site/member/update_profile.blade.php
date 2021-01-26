@@ -12,9 +12,13 @@
                 <h3 class="fieldset-title">Personal Info</h3>
                 <div class="form-group avatar">
                     <figure class="figure col-md-2 col-sm-3 col-xs-12">
-                        <img class="img-circle img-responsive" id="pathPreviewSingle_image_url" style="width: 64px; height: 64px"
-                             src="@if(!empty($member->image_url)){{ asset('storage'.$member->image_url) }}@else{{ asset('site/img/no-avatar.png') }}@endif"
-                             alt="avatar">
+                        @if(!empty($member->image_id > 0))
+                            <img class="img-circle img-responsive" id="pathPreviewSingle_image_url" style="width: 64px; height: 64px"
+                                 src="{{ asset('storage'.$member->image_url) }}" alt="avatar">
+                        @else
+                            <img class="img-circle img-responsive" id="pathPreviewSingle_image_url" style="width: 64px; height: 64px"
+                                 src="{{ $member->image_url }}" alt="avatar">
+                        @endif
 
                         @if(!empty($member->image_url))
                             <br/>
