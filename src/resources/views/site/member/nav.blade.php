@@ -1,8 +1,13 @@
 <div class="side-bar">
     <div class="user-info">
         @if(!empty(auth('web')->user()->image_url))
-            <img class="img-profile img-circle img-responsive center-block"
-                 src="@if(!empty(auth('web')->user()->image_url)){{ asset('storage'.auth('web')->user()->image_url) }}@else{{ asset('site/img/no-avatar.png') }}@endif"  alt="avatar">
+            @if(!empty(auth('web')->user()->image_id > 0))
+                <img class="img-profile img-circle img-responsive center-block"
+                     src="{{ asset('storage'.auth('web')->user()->image_url) }}" alt="avatar">
+            @else
+                <img class="img-profile img-circle img-responsive center-block"
+                     src="{{ auth('web')->user()->image_url }}" alt="avatar">
+            @endif
         @endif
         <ul class="meta list list-unstyled">
             <li class="email"><a>{{ auth('web')->user()->first_name }}</a></li>
