@@ -25,15 +25,6 @@
         </url>
     @endforeach
 
-    @foreach ($products as $product)
-        <url>
-            <loc>{{ \App\Models\Product::link($product) }}</loc>
-            <lastmod>{{ gmdate('Y-m-d\TH:i:s\Z',strtotime($product->updated_at)) }}</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.6</priority>
-        </url>
-    @endforeach
-
     @foreach ($tags as $tag)
         <url>
             <loc>{{ \App\Models\PostTag::link($tag) }}</loc>
