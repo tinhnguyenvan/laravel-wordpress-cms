@@ -107,17 +107,26 @@ class RegionService extends BaseService
         return Region::query()->findOrFail($id)->update($params);
     }
 
-    /**
-     * @return array
-     */
     public function dropdownCountry()
     {
-        $data = Region::query()->where('parent_id', 0)->orderBy('order_by')->get();
+        $data = Region::query()->where('parent_id', 0)->orderBy('order_by')->get(['id', 'name']);
         $html = [];
         if (!empty($data)) {
-            foreach ($data as $key => $myObject) {
-                $html[$myObject->id] = create_line($myObject->level) . ' ' . $myObject->name;
-            }
+            $html = array_column($data->toArray(), 'name', 'id');
+        }
+
+        return $html;
+    }
+
+    public function dropdownItemOfCountryByDefault(): array
+    {
+        $data = Region::query()
+            ->whereRaw('parent_id in(SELECT id FROM master_regions WHERE parent_id = 0 AND is_primary_location = 1)')
+            ->orderBy('order_by')
+            ->get(['id', 'name']);
+        $html = [];
+        if (!empty($data)) {
+            $html = array_column($data->toArray(), 'name', 'id');
         }
 
         return $html;

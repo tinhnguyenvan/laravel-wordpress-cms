@@ -87,12 +87,9 @@ class MemberTagService extends BaseService
         }
     }
 
-    /**
-     * @return array
-     */
-    public function dropdown()
+    public function dropdown(): array
     {
-        $data = MemberTag::query()->orderByRaw('CASE WHEN parent_id = 0 THEN id ELSE parent_id END, parent_id,id')->get();
+        $data = $this->itemDropdown();
         $html = [];
         if (!empty($data)) {
             foreach ($data as $key => $myObject) {
@@ -101,5 +98,11 @@ class MemberTagService extends BaseService
         }
 
         return $html;
+    }
+
+    public function itemDropdown() {
+        return MemberTag::query()
+            ->orderByRaw('CASE WHEN parent_id = 0 THEN id ELSE parent_id END, parent_id,id')
+            ->get();
     }
 }
