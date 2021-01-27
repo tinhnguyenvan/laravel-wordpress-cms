@@ -64,23 +64,6 @@ class RegionService extends BaseService
             if (empty($formData['order_by'])) {
                 $formData['order_by'] = 0;
             }
-
-            if (empty($formData['source_parent_id'])) {
-                $formData['level'] = 1;
-                $regionLast = Region::query()->where('source_parent_id', 0)->first();
-                $formData['source_id'] = $regionLast->source_id ?? 0 + 1;
-            } else {
-                $myObject = Region::query()->where('level', $formData['level'])
-                    ->where('source_id', $formData['source_parent_id'])
-                    ->first();
-
-                $formData['level'] = $myObject->level + 1;
-
-                $formData['source_id'] = Region::query()
-                        ->where('level', $formData['level'])
-                        ->where('source_parent_id', $formData['source_parent_id'])
-                        ->count() + 1;
-            }
         }
     }
 
@@ -129,7 +112,7 @@ class RegionService extends BaseService
      */
     public function dropdownCountry()
     {
-        $data = Region::query()->where('source_parent_id', 0)->where('level', 1)->orderBy('order_by')->get();
+        $data = Region::query()->where('parent_id', 0)->orderBy('order_by')->get();
         $html = [];
         if (!empty($data)) {
             foreach ($data as $key => $myObject) {
@@ -144,7 +127,7 @@ class RegionService extends BaseService
     {
         if (!empty($params['search'])) {
             $search = [
-                ['title', 'like', $params['search'] . '%'],
+                ['name', 'like', $params['search'] . '%'],
             ];
 
             if (empty($condition)) {
@@ -154,62 +137,8 @@ class RegionService extends BaseService
             }
         }
 
-        if (!empty($params['source_id'])) {
-            $condition['source_id'] = $params['parent_id'];
-        }
-
-        if (!empty($params['source_parent_id'])) {
-            $condition['source_parent_id'] = $params['source_parent_id'];
-        }
-
-        // todo condition special
         if (!empty($params['parent_id'])) {
-            $condition['source_parent_id'] = $params['parent_id'];
+            $condition['parent_id'] = $params['parent_id'];
         }
-
-        if (!empty($params['level'])) {
-            $condition['level'] = $params['level'];
-        } else {
-            $condition['level'] = 1;
-        }
-    }
-
-    public function getCountries()
-    {
-        return Region::query()->where(
-            [
-                'level' => 1,
-            ]
-        )->get();
-    }
-
-    public function getProvinces($id)
-    {
-        return Region::query()->where(
-            [
-                'level' => 2,
-                'source_parent_id' => $id,
-            ]
-        )->get();
-    }
-
-    public function getDistricts($id)
-    {
-        return Region::query()->where(
-            [
-                'level' => 3,
-                'source_parent_id' => $id,
-            ]
-        )->get();
-    }
-
-    public function getWards($id)
-    {
-        return Region::query()->where(
-            [
-                'level' => 4,
-                'source_parent_id' => $id,
-            ]
-        )->get();
     }
 }

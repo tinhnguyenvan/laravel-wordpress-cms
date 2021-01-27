@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Region extends Model
@@ -25,10 +26,7 @@ class Region extends Model
     protected $fillable = [
         'code',
         'name',
-        'address',
-        'level',
-        'source_id',
-        'source_parent_id',
+        'parent_id',
         'is_primary_location',
         'order_by',
         'created_at',
@@ -57,13 +55,9 @@ class Region extends Model
      */
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
-    public function cities()
-    {
-        return $this->hasMany(Region::class, 'source_parent_id', 'source_id')->where('level', '=', 2);
-    }
 
-    public function districts()
+    public function subItem(): HasMany
     {
-        return $this->hasMany(Region::class, 'source_parent_id', 'source_id')->where('level', '=', 3);
+        return $this->hasMany('App\Models\Region', 'parent_id');
     }
 }

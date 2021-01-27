@@ -10,11 +10,8 @@
                     @method('PUT')
                 @endif
 
-                <input type="hidden" name="source_parent_id"
-                       value="{{ old('source_parent_id', ($region->source_parent_id ?? @request('source_parent_id', 0))) }}">
-
-                <input type="hidden" name="level"
-                       value="{{ old('level', ($region->level ?? @request('level', 1))) }}">
+                <input type="hidden" name="parent_id"
+                       value="{{ old('parent_id', ($region->parent_id ?? @request('parent_id', 0))) }}">
 
                 <div class="card">
                     <div class="card-header">

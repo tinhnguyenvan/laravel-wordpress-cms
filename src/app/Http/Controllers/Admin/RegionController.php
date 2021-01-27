@@ -26,14 +26,10 @@ class RegionController extends AdminController
 
     public function index(Request $request)
     {
-        $this->regionService->buildCondition($request->all(), $condition, $sortBy, $sortType);
-        $items = Region::query()->where($condition)->orderBy('order_by')->get();
-        $level = $request->get('level');
+        $items = Region::query()->where('parent_id', 0)->orderBy('order_by')->get();
         $parent_id = $request->get('parent_id');
         $data = [
-            'parent_id' => $level == 1 ? 0 : $parent_id,
-            'level' => $level,
-            'level_back' => !empty($level) && $level > 2 ? $level - 1 : 1,
+            'parent_id' => $parent_id,
             'items' => $items,
             'title' => 'Region'
         ];

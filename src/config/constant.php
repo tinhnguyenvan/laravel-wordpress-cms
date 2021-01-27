@@ -156,6 +156,11 @@ return [
                     'url' => 'plugins',
                     'icon' => 'fa fa-unlock',
                 ],
+                [
+                    'title' => 'nav.menu_left.regions',
+                    'url' => 'regions',
+                    'icon' => 'fa fa-globe',
+                ],
             ]
         ],
     ],
