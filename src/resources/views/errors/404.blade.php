@@ -129,7 +129,7 @@
                             <img src="{{ asset("common/img/404.png") }}" alt="404"/>
                             <p>
                                 Các trang web mà bạn đang tìm kiếm đã được di chuyển, xóa, đổi tên hoặc chưa bao giờ tồn
-                                tại. <a href="{{ base_url() }}">Click về trang chủ</a>
+                                tại. <a href="{{ base_url() }}">Click về trang chủ</a> hoặc tự động sau 3s
                             </p>
                         </div>
                     </div>
@@ -138,5 +138,10 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    setTimeout(function () {
+        window.location.href = "{{ base_url() }}";
+    }, 3000);
+</script>
 </body>
 </html>
