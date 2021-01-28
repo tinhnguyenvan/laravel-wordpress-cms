@@ -29,11 +29,19 @@ class ConfigController extends AdminController
         $this->configService = $configService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $config = $this->configService->getConfig();
-
+        $tabs = [
+            'general',
+            'integrate',
+            'mail',
+            'seo',
+            'system'
+        ];
         $data = [
+            'tabActive' => $request->get('tab', 'general'),
+            'tabs' => $tabs,
             'config' => $config,
         ];
 

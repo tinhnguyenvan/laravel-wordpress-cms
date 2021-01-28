@@ -19,47 +19,19 @@
                     <div class="card-body collapse show" id="collapseExample">
                         <div class="nav-tabs-boxed">
                             <ul class="nav nav-tabs" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#tab-1"
-                                       role="tab" aria-controls="tab-1"
-                                       aria-selected="true">{{ trans('config.tab_general') }}</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tab-2" role="tab"
-                                       aria-controls="tab-2"
-                                       aria-selected="false">{{ trans('config.tab_config_email') }}</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tab-3" role="tab"
-                                       aria-controls="tab-3"
-                                       aria-selected="false">{{ trans('config.tab_integration') }}</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tab-4" role="tab"
-                                       aria-controls="tab-4"
-                                       aria-selected="false">{{ trans('config.tab_seo') }}</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tab-5" role="tab"
-                                       aria-controls="tab-5"
-                                       aria-selected="false">{{ trans('config.tab_system') }}</a>
-                                </li>
+                                @foreach($tabs as $tab)
+                                    <li class="nav-item">
+                                        <a class="nav-link @if($tabActive == $tab) active @endif"
+                                           href="{{ admin_url('configs?tab='.$tab) }}">
+                                            {{ trans('config.tab_'.$tab) }}
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
                             <div class="tab-content">
-                                @include('admin.config.tab.1')
-
-                                @include('admin.config.tab.2')
-
-                                @include('admin.config.tab.3')
-
-                                @include('admin.config.tab.4')
-
-                                @include('admin.config.tab.5')
-
+                                <div class="tab-pane active">
+                                    @include('admin.config.tab.'.$tabActive)
+                                </div>
                             </div>
                         </div>
 
