@@ -51,7 +51,6 @@ class ConfigController extends AdminController
     public function save(Request $request)
     {
         $params = $request->all();
-        $theme = 'default';
         if (!empty($params['_token'])) {
             if (empty($params['config_email_smtp_authentication'])) {
                 $params['config_email_smtp_authentication'] = 'off';
@@ -70,10 +69,6 @@ class ConfigController extends AdminController
                     continue;
                 }
 
-                if ('theme_active' == $key) {
-                    $theme = $item;
-                }
-
                 $myConfig = Config::query()->where('name', $key)->first();
                 if (empty($myConfig)) {
                     $myConfig = new Config();
@@ -89,7 +84,7 @@ class ConfigController extends AdminController
             $request->session()->flash('success', trans('common.edit.success'));
         }
 
-        return back()->withInput()->withCookie('theme', $theme, config('constant.COOKIE_EXPIRED'), '/');
+        return back()->withInput();
     }
 
     public function test(Request $request)

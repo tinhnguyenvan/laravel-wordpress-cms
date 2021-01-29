@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <form method="post" action="{{ admin_url('configs/save')}}">
+            <form method="post" action="{{ admin_url('themes/active')}}">
                 @csrf
                 <div class="row">
                     @foreach($directories as $key => $dir)

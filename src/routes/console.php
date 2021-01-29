@@ -41,6 +41,7 @@ Route::middleware(['auth.console'])->group(
         // themes
         Route::get('themes', 'ThemeController@index');
         Route::get('themes/css', 'ThemeController@css');
+        Route::post('themes/active', 'ThemeController@active');
 
         // plugins
         Route::get('plugins', 'PluginController@index')->name('admin.plugins.index');

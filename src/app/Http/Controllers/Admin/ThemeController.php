@@ -11,8 +11,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Config;
 use App\Models\RolePermission;
 use App\Services\ConfigService;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class ConfigController.
@@ -50,5 +54,19 @@ class ThemeController extends AdminController
         ];
 
         return view('admin/theme.css', $this->render($data));
+    }
+
+    public function active(Request $request): RedirectResponse
+    {
+        $theme = $request->get('theme_active');
+        $myConfig = Config::query()->where('name', 'theme_active')->first();
+
+        if (!empty($myConfig)) {
+            $myConfig->editor_id = Auth::id();
+            $myConfig->value = $theme;
+            $myConfig->save();
+        }
+
+        return back()->withInput()->withCookie('theme', $theme, config('constant.COOKIE_EXPIRED'), '/');
     }
 }
