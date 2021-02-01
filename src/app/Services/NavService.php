@@ -9,7 +9,6 @@ namespace App\Services;
 use App\Models\Nav;
 use App\Models\Page;
 use App\Models\PostCategory;
-use App\Models\ProductCategory;
 use Illuminate\Support\Facades\Validator;
 
 /**
@@ -124,21 +123,14 @@ class NavService extends BaseService
             case Nav::TYPE_PAGE:
                 $data = Page::query()->findOrFail($formData['type_page']);
                 if (!empty($data->id)) {
-                    $value = Page::link($data->toArray());
+                    $value = $data->link;
                 }
                 break;
 
             case Nav::TYPE_CATEGORY_POST:
                 $data = PostCategory::query()->findOrFail($formData['type_category_post']);
                 if (!empty($data->id)) {
-                    $value = PostCategory::link($data->toArray());
-                }
-                break;
-
-            case Nav::TYPE_CATEGORY_PRODUCT:
-                $data = ProductCategory::query()->findOrFail($formData['type_category_product']);
-                if (!empty($data->id)) {
-                    $value = ProductCategory::link($data->toArray());
+                    $value = $data->link;
                 }
                 break;
         }

@@ -75,13 +75,6 @@ class PostCategory extends Model
         return $this->hasMany(Post::class);
     }
 
-    public static function link($data)
-    {
-        $prefix = config('constant.URL_PREFIX_POST');
-
-        return $prefix . '/' . $data['slug'];
-    }
-
     public function getLinkAttribute()
     {
         return base_url(config('constant.URL_PREFIX_POST') . '/' . $this->slug);

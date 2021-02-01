@@ -59,11 +59,9 @@ class Page extends Model
      */
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
-    public static function link($data)
+    public function getLinkAttribute()
     {
-        $prefix = 'page';
-
-        return $prefix . '/' . $data['slug'];
+        return base_url('page/' . $this->slug);
     }
 
     public static function dropdownTemplate()
