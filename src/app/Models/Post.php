@@ -14,7 +14,7 @@ use Astrotomic\Translatable\Translatable;
  * Class Post
  * @package App\Models
  *
-  * @method static active()
+ * @method static active()
  */
 class Post extends Model implements TranslatableContract
 {
@@ -135,7 +135,7 @@ class Post extends Model implements TranslatableContract
             $this->slug = '1';
         }
 
-        return base_url($prefix . '/' . $this->slug .'.html');
+        return base_url($prefix . '/' . $this->slug . '.html');
     }
 
     public static function image($item)
@@ -185,5 +185,13 @@ class Post extends Model implements TranslatableContract
         }
 
         return $text;
+    }
+
+    public function getFullImageUrlAttribute()
+    {
+        if (empty($this->image_url)) {
+            return '';
+        }
+        return asset('storage' . $this->image_url);
     }
 }

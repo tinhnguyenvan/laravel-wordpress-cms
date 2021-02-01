@@ -80,7 +80,7 @@ final class PostController extends SiteController
             'post' => $post,
             'isBookmark' => $isBookmark,
             'items' => $items,
-            'og_image' => $post->image_url
+            'og_image' => $post->full_image_url
         ];
 
         return view($this->layout . 'post.view', $this->render($data));
