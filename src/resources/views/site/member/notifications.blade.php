@@ -51,7 +51,7 @@
                 @endforeach
             @else
                 <tr>
-                    <td colspan="3">
+                    <td colspan="6">
                         {{ trans('common.data_empty') }}
                     </td>
                 </tr>
