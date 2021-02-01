@@ -2,6 +2,8 @@
 
 return [
     'basic_auth' => 'Tài khoản đăng nhập',
+    'login' => 'Đăng nhập',
+    'register' => 'Đăng ký',
 
     'home' => 'Trang chủ',
     'nav.post' => 'Quản lý bài viết',

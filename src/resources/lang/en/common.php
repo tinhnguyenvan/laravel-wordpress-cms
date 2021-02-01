@@ -2,6 +2,8 @@
 
 return [
     'basic_auth' => 'Login account',
+    'login' => 'Login',
+    'register' => 'Register',
 
     'home' => 'Home',
     'nav.post' => 'Posts',
