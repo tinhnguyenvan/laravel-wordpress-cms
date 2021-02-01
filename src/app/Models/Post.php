@@ -113,7 +113,7 @@ class Post extends Model implements TranslatableContract
         return $this->belongsTo(User::class, 'creator_id', 'id');
     }
 
-    public static function dropDownStatus()
+    public static function dropDownStatus(): array
     {
         $data = self::STATUS_LIST;
 
