@@ -77,6 +77,6 @@ class PostCategory extends Model
 
     public function getLinkAttribute()
     {
-        return base_url(config('constant.URL_PREFIX_POST') . '/' . $this->slug);
+        return base_url($this->slug);
     }
 }
