@@ -17,7 +17,7 @@ trait BookmarkTrait
 
     public function bookmarksByType($type)
     {
-        return $this->bookmarks()->where('bookmarks.model_type', $type);
+        return $this->bookmarks()->where('model_type', $type);
     }
 
     public function bookmark($object)
@@ -25,8 +25,8 @@ trait BookmarkTrait
         if ($this->isBookmarked($object)) {
             return $this->bookmarks()->where(
                 [
-                    ['bookmarks.model_type', get_class($object)],
-                    ['bookmarks.model_id', $object->id]
+                    ['model_type', get_class($object)],
+                    ['model_id', $object->id]
                 ]
             )->delete();
         }
@@ -38,8 +38,8 @@ trait BookmarkTrait
     {
         return $this->bookmarks()->where(
             [
-                ['bookmarks.model_type', get_class($object)],
-                ['bookmarks.model_id', $object->id]
+                ['model_type', get_class($object)],
+                ['model_id', $object->id]
             ]
         )->exists();
     }
