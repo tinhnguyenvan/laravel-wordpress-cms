@@ -125,11 +125,9 @@ class Post extends Model implements TranslatableContract
         return $html;
     }
 
-    public function getLinkAttribute()
+    public function getLinkAttribute(): string
     {
-        $prefix = config('constant.URL_PREFIX_POST') . '/';
-
-        $prefix .= $this->category->slug ?? 'no-category';
+        $prefix = $this->category->slug ?? 'no-category';
 
         if (empty($this->slug)) {
             $this->slug = '1';
@@ -148,7 +146,7 @@ class Post extends Model implements TranslatableContract
      *
      * @return string
      */
-    public function getStatusTextAttribute()
+    public function getStatusTextAttribute(): string
     {
         switch ($this->status) {
             case self::STATUS_DISABLE:
@@ -170,7 +168,7 @@ class Post extends Model implements TranslatableContract
      *
      * @return string
      */
-    public function getStatusColorAttribute()
+    public function getStatusColorAttribute(): string
     {
         switch ($this->status) {
             case self::STATUS_DISABLE:
@@ -187,7 +185,7 @@ class Post extends Model implements TranslatableContract
         return $text;
     }
 
-    public function getFullImageUrlAttribute()
+    public function getFullImageUrlAttribute(): string
     {
         if (empty($this->image_url)) {
             return '';
