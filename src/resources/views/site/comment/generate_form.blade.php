@@ -27,25 +27,12 @@
             <input type="text" class="form-control" autocomplete="off" name="author" id="author"
                    value="{{ old('author', auth('web')->user()->first_name ?? '') }}">
         </div>
-        <div class="form-group text-right">
-            <button data-value="1" type="button" class="btn-start btn btn-warning btn-sm" aria-label="Left Align">
-                <span class="fa fa-star" aria-hidden="true"></span>
-            </button>
-            <button data-value="2" type="button" class="btn-start btn btn-warning btn-sm" aria-label="Left Align">
-                <span class="fa fa-star" aria-hidden="true"></span>
-            </button>
-            <button data-value="3" type="button" class="btn-start btn btn-warning btn-sm" aria-label="Left Align">
-                <span class="fa fa-star" aria-hidden="true"></span>
-            </button>
-            <button data-value="4" type="button" class="btn-start btn btn-warning btn-sm" aria-label="Left Align">
-                <span class="fa fa-star" aria-hidden="true"></span>
-            </button>
-            <button data-value="5" type="button" class="btn-start btn btn-warning btn-sm"
-                    aria-label="Left Align">
-                <span class="fa fa-star" aria-hidden="true"></span>
-            </button>
-        </div>
-        <div class="form-group">
+
+        @if(!empty($showRaiting))
+            <div class="form-group text-right"
+        @endif
+
+        <div class="form-group" style="margin-top: 10px">
             <button class="btn btn-primary">
                 <i class="fa fa-comment"></i>
                 {{ trans('common.form.submit') }}
@@ -53,6 +40,7 @@
         </div>
     </form>
 </div>
+@if(!empty($showRaiting))
 <script type="text/javascript">
     $(document).ready(function () {
         $('.btn-start').on('click', function () {
@@ -68,3 +56,4 @@
         });
     });
 </script>
+@endif
