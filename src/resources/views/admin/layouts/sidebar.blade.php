@@ -2,7 +2,7 @@
     <nav class="sidebar-nav">
         <ul class="nav">
             <li class="nav-item" style="padding-left: 0">
-                <a class="nav-link active" href="<?= admin_url('dashboard')?>">
+                <a class="nav-link active" href="<?= admin_url()?>">
                     <i class="nav-icon icon-home"></i> Home
                 </a>
             </li>
@@ -10,7 +10,7 @@
             @foreach(@config('constant.MENU_ADMIN') as $item)
                 <li class="nav-item @if(!empty($item['child'])) nav-dropdown @endif">
                     <a class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif"
-                       href="@if(!empty($item['child'])) javascript:void(0) @else {{ admin_url($item['url'])}} @endif">
+                       href="{{ admin_url($item['url'])}}">
                         <i class="nav-icon {{ $item['icon'] }}"></i> {{ trans($item['title']) }}
                     </a>
 

@@ -13,11 +13,6 @@ return [
             'icon' => 'fa fa-newspaper-o',
             'child' => [
                 [
-                    'title' => 'nav.menu_left.post_categories',
-                    'url' => 'post_categories',
-                    'icon' => 'fa fa-sitemap',
-                ],
-                [
                     'title' => 'nav.menu_left.post_list',
                     'url' => 'posts',
                     'icon' => 'icon-list',
@@ -26,6 +21,11 @@ return [
                     'title' => 'nav.menu_left.add',
                     'url' => 'posts/create',
                     'icon' => 'icon-plus',
+                ],
+                [
+                    'title' => 'nav.menu_left.post_categories',
+                    'url' => 'post_categories',
+                    'icon' => 'fa fa-sitemap',
                 ],
                 [
                     'title' => 'nav.menu_left.tags',
