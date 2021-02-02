@@ -2,7 +2,7 @@
     <tr data-node-id="{{$item->id}}" data-node-pid="{{$item->parent_id}}">
         <td>
             <a href="{{ admin_url('navs/'.$item->id.'/edit') }}">
-                {{ $item->title }}
+                {!! $item->title !!}
             </a>
         </td>
         <td>

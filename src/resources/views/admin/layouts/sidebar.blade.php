@@ -40,7 +40,7 @@
                     @endif
                     <li class="nav-item @if(!empty($item['child'])) nav-dropdown @endif">
                         <a class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif"
-                           href="@if(!empty($item['child'])) javascript:void(0) @else {{ admin_url($item['url'])}} @endif">
+                           href="{{ admin_url($item['url'])}}">
                             <i class="nav-icon {{ $item['icon'] }}"></i> {{ trans($item['title']) }}
                         </a>
 
