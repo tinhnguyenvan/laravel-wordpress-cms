@@ -54,17 +54,17 @@ Route::namespace('Site')->group(
             }
         );
 
+        // page
+        Route::get('/' . config('constant.URL_PREFIX_PAGE') . '/{slugCategory}', 'PageController@view');
+        Route::get('404.html', 'PageController@notfound');
+        Route::get('maintenance', 'PageController@maintenance');
+
         // post
         Route::get('/' . config('constant.URL_PREFIX_POST'), 'PostController@index');
         Route::get('/{slugCategory}/{slugPost}.html', 'PostController@view');
         Route::get('/' . config('constant.URL_PREFIX_POST') . '/{slugPost}.html', 'PostController@view');
         Route::get('/{slugCategory}', 'PostController@index');
         Route::post('/' . config('constant.URL_PREFIX_POST') . '/bookmark', 'PostController@postBookmark');
-
-        // page
-        Route::get('/' . config('constant.URL_PREFIX_PAGE') . '/{slugCategory}', 'PageController@view');
-        Route::get('404.html', 'PageController@notfound');
-        Route::get('maintenance', 'PageController@maintenance');
 
         // tag
         Route::get('/' . config('constant.URL_PREFIX_TAG') . '/{slug}', 'TagController@index');

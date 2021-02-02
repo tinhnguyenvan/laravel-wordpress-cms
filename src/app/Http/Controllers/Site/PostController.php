@@ -31,7 +31,7 @@ final class PostController extends SiteController
         $items = $this->postService->getPostBySlugCategory($slugCategory, $request->all());
 
         $postCategory = PostCategory::query()->where('slug', $slugCategory)->first();
-        if (!empty($slugCategory) && empty($postCategory)) {
+        if (!empty($slugCategory)) {
             return redirect(base_url('404.html'));
         }
 
@@ -80,8 +80,10 @@ final class PostController extends SiteController
             'post' => $post,
             'isBookmark' => $isBookmark,
             'items' => $items,
-            'og_image' => $post->full_image_url
         ];
+
+        // set seo
+        $this->seo($post, $this->data);
 
         return view($this->layout . 'post.view', $this->render($data));
     }

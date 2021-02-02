@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Site;
 
 use App\Models\Post;
-use App\Models\Product;
 use App\Services\PostService;
 use Illuminate\Http\Request;
 
@@ -28,12 +27,10 @@ final class SearchController extends SiteController
         if (!empty($params['s'])) {
             $keyword = $params['s'];
             $itemPosts = Post::query()->where('status', '=', Post::STATUS_ACTIVE)->where('title', 'like', $keyword . '%')->orderByDesc('id')->get()->take(10);
-            $itemProducts = Product::query()->where('status', '=', Product::STATUS_ACTIVE)->where('title', 'like', $keyword . '%')->orderByDesc('id')->get()->take(10);
         }
 
         $data = [
             'itemPosts' => $itemPosts,
-            'itemProducts' => $itemProducts,
             'title' => trans('common.search'),
         ];
 

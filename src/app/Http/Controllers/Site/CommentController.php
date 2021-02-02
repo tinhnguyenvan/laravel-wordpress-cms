@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Site;
 
 use App\Models\Comment;
 use App\Models\Post;
-use App\Models\Product;
 use App\Models\RolePermission;
 use TinhPHP\School\Models\School;
 use App\Services\CommentService;
@@ -56,9 +55,7 @@ final class CommentController extends SiteController
                 if ($comment['type'] == Comment::TYPE_POST) {
                     $objectRating = Post::query()->where('id', $params['post_id'])->first();
                 }
-                if ($comment['type'] == Comment::TYPE_PRODUCT) {
-                    $objectRating = Product::query()->where('id', $params['post_id'])->first();
-                }
+
                 if ($comment['type'] == Comment::TYPE_SCHOOL) {
                     $objectRating = School::query()->where('id', $params['post_id'])->first();
                 }
