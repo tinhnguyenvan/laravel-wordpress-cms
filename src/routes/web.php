@@ -59,12 +59,6 @@ Route::namespace('Site')->group(
         Route::get('404.html', 'PageController@notfound');
         Route::get('maintenance', 'PageController@maintenance');
 
-        // post
-        Route::get('/' . config('constant.URL_PREFIX_POST'), 'PostController@index');
-        Route::get('/{slugCategory}/{slugPost}.html', 'PostController@view');
-        Route::get('/' . config('constant.URL_PREFIX_POST') . '/{slugPost}.html', 'PostController@view');
-        Route::get('/{slugCategory}', 'PostController@index');
-        Route::post('/' . config('constant.URL_PREFIX_POST') . '/bookmark', 'PostController@postBookmark');
 
         // tag
         Route::get('/' . config('constant.URL_PREFIX_TAG') . '/{slug}', 'TagController@index');
@@ -79,5 +73,12 @@ Route::namespace('Site')->group(
 
         // comment
         Route::post('comment/create', 'CommentController@addComment');
+
+        // post
+        Route::get('/' . config('constant.URL_PREFIX_POST'), 'PostController@index');
+        Route::get('/{slugCategory}/{slugPost}.html', 'PostController@view');
+        Route::get('/' . config('constant.URL_PREFIX_POST') . '/{slugPost}.html', 'PostController@view');
+        Route::get('/{slugCategory}', 'PostController@index');
+        Route::post('/' . config('constant.URL_PREFIX_POST') . '/bookmark', 'PostController@postBookmark');
     }
 );
