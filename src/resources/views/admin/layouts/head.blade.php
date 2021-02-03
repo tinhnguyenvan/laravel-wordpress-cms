@@ -42,4 +42,10 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="{{ asset("console/js/script.js") }}" type="text/javascript"></script>
 
+    <style type="text/css">
+        .status-item-0 {
+            -webkit-text-decoration-line: line-through; /* Safari */
+            text-decoration-line: line-through;
+        }
+    </style>
 </head>
