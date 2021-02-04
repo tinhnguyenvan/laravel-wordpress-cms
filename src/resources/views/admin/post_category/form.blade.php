@@ -79,6 +79,10 @@
                             <form method="post" action="{{ admin_url('post_categories/'.$post_category->id ) }}">
                                 @csrf
                                 @method('DELETE')
+                                <a href="{{ $post_category->link }}" target="_blank" class="btn btn-info">
+                                    <i class="fa fa-globe"></i>
+                                </a>
+
                                 <button class="btn btn-danger" type="submit">
                                     <i class="fa fa-trash"></i>
                                     {{ trans('common.trash') }}
