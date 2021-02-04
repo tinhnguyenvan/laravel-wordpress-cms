@@ -29,7 +29,7 @@ class PostCategory extends Model
         'description',
         'image_id',
         'image_url',
-        'total_usage',
+        'views',
         'seo_title',
         'seo_description',
         'creator_id',

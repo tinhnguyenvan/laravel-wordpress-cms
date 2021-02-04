@@ -19,7 +19,7 @@ return [
     'parent_id' => 'Danh mục cha',
     'description' => 'Mô tả',
     'slug' => 'Slug',
-    'total_usage' => 'Lượt',
+    'total_usage' => 'Số lượng bài viết',
     'image_url' => 'Image',
     'deleted_at' => 'Ngày xóa',
     'updated_at' => 'Ngày cập nhật',

@@ -29,7 +29,7 @@
                         <th class="th-category_id">{{ trans('post.category_id') }}</th>
                         <th class="th-creator_id">{{ trans('post.creator_id') }}</th>
                         <th class="th-created_at">{{ trans('post.created_at') }}</th>
-                        <th class="th-view">{{ trans('post.count_view') }}</th>
+                        <th class="text-center">{{ trans('post.count_view') }}</th>
                         <th class="th-image text-center">{{ trans('post.image') }}</th>
                         <th class="th-status text-center">{{ trans('post.status') }}</th>
                     </tr>
@@ -57,7 +57,7 @@
                                 <td>
                                     {{ $item->created_at->format(config('app.date_format')) }}
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     {{ $item->views }}
                                 </td>
                                 <td class="text-center">

@@ -25,7 +25,7 @@ class CreatePostCategory extends Migration
             $table->string('slug', 255)->nullable();
             $table->smallInteger('level')->default(0);
             $table->text('description')->nullable();
-            $table->integer('total_usage')->nullable()->default(0);
+            $table->integer('views')->nullable()->default(0);
             $table->string('image_url', 255)->nullable();
             $table->integer('image_id')->nullable()->default(0);
             $table->string('seo_title', 255)->nullable();

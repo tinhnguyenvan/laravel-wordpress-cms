@@ -22,9 +22,9 @@
                     <th>{{ trans('post.title') }}</th>
 
                     <th>{{ trans('post.slug') }}</th>
-                    <th>{{ trans('post.total_usage') }}</th>
+                    <th class="text-center">{{ trans('post.count_view') }}</th>
                     <th class="text-center">{{ trans('post.image_url') }}</th>
-                    <th>{{ trans('post.created_at') }}</th>
+                    <th class="w-150px">{{ trans('post.created_at') }}</th>
                     <th style="width: 220px;"></th>
                 </tr>
                 </thead>
@@ -41,8 +41,8 @@
                             <td>
                                 {{ $item->slug }}
                             </td>
-                            <td>
-                                {{ $item->total_usage }}
+                            <td class="text-center">
+                                {{ $item->views }}
                             </td>
                             <td class="text-center">
                                 @if($item->image_url)
@@ -56,6 +56,9 @@
                                 <form method="post" action="{{ admin_url('post_categories/'.$item->id ) }}">
                                     @csrf
                                     @method('DELETE')
+                                    <a href="{{ $item->link }}" target="_blank" class="btn btn-info btn-sm">
+                                        <i class="fa fa-globe"></i>
+                                    </a>
 
                                     <a href="{{ admin_url('post_categories/create?parent_id='.$item->id) }}"
                                        class="btn btn-sm btn-primary">

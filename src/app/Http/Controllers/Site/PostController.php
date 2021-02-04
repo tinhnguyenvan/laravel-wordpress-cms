@@ -31,9 +31,12 @@ final class PostController extends SiteController
         $items = $this->postService->getPostBySlugCategory($slugCategory, $request->all());
 
         $postCategory = PostCategory::query()->where('slug', $slugCategory)->first();
-        if (!empty($slugCategory)) {
+        if (empty($postCategory->id)) {
             return redirect(base_url('404.html'));
         }
+
+        // update view
+        PostCategory::query()->where('id', $postCategory->id)->increment('views');
 
         $data = [
             'postCategory' => $postCategory,
@@ -41,6 +44,9 @@ final class PostController extends SiteController
             'slugCategory' => $slugCategory,
             'title' => $postCategory->title ?? 'Category',
         ];
+
+        // set seo
+        $this->seo($postCategory, $this->data);
 
         return view($this->layout . 'post.index', $this->render($data));
     }
@@ -62,7 +68,7 @@ final class PostController extends SiteController
         }
 
         // update view
-        Post::query()->increment('views');
+        Post::query()->where('id', $post->id)->increment('views');
 
         $items = Post::query()->where(['category_id' => $post->category_id])->orderByDesc('id')->paginate(
             $this->page_number

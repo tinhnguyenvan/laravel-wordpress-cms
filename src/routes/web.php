@@ -75,10 +75,10 @@ Route::namespace('Site')->group(
         Route::post('comment/create', 'CommentController@addComment');
 
         // post
-        Route::get('/' . config('constant.URL_PREFIX_POST'), 'PostController@index');
         Route::get('/{slugCategory}/{slugPost}.html', 'PostController@view');
         Route::get('/' . config('constant.URL_PREFIX_POST') . '/{slugPost}.html', 'PostController@view');
         Route::get('/{slugCategory}', 'PostController@index');
+        Route::get('/' . config('constant.URL_PREFIX_POST'), 'PostController@index');
         Route::post('/' . config('constant.URL_PREFIX_POST') . '/bookmark', 'PostController@postBookmark');
     }
 );
