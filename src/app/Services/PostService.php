@@ -61,7 +61,7 @@ class PostService extends BaseService
         foreach (config('app.languages') as $code) {
             // slug
             if (empty($formData[$code]['slug'])) {
-                $slug = $formData[$code]['title'];
+                $slug = $formData[$code]['title'] ?? '';
             } else {
                 $slug = $formData[$code]['slug'];
             }
