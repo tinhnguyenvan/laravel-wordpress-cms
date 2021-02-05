@@ -40,4 +40,14 @@ class Config extends Model
      * @var array
      */
     protected $dates = ['created_at', 'updated_at'];
+
+    public const LIST_CONFIG_CHECKBOX_SWITCH = [
+        'config_email_smtp_authentication',
+        'config_maintenance_website',
+        'config_basic_auth',
+        'login_basic_app_status',
+        'login_facebook_app_status',
+        'login_google_app_status',
+        'login_zalo_app_status',
+    ];
 }

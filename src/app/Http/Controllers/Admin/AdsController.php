@@ -131,7 +131,7 @@ class AdsController extends AdminController
 
                 $request->session()->flash('success', trans('common.edit.success'));
 
-                return redirect(admin_url('ads'), 302);
+                return redirect(admin_url('ads'));
             } else {
                 $request->session()->flash('error', $result['message']);
             }

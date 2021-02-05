@@ -50,10 +50,19 @@ return [
     'test.config_email_test_subject_is_required' => '[To] is required',
     'test.sendmail_success' => 'Mail successfully sent',
     'test.sendmail_error' => 'Mail fail sent',
+
+    // config
+    'tab_member_login' => 'Member Login',
+
     'facebook_app_id' => 'Facebook App ID',
     'facebook_app_secret' => 'Facebook App Secret',
     'facebook_app_callback_url' => 'Facebook App Callback URL',
+
     'google_app_id' => 'Google App ID',
     'google_app_secret' => 'Google App Secret',
     'google_app_callback_url' => 'Google App Callback URL',
+
+    'zalo_app_id' => 'Zalo App ID',
+    'zalo_app_secret' => 'Zalo App Secret',
+    'zalo_app_callback_url' => 'Zalo App Callback URL',
 ];

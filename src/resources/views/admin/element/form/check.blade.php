@@ -1,6 +1,6 @@
 <div class="form-group">
     @if(!empty($text))
-        <label class="col-form-label" for="{{$name}}">{{$text}}</label>
+        <label class="col-form-label" for="{{$name}}">{!! $text !!}</label>
     @endif
     <div class="controls">
         <label class="switch switch-label switch-pill switch-outline-primary-alt">

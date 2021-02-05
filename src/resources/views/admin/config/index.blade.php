@@ -23,6 +23,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link @if($tabActive == $tab) active @endif"
                                            href="{{ admin_url('configs?tab='.$tab) }}">
+                                            {!!  $iconTabs[$tab]  !!}
                                             {{ trans('config.tab_'.$tab) }}
                                         </a>
                                     </li>

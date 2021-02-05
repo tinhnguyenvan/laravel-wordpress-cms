@@ -37,11 +37,23 @@ class ConfigController extends AdminController
             'integrate',
             'mail',
             'seo',
-            'system'
+            'system',
+            'member_login',
         ];
+
+        $iconTabs = [
+            'general' => '<i class="fa fa-cogs"></i>',
+            'integrate' => '<i class="fa fa-code"></i>',
+            'mail' => '<i class="fa fa-envelope"></i>',
+            'seo' => '<i class="fa fa-search"></i>',
+            'system' => '<i class="fa fa-flash"></i>',
+            'member_login' => '<i class="fa fa-sign-in"></i>',
+        ];
+
         $data = [
             'tabActive' => $request->get('tab', 'general'),
             'tabs' => $tabs,
+            'iconTabs' => $iconTabs,
             'config' => $config,
         ];
 
@@ -52,16 +64,12 @@ class ConfigController extends AdminController
     {
         $params = $request->all();
         if (!empty($params['_token'])) {
-            if (empty($params['config_email_smtp_authentication'])) {
-                $params['config_email_smtp_authentication'] = 'off';
-            }
 
-            if (empty($params['config_maintenance_website'])) {
-                $params['config_maintenance_website'] = 'off';
-            }
-
-            if (empty($params['config_basic_auth'])) {
-                $params['config_basic_auth'] = 'off';
+            // set default param checkbox
+            foreach (Config::LIST_CONFIG_CHECKBOX_SWITCH as $key) {
+                if (empty($params[$key])) {
+                    $params[$key] = 'off';
+                }
             }
 
             foreach ($params as $key => $item) {

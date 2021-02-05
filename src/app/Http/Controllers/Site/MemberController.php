@@ -59,6 +59,7 @@ final class MemberController extends SiteController
         }
 
         $data = [
+            'title' => 'Login',
             'active_menu' => ''
         ];
 
@@ -467,37 +468,4 @@ final class MemberController extends SiteController
         return view($view, $this->render($data));
     }
 
-    public function myServices(Request $request)
-    {
-        $items = Product::query()
-            ->where('status', Product::STATUS_ACTIVE)
-            ->orderBy('id')
-            ->paginate(config('constant.PAGE_NUMBER'));
-
-        $data = [
-            'title' => 'My Service',
-            'items' => $items,
-            'active_menu' => 'my-services',
-        ];
-
-        $view = $this->memberService->renderView($this->theme, 'site.member.my_services');
-        return view($view, $this->render($data));
-    }
-
-    public function myServicePaymentStatus(Request $request)
-    {
-        $items = SaleOrder::query()
-            ->where('member_id', auth(RolePermission::GUARD_NAME_WEB)->id())
-            ->orderBy('id')
-            ->paginate(config('constant.PAGE_NUMBER'));
-
-        $data = [
-            'title' => 'My service payment status',
-            'active_menu' => 'my-service-payment-status',
-            'items' => $items,
-        ];
-
-        $view = $this->memberService->renderView($this->theme, 'site.member.my_service_payment_status');
-        return view($view, $this->render($data));
-    }
 }
