@@ -1,4 +1,4 @@
-@extends('site.layout.member')
+@extends('site.layout.member_v1')
 @section('content')
     <div class="login-container animated fadeInDown bootstrap snippets">
         <div class="loginbox bg-white">
