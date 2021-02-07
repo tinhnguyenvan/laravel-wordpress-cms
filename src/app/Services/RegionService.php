@@ -132,6 +132,20 @@ class RegionService extends BaseService
         return $html;
     }
 
+    public function dropdownCityOfCountryByDefault($parentId): array
+    {
+        $data = Region::query()
+            ->where('parent_id', $parentId)
+            ->orderBy('order_by')
+            ->get(['id', 'name']);
+        $html = [];
+        if (!empty($data)) {
+            $html = array_column($data->toArray(), 'name', 'id');
+        }
+
+        return $html;
+    }
+
     public function buildCondition($params = [], &$condition = [], &$sortBy = 'id', &$sortType = 'asc')
     {
         if (!empty($params['search'])) {
