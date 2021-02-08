@@ -75,8 +75,11 @@ class PostController extends AdminController
                 ]);
 
                 $request->session()->flash('success', trans('common.add.success'));
-
-                return redirect(admin_url('posts'), 302);
+                if (!empty($params['submit'])) {
+                    return redirect(admin_url('posts'), 302);
+                } else {
+                    return redirect(admin_url('posts/' . $result['id'] . '/edit'));
+                }
             } else {
                 $request->session()->flash('error', $result['message']);
             }
@@ -126,8 +129,11 @@ class PostController extends AdminController
                 ]);
 
                 $request->session()->flash('success', trans('common.edit.success'));
-
-                return redirect(admin_url('posts'), 302);
+                if (!empty($params['submit'])) {
+                    return redirect(admin_url('posts'), 302);
+                } else {
+                    return redirect(admin_url('posts/' . $id . '/edit'));
+                }
             } else {
                 $request->session()->flash('error', $result['message']);
             }
