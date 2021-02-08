@@ -51,9 +51,14 @@
                         </div>
 
                         <div class="form-actions">
-                            <button class="btn btn-primary" type="submit">
+                            <button class="btn btn-success" type="submit" name="submit" value="0">
                                 <i class="fa fa-save"></i>
                                 {{ trans('common.save') }}
+                            </button>
+
+                            <button class="btn btn-primary" type="submit" name="submit" value="1">
+                                <i class="fa fa-save"></i>
+                                {{ trans('common.save_close') }}
                             </button>
                         </div>
                     </div>
