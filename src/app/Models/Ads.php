@@ -32,11 +32,12 @@ class Ads extends Model
      * @var array
      */
     protected $fillable = [
-        'position',
         'title',
         'link',
         'type',
         'theme',
+        'status',
+        'position',
         'code',
         'views',
         'order_by',
