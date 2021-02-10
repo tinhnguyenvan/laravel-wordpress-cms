@@ -74,6 +74,9 @@ Route::namespace('Site')->group(
         // comment
         Route::post('comment/create', 'CommentController@addComment');
 
+        // ads
+        Route::get('ads/tracking/{slug}', 'AdsController@tracking');
+
         // post
         Route::get('/{slugCategory}/{slugPost}.html', 'PostController@view');
         Route::get('/' . config('constant.URL_PREFIX_POST') . '/{slugPost}.html', 'PostController@view');

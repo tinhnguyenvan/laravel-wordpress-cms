@@ -47,6 +47,14 @@
 
                         @include('admin.element.form.image', ['name' => 'image_id', 'image_id' => $ads->image_id ?? '', 'image_url' => $ads->image_url ?? ''])
 
+                        <div class="form-group">
+                            <label class="col-form-label" for="status">{{ trans('common.status') }}</label>
+                            <div class="controls">
+                                @include('admin.element.form.radio', ['name' => 'status', 'text' => trans('common.status.active'), 'valueDefault' => \App\Models\Ads::STATUS_ACTIVE, 'value' => $post->status ?? 1])
+                                @include('admin.element.form.radio', ['name' => 'status', 'text' => trans('common.status.disable'), 'valueDefault' => \App\Models\Ads::STATUS_DISABLE, 'value' => $post->status ?? 0])
+                            </div>
+                        </div>
+
                         <div class="form-actions">
                             <button class="btn btn-primary" type="submit">
                                 <i class="fa fa-save"></i>
