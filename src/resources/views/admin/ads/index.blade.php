@@ -23,6 +23,7 @@
                     <tr class="bg-light">
                         <th>{{ trans('common.title') }}</th>
                         <th>{{ trans('common.position') }}</th>
+                        <th>{{ trans('common.views') }}</th>
                         <th>{{ trans('common.created_at') }}</th>
                         <th class="text-center">{{ trans('common.image_url') }}</th>
                         <th class="text-center">{{ trans('common.status') }}</th>
@@ -39,8 +40,12 @@
                                         <i class="fa fa-edit"></i>
                                     </a>
                                 </td>
+
                                 <td>
                                     {{  $item->position }}
+                                </td>
+                                <td>
+                                    {{  $item->views }}
                                 </td>
 
                                 <td>
@@ -62,7 +67,7 @@
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="8">
+                            <td colspan="6">
                                 {{ trans('common.data_empty') }}
                             </td>
                         </tr>

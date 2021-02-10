@@ -92,10 +92,10 @@ class Ads extends Model
     {
         switch ($this->status) {
             case self::STATUS_DISABLE:
-                $text = trans('product.status.disable');
+                $text = trans('common.status.disable');
                 break;
             case self::STATUS_ACTIVE:
-                $text = trans('product.status.active');
+                $text = trans('common.status.active');
                 break;
             default:
                 $text = '--';
@@ -125,5 +125,15 @@ class Ads extends Model
         }
 
         return $text;
+    }
+
+    /**
+     * text status.
+     *
+     * @return string
+     */
+    public function getHrefAttribute()
+    {
+        return base_url('ads/tracking/'.base64_encode($this->id));
     }
 }
