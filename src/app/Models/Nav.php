@@ -93,6 +93,22 @@ class Nav extends Model
         return $data;
     }
 
+    public static function getMenu($position, $parentId = 0)
+    {
+        $keyCategory = 'get_nav_' . $position . '_' . $parentId;
+        $data = Cache::get($keyCategory);
+        if (empty($data)) {
+            $data = Nav::query()
+                ->where(['position' => $position, 'parent_id' => $parentId])
+                ->orderBy('order_by', 'ASC')
+                ->get()
+                ->toArray();
+            Cache::put($keyCategory, $data, now()->addHours(5));
+        }
+
+        return $data;
+    }
+
     public static function menuTree($position)
     {
         return Nav::query()->where(['position' => $position])
