@@ -91,7 +91,7 @@
                 @if(!empty($item))
                     <i class="fa fa-filter"></i> {{ $filter['form'][$key]['text'] }}:
                     <span class=" text-primary" style="margin-right: 5px">
-                        {{$filter['form'][$key]['data'][$item]}}
+                        {{ $filter['form'][$key]['data'][$item] ?? '' }}
                     </span>
                     @php
                         $checkRemove = 1
