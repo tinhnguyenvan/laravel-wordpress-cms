@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Cache;
 
 class Nav extends Model
 {
@@ -14,6 +15,7 @@ class Nav extends Model
     public const TYPE_CATEGORY_PRODUCT = 3;
 
     use SoftDeletes;
+
     // use HasTranslations;
 
     public $translatable = ['title'];
@@ -77,7 +79,34 @@ class Nav extends Model
 
     public static function menu($position, $parentId = 0)
     {
-        return Nav::query()->where(['position' => $position, 'parent_id' => $parentId])->orderBy('order_by', 'ASC')->get();
+        $keyCategory = 'nav_' . $position . '_' . $parentId;
+        $data = Cache::get($keyCategory);
+        if (empty($data)) {
+            $data = Nav::query()
+                ->where(['position' => $position, 'parent_id' => $parentId])
+                ->orderBy('order_by', 'ASC')
+                ->get();
+
+            Cache::put($keyCategory, $data, now()->addHours(5));
+        }
+
+        return $data;
+    }
+
+    public static function getMenu($position, $parentId = 0)
+    {
+        $keyCategory = 'get_nav_' . $position . '_' . $parentId;
+        $data = Cache::get($keyCategory);
+        if (empty($data)) {
+            $data = Nav::query()
+                ->where(['position' => $position, 'parent_id' => $parentId])
+                ->orderBy('order_by', 'ASC')
+                ->get()
+                ->toArray();
+            Cache::put($keyCategory, $data, now()->addHours(5));
+        }
+
+        return $data;
     }
 
     public static function menuTree($position)
