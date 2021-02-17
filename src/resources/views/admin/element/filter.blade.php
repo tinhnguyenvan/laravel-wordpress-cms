@@ -58,6 +58,7 @@
                                 </div>
                             @endif
                         @endforeach
+                        <input type="hidden" name="page" value="0">
                         <button class="btn btn-primary" type="submit">
                             <i class="fa fa-filter"></i>
                             {{ trans('common.text_filter') }}

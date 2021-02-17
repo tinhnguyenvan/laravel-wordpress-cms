@@ -9,8 +9,7 @@
 
             @foreach(@config('constant.MENU_ADMIN') as $item)
                 <li class="nav-item @if(!empty($item['child'])) nav-dropdown @endif">
-                    <a class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif"
-                       href="{{ admin_url($item['url'])}}">
+                    <a class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif">
                         <i class="nav-icon {{ $item['icon'] }}"></i> {{ trans($item['title']) }}
                     </a>
 
@@ -39,8 +38,7 @@
                         @continue
                     @endif
                     <li class="nav-item @if(!empty($item['child'])) nav-dropdown @endif">
-                        <a class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif"
-                           href="{{ admin_url($item['url'])}}">
+                        <a class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif">
                             <i class="nav-icon {{ $item['icon'] }}"></i> {{ trans($item['title']) }}
                         </a>
 
