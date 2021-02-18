@@ -67,7 +67,7 @@ class ConfigController extends AdminController
 
             // set default param checkbox
             foreach (Config::LIST_CONFIG_CHECKBOX_SWITCH as $key) {
-                if (empty($params[$key])) {
+                if (isset($params[$key]) && empty($params[$key])) {
                     $params[$key] = 'off';
                 }
             }
