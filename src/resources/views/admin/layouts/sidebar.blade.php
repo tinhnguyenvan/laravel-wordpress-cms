@@ -9,7 +9,7 @@
 
             @foreach(@config('constant.MENU_ADMIN') as $item)
                 <li class="nav-item @if(!empty($item['child'])) nav-dropdown @endif">
-                    <a class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif">
+                    <a href="javascript:void(0)" class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif">
                         <i class="nav-icon {{ $item['icon'] }}"></i> {{ trans($item['title']) }}
                     </a>
 
@@ -38,7 +38,7 @@
                         @continue
                     @endif
                     <li class="nav-item @if(!empty($item['child'])) nav-dropdown @endif">
-                        <a class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif">
+                        <a href="javascript:void(0)" class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif">
                             <i class="nav-icon {{ $item['icon'] }}"></i> {{ trans($item['title']) }}
                         </a>
 
@@ -46,11 +46,13 @@
                             <ul class="nav-dropdown-items">
                                 @foreach($item['child'] as $itemChild)
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ admin_url($itemChild['url'])}}">
+                                        <a class="nav-link" href="{{ $itemChild['url'] ? admin_url($itemChild['url']) : 'javascript:void(0)'}}">
                                             @if($itemChild['icon'])
                                                 <i class="nav-icon {{ $itemChild['icon'] }}"></i>
+                                            @else
+                                                <span>&nbsp;&nbsp;&nbsp;</span>
                                             @endif
-                                            {{ trans($itemChild['title']) }}
+                                            {!! trans($itemChild['title']) !!}
                                         </a>
                                     </li>
                                 @endforeach

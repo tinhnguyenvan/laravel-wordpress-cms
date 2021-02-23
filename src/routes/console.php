@@ -89,5 +89,9 @@ Route::middleware(['auth.console'])->group(
 
         // regions
         Route::resource('regions', 'RegionController');
+
+        // cache-systems
+        Route::get('cache-systems', 'CacheSystemController@index');
+        Route::delete('cache-systems/{slug}', 'CacheSystemController@delete');
     }
 );

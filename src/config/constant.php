@@ -107,7 +107,8 @@ return [
                     'title' => 'nav.menu_left.member_list',
                     'url' => 'members',
                     'icon' => 'icon-user',
-                ], [
+                ],
+                [
                     'title' => 'nav.menu_left.user_list',
                     'url' => 'users',
                     'icon' => 'icon-list',
@@ -160,6 +161,11 @@ return [
                     'title' => 'nav.menu_left.regions',
                     'url' => 'regions',
                     'icon' => 'fa fa-globe',
+                ],
+                [
+                    'title' => 'Cache System',
+                    'url' => 'cache-systems',
+                    'icon' => 'fa fa-database',
                 ],
             ]
         ],
