@@ -15,11 +15,13 @@ Route::post('admin/auth', [LoginController::class, 'auth'])->name('admin.auth');
 
 Route::namespace('Site')->group(
     function () {
-
         // check show plugin
-        $countPlugin = Plugin::query()->where('status', 1)->count();
-        if($countPlugin == 0) {
-            Route::get('/', 'HomeController@index');
+        try {
+            $countPlugin = Plugin::query()->where('status', 1)->count();
+            if ($countPlugin == 0) {
+                Route::get('/', 'HomeController@index');
+            }
+        } catch (Exception $exception) {
         }
 
         // user

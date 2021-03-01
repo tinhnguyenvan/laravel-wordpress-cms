@@ -82,10 +82,6 @@ class CreatePermissionTables extends Migration
 
             $table->primary(['permission_id', 'role_id'], 'role_has_permissions_permission_id_role_id_primary');
         });
-
-        app('cache')
-            ->store('default' != config('permission.cache.store') ? config('permission.cache.store') : null)
-            ->forget(config('permission.cache.key'));
     }
 
     /**
