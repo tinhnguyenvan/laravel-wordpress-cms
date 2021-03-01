@@ -1,3 +1,5 @@
 .idea/
 .php_cs.cache
 .DS_Store
+/src/composer-local.json
+/src/composer-local.lock
