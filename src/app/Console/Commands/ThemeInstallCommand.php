@@ -51,6 +51,9 @@ class ThemeInstallCommand extends Command
         $this->warn('- to: ' . $linkAsset);
 
         if ($env != 'production') {
+            if (is_dir($linkAsset)) {
+                unlink($linkAsset);
+            }
             symlink($targetAsset, $linkAsset);
         } else {
             File::copyDirectory($targetAsset, $linkAsset);
@@ -65,6 +68,9 @@ class ThemeInstallCommand extends Command
         $this->warn('- from: ' . $targetView);
         $this->warn('- to: ' . $linkAsset);
         if ($env != 'production') {
+            if (is_dir($linkAsset)) {
+                unlink($linkAsset);
+            }
             symlink($targetView, $linkAsset);
         } else {
             File::copyDirectory($targetView, $linkAsset);

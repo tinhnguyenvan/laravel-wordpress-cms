@@ -283,12 +283,7 @@ class MemberService extends BaseService
                 'text' => trans('common.status'),
                 'type' => 'select',
                 'data' => Member::dropDownStatus(),
-            ],
-            'member_type' => [
-                'text' => trans('member.member_type'),
-                'type' => 'select',
-                'data' => Member::dropDownMemberType(),
-            ],
+            ]
         ];
 
         return [

@@ -22,9 +22,7 @@
                 <tr class="bg-light">
                     <th>ID</th>
                     <th>{{ trans('member.fullname') }}</th>
-                    <th style="width: 200px">{{ trans('member.tags') }}</th>
                     <th>{{ trans('member.source') }}</th>
-                    <th style="width: 120px">{{ trans('member.member_type') }}</th>
                     <th style="width: 150px">{{ trans('common.updated_at') }}</th>
                     <th style="width: 100px"></th>
                 </tr>
@@ -36,19 +34,11 @@
                             <td>{{ $item->id }}</td>
                             <td>
                                 {{ !empty($item->fullname) ? $item->fullname : 'No name' }}
-                                <a href="{{ admin_url('members/'.$item->id) }}"><i class="fa fa-cog"></i> </a>
                                 <p>
                                     <i class="fa fa-phone"></i> {{ !empty($item->phone) ? $item->phone : '--' }}
                                     <br>
                                     <i class="fa fa-envelope"></i> {{ !empty($item->email) ? $item->email : '--' }}
                                 </p>
-                            </td>
-                            <td>
-                                {!!  $item->tags_label !!}
-                                <br>
-                                <a class="font10 text-info" href="{{ admin_url('members/tags/'.$item->id) }}">
-                                    <i class="fa fa-tags"></i> Add tags
-                                </a>
                             </td>
                             <td>
                                 @if(!empty($item->socials))
@@ -59,11 +49,6 @@
                                         </label>
                                     @endforeach
                                 @endif
-                            </td>
-                            <td class="text-center">
-                                <label class="label label-{{ $item->member_type_color }}">
-                                    {{ \App\Models\Member::MEMBER_TYPE_LIST[$item->member_type] }}
-                                </label>
                             </td>
                             <td style="font-size: 12px">{{ $item->updated_at ? $item->updated_at->format(config('app.date_format')) : '' }}</td>
                             <td class="text-center">
@@ -76,7 +61,7 @@
                     @endforeach
                 @else
                     <tr>
-                        <td colspan="4">
+                        <td colspan="5">
                             {{ trans('common.data_empty') }}
                         </td>
                     </tr>

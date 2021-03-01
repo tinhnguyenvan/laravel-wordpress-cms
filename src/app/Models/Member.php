@@ -31,17 +31,6 @@ class Member extends Authenticatable
         self::STATUS_BLOCK,
     ];
 
-    public const MEMBER_TYPE_NORMAL = 0;
-    public const MEMBER_TYPE_EXPERT = 1;
-    public const MEMBER_TYPE_EDUCATOR = 2;
-    public const MEMBER_TYPE_SCHOOL = 3;
-    public const MEMBER_TYPE_LIST = [
-        self::MEMBER_TYPE_NORMAL => 'Member',
-        self::MEMBER_TYPE_EXPERT => 'Expert',
-        self::MEMBER_TYPE_EDUCATOR => 'Educator',
-        self::MEMBER_TYPE_SCHOOL => 'School',
-    ];
-
     /**
      * The database table used by the model.
      *
@@ -136,17 +125,6 @@ class Member extends Authenticatable
         return $html;
     }
 
-    public static function dropDownMemberType()
-    {
-        $data = self::MEMBER_TYPE_LIST;
-
-        $html = [];
-        foreach ($data as $id => $value) {
-            $html[$id] = trans('member.member_type.' . $id);
-        }
-
-        return $html;
-    }
 
     /**
      * text status.
@@ -181,44 +159,6 @@ class Member extends Authenticatable
         }
 
         return $text;
-    }
-
-    /**
-     * member type color status.
-     *
-     * @return string
-     */
-    public function getMemberTypeColorAttribute()
-    {
-        switch ($this->member_type) {
-            case self::MEMBER_TYPE_EXPERT:
-                $text = 'success';
-                break;
-            case self::MEMBER_TYPE_SCHOOL:
-                $text = 'primary';
-                break;
-            case self::MEMBER_TYPE_EDUCATOR:
-                $text = 'info';
-                break;
-            default:
-                $text = 'default';
-                break;
-        }
-
-        return $text;
-    }
-
-    public function getTagsLabelAttribute()
-    {
-        $html = '';
-        if (!empty($this->tags)) {
-            $tags = json_decode($this->tags, true);
-            $items = MemberTag::query()->whereIn('id', $tags)->select('name')->get()->toArray();
-            foreach ($items as $item) {
-                $html .= '<label class="label label-default">' . $item['name'] . '</label> ';
-            }
-        }
-        return $html;
     }
 
     public function socials()
