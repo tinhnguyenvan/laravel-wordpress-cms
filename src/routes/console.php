@@ -14,17 +14,11 @@ Route::middleware(['auth.console'])->group(
         Route::post('/users/profile', 'UserController@show');
         Route::put('/users/update-reset-password/{id}', 'UserController@updateResetPassword');
 
-        // members tag
-        Route::resource('member-tags', 'MemberTagController');
-
         // members
         Route::resource('members', 'MemberController');
         Route::get('/members/reset-password/{id}', 'MemberController@resetPassword');
-        Route::get('/members/tags/{id}', 'MemberController@tags');
-        Route::put('/members/tags/{id}', 'MemberController@putTags');
         Route::post('/members/active/{id}', 'MemberController@active');
         Route::put('/members/update-reset-password/{id}', 'MemberController@updateResetPassword');
-        Route::put('/members/set-member-type/{id}', 'MemberController@setMemberType');
 
         // media
         Route::delete('medias/destroy-multi', 'MediaController@destroyMulti');
