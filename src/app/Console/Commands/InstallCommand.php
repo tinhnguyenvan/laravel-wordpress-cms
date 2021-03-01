@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 
@@ -36,11 +35,15 @@ class InstallCommand extends Command
 
     public function handle()
     {
-        // clone plugin woocommerce default
-        $this->pluginDefault();
+        try {
+            // clone plugin woocommerce default
+            $this->pluginDefault();
 
-        // clone theme default
-        $this->themeDefault();
+            // clone theme default
+            $this->themeDefault();
+        } catch (\Exception $e) {
+            $this->error($e->getMessage());
+        }
 
         // migration
         Artisan::call('migrate:fresh');
