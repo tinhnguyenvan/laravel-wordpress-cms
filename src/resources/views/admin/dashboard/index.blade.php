@@ -9,7 +9,7 @@
                             <div class="text-value-lg">{{ number_format($item['total']) }}</div>
                             <div><i class="{{ $item['icon'] }}"></i> {{ $item['title'] }}</div>
                             <div class="progress progress-xs my-2">
-                                <div class="progress-bar bg-gradient-success" role="progressbar"
+                                <div class="progress-bar bg-gradient-{{ $item['color'] ?? 'success' }}" role="progressbar"
                                      style="width: 50%"
                                      aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
