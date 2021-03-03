@@ -18,6 +18,8 @@ class Member extends Authenticatable
     use Notifiable;
     use BookmarkTrait;
 
+    public const MEMBER_TYPE_NORMAL = 0;
+
     public const GENDER_FEMALE = 0; // nu
     public const GENDER_MALE = 1; // nam
     public const GENDER_OTHER = 2; // khong xac dinh

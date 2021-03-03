@@ -71,7 +71,7 @@
                         </a>
                     </li>
 
-                    @if(!empty($manifest['nav_site']) && isset(auth('web')->user()->member_type) && auth('web')->user()->member_type == \App\Models\Member::MEMBER_TYPE_NORMAL )
+                    @if(!empty($manifest['nav_site']) && isset(auth('web')->user()->member_type))
                         @foreach($manifest['nav_site'] as $item)
                             <li class="nav-item">
                                 <a class="nav-link @if($active_menu == $item['url']) active @endif" href="{{ base_url($item['url']) }}">

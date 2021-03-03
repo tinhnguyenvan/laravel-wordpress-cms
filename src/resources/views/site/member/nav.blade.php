@@ -64,29 +64,6 @@
                 @endforeach
             @endif
 
-            @if(!empty($manifest['nav_expert']) && !empty(auth('web')->user()->member_type) && auth('web')->user()->member_type == \App\Models\Member::MEMBER_TYPE_EXPERT )
-                @foreach($manifest['nav_expert'] as $item)
-                    <li class="@if($active_menu == $item['url']) active @endif">
-                        <a href="{{ base_url($item['url']) }}">
-                            <i class="nav-icon {{ $item['icon'] }}"></i> {{ trans($item['title']) }}
-                        </a>
-
-                        @if(!empty($item['child']))
-                            <ul class="nav-dropdown-items">
-                                @foreach($item['child'] as $itemChild)
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ base_url($itemChild['url'])}}">
-                                            <i class="nav-icon {{ $itemChild['icon'] }}"></i>
-                                            {{ trans($itemChild['title']) }}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @endif
-                    </li>
-                @endforeach
-            @endif
-
             <li>
                 <a href="{{ base_url('member/logout') }}">
                     <span class="fa fa-sign-out"></span> Logout
