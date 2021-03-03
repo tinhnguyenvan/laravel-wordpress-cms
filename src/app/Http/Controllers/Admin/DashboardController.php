@@ -10,6 +10,7 @@ use App\Models\Ads;
 use App\Models\Comment;
 use App\Models\Contact;
 use App\Models\Media;
+use App\Models\Member;
 use App\Models\Post;
 use App\Models\RolePermission;
 use App\Models\User;
@@ -32,10 +33,16 @@ class DashboardController extends AdminController
                 'link' => admin_url('posts'),
             ],
             [
-                'icon' => 'fa fa-users',
+                'icon' => 'fa fa-user',
                 'total' => User::query()->count(),
-                'title' => trans('common.nav.user'),
+                'title' => 'Account manager',
                 'link' => admin_url('users'),
+            ],
+            [
+                'icon' => 'fa fa-users',
+                'total' => Member::query()->count(),
+                'title' => trans('common.nav.user'),
+                'link' => admin_url('members'),
             ],
             [
                 'icon' => 'fa fa-file-o',
