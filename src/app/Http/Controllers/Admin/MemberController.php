@@ -7,7 +7,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Member;
-use App\Models\MemberTag;
 use App\Services\MemberService;
 use Illuminate\Http\Request;
 
@@ -37,68 +36,5 @@ class MemberController extends AdminController
         ];
 
         return view('admin/member.index', $this->render($data));
-    }
-
-    public function show(Request $request, $id)
-    {
-        $member = Member::query()->findOrFail($id);
-        $data = [
-            'title' => trans('common.edit') . ' ID: ' . $member->id,
-            'member' => $member
-        ];
-
-        return view('admin/member.show', $this->render($data));
-    }
-
-    public function setMemberType(Request $request, $id)
-    {
-        $memberType = $request->input('member_type');
-        $member = Member::query()->findOrFail($id);
-
-        if (!empty($member)) {
-            Member::query()->where('id', $id)->update(['member_type' => $memberType]);
-            $request->session()->flash('success', trans('common.edit.success'));
-        } else {
-            $request->session()->flash('error', trans('common.edit.error'));
-        }
-
-        return back();
-    }
-
-    public function tags($id)
-    {
-        $member = Member::query()->findOrFail($id);
-        $tags = !empty($member->tags) ? json_decode($member->tags, true) : [];
-        $typeItems = MemberTag::query()
-            ->orderByRaw('CASE WHEN parent_id = 0 THEN id ELSE parent_id END, parent_id,id')
-            ->get();
-
-        $data = [
-            'member' => $member,
-            'typeItems' => $typeItems,
-            'tags' => $tags,
-            'title' => 'Update Tags'
-        ];
-        return view('admin/member.tags', $this->render($data));
-    }
-
-    public function putTags(Request $request, $id)
-    {
-        $member = Member::query()->findOrFail($id);
-        $tags = $request->input('tags');
-
-        if (!empty($member)) {
-            if (!empty($tags)) {
-                $tags = json_encode(array_keys($tags));
-            }
-            Member::query()->where('id', $id)->update(['tags' => $tags]);
-            $request->session()->flash('success', trans('common.edit.success'));
-
-            return redirect(admin_url('members'));
-        } else {
-            $request->session()->flash('error', trans('common.edit.error'));
-        }
-
-        return back();
     }
 }
