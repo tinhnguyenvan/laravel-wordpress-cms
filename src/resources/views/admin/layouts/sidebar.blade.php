@@ -1,5 +1,5 @@
 <div class="sidebar">
-    <nav class="sidebar-nav">
+    <nav class="sidebar-nav {{ (int)$sidebar_minimizer == 1 ? '' : 'ps ps--active-y' }}">
         <ul class="nav">
             <li class="nav-item" style="padding-left: 0">
                 <a class="nav-link active" href="<?= admin_url()?>">
@@ -9,7 +9,7 @@
 
             @foreach(@config('constant.MENU_ADMIN') as $item)
                 <li class="nav-item @if(!empty($item['child'])) nav-dropdown @endif">
-                    <a href="javascript:void(0)" class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif">
+                    <a href="@if(!empty($item['url'])) {{ admin_url($item['url']) }} @else javascript:void(0) @endif" class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif">
                         <i class="nav-icon {{ $item['icon'] }}"></i> {{ trans($item['title']) }}
                     </a>
 

@@ -29,14 +29,14 @@ $(document).ready(function () {
          * set menu sidebar-minimizer
          */
         let sidebar_minimizer = $.cookie('sidebar_minimizer');
-
-        if (parseInt(sidebar_minimizer) === 1) {
-            $('body').addClass('brand-minimized sidebar-minimized');
-            $('.sidebar-nav').removeClass('ps ps--active-y');
-        } else {
-            $('body').removeClass('brand-minimized sidebar-minimized');
-            $('.sidebar-nav').addClass('ps ps--active-y');
-        }
+        //
+        // if (parseInt(sidebar_minimizer) === 1) {
+        //     $('body').addClass('brand-minimized sidebar-minimized');
+        //     $('.sidebar-nav').removeClass('ps ps--active-y');
+        // } else {
+        //     $('body').removeClass('brand-minimized sidebar-minimized');
+        //     $('.sidebar-nav').addClass('ps ps--active-y');
+        // }
 
         $('.sidebar-minimizer').on('click', function () {
             if (parseInt(sidebar_minimizer) === 1) {
