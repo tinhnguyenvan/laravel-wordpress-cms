@@ -31,7 +31,8 @@ class AdminController extends Controller
             'manifest' => $manifest,
             'title' => ucfirst(str_replace('_', ' ', request()->segment(2))),
             'config' => $config,
-            'theme' => $this->theme
+            'theme' => $this->theme,
+            'sidebar_minimizer' => request()->cookie('sidebar_minimizer')
         ];
     }
 

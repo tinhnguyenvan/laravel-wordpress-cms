@@ -54,14 +54,21 @@ class InstallCommand extends Command
 
     private function pluginDefault()
     {
-        $pathPackageWoocommerce = base_path() . '/packages/tinhphp/woocommerce';
-        if (!Storage::exists($pathPackageWoocommerce)) {
-            $fileUrl = 'https://github.com/tinhnguyenvan/laravel-wordpress-cms-package-woocommerce.git';
-            shell_exec('git clone ' . $fileUrl . ' ' . $pathPackageWoocommerce);
-            Artisan::call('package_woocommerce:install');
-        } else {
-            $this->error('- Folder plugin woocommerce exist: ' . $pathPackageWoocommerce);
+        $listPackage = [
+            'woocommerce' => 'https://github.com/tinhnguyenvan/laravel-wordpress-cms-package-woocommerce.git',
+            'tool' => 'https://github.com/tinhnguyenvan/laravel-wordpress-cms-package-tool.git',
+        ];
+
+        foreach ($listPackage as $pathName => $urlGit) {
+            $pathPackage = base_path() . '/packages/tinhphp/'.$pathName;
+            if (!Storage::exists($pathPackage)) {
+                shell_exec('git clone ' . $urlGit . ' ' . $pathPackage);
+                Artisan::call('package_woocommerce:install');
+            } else {
+                $this->error('- Folder plugin woocommerce exist: ' . $pathPackage);
+            }
         }
+
     }
 
     private function themeDefault()

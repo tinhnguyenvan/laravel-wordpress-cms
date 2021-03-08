@@ -2,9 +2,10 @@
 <html lang="en">
 @include('admin.layouts.head')
 
-<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<body
+    class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show {{ (int)$sidebar_minimizer == 0 ? 'brand-minimized sidebar-minimized' : '' }}">
 @include('admin.layouts.header')
-<div class="app-body">
+<div class="app-body ">
     @include('admin.layouts.sidebar')
     <main class="main" id="pjax-container">
         <!-- Breadcrumb-->
@@ -30,7 +31,8 @@
         </ol>
         <div class="container-fluid">
             @if(empty($config['config_email_username']))
-                <div class="alert alert-warning">{!! trans('common.alert.config_email', ['url' => admin_url('configs')])  !!}</div>
+                <div
+                    class="alert alert-warning">{!! trans('common.alert.config_email', ['url' => admin_url('configs')])  !!}</div>
             @endif
             <div class="animated fadeIn"></div>
             @yield('content')
