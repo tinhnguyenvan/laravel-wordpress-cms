@@ -3,7 +3,7 @@
         <ul class="nav">
             <li class="nav-item" style="padding-left: 0">
                 <a class="nav-link active" href="<?= admin_url()?>">
-                    <i class="nav-icon icon-home"></i> Home
+                    <i class="nav-icon icon-speedometer"></i> Dashboard
                 </a>
             </li>
 

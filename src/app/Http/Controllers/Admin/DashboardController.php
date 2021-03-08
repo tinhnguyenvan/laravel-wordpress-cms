@@ -12,6 +12,8 @@ use App\Models\Contact;
 use App\Models\Media;
 use App\Models\Member;
 use App\Models\Post;
+use App\Models\QueueFailJob;
+use App\Models\QueueJob;
 use App\Models\RolePermission;
 use App\Models\User;
 
@@ -63,10 +65,18 @@ class DashboardController extends AdminController
                 'link' => admin_url('ads'),
             ],
             [
-                'icon' => 'fa fa-support',
-                'total' => Contact::query()->count(),
-                'title' => trans('common.nav.contact'),
-                'link' => admin_url('contacts'),
+                'icon' => 'fa fa-database',
+                'total' => QueueJob::query()->count(),
+                'title' => 'Queue Handle',
+                'color' => '',
+                'link' => 'javascript:void()',
+            ],
+            [
+                'icon' => 'fa fa-database',
+                'total' => QueueFailJob::query()->count(),
+                'title' => 'Queue Fail',
+                'color' => 'danger',
+                'link' => 'javascript:void()',
             ],
         ];
 
