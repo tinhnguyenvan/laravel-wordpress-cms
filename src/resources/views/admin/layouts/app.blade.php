@@ -2,11 +2,12 @@
 <html lang="en">
 @include('admin.layouts.head')
 
+
 <body
-    class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show {{ (int)$sidebar_minimizer == 0 ? 'brand-minimized sidebar-minimized' : '' }}">
+    class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show pace-done @if($sidebar_minimizer == 0 ) brand-minimized sidebar-minimized @endif">
 @include('admin.layouts.header')
 <div class="app-body ">
-    @include('admin.layouts.sidebar')
+    @include('admin.layouts.sidebar', ['sidebar_minimizer' => $sidebar_minimizer])
     <main class="main" id="pjax-container">
         <!-- Breadcrumb-->
         <ol class="breadcrumb no-print">
