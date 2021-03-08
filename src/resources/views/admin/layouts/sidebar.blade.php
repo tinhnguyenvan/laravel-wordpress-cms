@@ -1,5 +1,5 @@
 <div class="sidebar">
-    <nav class="sidebar-nav {{ (int)$sidebar_minimizer == 1 ? '' : 'ps ps--active-y' }}">
+    <nav class="sidebar-nav @if($sidebar_minimizer == 1 ) ps ps--active-y @endif">
         <ul class="nav">
             <li class="nav-item" style="padding-left: 0">
                 <a class="nav-link active" href="<?= admin_url()?>">

@@ -9,7 +9,7 @@ return [
     'MENU_ADMIN' => [
         [
             'title' => 'nav.menu_left.posts',
-            'url' => 'posts',
+            'url' => '',
             'icon' => 'fa fa-newspaper-o',
             'child' => [
                 [
@@ -56,7 +56,7 @@ return [
 
         [
             'title' => 'nav.menu_left.medias',
-            'url' => 'medias',
+            'url' => '',
             'icon' => 'fa fa-file-image-o',
             'child' => [
                 [
@@ -73,7 +73,7 @@ return [
         ],
         [
             'title' => 'nav.menu_left.themes',
-            'url' => 'themes',
+            'url' => '',
             'icon' => 'fa fa-themeisle',
             'child' => [
                 [
