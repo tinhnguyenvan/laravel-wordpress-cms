@@ -39,10 +39,8 @@ Route::middleware(['auth.console'])->group(
 
         // plugins
         Route::get('plugins', 'PluginController@index')->name('admin.plugins.index');
-        Route::put('plugins/{id}/update-status', 'PluginController@updateStatus');
-        Route::match(['get'], 'plugins/{id}/update-status', function () {
-            Route::redirect('plugins', 'plugins/{id}/update-status', 301);
-        });
+
+        Route::put('plugins/{id}/update-status', 'PluginController@updateStatus')->name('admin.plugins.updateStatus');
 
         // config
         Route::post('/configs/save', 'ConfigController@save');
