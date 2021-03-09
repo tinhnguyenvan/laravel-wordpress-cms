@@ -43,14 +43,7 @@
                             </div>
                         </div>
 
-
-                        <div class="form-group">
-                            <label class="col-form-label" for="description">{{ trans('page.detail') }}</label>
-                            <div class="controls">
-                                <textarea class="form-control ckeditor" id="detail" rows="5"
-                                          name="detail">{{ old('detail', $page->detail ?? '') }}</textarea>
-                            </div>
-                        </div>
+                        @include('admin.element.form.textarea', ['name' => 'detail', 'class' => 'ckeditor', 'text' => trans('page.detail'), 'value' => $page->detail ?? ''])
 
                         <div class="form-group">
                             <label class="col-form-label" for="title">{{ trans('page.template_id') }}</label>
