@@ -38,41 +38,50 @@ $(document).ready(function () {
 
             $.cookie('sidebar_minimizer', value_sidebar, {expires: 365, path: '/'});
         });
-
         if ($('.ckeditor').length > 0) {
-            $('.ckeditor').each(function (index) {
-                let $summernote = $('.ckeditor').eq(index);
-                $summernote.summernote({
-                    placeholder: 'Input content',
-                    width: '100%',
-                    height: 200,
-                    callbacks: {
-                        onImageUpload: function (files) {
-                            let data = new FormData();
-                            data.append("upload", files[0]);
-                            $.ajax({
-                                data: data,
-                                type: "POST",
-                                url: configs.link_media_upload,
-                                cache: false,
-                                contentType: false,
-                                processData: false,
-                                success: function (data) {
-                                    if (parseInt(data.status) === 0) {
-                                        alert(data.message);
-                                    } else {
-                                        let src = data.url;
-                                        $summernote.summernote('insertImage', src, function ($image) {
-                                            $image.attr('src', src);
-                                        });
-                                    }
-                                }
-                            });
-                        }
-                    }
+            if (configs.ckeditor === 'ckeditor') {
+                $('.ckeditor').each(function (index, item) {
+                    CKEDITOR.replace(item.id, {
+                        filebrowserUploadUrl: configs.filebrowserUploadUrl,
+                        filebrowserUploadMethod: 'form'
+                    });
                 });
-            })
+            } else {
+                $('.ckeditor').each(function (index) {
+                    let $summernote = $('.ckeditor').eq(index);
+                    $summernote.summernote({
+                        placeholder: 'Input content',
+                        width: '100%',
+                        height: 200,
+                        callbacks: {
+                            onImageUpload: function (files) {
+                                let data = new FormData();
+                                data.append("upload", files[0]);
+                                $.ajax({
+                                    data: data,
+                                    type: "POST",
+                                    url: configs.link_media_upload,
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    success: function (data) {
+                                        if (parseInt(data.status) === 0) {
+                                            alert(data.message);
+                                        } else {
+                                            let src = data.url;
+                                            $summernote.summernote('insertImage', src, function ($image) {
+                                                $image.attr('src', src);
+                                            });
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    });
+                })
+            }
         }
+
 
         /**
          * js table tree item
