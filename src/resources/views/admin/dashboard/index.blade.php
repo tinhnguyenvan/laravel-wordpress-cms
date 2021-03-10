@@ -10,8 +10,8 @@
                             <div><i class="{{ $item['icon'] }}"></i> {{ $item['title'] }}</div>
                             <div class="progress progress-xs my-2">
                                 <div class="progress-bar bg-{{ $item['color'] ?? 'success' }}" role="progressbar"
-                                     style="width: 99%"
-                                     aria-valuenow="99" aria-valuemin="0" aria-valuemax="100"></div>
+                                     style="width: {{ $item['percent'] ?? 99 }}%"
+                                     aria-valuenow="{{ $item['percent'] ?? 99 }}" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                             <a href="{{ $item['link'] }}"
                                class="text-muted">{{ trans('common.read_more') }}</a>
