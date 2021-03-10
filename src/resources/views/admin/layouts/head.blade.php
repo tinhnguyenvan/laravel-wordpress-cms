@@ -22,7 +22,7 @@
     <script src="{{ asset("console/js/jquery.min.js") }}" type="text/javascript"></script>
     <script src="{{ asset("console/js/bootstrap.min.js") }}" type="text/javascript"></script>
 
-    @if(empty($config['editor_content']))
+    @if(!empty($config['editor_content']) && $config['editor_content'] == 'summernote' )
         <link rel="stylesheet" href="{{ asset("common/plugin/summernote-0.8.18/summernote.css") }}">
         <script src="{{ asset("common/plugin/summernote-0.8.18/summernote.js") }}" type="text/javascript"></script>
     @else
