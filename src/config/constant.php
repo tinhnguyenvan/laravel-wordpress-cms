@@ -5,10 +5,10 @@
  */
 
 return [
-    'MENU_APP' => [],
+    'MENU_APP' => [], // no remove why merge array with package
     'MENU_ADMIN' => [
         [
-            'title' => 'nav.menu_left.posts',
+            'title' => 'nav.menu_left.content',
             'url' => '',
             'icon' => 'fa fa-newspaper-o',
             'child' => [
@@ -26,6 +26,13 @@ return [
                     'title' => 'nav.menu_left.post_categories',
                     'url' => 'post_categories',
                     'icon' => 'fa fa-sitemap',
+                ],
+
+                [
+                    'title' => 'nav.menu_left.pages',
+                    'url' => 'pages',
+                    'icon' => 'fa fa-copy',
+                    'child' => []
                 ],
                 [
                     'title' => 'nav.menu_left.tags',
@@ -47,12 +54,6 @@ return [
             ]
         ],
 
-        [
-            'title' => 'nav.menu_left.pages',
-            'url' => 'pages',
-            'icon' => 'fa fa-copy',
-            'child' => []
-        ],
 
         [
             'title' => 'nav.menu_left.medias',

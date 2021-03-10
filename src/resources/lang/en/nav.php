@@ -5,6 +5,7 @@ return [
     'menu_left.dashboard' => 'Dashboard',
     'menu_left.add' => 'Add',
     'menu_left.posts' => 'Post',
+    'menu_left.content' => 'Content',
     'menu_left.post_list' => 'All post',
     'menu_left.post_categories' => 'Category',
     'menu_left.post_tags' => 'Tags',

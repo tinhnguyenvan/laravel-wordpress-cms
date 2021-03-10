@@ -4,6 +4,7 @@ return [
     // breadcrumb admin
     'menu_left.dashboard' => 'Dashboard',
     'menu_left.add' => 'Thêm mới',
+    'menu_left.content' => 'Content',
     'menu_left.posts' => 'Bài viết',
     'menu_left.post_list' => 'Tất cả bài viết',
     'menu_left.post_categories' => 'Chuyên mục',

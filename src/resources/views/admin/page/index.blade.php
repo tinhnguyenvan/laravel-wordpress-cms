@@ -34,6 +34,7 @@
 
                         <th>{{ trans('page.slug') }}</th>
                         <th>{{ trans('page.created_at') }}</th>
+                        <th class="w-100px"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -55,11 +56,16 @@
                                 <td>
                                     {{ $item->created_at->format(config('app.date_format')) }}
                                 </td>
+                                <td class="text-center">
+                                    <a href="{{ $item->link }}" target="_blank" class="btn btn-info btn-sm">
+                                        <i class="fa fa-globe"></i>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="6">
+                            <td colspan="5">
                                 {{ trans('common.data_empty') }}
                             </td>
                         </tr>
