@@ -39,7 +39,7 @@ $(document).ready(function () {
             $.cookie('sidebar_minimizer', value_sidebar, {expires: 365, path: '/'});
         });
         if ($('.ckeditor').length > 0) {
-            if (configs.ckeditor === 'ckeditor') {
+            if (configs.ckeditor == 'ckeditor') {
                 $('.ckeditor').each(function (index, item) {
                     CKEDITOR.replace(item.id, {
                         filebrowserUploadUrl: configs.filebrowserUploadUrl,
