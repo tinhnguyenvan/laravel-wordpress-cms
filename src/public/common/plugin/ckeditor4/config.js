@@ -6,4 +6,10 @@ CKEDITOR.editorConfig = function (config) {
     config.language = 'vi';
     config.width = '100%';
     config.height = 500;
+
+    config.entities_latin = false;
+
+    // Simplify the dialog windows.
+    config.removeDialogTabs = 'image:advanced;link:advanced';
+    // config.removePlugins = 'easyimage, cloudservices';
 };
