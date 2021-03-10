@@ -5,7 +5,10 @@ return [
      * custom
      */
     'date_format' => 'd/M/Y H:i',
-    'languages' => ['en', 'vi'],
+    'languages' => [
+        'en',
+        'vi'
+    ],
     'language_text' => [
         'en' => '🇬🇧 English',
         'vi' => '🇻🇳 Tiếng việt'

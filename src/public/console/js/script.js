@@ -38,17 +38,19 @@ $(document).ready(function () {
 
             $.cookie('sidebar_minimizer', value_sidebar, {expires: 365, path: '/'});
         });
-        if ($('.ckeditor').length > 0) {
-            if (configs.ckeditor == 'ckeditor') {
-                $('.ckeditor').each(function (index, item) {
-                    CKEDITOR.replace(item.id, {
-                        filebrowserUploadUrl: configs.filebrowserUploadUrl,
+
+        let ckeditorContent = $('.ckeditor');
+        if (ckeditorContent.length > 0) {
+            if (configs.ckeditor === 'ckeditor') {
+                ckeditorContent.each(function (index, item) {
+                    CKEDITOR.replace(item.name, {
+                        filebrowserUploadUrl: configs.link_media_upload,
                         filebrowserUploadMethod: 'form'
                     });
                 });
             } else {
-                $('.ckeditor').each(function (index) {
-                    let $summernote = $('.ckeditor').eq(index);
+                ckeditorContent.each(function (index) {
+                    let $summernote = ckeditorContent.eq(index);
                     $summernote.summernote({
                         placeholder: 'Input content',
                         width: '100%',

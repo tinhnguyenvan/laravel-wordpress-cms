@@ -74,10 +74,14 @@ class MediaController extends AdminController
         return back()->withInput();
     }
 
+    /**
+     * upload content for ckeditor
+     *
+     * @param Request $request
+     */
     public function upload(Request $request)
     {
         $url = '';
-        $status = 0;
         if ($request->file('upload')) {
             $objectFile = $request->file('upload');
 
@@ -87,7 +91,6 @@ class MediaController extends AdminController
                 $url = asset('storage' . $upload['content']['file_name']);
 
                 $msg = 'Image uploaded successfully';
-                $status = 1;
             } else {
                 $msg = trans('common.upload.error');
             }
@@ -95,11 +98,11 @@ class MediaController extends AdminController
             $msg = trans('error_file_invalid');
         }
 
-        return [
-            'status' => $status,
-            'url' => $url,
-            'message' => $msg
-        ];
+        $CKEditorFuncNum = $request->input('CKEditorFuncNum');
+        $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
+
+        @header('Content-type: text/html; charset=utf-8');
+        echo $response;
     }
 
     public function show($id)
