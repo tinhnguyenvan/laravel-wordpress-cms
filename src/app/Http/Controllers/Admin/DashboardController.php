@@ -79,7 +79,7 @@ class DashboardController extends AdminController
                 'title' => 'Queue Handle',
                 'color' => '',
                 'link' => 'javascript:void()',
-                'percent' => round($totalQueueHandle * 100 / $totalQueue),
+                'percent' => $totalQueue > 0 ? round($totalQueueHandle * 100 / $totalQueue) : 0,
             ],
             [
                 'icon' => 'fa fa-database',
@@ -87,7 +87,7 @@ class DashboardController extends AdminController
                 'title' => 'Queue Fail',
                 'color' => 'danger',
                 'link' => 'javascript:void()',
-                'percent' => round($totalQueueFailed * 100 / $totalQueue),
+                'percent' => $totalQueue > 0 ? round($totalQueueFailed * 100 / $totalQueue) : 0,
             ],
         ];
 
