@@ -154,6 +154,9 @@ class RegionService extends BaseService
 
     public function dropdownCityOfCountryByDefault($parentId): array
     {
+        if ($parentId == 0) {
+            return [];
+        }
         $data = Region::query()
             ->where('parent_id', $parentId)
             ->orderBy('order_by')
