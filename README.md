@@ -20,8 +20,17 @@
 
 - **Step 1**:
 
-		COMPOSER_MEMORY_LIMIT=-1 composer install
-		COMPOSER=composer-local.json composer update
++ for product
+	
+
+	COMPOSER_MEMORY_LIMIT=-1 composer install
+	
+
++ for dev
+
+
+	COMPOSER_MEMORY_LIMIT=-1 COMPOSER=composer-local.json composer update
+
 
 - **Step 2**: migration database
 
