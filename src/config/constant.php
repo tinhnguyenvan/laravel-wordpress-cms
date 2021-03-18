@@ -178,7 +178,6 @@ return [
     'MAX_FILE_UPLOAD' => 2,
     'MAX_FILE_SIZE_UPLOAD' => 1000, // 100px
     'URL_PREFIX_PRODUCT' => 'collections',
-    'URL_PREFIX_CLASSIFIED' => 'classified',
     'URL_PREFIX_POST' => 'blog',
     'URL_PREFIX_COLLEGE' => 'college',
     'URL_PREFIX_SCHOOL' => 'school',

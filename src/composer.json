@@ -30,7 +30,8 @@
         "spatie/laravel-pjax": "^2.1",
         "tinhphp/woocommerce": "*",
         "tinhphp/tool": "*",
-        "willvincent/laravel-rateable": "^2.2"
+        "willvincent/laravel-rateable": "^2.2",
+        "ext-curl": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
