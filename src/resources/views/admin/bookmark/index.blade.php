@@ -29,7 +29,7 @@
                                 {{ $item->created_at ? $item->created_at->format(config('app.date_format')) : '--' }}
                             </td>
                             <td class="text-center">
-                                <form method="post" action="{{ admin_url('bookmarks/'.$item->id ) }}">
+                                <form method="post" onsubmit="return confirm('Do you want DELETE ?');" action="{{ admin_url('bookmarks/'.$item->id ) }}">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger btn-sm" type="submit">

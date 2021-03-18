@@ -73,7 +73,7 @@
                 <div class="row mb-5">
                     <div class="col-lg-12">
                         <div class="form-actions text-lg-right">
-                            <form method="post" action="{{ admin_url('posts/'.$post->id ) }}">
+                            <form method="post" onsubmit="return confirm('Do you want DELETE ?');" action="{{ admin_url('posts/'.$post->id ) }}">
                                 @csrf
                                 @method('DELETE')
                                 <a href="{{ $post->link }}" target="_blank" class="btn btn-info">

@@ -43,7 +43,7 @@
 
                 <div class="card-footer">
                     <div class="form-actions text-lg-right">
-                        <form method="post" action="{{ admin_url('users/'.$users->id ) }}">
+                        <form method="post" onsubmit="return confirm('Do you want DELETE ?');" action="{{ admin_url('users/'.$users->id ) }}">
                             @csrf
                             @method('DELETE')
                             <a class="btn btn-success" href="{{ admin_url('users/reset-password/'.$users->id) }}">

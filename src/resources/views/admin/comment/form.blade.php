@@ -89,7 +89,7 @@
                                 </div>
                             </form>
 
-                            <form style="display: inline-block" method="post" action="{{ admin_url('comments/'.$comment->id ) }}">
+                            <form style="display: inline-block" onsubmit="return confirm('Do you want DELETE ?');" method="post" action="{{ admin_url('comments/'.$comment->id ) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" type="submit">

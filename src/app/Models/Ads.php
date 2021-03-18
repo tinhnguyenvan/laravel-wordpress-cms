@@ -9,12 +9,12 @@ class Ads extends Model
 {
     use SoftDeletes;
 
-    const TYPE_IMAGE = 1;
-    const TYPE_HTML = 2;
+    public const TYPE_IMAGE = 1;
+    public const TYPE_HTML = 2;
 
-    const STATUS_ACTIVE = 1;
-    const STATUS_DISABLE = 2;
-    const STATUS_LIST = [
+    public const STATUS_ACTIVE = 1;
+    public const STATUS_DISABLE = 2;
+    public const STATUS_LIST = [
         self::STATUS_ACTIVE,
         self::STATUS_DISABLE,
     ];
@@ -78,7 +78,7 @@ class Ads extends Model
 
         $html = [];
         foreach ($data as $value) {
-            $html[$value] = trans('common.status.' . $value);
+            $html[$value] = trans('common.status.'.$value);
         }
 
         return $html;

@@ -74,7 +74,7 @@
                                     {{ $item->order_by ?? 0 }}
                                 </td>
                                 <td class="text-right">
-                                    <form method="post" action="{{ admin_url('navs/'.$item->id ) }}">
+                                    <form method="post" onsubmit="return confirm('Do you want DELETE ?');" action="{{ admin_url('navs/'.$item->id ) }}">
                                         @csrf
                                         @method('DELETE')
                                         @if($item->level < 2)

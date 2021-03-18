@@ -62,7 +62,7 @@
                 <div class="row mb-5">
                     <div class="col-lg-12">
                         <div class="form-actions text-lg-right">
-                            <form method="POST" action="{{ admin_url('regions/'.$region->id ) }}">
+                            <form method="POST" onsubmit="return confirm('Do you want DELETE ?');" action="{{ admin_url('regions/'.$region->id ) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" type="submit">

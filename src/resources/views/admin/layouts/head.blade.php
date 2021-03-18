@@ -8,6 +8,7 @@
     <title>{{ $title }} | Module</title>
 
     <link href="{{ asset("console/vendor/vendor.css") }}" rel="stylesheet">
+    <link href="{{ asset("console/css/custom.css") }}" rel="stylesheet">
     <script type="text/javascript">
         let configs = {
             'base_url': '{{ base_url() }}',
@@ -47,11 +48,4 @@
     <script src="{{ asset("console/js/jquery.cookie.js") }}" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="{{ asset("console/js/script.js?v=1") }}" type="text/javascript"></script>
-
-    <style type="text/css">
-        .status-item-0 {
-            -webkit-text-decoration-line: line-through; /* Safari */
-            text-decoration-line: line-through;
-        }
-    </style>
 </head>

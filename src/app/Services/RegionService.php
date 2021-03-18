@@ -152,6 +152,28 @@ class RegionService extends BaseService
         return $html;
     }
 
+
+    /**
+     * get data 2 level
+     *
+     * @return array
+     */
+    public function dropdown(): array
+    {
+        $items = Region::query()->where('parent_id',0)->orderBy('order_by')->get(['id', 'name', 'parent_id']);
+
+        $html = [];
+        if (!empty($items)) {
+            foreach ($items as $item) {
+                foreach ($item->subItem as $sub) {
+                    $html[$item->name][$sub->id] = $sub->name;
+                }
+            }
+        }
+
+        return $html;
+    }
+
     public function dropdownCityOfCountryByDefault($parentId): array
     {
         if ($parentId == 0) {

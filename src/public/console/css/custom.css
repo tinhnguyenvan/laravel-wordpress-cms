@@ -286,3 +286,11 @@
     width: 50px;
 }
 
+.inline-block {
+    display: inline-block;
+}
+
+.status-item-0 {
+    -webkit-text-decoration-line: line-through; /* Safari */
+    text-decoration-line: line-through;
+}

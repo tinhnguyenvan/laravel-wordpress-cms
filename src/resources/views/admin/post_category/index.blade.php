@@ -53,7 +53,7 @@
                                 {{ $item->created_at->format(config('app.date_format')) }}
                             </td>
                             <td class="text-right">
-                                <form method="post" action="{{ admin_url('post_categories/'.$item->id ) }}">
+                                <form method="post" onsubmit="return confirm('Do you want DELETE ?');" action="{{ admin_url('post_categories/'.$item->id ) }}">
                                     @csrf
                                     @method('DELETE')
                                     <a href="{{ $item->link }}" target="_blank" class="btn btn-info btn-sm">

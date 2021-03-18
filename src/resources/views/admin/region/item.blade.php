@@ -13,7 +13,7 @@
         </td>
 
         <td class="text-right">
-            <form method="post" action="{{ admin_url('regions/'.$item->id ) }}">
+            <form method="post" onsubmit="return confirm('Do you want DELETE ?');" action="{{ admin_url('regions/'.$item->id ) }}">
                 @csrf
                 @method('DELETE')
                     <a href="{{ admin_url('regions/create?parent_id='.$item->id) }}"

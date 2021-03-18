@@ -139,9 +139,9 @@
     </div>
 </div>
 <script type="text/javascript">
-    setTimeout(function () {
-        window.location.href = "{{ base_url() }}";
-    }, 3000);
+    {{--setTimeout(function () {--}}
+    {{--    window.location.href = "{{ base_url() }}";--}}
+    {{--}, 3000);--}}
 </script>
 </body>
 </html>

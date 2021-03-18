@@ -17,7 +17,7 @@
         <div class="card-body">
             @include('admin.element.filter')
 
-            <form method="post" action="{{ admin_url('pages/destroy-multi') }}">
+            <form method="post" onsubmit="return confirm('Do you want DELETE ?');" action="{{ admin_url('pages/destroy-multi') }}">
                 @csrf
                 @method('DELETE')
                 <table class="table table-responsive-sm table-bordered table-hover font12">

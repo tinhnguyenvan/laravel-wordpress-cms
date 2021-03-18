@@ -52,6 +52,7 @@ return [
     'save_close' => 'Save & Close',
     'cancel' => 'Cancel',
     'trash' => 'Trash',
+    'duplicate' => 'Duplicate',
     'list' => 'List',
     'add' => 'Add',
     'edit' => 'Edit',

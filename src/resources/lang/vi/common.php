@@ -52,6 +52,7 @@ return [
     'save_close' => 'Lưu lại & Thoát',
     'cancel' => 'Hủy',
     'trash' => 'Thùng rác',
+    'duplicate' => 'Nhân bản',
     'list' => 'Danh sách',
     'add' => 'Thêm mới',
     'edit' => 'Cập nhật',

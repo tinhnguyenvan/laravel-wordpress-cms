@@ -70,7 +70,7 @@
                 <div class="row mb-5">
                     <div class="col-lg-12">
                         <div class="form-actions text-lg-right">
-                            <form method="post" action="{{ admin_url('ads/'.$ads->id ) }}">
+                            <form method="post" onsubmit="return confirm('Do you want DELETE ?');" action="{{ admin_url('ads/'.$ads->id ) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" type="submit">
