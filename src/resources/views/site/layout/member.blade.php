@@ -74,7 +74,8 @@
                     @if(!empty($manifest['nav_site']) && isset(auth('web')->user()->member_type))
                         @foreach($manifest['nav_site'] as $item)
                             <li class="nav-item">
-                                <a class="nav-link @if($active_menu == $item['url']) active @endif" href="{{ base_url($item['url']) }}">
+                                <a class="nav-link @if($active_menu == $item['url']) active @endif"
+                                   href="{{ base_url($item['url']) }}">
                                     <span data-feather="{{ $item['icon'] }}"></span>
                                     {{ trans($item['title']) }}
                                 </a>
@@ -103,15 +104,17 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a style="text-decoration: none" href="{{ base_url() }}"><span data-feather="home"></span> Home</a>
+                            <a style="text-decoration: none" href="{{ base_url() }}"><span data-feather="home"></span>
+                                Home</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
                     </ol>
                 </nav>
             </div>
-
-            <div class="col-lg-12">
-                @yield('content')
+            <div class="row">
+                <div class="col-lg-12">
+                    @yield('content')
+                </div>
             </div>
         </main>
     </div>
