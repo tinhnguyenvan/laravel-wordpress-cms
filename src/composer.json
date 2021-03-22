@@ -59,7 +59,8 @@
     },
     "autoload": {
         "files": [
-            "config/helpers.php"
+            "config/helpers.php",
+            "app/Helpers/simple_html_dom.php"
         ],
         "psr-4": {
             "App\\": "app/"
