@@ -219,7 +219,7 @@ final class MemberController extends SiteController
 
         $request->validate(
             [
-                'last_name' => 'required|min:5|max:255',
+                'first_name' => 'required|min:1|max:255',
             ]
         );
 
