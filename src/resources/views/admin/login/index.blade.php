@@ -78,9 +78,13 @@
                                             @endforeach
                                         @else
                                             @if(!empty($error))
-                                                @foreach($error as $er)
-                                                    <li>{{ e($er) }}</li>
-                                                @endforeach
+                                                @if(is_array($error))
+                                                    @foreach($error as $er)
+                                                        <li>{{ e($er) }}</li>
+                                                    @endforeach
+                                                @else
+                                                    <li>{{ e($error) }}</li>
+                                                @endif
                                             @endif
                                         @endif
                                     </ul>
