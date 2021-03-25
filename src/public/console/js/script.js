@@ -6,8 +6,9 @@
 $(document).ready(function () {
     initializeMyPlugin();
 
-    $(document).pjax('a:not(a[target="_blank"],a[target="_top"])', '#pjax-container');
-
+    if ($('#pjax-container').length > 0) {
+        $(document).pjax('a:not(a[target="_blank"],a[target="_top"])', '#pjax-container');
+    }
     $(document).on('pjax:end', function () {
         initializeMyPlugin();
     });
@@ -194,21 +195,26 @@ $(document).ready(function () {
         }
 
         $('[data-toggle="tooltip"]').tooltip();
+        if ($('.date-time-picker').length > 0) {
+            $(".date-time-picker").flatpickr({
+                enableTime: true,
+                dateFormat: "Y-m-d h:i K",
+            });
+        }
 
-        $(".date-time-picker").flatpickr({
-            enableTime: true,
-            dateFormat: "Y-m-d h:i K",
-        });
+        if ($('.date-picker').length > 0) {
+            $(".date-picker").flatpickr({
+                enableTime: true,
+                dateFormat: "Y-m-d",
+            });
+        }
 
-        $(".date-picker").flatpickr({
-            enableTime: true,
-            dateFormat: "Y-m-d",
-        });
-
-        $(".year-picker").flatpickr({
-            mode: "range",
-            dateFormat: "Y",
-        });
+        if ($('.year-picker').length > 0) {
+            $(".year-picker").flatpickr({
+                mode: "range",
+                dateFormat: "Y",
+            });
+        }
     }
 });
 

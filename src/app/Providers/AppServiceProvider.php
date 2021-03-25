@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Services\ConfigService;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -35,6 +36,11 @@ class AppServiceProvider extends ServiceProvider
             Config::set('mail.username', $config['config_email_username']);
             Config::set('mail.password', $config['config_email_password']);
         } catch (\Exception $e) {
+        }
+
+        // tich hop google recaptcha
+        if(config('services.recaptcha.enable')) {
+            Validator::extend('recaptcha', 'App\Validators\Recaptcha@validate');
         }
     }
 }

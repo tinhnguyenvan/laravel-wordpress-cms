@@ -19,11 +19,7 @@
     <link href="{{ asset("site/css/bootstrap.5.0.min.css") }}" rel="stylesheet">
     <link href="{{ asset("site/css/dashboard.css") }}" rel="stylesheet">
     <link href="{{ asset("site/css/member_v2.css") }}" rel="stylesheet"/>
-    {!! !empty($config['code_header']) ? $config['code_header'] : ''  !!}
-    <style>
-        {!! !empty($config[$theme.'_css']) ? $config[$theme.'_css'] : ''  !!}
-    </style>
-
+    @include('site.element.head')
 </head>
 <body>
 

@@ -41,7 +41,7 @@ class UserService extends BaseService
             $validator = Validator::make(
                 $params,
                 [
-                    'email' => 'required|min:5|max:255|unique:' . $this->model->getTable(),
+                    'email' => 'required|min:5|max:255|unique:'.$this->model->getTable(),
                     'password' => 'required|min:1|max:255',
                 ]
             );
@@ -49,30 +49,6 @@ class UserService extends BaseService
             if ($validator->fails()) {
                 static::convertErrorValidator($validator->errors()->toArray(), $error);
             }
-        }
-
-        return $error;
-    }
-
-    /**
-     * @param $params
-     *
-     * @return array
-     */
-    public function validatorAuth($params)
-    {
-        $error = [];
-
-        $validator = Validator::make(
-            $params,
-            [
-                'email' => 'required|min:5|max:255',
-                'password' => 'required|min:1|max:255',
-            ]
-        );
-
-        if ($validator->fails()) {
-            static::convertErrorValidator($validator->errors()->toArray(), $error);
         }
 
         return $error;
@@ -176,7 +152,7 @@ class UserService extends BaseService
     public function initData($template = 'default')
     {
         // 1/ init menu website frontend
-        $dataNav = @json_decode(file_get_contents(public_path('layout/' . $template . '/manifest.json')), true);
+        $dataNav = @json_decode(file_get_contents(public_path('layout/'.$template.'/manifest.json')), true);
         if (!empty($dataNav['nav'])) {
             foreach ($dataNav['nav'] as $idNav => $value) {
                 $myNavPosition = NavPosition::query()->where('theme', $template)->where('slug', $idNav)->first();
@@ -219,6 +195,6 @@ class UserService extends BaseService
      */
     public function linkActive($user)
     {
-        return base_url('users/activemail?email=' . $user->email . '&code=' . sha1(base64_encode($user->id)));
+        return base_url('users/activemail?email='.$user->email.'&code='.sha1(base64_encode($user->id)));
     }
 }

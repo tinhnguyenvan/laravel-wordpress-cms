@@ -73,6 +73,17 @@ final class MemberController extends SiteController
             return redirect(base_url('member'));
         }
 
+        $rules = [
+            'email' => 'required|min:5|max:255',
+            'password' => 'required|min:1|max:255',
+        ];
+
+        if (config('services.recaptcha.enable')) {
+            $rules['g-recaptcha-response'] = 'required|min:5|recaptcha';
+        }
+
+        $request->validate($rules);
+
         $params = $request->only('email', 'password', 'member_type');
         $credentials = $params;
         $credentials['status'] = Member::STATUS_ACTIVE;
@@ -121,13 +132,18 @@ final class MemberController extends SiteController
             return redirect(base_url('member'));
         }
 
-        $request->validate(
-            [
-                'email' => 'required|min:5|max:255',
-                'password' => 'required|confirmed|min:1|max:255',
-                'password_confirmation' => 'required|same:password|min:6',
-            ]
-        );
+        $rules = [
+            'email' => 'required|min:5|max:255',
+            'password' => 'required|confirmed|min:1|max:255',
+            'password_confirmation' => 'required|same:password|min:6',
+        ];
+
+        if (config('services.recaptcha.enable')) {
+            $rules['g-recaptcha-response'] = 'required|min:5|recaptcha';
+        }
+
+        $request->validate($rules);
+
 
         $params = $request->only(['email', 'password', 'password_confirmation']);
         $member = Member::query()->where('email', $params['email'])->first();

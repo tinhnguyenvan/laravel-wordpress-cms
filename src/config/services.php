@@ -41,4 +41,10 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+
+    'recaptcha' => [
+        'enable' => env('GOOGLE_RECAPTCHA_ENABLED'),
+        'site_key' => env('GOOGLE_RECAPTCHA_KEY'),
+        'secret' => env('GOOGLE_RECAPTCHA_SECRET'),
+    ],
 ];

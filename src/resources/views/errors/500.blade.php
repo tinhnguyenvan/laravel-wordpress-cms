@@ -15,7 +15,7 @@
     <link rel="icon" href="{{ !empty($config['favicon']) ? $config['favicon'] : base_url('favicon.ico') }}"
           type="image/x-icon">
 </head>
-<title>404 - Trang bạn đang tìm không tồn tại</title>
+<title>500 - Trang bạn đang tìm không tồn tại</title>
 <style>
     body {
         background: url("{{ asset("common/img/sativa.png") }}");

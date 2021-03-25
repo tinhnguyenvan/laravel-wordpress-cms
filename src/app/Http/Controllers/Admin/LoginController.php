@@ -15,6 +15,7 @@ use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * @property UserService $userService
@@ -36,7 +37,7 @@ class LoginController extends Controller
     public function index()
     {
         if (Auth::guard('admin')->check()) {
-            return redirect(admin_url('dashboard'));
+            return redirect(admin_url());
         }
         $data = [
             'error' => session('error'),
@@ -47,7 +48,19 @@ class LoginController extends Controller
 
     public function auth(Request $request)
     {
+        $rules = [
+            'email' => 'required|min:5|max:255',
+            'password' => 'required|min:1|max:255',
+        ];
+
+        if (config('services.recaptcha.enable')) {
+            $rules['g-recaptcha-response'] = 'required|min:5|recaptcha';
+        }
+
+        $request->validate($rules);
+
         $credentials = $request->only('email', 'password');
+
         $condition = [
             'email' => $credentials['email'],
             'status' => User::STATUS_ACTIVE,
@@ -65,7 +78,7 @@ class LoginController extends Controller
                     $plugins = '';
                 }
                 $this->userService->initData($theme);
-                return redirect(admin_url('dashboard'))
+                return redirect(admin_url())
                     ->withCookie('plugin', $plugins, config('constant.COOKIE_EXPIRED'), '/')
                     ->withCookie('theme', $theme, config('constant.COOKIE_EXPIRED'), '/');
             } else {
@@ -74,6 +87,7 @@ class LoginController extends Controller
         } else {
             $request->session()->flash('error', trans('user.login.not_exist'));
         }
+
 
         return back()->withInput();
     }

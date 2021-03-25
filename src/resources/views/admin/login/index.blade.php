@@ -7,6 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Login Admin</title>
     <link href="{{ asset("console/vendor/vendor.css") }}" rel="stylesheet">
+
+    @if(config('services.recaptcha.enable'))
+        <script
+            src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}"></script>
+        <script>
+            function onSubmit(token) {
+                document.getElementsByClassName("recaptcha")[0].submit();
+            }
+        </script>
+    @endif
 </head>
 <body class="app flex-row align-items-center">
 <div class="container">
@@ -14,7 +24,7 @@
         <div class="col-md-8">
             <div class="card-group">
                 <div class="card p-4">
-                    <form method="post" action="{{ admin_url('auth') }}">
+                    <form method="post" class="recaptcha" action="{{ admin_url('auth') }}">
                         @csrf
                         <div class="card-body">
                             <h1>Login</h1>
@@ -23,27 +33,57 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-user"></i></span>
                                 </div>
+                                <label for="email"></label>
                                 <input type="email" required value="{{ old('email') }}" autocomplete="off"
                                        class="form-control"
-                                       placeholder="Username" name="email">
+                                       placeholder="Username" id="email" name="email">
                             </div>
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="icon-lock"></i></span>
                                 </div>
+                                <label for="password"></label>
                                 <input type="password" required autocomplete="off" class="form-control"
                                        placeholder="Password"
+                                       id="password"
                                        name="password">
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    <button class="btn btn-primary px-4">
-                                        <i class="fa fa-sign-in"></i>
-                                        Login
-                                    </button>
+                                    @if(config('services.recaptcha.enable'))
+                                        <button class="g-recaptcha btn btn-primary px-4"
+                                                data-sitekey="{{ config('services.recaptcha.site_key') }}"
+                                                data-callback='onSubmit'
+                                                data-action='submit'>
+                                            <i class="fa fa-sign-in"></i>
+                                            Login
+                                        </button>
+                                    @else
+                                        <button class="btn btn-primary px-4">
+                                            <i class="fa fa-sign-in"></i>
+                                            Login
+                                        </button>
+                                    @endif
+
                                     <a target="_blank" href="{{ base_url() }}" class="btn btn-success px-4">
                                         <i class="fa fa-globe"></i>
                                     </a>
+                                </div>
+
+                                <div class="text-danger">
+                                    <ul>
+                                        @if ($errors->count() > 0)
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        @else
+                                            @if(!empty($error))
+                                                @foreach($error as $er)
+                                                    <li>{{ e($er) }}</li>
+                                                @endforeach
+                                            @endif
+                                        @endif
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -58,17 +98,6 @@
         </div>
     </div>
 </div>
-<script src="{{ asset("console/js/jquery.min.js") }}"></script>
-<script src="{{ asset("console/js/popper.min.js") }}"></script>
-<script src="{{ asset("console/js/bootstrap.min.js") }}"></script>
-<script src="{{ asset("console/js/pace.min.js") }}"></script>
-<script src="{{ asset("console/js/perfect-scrollbar.min.js") }}"></script>
-<script src="{{ asset("console/js/coreui.min.js") }}"></script>
-<script src="{{ asset("console/js/script.js") }}" type="text/javascript"></script>
 
-<div id="alert-message-footer">
-    @include('admin.element.error')
-    @include('admin.element.success')
-</div>
 </body>
 </html>

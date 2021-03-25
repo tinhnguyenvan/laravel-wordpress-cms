@@ -6,7 +6,7 @@
             @include("site.member.login_social")
 
             @if(($config['login_basic_app_status'] ?? '') == 'on')
-                <form method="post" action="{{ base_url('member/register') }}">
+                <form method="post" class="recaptcha" action="{{ base_url('member/register') }}">
                     @csrf
                     <div class="loginbox-textbox">
                         <label class="control-label">Email</label>
@@ -23,8 +23,23 @@
                         <input type="password" required name="password_confirmation" class="form-control">
                     </div>
 
+
+
                     <div class="loginbox-submit">
-                        <input type="submit" class="btn btn-primary btn-block" value="Register">
+                        @if(config('services.recaptcha.enable'))
+                            <button class="g-recaptcha btn btn-primary btn-block"
+                                    data-sitekey="{{ config('services.recaptcha.site_key') }}"
+                                    data-callback='onSubmit'
+                                    data-action='submit'>
+                                <i class="fa fa-pencil"></i>
+                                Register
+                            </button>
+                        @else
+                            <button class="btn btn-primary btn-block">
+                                <i class="fa fa-pencil"></i>
+                                Register
+                            </button>
+                        @endif
                     </div>
 
                     <div class="loginbox-textbox">

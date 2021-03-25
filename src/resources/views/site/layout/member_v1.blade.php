@@ -21,10 +21,8 @@
     <script src="{{ asset("site/js/jquery.min.v1.10.2.js") }}" type="text/javascript"></script>
     <script src="{{ asset("site/js/bootstrap.min.js") }}" type="text/javascript"></script>
 
-    {!! !empty($config['code_header']) ? $config['code_header'] : ''  !!}
-    <style>
-        {!! !empty($config[$theme.'_css']) ? $config[$theme.'_css'] : ''  !!}
-    </style>
+    @include('site.element.head')
+
 </head>
 
 <body>
