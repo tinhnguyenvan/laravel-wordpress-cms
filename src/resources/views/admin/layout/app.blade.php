@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-@include('admin.layouts.head')
+@include('admin.layout.head')
 
 
 <body
     class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show pace-done @if($sidebar_minimizer == 0 ) brand-minimized sidebar-minimized @endif">
-@include('admin.layouts.header')
+@include('admin.layout.header')
 <div class="app-body ">
-    @include('admin.layouts.sidebar', ['sidebar_minimizer' => $sidebar_minimizer])
+    @include('admin.layout.sidebar', ['sidebar_minimizer' => $sidebar_minimizer])
     <main class="main" id="pjax-container">
         <!-- Breadcrumb-->
         <ol class="breadcrumb no-print">
@@ -40,7 +40,7 @@
         </div>
     </main>
 </div>
-@include('admin.layouts.footer')
+@include('admin.layout.footer')
 <div id="alert-message-footer">
     @include('admin.element.error')
     @include('admin.element.success')

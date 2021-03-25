@@ -172,7 +172,7 @@ return [
         ],
     ],
     'DS' => '/',
-    'LAYOUT_ADMIN' => 'admin.layouts.app',
+    'LAYOUT_ADMIN' => 'admin.layout.app',
     'PAGE_NUMBER' => 20,
     'MAX_FILE_UPLOAD' => 2,
     'MAX_FILE_SIZE_UPLOAD' => 1000, // 100px

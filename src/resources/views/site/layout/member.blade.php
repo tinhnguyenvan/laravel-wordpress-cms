@@ -118,7 +118,6 @@
 
 
 <script src="{{ asset("site/js/bootstrap.bundle.5.0.min.js") }}"></script>
-
 <script src="{{ asset("site/js/feather.min.js")}}"></script>
 
 <script src="{{ asset("site/js/dashboard.js") }}"></script>
