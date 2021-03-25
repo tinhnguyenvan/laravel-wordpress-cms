@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
 
         // tich hop google recaptcha
         if(config('services.recaptcha.enable')) {
-            Validator::extend('recaptcha', 'App\Validators\Recaptcha@validate');
+            Validator::extend('recaptcha', 'App\Validators\ReCaptcha@validate');
         }
     }
 }
