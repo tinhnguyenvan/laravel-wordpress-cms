@@ -17,6 +17,7 @@ use App\Services\ConfigService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class ConfigController.
@@ -28,13 +29,16 @@ class ThemeController extends AdminController
     public function __construct(ConfigService $configService)
     {
         parent::__construct();
-        $this->middleware(['permission:' . RolePermission::SETTING_SHOW]);
+        $this->middleware(['permission:'.RolePermission::SETTING_SHOW]);
         $this->configService = $configService;
     }
 
     public function index()
     {
-        $directories = scandir(public_path('layout'));
+        $directories = [];
+        if (Storage::exists(public_path('layout'))) {
+            $directories = scandir(public_path('layout'));
+        }
 
         $data = [
             'title' => trans('common.title_themes'),
