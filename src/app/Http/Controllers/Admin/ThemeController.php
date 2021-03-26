@@ -54,6 +54,7 @@ class ThemeController extends AdminController
         $config = $this->configService->getConfig();
 
         $data = [
+            'theme_active' => ConfigService::getValue('theme_active'),
             'config' => $config,
         ];
 
