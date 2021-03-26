@@ -36,7 +36,7 @@ class ThemeController extends AdminController
     public function index()
     {
         $directories = [];
-        if (Storage::exists(public_path('layout'))) {
+        if (is_dir(public_path('layout'))) {
             $directories = scandir(public_path('layout'));
         }
 
