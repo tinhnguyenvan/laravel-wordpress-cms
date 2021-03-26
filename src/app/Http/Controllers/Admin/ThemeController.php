@@ -53,9 +53,15 @@ class ThemeController extends AdminController
     {
         $config = $this->configService->getConfig();
 
+        if (empty($config['theme_active'])) {
+            $themeActiveCss = 'default_css';
+        } else {
+            $themeActiveCss = $config['theme_active'].'_css';
+        }
+
         $data = [
-            'theme_active' => ConfigService::getValue('theme_active'),
             'config' => $config,
+            'theme_active_css' => $themeActiveCss,
         ];
 
         return view('admin/theme.css', $this->render($data));

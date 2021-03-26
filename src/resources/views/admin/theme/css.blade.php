@@ -28,7 +28,7 @@
                             <div class="tab-content">
                                 <!-- tab 5 -->
                                 <div class="tab-pane active" id="tab-1" role="tabpanel">
-                                    @include('admin.element.form.textarea', ['name' => $config['theme_active'].'_css', 'rows' => 25, 'value' => $config[$config['theme_active'].'_css'] ?? ''])
+                                    @include('admin.element.form.textarea', ['name' => $theme_active_css, 'rows' => 25, 'value' => $config[$theme_active_css] ?? ''])
                                 </div>
                             </div>
                         </div>
