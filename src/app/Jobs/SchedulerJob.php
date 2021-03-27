@@ -3,7 +3,6 @@
 namespace App\Jobs;
 
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Log;
 
 class SchedulerJob extends Job
 {
@@ -31,7 +30,6 @@ class SchedulerJob extends Job
         $command = $this->data['command'];
         $text = '- php artisan ' . $command;
         echo $text . PHP_EOL;
-        Log::info($text);
 
         Artisan::call($command);
     }
