@@ -60,4 +60,9 @@ class Region extends Model
     {
         return $this->hasMany('App\Models\Region', 'parent_id');
     }
+
+    public static function getRegion($parentId = 0, $limit = 10)
+    {
+        return Region::query()->where('parent_id', $parentId)->limit($limit)->get(['id', 'code', 'name']);
+    }
 }
