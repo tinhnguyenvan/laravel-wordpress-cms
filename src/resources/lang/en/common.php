@@ -38,6 +38,7 @@ return [
     'edit.success' => 'Edit success',
     'edit.error' => 'Edit error',
     'delete.success' => 'Delete success',
+    'delete.error' => 'Delete error',
     'delete.exist.child' => 'Deletion failed, there exists a submenu.',
 
     'data_empty' => 'Data empty',

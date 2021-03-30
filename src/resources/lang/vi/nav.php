@@ -78,6 +78,7 @@ return [
     'menu_left.tools' => 'Tools',
     'menu_left.nav_positions' => 'Nav positions',
     'menu_left.cache_systems' => 'Cache System',
+    'menu_left.languages' => 'Language',
 
     'setting' => 'Setting',
     'user_profile' => 'Hồ sơ của bạn',

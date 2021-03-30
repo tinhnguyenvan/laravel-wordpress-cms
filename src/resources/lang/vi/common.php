@@ -38,6 +38,7 @@ return [
     'edit.success' => 'Cập nhật thành công',
     'edit.error' => 'Cập nhật thất bại',
     'delete.success' => 'Xóa thành công',
+    'delete.error' => 'Xóa thất bại',
     'delete.exist.child' => 'Xóa không thành công, có tồn tại menu con.',
 
     'data_empty' => 'Không tìm thấy dữ liệu',

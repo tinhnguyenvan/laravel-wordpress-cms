@@ -7,6 +7,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Language;
 use App\Services\ConfigService;
 
 /**
@@ -32,11 +33,12 @@ class AdminController extends Controller
             'title' => ucfirst(str_replace('_', ' ', request()->segment(2))),
             'config' => $config,
             'theme' => $this->theme,
-            'sidebar_minimizer' => request()->cookie('sidebar_minimizer')
+            'sidebar_minimizer' => request()->cookie('sidebar_minimizer'),
+            'language_content' => Language::loadLanguage(),
         ];
     }
 
-    public function render($data)
+    public function render($data): array
     {
         $this->data['success'] = session('success');
         $this->data['error'] = session('error');

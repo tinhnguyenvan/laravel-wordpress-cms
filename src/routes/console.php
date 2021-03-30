@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\CacheSystemController;
 use App\Http\Controllers\Admin\BookmarkController;
 use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Admin\LanguageController;
 
 Route::middleware(['auth.console'])->group(
     function () {
@@ -220,5 +221,15 @@ Route::middleware(['auth.console'])->group(
         // cache-systems
         Route::get('cache-systems', [CacheSystemController::class, 'index']);
         Route::delete('cache-systems/{slug}', [CacheSystemController::class, 'delete']);
+
+        // languages
+        Route::get('languages', [LanguageController::class, 'index']);
+        Route::get('languages/create', [LanguageController::class, 'create']);
+        Route::post('languages', [LanguageController::class, 'store']);
+        Route::get('languages/{id}', [LanguageController::class, 'show']);
+        Route::get('languages/{id}/edit', [LanguageController::class, 'edit']);
+        Route::put('languages/{id}', [LanguageController::class, 'update']);
+        Route::patch('languages/{id}', [LanguageController::class, 'update']);
+        Route::delete('languages/{id}', [LanguageController::class, 'destroy']);
     }
 );

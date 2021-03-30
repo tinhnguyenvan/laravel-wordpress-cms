@@ -157,6 +157,10 @@ return [
                     'title' => 'nav.menu_left.plugins',
                     'url' => 'plugins',
                     'icon' => 'fa fa-unlock',
+                ],         [
+                    'title' => 'nav.menu_left.languages',
+                    'url' => 'languages',
+                    'icon' => 'fa fa-language',
                 ],
                 [
                     'title' => 'nav.menu_left.regions',
