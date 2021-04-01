@@ -56,7 +56,7 @@
                                 {{ trans('common.save') }}
                             </button>
 
-                            <button class="btn btn-primary" type="submit" name="submit" value="1">
+                            <button class="btn btn-default" type="submit" name="submit" value="1">
                                 <i class="fa fa-save"></i>
                                 {{ trans('common.save_close') }}
                             </button>
