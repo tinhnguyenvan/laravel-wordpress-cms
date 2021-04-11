@@ -21,6 +21,7 @@ return [
 
     'alert.config_email' => 'You have not configured to send mail. Click <a href=":url"> here </a> updating the info.',
 
+    'button.export_excel' => 'Export excel',
     'button.import_excel' => 'Import excel',
     'button.init_setting' => 'Install setting',
     'button.add' => 'Add',
