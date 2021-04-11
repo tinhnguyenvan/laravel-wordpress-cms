@@ -21,6 +21,7 @@ return [
 
     'alert.config_email' => 'Bạn chưa cấu hình gửi mail. Click <a href=":url">vào đây</a> cập nhật thông tin.',
 
+    'button.export_excel' => 'Export excel',
     'button.import_excel' => 'Import excel',
     'button.init_setting' => 'Install setting',
     'button.add' => 'Thêm mới',
