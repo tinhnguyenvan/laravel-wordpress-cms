@@ -31,7 +31,8 @@
         "tinhphp/woocommerce": "*",
         "tinhphp/tool": "*",
         "willvincent/laravel-rateable": "^2.2",
-        "ext-curl": "*"
+        "ext-curl": "*",
+        "irazasyed/telegram-bot-sdk": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

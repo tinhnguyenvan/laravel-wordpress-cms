@@ -2,7 +2,13 @@
 
 namespace App\Exceptions;
 
+use App\Services\TelegramService;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
+use Telegram\Bot\Laravel\Facades\Telegram;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -33,8 +39,45 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
-            //
-        });
+        $this->reportable(
+            function (Throwable $e) {
+                //
+            }
+        );
+    }
+
+    /**
+     * @param  HttpExceptionInterface  $e
+     * @return Response
+     */
+    public function renderHttpException(HttpExceptionInterface $e): Response
+    {
+        if (config('telegram.enable') && $e->getStatusCode() == 500) {
+            $text[] = '- From: '.config('app.name');
+            $text[] = '- Env: '.App::environment();
+            $text[] = '- Time: '.date('d/m/Y H:i:s');
+            $text[] = '- File: '.$e->getFile();
+            $text[] = '- Line: '.$e->getLine();
+            $text[] = '- Message: '.$e->getMessage();
+
+            TelegramService::send($text);
+        }
+        return parent::renderHttpException($e);
+    }
+
+    public function renderExceptionContent(Throwable $e): string
+    {
+        if (config('telegram.enable')) {
+            $text[] = '- From: '.config('app.name');
+            $text[] = '- Env: '.App::environment();
+            $text[] = '- Time: '.date('d/m/Y H:i:s');
+            $text[] = '- File: '.$e->getFile();
+            $text[] = '- Line: '.$e->getLine();
+            $text[] = '- Message: '.$e->getMessage();
+
+            TelegramService::send($text);
+        }
+
+        return parent::renderExceptionContent($e);
     }
 }
