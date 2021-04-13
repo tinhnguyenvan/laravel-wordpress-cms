@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\TestCommand;
 use App\Console\Commands\ThemeInstallCommand;
 use App\Console\Commands\ThemeRemoveCommand;
 use App\Jobs\SchedulerJob;
@@ -16,6 +17,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+        TestCommand::class,
         ThemeInstallCommand::class,
         ThemeRemoveCommand::class,
     ];
@@ -29,7 +31,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         set_time_limit(0);
-        
+
         // $schedule->job(new SchedulerJob(['command' => 'demo']))->everyMinute();
     }
 
