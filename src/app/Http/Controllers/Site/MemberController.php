@@ -185,6 +185,8 @@ final class MemberController extends SiteController
                     ]
                 );
 
+                Member::query()->where('id', $member->id)->update(['id_hash' => md5($member->id)]);
+
                 // send mail active
                 $this->memberService->activeMember($member);
 
@@ -419,6 +421,8 @@ final class MemberController extends SiteController
                             'image_url' => $getInfo->getAvatar(),
                         ]
                     );
+
+                    Member::query()->where('id', $member->id)->update(['id_hash' => md5($member->id)]);
                 }
 
                 $memberSocialAccountAccount->member()->associate($member);
@@ -433,7 +437,7 @@ final class MemberController extends SiteController
         } catch (Exception $e) {
         }
 
-        return redirect()->to('/member');
+        return redirect()->to('member');
     }
 
     public function logout()
