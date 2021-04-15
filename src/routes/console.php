@@ -84,8 +84,8 @@ Route::middleware(['auth.console'])->group(
 
         // config
         Route::get('configs', [ConfigController::class, 'index']);
-        Route::get('configs/test', [ConfigController::class, 'test']);
         Route::get('configs/create', [ConfigController::class, 'create']);
+        Route::post('configs/test', [ConfigController::class, 'test']);
         Route::post('configs/save', [ConfigController::class, 'save']);
         Route::post('configs', [ConfigController::class, 'store']);
         Route::get('configs/{id}', [ConfigController::class, 'show']);
