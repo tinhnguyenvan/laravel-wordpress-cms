@@ -69,6 +69,7 @@ class Member extends Authenticatable
         'gender',
         'tags',
         'bio',
+        'id_hash',
         'deleted_at',
         'created_at',
         'updated_at'

@@ -40,6 +40,7 @@ class CreateTableMember extends Migration
             $table->smallInteger('gender')->nullable()->default(0);
             $table->string('tags')->nullable()->default('');
             $table->text('bio')->nullable();
+            $table->string('id_hash')->nullable();
 
             $table->index('source', 'source');
             $table->index('city_id', 'city_id');
