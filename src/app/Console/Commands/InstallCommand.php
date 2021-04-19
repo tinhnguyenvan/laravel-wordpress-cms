@@ -38,9 +38,6 @@ class InstallCommand extends Command
         try {
             // clone plugin woocommerce default
             $this->pluginDefault();
-
-            // clone theme default
-            $this->themeDefault();
         } catch (\Exception $e) {
             $this->error($e->getMessage());
         }
@@ -49,7 +46,6 @@ class InstallCommand extends Command
         Artisan::call('migrate:fresh');
         Artisan::call('db:seed --class=UsersTableSeeder');
         Artisan::call('storage:link');
-        Artisan::call('theme:install --name=default');
     }
 
     private function pluginDefault()
@@ -69,16 +65,5 @@ class InstallCommand extends Command
             }
         }
 
-    }
-
-    private function themeDefault()
-    {
-        $pathThemeDefault = base_path() . '/themes/default';
-        if (!Storage::exists($pathThemeDefault)) {
-            $fileUrl = 'https://github.com/tinhnguyenvan/laravel-wordpress-cms-theme-default.git';
-            shell_exec('git clone ' . $fileUrl . ' ' . $pathThemeDefault);
-        } else {
-            $this->error('- Folder theme default exist: ' . $pathThemeDefault);
-        }
     }
 }

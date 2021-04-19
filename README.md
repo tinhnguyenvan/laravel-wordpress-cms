@@ -60,9 +60,9 @@
 
 # Theme
 
-### 1. Install theme
+### 1. Create new theme
 
-- **Step 1**: Download theme default: [https://github.com/tinhnguyenvan/laravel-wordpress-cms-theme-default](https://github.com/tinhnguyenvan/laravel-wordpress-cms-theme-default)
+- **Step 1**: Download theme default example: [https://github.com/tinhnguyenvan/laravel-wordpress-cms-theme-default](https://github.com/tinhnguyenvan/laravel-wordpress-cms-theme-default)
 
 ```
 	default/
@@ -91,8 +91,8 @@
 
 		php artisan theme:install {--name=}
 
-- Example: 
-
+- Example:
+  
 		php artisan theme:install --name=default
 
 ### 2. Remove theme
