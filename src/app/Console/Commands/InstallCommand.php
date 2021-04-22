@@ -37,12 +37,8 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        try {
-            // clone plugin woocommerce default
-            $this->pluginDefault();
-        } catch (\Exception $e) {
-            $this->error($e->getMessage());
-        }
+        $this->pluginDefault();
+
 
         // migration
         Artisan::call('migrate');
@@ -58,12 +54,17 @@ class InstallCommand extends Command
         ];
 
         foreach ($listPackage as $name => $urlGit) {
-            $pathPackage = base_path().'/packages/tinhphp/'.$name;
-            if (!Storage::exists($pathPackage)) {
-                shell_exec('git clone '.$urlGit.' '.$pathPackage);
-                Artisan::call('package_'.$name.':install');
-            } else {
-                $this->error('- Folder plugin woocommerce exist: '.$pathPackage);
+            try {
+                // clone plugin woocommerce default
+                $pathPackage = base_path().'/packages/tinhphp/'.$name;
+                if (!Storage::exists($pathPackage)) {
+                    shell_exec('git clone '.$urlGit.' '.$pathPackage);
+                    Artisan::call('package_'.$name.':install');
+                } else {
+                    $this->error('- Folder plugin woocommerce exist: '.$pathPackage);
+                }
+            } catch (\Exception $e) {
+                $this->error($e->getMessage());
             }
         }
     }
