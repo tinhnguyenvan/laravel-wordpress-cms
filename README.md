@@ -32,21 +32,15 @@
 	COMPOSER_MEMORY_LIMIT=-1 COMPOSER=composer-local.json composer update
 
 
-- **Step 2**: migration database
+- **Step 2**: Install from command
 
-		php artisan migrate
+		php artisan install
 
-  		php artisan db:seed --class=UsersTableSeeder
-
-- **Step 3**: link media
-
-		php artisan storage:link
-
-- **Step 4**: add schedule crontab
+- **Step 3**: add schedule crontab
 
     * * * * * cd /var/www/html && php artisan schedule:run >> /dev/null 2>&1
 	
-		- todo update path "/var/www/html"
+	- todo update path "/var/www/html"
 
 # Login Admin
 

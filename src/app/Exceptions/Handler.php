@@ -5,10 +5,8 @@ namespace App\Exceptions;
 use App\Services\TelegramService;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
-use Telegram\Bot\Laravel\Facades\Telegram;
 use Throwable;
 
 class Handler extends ExceptionHandler
