@@ -28,6 +28,8 @@
         "simplesoftwareio/simple-qrcode": "~2",
         "spatie/laravel-permission": "^3.7",
         "spatie/laravel-pjax": "^2.1",
+        "tinhphp/tool": "*",
+        "tinhphp/woocommerce": "*",
         "willvincent/laravel-rateable": "^2.2",
         "ext-curl": "*",
         "irazasyed/telegram-bot-sdk": "^2.0"

@@ -32,7 +32,9 @@ class InstallCommand extends Command
         parent::__construct();
     }
 
-
+    /**
+     * cmd: php artisan install
+     */
     public function handle()
     {
         try {
@@ -43,7 +45,7 @@ class InstallCommand extends Command
         }
 
         // migration
-        Artisan::call('migrate:fresh');
+        Artisan::call('migrate');
         Artisan::call('db:seed --class=UsersTableSeeder');
         Artisan::call('storage:link');
     }
@@ -55,15 +57,14 @@ class InstallCommand extends Command
             'tool' => 'https://github.com/tinhnguyenvan/laravel-wordpress-cms-package-tool.git',
         ];
 
-        foreach ($listPackage as $pathName => $urlGit) {
-            $pathPackage = base_path() . '/packages/tinhphp/'.$pathName;
+        foreach ($listPackage as $name => $urlGit) {
+            $pathPackage = base_path().'/packages/tinhphp/'.$name;
             if (!Storage::exists($pathPackage)) {
-                shell_exec('git clone ' . $urlGit . ' ' . $pathPackage);
-                Artisan::call('package_woocommerce:install');
+                shell_exec('git clone '.$urlGit.' '.$pathPackage);
+                Artisan::call('package_'.$name.':install');
             } else {
-                $this->error('- Folder plugin woocommerce exist: ' . $pathPackage);
+                $this->error('- Folder plugin woocommerce exist: '.$pathPackage);
             }
         }
-
     }
 }
