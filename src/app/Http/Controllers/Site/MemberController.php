@@ -98,7 +98,11 @@ final class MemberController extends SiteController
             if (!empty($myMember) && !empty($memberSocialAccount)) {
                 /** @var Member $member */
                 auth(RolePermission::GUARD_NAME_WEB)->login($member);
-                return redirect(base_url('member'));
+                if ($request->has('redirect')) {
+                    return redirect($request->get('redirect'));
+                } else {
+                    return redirect(base_url('member'));
+                }
             } else {
                 $request->session()->flash('error', trans('member.error_member_not_exist'));
             }
@@ -282,7 +286,7 @@ final class MemberController extends SiteController
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @return RedirectResponse|Redirector
      */
     public function activeMail(Request $request)
@@ -335,7 +339,7 @@ final class MemberController extends SiteController
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @return RedirectResponse|Redirector
      */
     public function handleForgot(Request $request)
@@ -481,7 +485,7 @@ final class MemberController extends SiteController
         $data = [
             'items' => $items,
             'title' => 'My bookmark',
-            'active_menu' => 'my-bookmarks_' . $type,
+            'active_menu' => 'my-bookmarks_'.$type,
         ];
 
         $view = $this->memberService->renderView($this->theme, 'site.member.my_bookmark');
