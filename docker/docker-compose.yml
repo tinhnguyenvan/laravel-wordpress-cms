@@ -1,0 +1,19 @@
+version: '3.5'
+services:
+  website:
+    container_name: laravan_wordpres_cms
+    image: 'tinhnguyenvan/php:7.2'
+    volumes:
+      - '../etc/apache2/apache2.conf:/etc/apache2/apache2.conf'
+      - '../etc/apache2/sites-enabled/000-default.conf:/etc/apache2/sites-enabled/000-default.conf'
+      - '../etc/apache2/sites-enabled/web.local.conf:/etc/apache2/sites-enabled/web.local.conf'
+      - '../src:/var/www/html'
+      - '../src/storage/app/public:/var/www/html/public/storage'
+    ports:
+      - '80:80'
+    restart: always
+    networks:
+      - backend
+networks:
+  backend:
+    name: my-network-backend
