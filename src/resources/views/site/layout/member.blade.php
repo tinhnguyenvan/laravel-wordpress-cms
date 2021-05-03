@@ -33,7 +33,7 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <ul class="navbar-nav px-3">
+    <ul class="navbar-nav px-3 d-none d-sm-block">
         <li class="nav-item text-nowrap">
             <a class="nav-link" href="{{ base_url('member/logout') }}">
                 <span data-feather="log-out"></span> Sign out
@@ -91,6 +91,12 @@
                             </li>
                         @endforeach
                     @endif
+
+                    <li>
+                        <a class="nav-link" href="{{ base_url('member/logout') }}">
+                            <span data-feather="log-out"></span> Sign out
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
