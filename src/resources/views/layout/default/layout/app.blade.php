@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="{{ !empty($description) ? $description : '' }}">
     <meta name="author" content="TWEB.COM.VN">
-    <meta name="keyword" content="{{ !empty($keyword) ? $keyword : '' }}">
+    <meta name="keywords" content="{{ !empty($keyword) ? $keyword : '' }}">
     <title>{{ !empty($title) ? $title : '' }}</title>
 
     <link rel="shortcut icon" href="{{ !empty($config['favicon']) ? $config['favicon'] : base_url('favicon.ico') }}"
