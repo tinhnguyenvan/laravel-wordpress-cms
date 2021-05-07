@@ -1,10 +1,43 @@
+<title>{{ $title }}</title>
+<base href="./">
+<link rel="canonical" href="{{ request()->fullUrl() }}"/>
+<meta charset="utf-8">
+<meta http-equiv="content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="{{ $description ?? '' }}">
+<meta name="author" content="TWEB.COM.VN">
+<meta name="keywords" content="{{ $keyword ?: $config['seo_keyword'] }}">
+<meta name="news_keywords" content="{{ $keyword ?: $config['seo_keyword'] }}">
+
+<!-- facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:image:alt" content="{{ $og_image }}">
+<meta property="og:image" content="{{ $og_image }}">
+<meta property="og:image:secure_url" content="{{ $og_image }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:url" content="{{ @request()->fullUrl() }}">
+<meta property="og:site_name" content="{{ $config['company_name'] ?? '' }}">
+
+<!-- twitter -->
+<meta property="twitter:card" content="website">
+<meta property="twitter:title" content="{{ $title }}">
+<meta property="twitter:description" content="{{ $description }}">
+<meta property="twitter:image" content="{{ $og_image }}">
+
+<link rel="canonical" href="{{ base_url() }}"/>
+<link rel="shortcut icon" href="{{  $config['favicon'] ?: base_url('favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ $config['favicon'] ?: base_url('favicon.ico') }}" type="image/x-icon">
+
+
 {!! !empty($config['code_header']) ? $config['code_header'] : ''  !!}
 <style>
     {!! !empty($config[$theme.'_css']) ? $config[$theme.'_css'] : ''  !!}
 </style>
 <script type="text/javascript">
     let config = {
-        base_url: "{{ base_url() }}",
+        "base_url": "{{ base_url() }}",
     }
 </script>
 @if(config('services.recaptcha.enable'))

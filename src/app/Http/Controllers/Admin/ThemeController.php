@@ -17,7 +17,6 @@ use App\Services\ConfigService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 /**
  * Class ConfigController.
@@ -70,13 +69,16 @@ class ThemeController extends AdminController
     public function active(Request $request): RedirectResponse
     {
         $theme = $request->get('theme_active');
-        $myConfig = Config::query()->where('name', 'theme_active')->first();
+        $dataCondition = [
+            'name' => 'theme_active'
+        ];
 
-        if (!empty($myConfig)) {
-            $myConfig->editor_id = Auth::id();
-            $myConfig->value = $theme;
-            $myConfig->save();
-        }
+        $dataUpdate = [
+            'editor_id' => Auth::id(),
+            'value' => $theme
+        ];
+
+        Config::query()->updateOrCreate($dataCondition, $dataUpdate);
 
         return back()->withInput()->withCookie('theme', $theme, config('constant.COOKIE_EXPIRED'), '/');
     }
