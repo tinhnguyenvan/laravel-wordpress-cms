@@ -1,21 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="./">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="description" content="{{ !empty($description) ? $description : '' }}">
-    <meta name="author" content="TWEB.COM.VN">
-    <meta name="keywords" content="{{ !empty($keyword) ? $keyword : '' }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>{{ !empty($title) ? $title : '' }}</title>
-
-    <link rel="shortcut icon" href="{{ base_url('favicon.ico') }}"
-          type="image/x-icon">
-    <link rel="icon" href="{{ base_url('favicon.ico') }}"
-          type="image/x-icon">
-
+    @include('site.element.head')
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
@@ -44,7 +30,6 @@
 
     </style>
 
-    @include('site.element.head')
 </head>
 
 <body>
