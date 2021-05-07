@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('admin.layout.head')
-
-
 <body
     class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show pace-done @if($sidebar_minimizer == 0 ) brand-minimized sidebar-minimized @endif">
 @include('admin.layout.header')
