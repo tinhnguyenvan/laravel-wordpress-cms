@@ -9,8 +9,8 @@
 
 <meta name="description" content="{{ $description ?? '' }}">
 <meta name="author" content="TWEB.COM.VN">
-<meta name="keywords" content="{{ $keyword ?? $config['seo_keyword'] }}">
-<meta name="news_keywords" content="{{ $keyword ?? $config['seo_keyword'] }}">
+<meta name="keywords" content="{{ $keyword ?? '' }}">
+<meta name="news_keywords" content="{{ $keyword ?? '' }}">
 
 <!-- facebook -->
 <meta property="og:type" content="website">
