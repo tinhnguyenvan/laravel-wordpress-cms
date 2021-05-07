@@ -32,11 +32,10 @@
 <link rel="shortcut icon" href="{{  $config['favicon'] ?? base_url('favicon.ico') }}" type="image/x-icon">
 <link rel="icon" href="{{ $config['favicon'] ?? base_url('favicon.ico') }}" type="image/x-icon">
 
-
 {!! $config['code_header'] ?? ''  !!}
-<style>
-    {!! $config[$theme.'_css'] ?? ''  !!}
-</style>
+@if(!empty($theme))
+    <style>{!! $config[$theme.'_css'] ?? ''  !!}</style>
+@endif
 <script type="text/javascript">
     let config = {
         "base_url": "{{ base_url() }}",
