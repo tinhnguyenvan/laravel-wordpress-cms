@@ -1,4 +1,4 @@
-<title>{{ $title }}</title>
+<title>{{ $title ?? '' }}</title>
 <base href="./">
 <link rel="canonical" href="{{ request()->fullUrl() }}"/>
 <meta charset="utf-8">
@@ -14,19 +14,19 @@
 
 <!-- facebook -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="{{ $title }}">
-<meta property="og:image:alt" content="{{ $og_image }}">
-<meta property="og:image" content="{{ $og_image }}">
-<meta property="og:image:secure_url" content="{{ $og_image }}">
-<meta property="og:description" content="{{ $description }}">
+<meta property="og:title" content="{{ $title ?? '' }}">
+<meta property="og:image:alt" content="{{ $og_image ?? '' }}">
+<meta property="og:image" content="{{ $og_image ?? '' }}">
+<meta property="og:image:secure_url" content="{{ $og_image ?? '' }}">
+<meta property="og:description" content="{{ $description ?? '' }}">
 <meta property="og:url" content="{{ @request()->fullUrl() }}">
 <meta property="og:site_name" content="{{ $config['company_name'] ?? '' }}">
 
 <!-- twitter -->
 <meta property="twitter:card" content="website">
-<meta property="twitter:title" content="{{ $title }}">
-<meta property="twitter:description" content="{{ $description }}">
-<meta property="twitter:image" content="{{ $og_image }}">
+<meta property="twitter:title" content="{{ $title ?? '' }}">
+<meta property="twitter:description" content="{{ $description ?? '' }}">
+<meta property="twitter:image" content="{{ $og_image ?? ''}}">
 
 <link rel="canonical" href="{{ base_url() }}"/>
 <link rel="shortcut icon" href="{{  $config['favicon'] ?: base_url('favicon.ico') }}" type="image/x-icon">
