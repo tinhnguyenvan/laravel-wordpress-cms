@@ -46,6 +46,7 @@
     <script src="{{ asset("console/js/function.js") }}" type="text/javascript"></script>
     <script src="{{ asset("console/js/clipboard.min.js") }}" type="text/javascript"></script>
     <script src="{{ asset("console/js/jquery.cookie.js") }}" type="text/javascript"></script>
+    <script src="{{ asset("console/js/select2.full.min.js") }}" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="{{ asset("console/js/script.js?v=1") }}" type="text/javascript"></script>
 </head>

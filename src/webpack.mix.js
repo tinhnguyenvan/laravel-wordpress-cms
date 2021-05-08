@@ -21,5 +21,7 @@ mix.styles([
   "public/console/css/style.css",
   "public/console/css/bootstrap-tagsinput.css",
   "public/console/css/toastr.min.css",
-  "public/console/css/easy-autocomplete.min.css"
+  "public/console/css/easy-autocomplete.min.css",
+  "public/console/css/select2.min.css",
+  "public/console/css/select2-bootstrap4.min.css",
 ], 'public/console/vendor/vendor.css');

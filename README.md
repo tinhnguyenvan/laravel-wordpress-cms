@@ -178,4 +178,5 @@
 
 - multi language: [https://docs.astrotomic.info/laravel-translatable/](https://docs.astrotomic.info/laravel-translatable/)
 
-
+- select2: [https://select2.org/getting-started/basic-usage](https://select2.org/getting-started/basic-usage)
+- select2-bootstrap4-theme: [https://github.com/ttskch/select2-bootstrap4-theme](https://github.com/ttskch/select2-bootstrap4-theme)
