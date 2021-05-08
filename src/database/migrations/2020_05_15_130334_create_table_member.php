@@ -38,7 +38,7 @@ class CreateTableMember extends Migration
             $table->smallInteger('birth_year')->nullable()->default(0);
             $table->date('birthday')->nullable();
             $table->smallInteger('gender')->nullable()->default(0);
-            $table->string('tags')->nullable()->default('');
+            $table->text('tags')->nullable()->default('');
             $table->text('bio')->nullable();
             $table->string('id_hash')->nullable();
 
