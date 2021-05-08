@@ -215,10 +215,17 @@ $(document).ready(function () {
                 dateFormat: "Y",
             });
         }
+
         if ($('.js-example-basic-single').length > 0) {
             $(".js-example-basic-single").select2({
                 theme: 'bootstrap4',
             });
+        }
+
+        if ($('.toast').length > 0) {
+            setInterval(function () {
+                $('.toast').hide(500)
+            }, 5000);
         }
     }
 });

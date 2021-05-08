@@ -1,12 +1,3 @@
-/*
- Highcharts JS v8.0.0 (2019-12-10)
-
- Exporting module
-
- (c) 2010-2019 Torstein Honsi
-
- License: www.highcharts.com/license
-*/
 (function(f){"object"===typeof module&&module.exports?(f["default"]=f,module.exports=f):"function"===typeof define&&define.amd?define("highcharts/modules/exporting",["highcharts"],function(k){f(k);f.Highcharts=k;return f}):f("undefined"!==typeof Highcharts?Highcharts:void 0)})(function(f){function k(e,g,f,H){e.hasOwnProperty(g)||(e[g]=H.apply(null,f))}f=f?f._modules:{};k(f,"modules/full-screen.src.js",[f["parts/Globals.js"]],function(e){(e.FullScreen=function(e){this.init(e.parentNode)}).prototype=
 {init:function(e){var g;e.requestFullscreen?g=e.requestFullscreen():e.mozRequestFullScreen?g=e.mozRequestFullScreen():e.webkitRequestFullscreen?g=e.webkitRequestFullscreen():e.msRequestFullscreen&&(g=e.msRequestFullscreen());if(g)g["catch"](function(){alert("Full screen is not supported inside a frame")})}}});k(f,"mixins/navigation.js",[],function(){return{initUpdate:function(e){e.navigation||(e.navigation={updates:[],update:function(e,f){this.updates.forEach(function(g){g.update.call(g.context,e,
 f)})}})},addUpdate:function(e,g){g.navigation||this.initUpdate(g);g.navigation.updates.push({update:e,context:g})}}});k(f,"modules/exporting.src.js",[f["parts/Globals.js"],f["parts/Utilities.js"],f["mixins/navigation.js"]],function(e,g,f){var k=g.discardElement,t=g.extend,I=g.isObject,C=g.objectEach,r=g.pick;g=e.defaultOptions;var w=e.doc,A=e.Chart,x=e.addEvent,J=e.removeEvent,B=e.fireEvent,v=e.createElement,n=e.css,p=e.merge,K=e.isTouchDevice,y=e.win,F=y.navigator.userAgent,D=e.SVGRenderer,G=e.Renderer.prototype.symbols,
@@ -36,4 +27,3 @@ c.nodeName?{}:y.getComputedStyle(c.parentNode,null);if(!h[c.nodeName]){k=r.getEl
 b)}}var c=this.renderer,d=c.inlineToAttributes,e=c.inlineBlacklist,g=c.inlineWhitelist,f=c.unstyledElements,h={},k;c=w.createElement("iframe");n(c,{width:"1px",height:"1px",visibility:"hidden"});w.body.appendChild(c);var r=c.contentWindow.document;r.open();r.write('<svg xmlns="http://www.w3.org/2000/svg"></svg>');r.close();b(this.container.querySelector("svg"));k.parentNode.removeChild(k)};G.menu=function(a,b,c,d){return["M",a,b+2.5,"L",a+c,b+2.5,"M",a,b+d/2+.5,"L",a+c,b+d/2+.5,"M",a,b+d-1.5,"L",
 a+c,b+d-1.5]};G.menuball=function(a,b,c,d){a=[];d=d/3-2;return a=a.concat(this.circle(c-d,b,d,d),this.circle(c-d,b+d+4,d,d),this.circle(c-d,b+2*(d+4),d,d))};A.prototype.renderExporting=function(){var a=this,b=a.options.exporting,c=b.buttons,d=a.isDirtyExporting||!a.exportSVGElements;a.buttonOffset=0;a.isDirtyExporting&&a.destroyExport();d&&!1!==b.enabled&&(a.exportEvents=[],a.exportingGroup=a.exportingGroup||a.renderer.g("exporting-group").attr({zIndex:3}).add(),C(c,function(b){a.addButton(b)}),a.isDirtyExporting=
 !1);x(a,"destroy",a.destroyExport)};x(A,"init",function(){var a=this;a.exporting={update:function(b,c){a.isDirtyExporting=!0;p(!0,a.options.exporting,b);r(c,!0)&&a.redraw()}};f.addUpdate(function(b,c){a.isDirtyExporting=!0;p(!0,a.options.navigation,b);r(c,!0)&&a.redraw()},a)});A.prototype.callbacks.push(function(a){a.renderExporting();x(a,"redraw",a.renderExporting)})});k(f,"masters/modules/exporting.src.js",[],function(){})});
-//# sourceMappingURL=exporting.js.map

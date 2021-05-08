@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Login Admin</title>
-    <link href="{{ asset("console/vendor/vendor.css") }}" rel="stylesheet">
+    <link href="{{ asset("console/vendor/app.css") }}" rel="stylesheet">
 
     @if(config('services.recaptcha.enable'))
         <script

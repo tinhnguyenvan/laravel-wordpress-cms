@@ -7,8 +7,7 @@
 
     <title>{{ $title }} | Module</title>
 
-    <link href="{{ asset("console/vendor/vendor.css") }}" rel="stylesheet">
-    <link href="{{ asset("console/css/custom.css") }}" rel="stylesheet">
+    <link href="{{ asset("console/vendor/app.css") }}" rel="stylesheet">
     <script type="text/javascript">
         let configs = {
             'base_url': '{{ base_url() }}',
@@ -18,35 +17,10 @@
             'ckeditor': '{{ $config['editor_content'] ?? '' }}',
         };
     </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="{{ asset("console/js/popper.min.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("console/js/jquery.min.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("console/js/bootstrap.min.js") }}" type="text/javascript"></script>
+    <script src="{{ asset("console/vendor/app.js") }}" type="text/javascript"></script>
 
-    @if(!empty($config['editor_content']) && $config['editor_content'] == 'summernote' )
-        <link rel="stylesheet" href="{{ asset("common/plugin/summernote-0.8.18/summernote.css") }}">
-        <script src="{{ asset("common/plugin/summernote-0.8.18/summernote.js") }}" type="text/javascript"></script>
-    @else
+    @if(!empty($config['editor_content']) && $config['editor_content'] == 'ckeditor' )
         <script src="{{ asset("common/plugin/ckeditor4/ckeditor.js") }}" type="text/javascript"></script>
     @endif
 
-    <script src="{{ asset("console/js/jquery.easy-autocomplete.min.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("console/js/bootstrap-tagsinput.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("console/js/jquery-simple-tree-table.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("console/js/pace.min.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("console/js/perfect-scrollbar.min.js") }}" type="text/javascript"></script>
-
-    <!-- highcharts -->
-    <script src="{{ asset("common/plugin/highcharts/highcharts.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("common/plugin/highcharts/exporting.js") }}" type="text/javascript"></script>
-
-
-    <script src="{{ asset("console/js/coreui.min.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("console/js/jquery.pjax.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("console/js/function.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("console/js/clipboard.min.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("console/js/jquery.cookie.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("console/js/select2.full.min.js") }}" type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="{{ asset("console/js/script.js?v=1") }}" type="text/javascript"></script>
 </head>

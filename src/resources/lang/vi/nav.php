@@ -79,6 +79,7 @@ return [
     'menu_left.nav_positions' => 'Nav positions',
     'menu_left.cache_systems' => 'Cache System',
     'menu_left.languages' => 'Language',
+    'menu_left.classified' => 'Classified Ads',
 
     'setting' => 'Setting',
     'user_profile' => 'Hồ sơ của bạn',
