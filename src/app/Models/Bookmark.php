@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bookmark extends Model
 {
-    public const MODEL_TYPE_POST = 'App\Models\Post';
-
     /**
      * The database table used by the model.
      *
@@ -51,7 +49,7 @@ class Bookmark extends Model
     public function getTitleAttribute()
     {
         switch ($this->model_type) {
-            case self::MODEL_TYPE_POST:
+            case Post::class:
                 $title = $this->model->title;
                 break;
             default:
@@ -65,7 +63,7 @@ class Bookmark extends Model
     public function getLinkAttribute()
     {
         switch ($this->model_type) {
-            case self::MODEL_TYPE_POST:
+            case Post::class:
                 $link = $this->model->link;
                 break;
             default:
