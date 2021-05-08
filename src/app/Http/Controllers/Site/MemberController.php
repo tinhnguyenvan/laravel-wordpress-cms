@@ -287,7 +287,7 @@ final class MemberController extends SiteController
     }
 
     /**
-     * @param  Request  $request
+     * @param Request $request
      * @return RedirectResponse|Redirector
      */
     public function activeMail(Request $request)
@@ -340,7 +340,7 @@ final class MemberController extends SiteController
     }
 
     /**
-     * @param  Request  $request
+     * @param Request $request
      * @return RedirectResponse|Redirector
      */
     public function handleForgot(Request $request)
@@ -390,16 +390,17 @@ final class MemberController extends SiteController
         return redirect(base_url('member/forgot'));
     }
 
-    public function loginSocial($provider)
+    public function loginSocial(Request $request, $provider)
     {
-        return Socialite::driver($provider)->redirect();
+        return Socialite::driver($provider)->with(['redirect' => $request->get('redirect')])->redirect();
     }
 
-    public function callbackSocial($provider): RedirectResponse
+    public function callbackSocial(Request $request, $provider): RedirectResponse
     {
+        Log::debug($request->toArray());
         try {
             $getInfo = Socialite::driver($provider)->user();
-            Log::debug(Socialite::driver($provider)->redirect()->getTargetUrl());
+            Log::debug(Socialite::driver($provider)->redirect());
             $memberSocialAccountAccount = MemberSocialAccount::query()
                 ->where('provider', $provider)
                 ->where('provider_id', $getInfo->getId())
@@ -487,7 +488,7 @@ final class MemberController extends SiteController
         $data = [
             'items' => $items,
             'title' => 'My bookmark',
-            'active_menu' => 'my-bookmarks_'.$type,
+            'active_menu' => 'my-bookmarks_' . $type,
         ];
 
         $view = $this->memberService->renderView($this->theme, 'site.member.my_bookmark');
