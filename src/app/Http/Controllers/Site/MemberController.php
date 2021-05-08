@@ -399,7 +399,7 @@ final class MemberController extends SiteController
     {
         try {
             $getInfo = Socialite::driver($provider)->user();
-            Log::debug(Socialite::driver($provider)->redirect());
+            Log::debug(Socialite::driver($provider)->redirect()->getTargetUrl());
             $memberSocialAccountAccount = MemberSocialAccount::query()
                 ->where('provider', $provider)
                 ->where('provider_id', $getInfo->getId())
