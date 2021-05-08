@@ -392,15 +392,14 @@ final class MemberController extends SiteController
 
     public function loginSocial(Request $request, $provider)
     {
-        return Socialite::driver($provider)->with(['redirect' => $request->get('redirect')])->redirect();
+        session(['redirect_social' => $request->get('redirect')]);
+        return Socialite::driver($provider)->redirect();
     }
 
     public function callbackSocial(Request $request, $provider): RedirectResponse
     {
-        Log::debug($request->toArray());
         try {
             $getInfo = Socialite::driver($provider)->user();
-            Log::debug(Socialite::driver($provider)->redirect());
             $memberSocialAccountAccount = MemberSocialAccount::query()
                 ->where('provider', $provider)
                 ->where('provider_id', $getInfo->getId())
@@ -442,9 +441,15 @@ final class MemberController extends SiteController
                 auth(RolePermission::GUARD_NAME_WEB)->login($myMember);
             }
         } catch (Exception $e) {
+            return redirect()->to('member/login');
         }
 
-        return redirect()->to('member');
+        $redirect = session('redirect_social');
+        if (!empty($redirect)) {
+            return redirect()->to($redirect);
+        } else {
+            return redirect()->to('member');
+        }
     }
 
     public function logout()
