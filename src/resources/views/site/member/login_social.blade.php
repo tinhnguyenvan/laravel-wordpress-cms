@@ -5,7 +5,7 @@
             @if(($config['login_facebook_app_status'] ?? '') == 'on')
                 <div class="col-lg-12 col-xs-12 margin-bottom-10">
                     <a class="btn btn-primary btn-radius btn-social"
-                       href="{{ base_url('member/login-social/facebook') }}">
+                       href="{{ base_url('member/login-social/facebook'.(!empty($redirect) ? '?redirect='.$redirect : '')) }}">
                         <i class="fa fa-facebook"></i> Facebook
                     </a>
                 </div>
@@ -13,7 +13,8 @@
 
             @if(($config['login_google_app_status'] ?? '') == 'on')
                 <div class="col-lg-12 col-xs-12 margin-bottom-10">
-                    <a class="btn btn-danger btn-radius btn-social" href="{{ base_url('member/login-social/google') }}">
+                    <a class="btn btn-danger btn-radius btn-social"
+                       href="{{ base_url('member/login-social/google'.(!empty($redirect) ? '?redirect='.$redirect : '')) }}">
                         <i class="fa fa-google"></i> Google
                     </a>
                 </div>
@@ -21,7 +22,8 @@
 
             @if(($config['login_zalo_app_status'] ?? '') == 'on')
                 <div class="col-lg-12 col-xs-12 margin-bottom-10">
-                    <a class="btn btn-info btn-radius btn-social" href="{{ base_url('member/login-social/zalo') }}">
+                    <a class="btn btn-info btn-radius btn-social"
+                       href="{{ base_url('member/login-social/zalo'.(!empty($redirect) ? '?redirect='.$redirect : '')) }}">
                         <i class="fa fa-phone-square" aria-hidden="true"></i> zalo
                     </a>
                 </div>

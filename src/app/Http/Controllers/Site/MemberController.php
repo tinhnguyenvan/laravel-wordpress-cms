@@ -18,6 +18,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
 
 /**
@@ -95,10 +96,10 @@ final class MemberController extends SiteController
                 'provider' => MemberSocialAccount::PROVIDER_EMAIL,
             ];
             $memberSocialAccount = MemberSocialAccount::query()->where($conditionSocial)->first();
-            if (!empty($myMember) && !empty($memberSocialAccount)) {
+            if (!empty($member) && !empty($memberSocialAccount)) {
                 /** @var Member $member */
                 auth(RolePermission::GUARD_NAME_WEB)->login($member);
-                if ($request->has('redirect')) {
+                if ($request->get('redirect')) {
                     return redirect($request->get('redirect'));
                 } else {
                     return redirect(base_url('member'));
@@ -394,8 +395,9 @@ final class MemberController extends SiteController
         return Socialite::driver($provider)->redirect();
     }
 
-    public function callbackSocial($provider)
+    public function callbackSocial(Request $request, $provider): RedirectResponse
     {
+        Log::debug($request->toArray());
         try {
             $getInfo = Socialite::driver($provider)->user();
             $memberSocialAccountAccount = MemberSocialAccount::query()
@@ -463,7 +465,7 @@ final class MemberController extends SiteController
         return view($view, $this->render($data));
     }
 
-    public function makeReadNotification(Request $request, $id)
+    public function makeReadNotification(Request $request, $id): RedirectResponse
     {
         $notification = Notification::query()->findOrFail($id);
         $notification->read_at = now();
