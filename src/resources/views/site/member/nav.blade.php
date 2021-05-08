@@ -28,16 +28,6 @@
                             <span class="fa fa-info"></span> Profile
                         </a>
                     </li>
-                    <li class="@if($active_menu == 'update-profile') active @endif">
-                        <a href="{{ base_url('member/update-profile') }}">
-                            <span class="fa fa-cog"></span> Settings
-                        </a>
-                    </li>
-                    <li class="@if($active_menu == 'change-password') active @endif">
-                        <a href="{{ base_url('member/change-password') }}">
-                            <span class="fa fa-key"></span> Change password
-                        </a>
-                    </li>
                 </ul>
             </li>
 

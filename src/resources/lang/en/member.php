@@ -3,6 +3,7 @@
 return [
     'title_classified' => 'List classified',
     'title_classified_create' => 'Create classified',
+    'title_classified_edit' => 'Edit classified',
     'title_change_password' => 'Change password',
     'title_forgot' => 'Forgot password',
     'title_update_profile' => 'Update profile',

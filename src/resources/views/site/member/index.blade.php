@@ -34,7 +34,17 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <a class="btn btn-primary" href="{{ base_url('member/update-profile') }}">Edit profile</a>
+                    <a class="btn btn-primary" href="{{ base_url('member/update-profile') }}">
+                        <span data-feather="plus-circle"></span> Edit profile
+                    </a>
+
+                    <a class="btn btn-success" href="{{ base_url('member/update-profile') }}">
+                        <span data-feather="settings"></span> Settings
+                    </a>
+
+                    <a class="btn btn-primary" href="{{ base_url('member/change-password') }}">
+                        <span data-feather="key"></span> Change password
+                    </a>
                 </td>
             </tr>
         </table>

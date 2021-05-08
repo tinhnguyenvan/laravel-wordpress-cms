@@ -3,6 +3,7 @@
 return [
     'title_classified' => 'Danh sách tin rao vặt',
     'title_classified_create' => 'Tạo tin rao vặt',
+    'title_classified_edit' => 'Cập nhật rao vặt',
     'title_change_password' => 'Đổi mật khẩu',
     'title_forgot' => 'Quên mật khẩu',
     'title_update_profile' => 'Cập nhật profile',

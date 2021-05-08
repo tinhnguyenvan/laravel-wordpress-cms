@@ -40,19 +40,6 @@
                             <span data-feather="info"></span> Profile
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link @if($active_menu == 'update-profile') active @endif"
-                           href="{{ base_url('member/update-profile') }}">
-                            <span data-feather="settings"></span> Settings
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link @if($active_menu == 'change-password') active @endif"
-                           href="{{ base_url('member/change-password') }}">
-                            <span data-feather="key"></span> Change password
-                        </a>
-                    </li>
 
                     @if(!empty($manifest['nav_site']) && isset(auth('web')->user()->member_type))
                         @foreach($manifest['nav_site'] as $item)
