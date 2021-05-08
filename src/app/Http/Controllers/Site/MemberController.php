@@ -395,11 +395,11 @@ final class MemberController extends SiteController
         return Socialite::driver($provider)->redirect();
     }
 
-    public function callbackSocial(Request $request, $provider): RedirectResponse
+    public function callbackSocial($provider): RedirectResponse
     {
-        Log::debug($request->toArray());
         try {
             $getInfo = Socialite::driver($provider)->user();
+            Log::debug(Socialite::driver($provider)->redirect());
             $memberSocialAccountAccount = MemberSocialAccount::query()
                 ->where('provider', $provider)
                 ->where('provider_id', $getInfo->getId())
