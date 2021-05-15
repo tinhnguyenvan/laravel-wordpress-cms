@@ -18,6 +18,7 @@ class CreateTableMasterPlugins extends Migration
             $table->string('code');
             $table->string('version')->nullable();
             $table->smallInteger('status')->default(0);
+            $table->boolean('is_home_route')->default(1);
             $table->timestamps();
         });
     }

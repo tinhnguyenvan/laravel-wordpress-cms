@@ -17,7 +17,7 @@ Route::namespace('Site')->group(
     function () {
         // check show plugin
         try {
-            $countPlugin = Plugin::query()->where('status', 1)->count();
+            $countPlugin = Plugin::query()->where('status', 1)->where('is_home_route', 1)->count();
             if ($countPlugin == 0) {
                 Route::get('/', 'HomeController@index');
             }

@@ -20,7 +20,7 @@ class Plugin extends Model
      *
      * @var array
      */
-    protected $fillable = ['code', 'version', 'status', 'created_at', 'updated_at'];
+    protected $fillable = ['code', 'version', 'status', 'is_home_route', 'created_at', 'updated_at'];
 
     /**
      * The attributes excluded from the model's JSON form.
