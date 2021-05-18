@@ -61,10 +61,7 @@
                                     {{ $item->views }}
                                 </td>
                                 <td class="text-center">
-                                    @if($item->image_url)
-                                        <img src="{{ asset('storage'.$item->image_url) }}"
-                                             class="img-table img-thumbnail"/>
-                                    @endif
+                                    <img src="{{ $item->full_image_url }}" alt="img" class="img-table img-thumbnail"/>
                                 </td>
                                 <td class="text-center">
                                     <a href="{{ $item->link }}" target="_blank" class="btn btn-info btn-sm">
