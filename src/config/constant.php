@@ -179,7 +179,7 @@ return [
     'LAYOUT_ADMIN' => 'admin.layout.app',
     'PAGE_NUMBER' => 20,
     'MAX_FILE_UPLOAD' => 2,
-    'MAX_FILE_SIZE_UPLOAD' => 1000, // 100px
+    'MAX_FILE_SIZE_UPLOAD' => 1000, // 1000px
     'URL_PREFIX_PRODUCT' => 'collections',
     'URL_PREFIX_POST' => 'blog',
     'URL_PREFIX_COLLEGE' => 'college',

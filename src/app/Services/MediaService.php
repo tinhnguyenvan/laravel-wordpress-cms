@@ -247,6 +247,8 @@ class MediaService extends BaseService
                 return $upload['content'];
             }
         }
+
+        return null;
     }
 
     /**
