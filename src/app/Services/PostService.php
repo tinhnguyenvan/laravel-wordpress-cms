@@ -199,9 +199,7 @@ class PostService extends BaseService
      */
     public static function newest($limit = 5)
     {
-        $data = Post::query()->orderByRaw('id desc')->get()->take($limit);
-
-        return $data;
+        return Post::active()->orderByRaw('id desc')->get()->take($limit);
     }
 
     public function getPostBySlugCategory($slugCategory, $paramRequest)
