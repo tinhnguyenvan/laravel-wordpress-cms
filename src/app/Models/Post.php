@@ -188,7 +188,7 @@ class Post extends Model implements TranslatableContract
     public function getFullImageUrlAttribute(): string
     {
         if (empty($this->image_url)) {
-            return '';
+            return asset('site/img/empty.svg');
         }
         return asset('storage' . $this->image_url);
     }
