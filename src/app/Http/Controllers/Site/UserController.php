@@ -43,7 +43,7 @@ final class UserController extends Controller
             $user->save();
 
             // send mail
-            UserJob::dispatch(['action' => UserJob::ACTION_ACTIVE_MAIL, 'id' => $user->id])->onQueue('admin');
+            UserJob::dispatch(['action' => UserJob::ACTION_ACTIVE_MAIL, 'id' => $user->id]);
 
             // set permission
             $user->assignRole([Role::ROLE_KEY[$user->role_id]]);

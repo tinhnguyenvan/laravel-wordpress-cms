@@ -72,6 +72,7 @@ Route::namespace('Site')->group(
         // contact
         Route::post('contact/register-email', 'ContactController@registerEmail');
         Route::post('contact', 'ContactController@addContact');
+        Route::post('contact_submit', 'ContactController@addContactAjax');
 
         // comment
         Route::post('comment/create', 'CommentController@addComment');

@@ -47,7 +47,7 @@ final class CommentController extends SiteController
 
             if (empty($comment['message'])) {
                 // push queue send mail
-                //CommentJob::dispatch(['action' => CommentJob::ACTION_FORM, 'params' => $result->toArray()])->onQueue('admin');
+                //CommentJob::dispatch(['action' => CommentJob::ACTION_FORM, 'params' => $result->toArray()]);
                 $request->session()->flash('success', trans('comment.add.success'));
 
                 // rating

@@ -63,7 +63,6 @@ class ContactJob implements ShouldQueue
             'action' => ContactMail::ACTION_FORM,
             'email' => $params['email'],
             'email_cc' => $configEmail->value,
-            'params' => $params,
             'company_name' => $config->value ?? '',
         ]));
     }
