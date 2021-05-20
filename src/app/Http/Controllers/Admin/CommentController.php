@@ -59,10 +59,10 @@ class CommentController extends AdminController
                 return redirect(admin_url('comments'), 302);
             } else {
                 $request->session()->flash('error', $result['message']);
-
-                return back()->withInput();
             }
         }
+
+        return back()->withInput();
     }
 
     public function show($id)
@@ -148,7 +148,7 @@ class CommentController extends AdminController
                     $item->save();
                 }
             }
-            $request->session()->flash('success', trans('common.delete.success'));
+            $request->session()->flash('success', trans('common.approved.success'));
         } else {
             $request->session()->flash('error', trans('common.error_check_ids'));
         }

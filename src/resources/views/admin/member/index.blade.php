@@ -3,7 +3,7 @@
 
     <div class="card">
         <div class="card-header">
-            <i class="fa fa-align-justify"></i> {{ trans('common.list') }}
+            <i class="fa fa-align-justify"></i> {{ trans('common.list') }} ({{ $items->total() }})
 
             <div class="card-header-actions">
                 <a class="btn btn-sm btn-primary" target="_blank" href="{{ base_url('member/register') }}">

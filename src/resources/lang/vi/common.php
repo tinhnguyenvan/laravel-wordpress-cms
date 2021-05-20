@@ -32,10 +32,12 @@ return [
 
     'upload.success' => 'Upload thành công',
     'upload.error' => 'Upload thất bại',
-    'add.success' => 'Thêm mới thành công',
     'push_notification.success' => 'Push notification success',
     'push_notification.error' => 'Push notification error',
     'add.error' => 'Thêm mới thất bại',
+    'add.success' => 'Thêm mới thành công',
+    'approved.success' => 'Duyệt thành công',
+    'approved.error' => 'Duyệt thất bại',
     'edit.success' => 'Cập nhật thành công',
     'edit.error' => 'Cập nhật thất bại',
     'delete.success' => 'Xóa thành công',

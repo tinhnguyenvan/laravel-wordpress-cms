@@ -129,12 +129,13 @@ Route::middleware(['auth.console'])->group(
         Route::post('comments', [CommentController::class, 'store']);
         Route::get('comments/{comment}', [CommentController::class, 'show']);
         Route::get('comments/{comment}/edit', [CommentController::class, 'edit']);
+        Route::put('comments/update-status', [CommentController::class, 'putStatus']);
+        Route::post('comments/status/{id}', [CommentController::class, 'status']);
         Route::put('comments/{comment}', [CommentController::class, 'update']);
         Route::patch('comments/{comment}', [CommentController::class, 'update']);
         Route::delete('comments/{comment}', [CommentController::class, 'destroy']);
         Route::delete('comments/destroy-multi', [CommentController::class, 'destroyMulti']);
-        Route::put('comments/update-status', [CommentController::class, 'putStatus']);
-        Route::post('comments/status/{id}', [CommentController::class, 'status']);
+
 
         // bookmark BookmarkController
         Route::get('bookmarks', [BookmarkController::class, 'index']);

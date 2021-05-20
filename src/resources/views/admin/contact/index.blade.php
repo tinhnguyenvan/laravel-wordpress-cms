@@ -3,7 +3,7 @@
 
     <div class="card">
         <div class="card-header">
-            <i class="fa fa-align-justify"></i> {{ trans('common.list') }}
+            <i class="fa fa-align-justify"></i> {{ trans('common.list') }} ({{ $items->total() }})
         </div>
         <div class="card-body">
             @include('admin.element.filter')
