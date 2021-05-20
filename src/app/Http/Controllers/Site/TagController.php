@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Site;
 use App\Models\Post;
 use App\Models\PostTag;
 use App\Services\PostService;
-use Illuminate\Http\Request;
 
 /**
  * Class TagController.
@@ -20,11 +19,14 @@ final class TagController extends SiteController
         $this->postService = $postService;
     }
 
-    public function index(Request $request, $slug)
+    public function index($slug)
     {
-        $itemPosts = Post::query()->where(['status' => Post::STATUS_ACTIVE])->orderByDesc('id')->get()->take(10);
-
         $postTag = PostTag::query()->where('slug', $slug)->first();
+        if (empty($postTag->id)) {
+            return redirect(base_url('404.html'));
+        }
+
+        $itemPosts = Post::query()->where(['status' => Post::STATUS_ACTIVE])->orderByDesc('id')->get()->take(10);
 
         $data = [
             'postTag' => $postTag,
