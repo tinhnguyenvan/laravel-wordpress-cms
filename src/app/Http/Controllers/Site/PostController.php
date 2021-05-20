@@ -37,7 +37,7 @@ final class PostController extends SiteController
             $this->seo($postCategory, $this->data);
         } else {
             $items = Post::active()->orderByDesc('id')->paginate($this->page_number);
-            $this->data['title'] = 'Blog';
+            $this->data['title'] = $this->data['config']['company_name'];
         }
 
         // update view
