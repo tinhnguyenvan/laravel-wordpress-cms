@@ -28,24 +28,24 @@ final class PostController extends SiteController
     {
         $this->postService->buildCondition($request->all(), $condition, $sortBy, $sortType);
 
-        $items = $this->postService->getPostBySlugCategory($slugCategory, $request->all());
-
         $postCategory = PostCategory::query()->where('slug', $slugCategory)->first();
-        if (empty($postCategory->id)) {
-            return redirect(base_url('404.html'));
+        if (!empty($postCategory->id)) {
+            $items = $this->postService->getPostBySlugCategory($slugCategory, $request->all());
+            PostCategory::query()->where('id', $postCategory->id)->increment('views');
+
+            // set seo
+            $this->seo($postCategory, $this->data);
+        } else {
+            $items = Post::active()->orderByDesc('id')->paginate($this->page_number);
+            $this->data['title'] = 'Blog';
         }
 
         // update view
-        PostCategory::query()->where('id', $postCategory->id)->increment('views');
-
         $data = [
             'postCategory' => $postCategory,
             'items' => $items,
             'slugCategory' => $slugCategory,
         ];
-
-        // set seo
-        $this->seo($postCategory, $this->data);
 
         return view($this->layout . 'post.index', $this->render($data));
     }
