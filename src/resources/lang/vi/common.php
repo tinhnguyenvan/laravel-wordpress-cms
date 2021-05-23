@@ -63,6 +63,7 @@ return [
     'error_not_found_data' => 'Không tìm thấy dữ liệu',
     'seo_title' => 'SEO title',
     'seo_description' => 'SEO description',
+    'seo_keyword' => 'SEO keyword',
     'config_seo' => 'Config SEO',
     'config_seo_sub' => 'Thiết lập các thẻ mô tả giúp khách hàng dễ dàng tìm thấy danh mục này trên công cụ tìm kiếm như Google.',
     'form_header_general' => 'Thông tin chi tiết',

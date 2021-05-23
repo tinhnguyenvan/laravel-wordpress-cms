@@ -62,6 +62,7 @@ return [
     'edit' => 'Edit',
     'error_not_found_data' => 'No data found',
     'seo_title' => 'SEO title',
+    'seo_keyword' => 'SEO keyword',
     'seo_description' => 'SEO description',
     'config_seo' => 'Config SEO',
     'config_seo_sub' => 'Setting up description tags makes it easy for customers to find this category on a search engine like Google.',
