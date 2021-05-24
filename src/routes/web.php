@@ -48,8 +48,6 @@ Route::namespace('Site')->group(
                 Route::post('member/change-password', 'MemberController@handleChangePassword');
                 Route::get('member/my-bookmark-posts', 'MemberController@myBookmarkPost');
 
-                Route::get('member/my-services', 'MemberController@myServices');
-                Route::get('member/my-service-payment-status', 'MemberController@myServicePaymentStatus');
                 Route::get('member/notifications', 'MemberController@notifications');
                 Route::put('member/notification/{id}/make-read', 'MemberController@makeReadNotification');
                 Route::get('member/logout', 'MemberController@logout');
