@@ -81,6 +81,7 @@ Route::namespace('Site')->group(
         Route::get('ads/tracking/{slug}', 'AdsController@tracking');
 
         // post
+        Route::get('{slugPost}.html', 'PostController@show');
         Route::get('/{slugCategory}/{slugPost}.html', 'PostController@view');
         Route::get('/' . config('constant.URL_PREFIX_POST') . '/{slugPost}.html', 'PostController@view');
         Route::get('/{slugCategory}', 'PostController@index');
