@@ -31,7 +31,7 @@ final class TagController extends SiteController
         $data = [
             'postTag' => $postTag,
             'itemPosts' => $itemPosts,
-            'title' => 'Tag: ' . $postTag->title,
+            'title' => 'Tag: ' . $postTag->title.' | '.$this->data['title'],
         ];
 
         return view($this->layout . 'tag.index', $this->render($data));
