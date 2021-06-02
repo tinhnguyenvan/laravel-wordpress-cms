@@ -54,7 +54,7 @@
                                 </td>
                                 <td>
                                     @if(!empty($item->post->id))
-                                        <a href="{{ $item->post->link }}" target="_blank">
+                                        <a href="{{ $item->post->link }}#box-comment" target="_blank">
                                             {{ $item->post->title }}
                                         </a>
                                     @endif
