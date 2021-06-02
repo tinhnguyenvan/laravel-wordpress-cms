@@ -63,12 +63,12 @@
     }
 </style>
 <div class="box-comment" id="box-comment">
-    <form method="post" action="{{ base_url('comment/create') }}">
+    <form method="post" class="recaptcha" action="{{ base_url('comment/create') }}">
         @csrf
         <input type="hidden" name="post_id" id="fc_post_id" value="{{ $post_id }}">
         <input type="hidden" name="type" id="fc_type" value="{{ $type }}">
         <input type="hidden" name="rating" id="fc_rating" value="5">
-        <input type="hidden" name="redirect" id="fc_redirect" value="{{ @request()->url() }}">
+        <input type="hidden" name="redirect" id="fc_redirect" value="{{ @request()->url() }}#box-comment">
 
         <div class="form-group">
             <label style="color: #000" class="label" for="content">{{ trans('common.form.submit') }} (*)</label>
@@ -106,6 +106,26 @@
                     {{ trans('common.form.submit') }}
                 </button>
             @endif
+        </div>
+
+        <div class="text-danger">
+            <ul>
+                @if ($errors->count() > 0)
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                @else
+                    @if(!empty($error))
+                        @if(is_array($error))
+                            @foreach($error as $er)
+                                <li>{{ e($er) }}</li>
+                            @endforeach
+                        @else
+                            <li>{{ e($error) }}</li>
+                        @endif
+                    @endif
+                @endif
+            </ul>
         </div>
     </form>
 </div>

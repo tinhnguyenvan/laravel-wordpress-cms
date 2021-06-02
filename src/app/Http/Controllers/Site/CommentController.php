@@ -5,11 +5,15 @@ namespace App\Http\Controllers\Site;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\RolePermission;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 use TinhPHP\School\Models\School;
 use App\Services\CommentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use willvincent\Rateable\Rating;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Class CommentController.
@@ -22,6 +26,8 @@ final class CommentController extends SiteController
     {
         parent::__construct();
         $this->commentService = $commentService;
+
+        $this->redirect = URL::previous().'#box-comment';
     }
 
     /**
@@ -37,13 +43,19 @@ final class CommentController extends SiteController
 
         $rules = [
             'author_email' => 'required|min:5|max:255',
+            'author' => 'required|min:5|max:255',
+            'post_id' => 'required',
+            'type' => 'required',
         ];
 
         if (config('services.recaptcha.enable')) {
             $rules['g-recaptcha-response'] = 'required|min:5|recaptcha';
         }
+        $validator = Validator::make($params, $rules);
 
-        $request->validate($rules);
+        if ($validator->fails()) {
+            return redirect($params['redirect'])->withInput()->withErrors($validator);
+        }
 
 
         $params['status'] = Comment::STATUS_NEW;
