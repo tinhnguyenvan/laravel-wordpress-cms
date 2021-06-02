@@ -85,6 +85,10 @@ class Comment extends Model
         return $this->belongsTo(Rating::class);
     }
 
+    public function post() {
+        return $this->belongsTo(Post::class, 'post_id');
+    }
+
     public static function dropDownStatus()
     {
         $data = self::STATUS_LIST;

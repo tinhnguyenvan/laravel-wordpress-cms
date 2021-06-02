@@ -31,8 +31,8 @@
                         <th class="text-center w50">
                             <input type="checkbox" name="check_all" id="check_all" value="1">
                         </th>
-                        <th style="width: 100px">{{ trans('comment.author') }}</th>
-                        <th>{{ trans('comment.author_email') }}</th>
+                        <th width="250">{{ trans('comment.author') }}</th>
+                        <th>Post</th>
                         <th>{{ trans('comment.content') }}</th>
                         <th style="width: 130px" class="text-center">{{ trans('comment.status') }}</th>
                     </tr>
@@ -46,12 +46,18 @@
                                 </td>
                                 <td>
                                     <a href="{{ admin_url('comments/'.$item->id.'/edit') }}">
-                                        {{ $item->author }}
+                                        <i class="fa fa-user-circle"></i> {{ $item->author }}
                                         <i class="fa fa-edit"></i>
                                     </a>
+                                    <br/>
+                                    <i class="fa fa-envelope-o"></i> {{ $item->author_email }}
                                 </td>
                                 <td>
-                                    {{ $item->author_email }}
+                                    @if(!empty($item->post->id))
+                                        <a href="{{ $item->post->link }}" target="_blank">
+                                            {{ $item->post->title }}
+                                        </a>
+                                    @endif
                                 </td>
                                 <td>
                                     {{ strip_tags($item->content) }}
