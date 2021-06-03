@@ -27,7 +27,7 @@ final class CommentController extends SiteController
         parent::__construct();
         $this->commentService = $commentService;
 
-        $this->redirect = URL::previous().'#box-comment';
+        $this->redirect = URL::previous() . '#box-comment';
     }
 
     /**
@@ -37,7 +37,7 @@ final class CommentController extends SiteController
      * @param Request $request
      * @return RedirectResponse
      */
-    public function addComment(Request $request)
+    public function addComment(Request $request): RedirectResponse
     {
         $params = $request->all();
 

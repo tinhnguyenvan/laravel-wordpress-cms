@@ -60,7 +60,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{ strip_tags($item->content) }}
+                                    {!! $item->content !!}
                                 </td>
 
                                 <td class="text-center">
