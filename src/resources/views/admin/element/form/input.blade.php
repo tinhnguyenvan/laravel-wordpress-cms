@@ -13,6 +13,7 @@
         <div class="input-group">
             <input type="{{ $type ?? 'text' }}"
                    name="{{$name}}"
+                   {{$attr ?? ''}}
                    id="{{$name}}"
                    @if(!empty($required)) required @endif
                    placeholder="{{ $placeholder ?? '' }}"
