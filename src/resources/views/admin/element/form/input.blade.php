@@ -1,6 +1,6 @@
 <div class="form-group">
     <label class="col-form-label" for="{{$name}}">
-        {{$text}}
+        {!! $text !!}
         @if(!empty($class) && $class == 'date-time-picker')
             <i class="fa fa-calendar"></i>
         @endif
