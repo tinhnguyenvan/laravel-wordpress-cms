@@ -6,7 +6,7 @@
         @endif
 
         @if(!empty($required))
-            <span class="text-danger">(required)</span>
+            <span class="text-danger">({{ trans('common.required') }})</span>
         @endif
     </label>
     <div class="controls">
