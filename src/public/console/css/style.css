@@ -13542,7 +13542,7 @@ canvas {
 
 .sidebar > .sidebar-nav {
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: auto !important;
 }
 
 .sidebar .nav {

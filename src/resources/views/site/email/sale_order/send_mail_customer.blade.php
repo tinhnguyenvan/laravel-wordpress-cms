@@ -5,13 +5,18 @@
                 Hi, {{ $sale_order['billing_fullname'] }}
             </p>
 
-            <p>Cám ơn bạn đã đặt mua sản phẩm của chúng tôi tại&nbsp;
+            <p>
+                Cám ơn bạn đã đặt mua sản phẩm của chúng tôi tại&nbsp;
                 <a href="{{ base_url() }}" target="_blank">{{ $company_name }}</a>.
             </p>
-            <p>Dưới đây là thông tin chi tiết về đơn hàng của bạn:</p>
-            <p style="color:rgb(0,102,204);font-size:16px">Mã đơn hàng: {{ $sale_order['code'] }} (vui
-                lòng ghi chú mã đơn hàng này khi thanh toán)</p>
-            <p>Các sản phẩm đã đặt mua:</p>
+
+            <p>Dưới đây là thông tin chi tiết:</p>
+
+            <p style="color:rgb(0,102,204);font-size:16px">
+                Mã đơn hàng: {{ $sale_order['code'] }} (vui
+                lòng ghi chú mã đơn hàng này khi thanh toán)
+            </p>
+
             <table width="100%" border="1" style="border-collapse:collapse">
                 <tbody>
                 <tr>
@@ -79,8 +84,10 @@
                     </p>
                 </li>
             </ul>
-            <p style="color:rgb(0,102,204);font-weight:bold">Khi thanh toán, bạn nhớ ghi rõ MÃ ĐƠN HÀNG và TÊN của mình
-                để tránh nhầm lẫn.</p>
+
+            <p style="color:rgb(0,102,204);font-weight:bold">
+                Khi thanh toán, bạn nhớ ghi rõ MÃ ĐƠN HÀNG và TÊN của mình để tránh nhầm lẫn.
+            </p>
 
             <p style="border-bottom: 1px dashed #ccc; padding-bottom: 15px">Thank you for submitting! </p>
             <strong>Best regards,</strong><br/>

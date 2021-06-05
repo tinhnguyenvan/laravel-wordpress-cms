@@ -149,28 +149,6 @@ $(document).ready(function () {
         /**
          * check all for all list data
          */
-        if ($('#product_id').length > 0) {
-            let options = {
-                url: function (keyword) {
-                    return configs.base_url + '/api/products?keyword=' + keyword
-                },
-                getValue: "title",
-                listLocation: "data",
-                list: {
-                    onClickEvent: function () {
-                        let item = $("#product_id").getSelectedItemData();
-                        createItemOrder(item);
-                    }
-                }
-            };
-
-            $("#product_id").easyAutocomplete(options);
-        }
-
-
-        /**
-         * check all for all list data
-         */
         if ($('.clipboard').length > 0) {
             let clipboard = new ClipboardJS('.clipboard');
             clipboard.on('success', function (e) {
