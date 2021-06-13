@@ -18,6 +18,7 @@ class PostResource extends JsonResource
             'title' => $this->title,
             'link' => $this->link,
             'image_url' => $this->image_url,
+            'full_image_url' => $this->full_image_url,
             'created_at' => $this->created_at->format('d/m/Y'),
         ];
     }

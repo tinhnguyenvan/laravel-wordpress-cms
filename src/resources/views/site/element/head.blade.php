@@ -1,4 +1,4 @@
-<title>{{ $title ?? '' }}</title>
+<title>{{ !empty($title) ? strip_tags($title) : '' }}</title>
 <base href="./">
 <link rel="canonical" href="{{ request()->fullUrl() }}"/>
 <meta charset="utf-8">
@@ -14,7 +14,7 @@
 
 <!-- facebook -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="{{ $title ?? '' }}">
+<meta property="og:title" content="{{ !empty($title) ? strip_tags($title) : '' }}">
 <meta property="og:image:alt" content="{{ $og_image ?? '' }}">
 <meta property="og:image" content="{{ $og_image ?? '' }}">
 <meta property="og:image:secure_url" content="{{ $og_image ?? '' }}">
@@ -24,7 +24,7 @@
 
 <!-- twitter -->
 <meta property="twitter:card" content="website">
-<meta property="twitter:title" content="{{ $title ?? '' }}">
+<meta property="twitter:title" content="{{ !empty($title) ? strip_tags($title) : '' }}">
 <meta property="twitter:description" content="{{ $description ?? '' }}">
 <meta property="twitter:image" content="{{ $og_image ?? ''}}">
 
