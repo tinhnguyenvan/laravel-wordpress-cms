@@ -138,7 +138,7 @@ class PostService extends BaseService
      *
      * @return array
      */
-    public function filter($params = [])
+    public function filter(array $params = [])
     {
         $active = [
             'category_id' => $params['category_id'] ?? 0,
@@ -177,18 +177,6 @@ class PostService extends BaseService
 
         if (!empty($params['category_id'])) {
             $condition['category_id'] = $params['category_id'];
-        }
-
-        if (!empty($params['search'])) {
-            $search = [
-                ['title', 'like', $params['search'] . '%'],
-            ];
-
-            if (empty($condition)) {
-                $condition = $search;
-            } else {
-                $condition = array_merge($condition, $search);
-            }
         }
     }
 

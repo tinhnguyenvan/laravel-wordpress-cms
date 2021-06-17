@@ -19,9 +19,9 @@ use Illuminate\Routing\Redirector;
 /**
  * Class PostController.
  *
- * @property PostService         $postService
+ * @property PostService $postService
  * @property PostCategoryService $postCategoryService
- * @property MediaService        $mediaService
+ * @property MediaService $mediaService
  */
 class PostController extends AdminController
 {
@@ -41,7 +41,13 @@ class PostController extends AdminController
     public function index(Request $request)
     {
         $this->postService->buildCondition($request->all(), $condition, $sortBy, $sortType);
-        $items = Post::query()->where($condition)->orderBy($sortBy, $sortType)->paginate($this->page_number);
+        $object = Post::query()->where($condition);
+
+        if ($request->query('search')) {
+            $object->whereTranslationLike('title', $request->get('search') . '%');
+        }
+
+        $items = $object->orderBy($sortBy, $sortType)->paginate($this->page_number);
 
         $filter = $this->postService->filter($request->all());
         $data = [
@@ -68,11 +74,13 @@ class PostController extends AdminController
         if (!empty($params['_token'])) {
             $result = $this->postService->create($params);
             if (empty($result['message'])) {
-                $this->mediaService->uploadModule([
-                    'file' => $request->file('file'),
-                    'object_type' => Media::OBJECT_TYPE_POST,
-                    'object_id' => $result['id'],
-                ]);
+                $this->mediaService->uploadModule(
+                    [
+                        'file' => $request->file('file'),
+                        'object_type' => Media::OBJECT_TYPE_POST,
+                        'object_id' => $result['id'],
+                    ]
+                );
 
                 $request->session()->flash('success', trans('common.add.success'));
                 if (!empty($params['submit'])) {
@@ -122,11 +130,13 @@ class PostController extends AdminController
             $result = $this->postService->update($id, $params);
 
             if (empty($result['message'])) {
-                $this->mediaService->uploadModule([
-                    'file' => $request->file('file'),
-                    'object_type' => Media::OBJECT_TYPE_POST,
-                    'object_id' => $id,
-                ]);
+                $this->mediaService->uploadModule(
+                    [
+                        'file' => $request->file('file'),
+                        'object_type' => Media::OBJECT_TYPE_POST,
+                        'object_id' => $id,
+                    ]
+                );
 
                 $request->session()->flash('success', trans('common.edit.success'));
                 if (!empty($params['submit'])) {
