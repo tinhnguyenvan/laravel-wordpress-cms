@@ -6,6 +6,7 @@ use App\Traits\StatusTrait;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use willvincent\Rateable\Rateable;
 use Astrotomic\Translatable\Translatable;
@@ -96,11 +97,15 @@ class Post extends Model implements TranslatableContract
         return $query->where('status', 1);
     }
 
+    public function comment(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
 
     /**
      * @return BelongsTo
      */
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(PostCategory::class, 'category_id', 'id');
     }
@@ -108,7 +113,7 @@ class Post extends Model implements TranslatableContract
     /**
      * @return BelongsTo
      */
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'creator_id', 'id');
     }
