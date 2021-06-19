@@ -3,19 +3,20 @@
 <head>
     @include('site.element.head')
 
-    <!-- Bootstrap core CSS -->
     <link href="{{ asset("site/css/bootstrap.5.0.min.css") }}" rel="stylesheet">
     <link href="{{ asset("site/css/dashboard.css") }}" rel="stylesheet">
     <link href="{{ asset("common/plugin/select2/css/select2.min.css") }}" rel="stylesheet"/>
     <link href="{{ asset("common/plugin/select2/css/select2-bootstrap4.min.css") }}" rel="stylesheet"/>
     <link href="{{ asset("site/css/member_v2.css") }}" rel="stylesheet"/>
-        <script type="text/javascript">
-            let configs = {
-                'base_url': '<?php echo e(base_url()); ?>',
-                'admin_url': '<?php echo e(base_url('admin')); ?>',
-                'MAX_FILE_UPLOAD': '<?php echo e(@config('constant.MAX_FILE_UPLOAD')); ?>',
-            };
-        </script>
+    <script type="text/javascript">
+        let configs = {
+            'base_url': '<?php echo e(base_url()); ?>',
+            'admin_url': '<?php echo e(base_url('admin')); ?>',
+            'MAX_FILE_UPLOAD': '<?php echo e(@config('constant.MAX_FILE_UPLOAD')); ?>',
+        };
+    </script>
+
+    <script src="{{ asset("site/js/jquery-3.2.1.min.js") }}"></script>
 </head>
 <body>
 
@@ -105,8 +106,6 @@
     </div>
 </div>
 
-
-<script src="{{ asset("site/js/jquery-3.2.1.min.js") }}"></script>
 <script src="{{ asset("site/js/bootstrap.bundle.5.0.min.js") }}"></script>
 <script src="{{ asset("site/js/feather.min.js")}}"></script>
 <script src="{{ asset("site/js/dashboard.js") }}"></script>
