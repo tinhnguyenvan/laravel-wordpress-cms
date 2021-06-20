@@ -35,7 +35,9 @@ class Notification extends DatabaseNotification
      *
      * @var array
      */
-    protected $casts = [];
+    protected $casts = [
+        "data" => "array"
+    ];
 
     /**
      * The attributes that should be mutated to dates.
