@@ -33,7 +33,7 @@
         "socialiteproviders/zalo": "^4.1",
         "spatie/laravel-permission": "^3.7",
         "spatie/laravel-pjax": "^2.1",
-        "tinhphp/woocommerce": "dev-master",
+        "tinhphp/woocommerce": "v1.0.1",
         "willvincent/laravel-rateable": "^2.2"
     },
     "require-dev": {
@@ -91,11 +91,5 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ]
-    },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "./packages/*/*"
-        }
-    ]
+    }
 }
