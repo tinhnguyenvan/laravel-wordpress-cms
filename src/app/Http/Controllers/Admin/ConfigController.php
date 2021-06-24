@@ -63,34 +63,33 @@ class ConfigController extends AdminController
     public function save(Request $request)
     {
         $params = $request->all();
-        if (!empty($params['_token'])) {
 
-            // set default param checkbox
-            foreach (Config::LIST_CONFIG_CHECKBOX_SWITCH as $key) {
-                if (isset($params[$key]) && empty($params[$key])) {
-                    $params[$key] = 'off';
-                }
+        // set default param checkbox
+        foreach (Config::LIST_CONFIG_CHECKBOX_SWITCH as $key) {
+            if (!isset($params[$key])) {
+                $params[$key] = 'off';
             }
-
-            foreach ($params as $key => $item) {
-                if ('_token' == $key) {
-                    continue;
-                }
-
-                $myConfig = Config::query()->where('name', $key)->first();
-                if (empty($myConfig)) {
-                    $myConfig = new Config();
-                    $myConfig->creator_id = Auth::id();
-                }
-
-                $myConfig->editor_id = Auth::id();
-                $myConfig->name = $key;
-                $myConfig->value = $item;
-                $myConfig->save();
-            }
-
-            $request->session()->flash('success', trans('common.edit.success'));
         }
+
+        foreach ($params as $key => $item) {
+            if ('_token' == $key) {
+                continue;
+            }
+
+            $myConfig = Config::query()->where('name', $key)->first();
+            if (empty($myConfig)) {
+                $myConfig = new Config();
+                $myConfig->creator_id = Auth::id();
+            }
+
+            $myConfig->editor_id = Auth::id();
+            $myConfig->name = $key;
+            $myConfig->value = $item;
+            $myConfig->save();
+        }
+
+        $request->session()->flash('success', trans('common.edit.success'));
+
 
         return back()->withInput();
     }
