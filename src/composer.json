@@ -33,7 +33,6 @@
         "socialiteproviders/zalo": "^4.1",
         "spatie/laravel-permission": "^3.7",
         "spatie/laravel-pjax": "^2.1",
-        "tinhphp/tool": "dev-master",
         "tinhphp/woocommerce": "dev-master",
         "willvincent/laravel-rateable": "^2.2"
     },
