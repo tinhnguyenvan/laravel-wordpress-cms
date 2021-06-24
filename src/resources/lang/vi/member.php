@@ -34,4 +34,6 @@ return [
     'error_school_apply_exist' => 'Lỗi! Bạn đã apply',
     'error_member_not_exist' => 'Lỗi! Tài khoản không tồn tại',
     'error_add' => 'Lỗi! Tạo tài khoản thất bại',
+
+    'page.index.required_email_phone'=> 'Vui lòng cập nhật email và số điện thoại',
 ];

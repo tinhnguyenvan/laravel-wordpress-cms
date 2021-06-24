@@ -34,4 +34,6 @@ return [
     'error_school_apply_exist' => 'Error! You have already applied',
     'error_member_not_exist' => 'Error! Account does not exist',
     'error_add' => 'Error! Account creation failed',
+
+    'page.index.required_email_phone'=> 'Please update email and phone',
 ];

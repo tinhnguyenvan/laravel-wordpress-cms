@@ -1,22 +1,23 @@
 @extends('site.layout.member')
 @section('content')
     <div class="content-panel">
+        @if(empty($member->email))
+            <div class="alert alert-danger">
+                {{ trans('member.page.index.required_email_phone') }}
+            </div>
+        @endif
+
         <table class="table table-hover">
             <tr>
                 <td style="width: 150px">
-                    <label class="form-label"><span data-feather="user"></span>  User Name</label>
+                    <label class="form-label"><span data-feather="user"></span> User Name</label>
                 </td>
                 <td>{{ $member->username }}</td>
             </tr>
 
             <tr>
-                <td><label class="form-label"><span data-feather="info"></span> First Name</label></td>
-                <td>{{ $member->first_name }}</td>
-            </tr>
-
-            <tr>
-                <td><label class="form-label"><span data-feather="info"></span> Last Name</label></td>
-                <td>{{ $member->last_name }}</td>
+                <td><label class="form-label"><span data-feather="info"></span> Full Name</label></td>
+                <td>{{ $member->fullname }}</td>
             </tr>
 
             <tr>
@@ -37,14 +38,11 @@
                     <a class="btn btn-primary" href="{{ base_url('member/update-profile') }}">
                         <span data-feather="plus-circle"></span> Edit profile
                     </a>
-
-                    <a class="btn btn-success" href="{{ base_url('member/update-profile') }}">
-                        <span data-feather="settings"></span> Settings
-                    </a>
-
-                    <a class="btn btn-primary" href="{{ base_url('member/change-password') }}">
-                        <span data-feather="key"></span> Change password
-                    </a>
+                    @if($member->member_type == 0)
+                        <a class="btn btn-primary" href="{{ base_url('member/change-password') }}">
+                            <span data-feather="key"></span> Change password
+                        </a>
+                    @endif
                 </td>
             </tr>
         </table>
