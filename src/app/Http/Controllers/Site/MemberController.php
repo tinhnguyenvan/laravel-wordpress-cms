@@ -415,14 +415,14 @@ final class MemberController extends SiteController
                         'provider' => $provider
                     ]
                 );
-
-                $member = Member::query()->where('email', $email)->first();
+                $username = !empty($email) ? $email : $getInfo->getId();
+                $member = Member::query()->where('username', $username)->first();
 
                 if (!$member) {
                     $member = Member::query()->create(
                         [
                             'email' => $email,
-                            'username' => $email,
+                            'username' => $username,
                             'fullname' => $getInfo->getName(),
                             'image_url' => $getInfo->getAvatar(),
                         ]
