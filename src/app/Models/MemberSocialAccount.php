@@ -9,6 +9,7 @@ class MemberSocialAccount extends Model
     public const PROVIDER_EMAIL = 'email';
     public const PROVIDER_FACEBOOK = 'facebook';
     public const PROVIDER_GOOGLE = 'google';
+    public const PROVIDER_ZALO = 'zalo';
 
     /**
      * The database table used by the model.
@@ -63,6 +64,9 @@ class MemberSocialAccount extends Model
                 break;
             case self::PROVIDER_GOOGLE:
                 $text = 'danger';
+                break;
+            case self::PROVIDER_ZALO:
+                $text = 'info';
                 break;
             default:
                 $text = 'default';

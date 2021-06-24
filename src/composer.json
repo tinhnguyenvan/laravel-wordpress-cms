@@ -13,6 +13,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.4",
+        "ext-curl": "*",
         "ext-gettext": "*",
         "ext-json": "*",
         "astrotomic/laravel-translatable": "^11.9",
@@ -20,19 +21,21 @@
         "guzzlehttp/guzzle": "^6.5",
         "haruncpi/laravel-id-generator": "^1.0",
         "intervention/image": "^2.5",
+        "irazasyed/telegram-bot-sdk": "^2.0",
         "kreait/laravel-firebase": "^1.0",
         "laracademy/generators": "^2.1",
         "laravel/framework": "^7.1",
         "laravel/socialite": "^4.3",
         "maatwebsite/excel": "^3.1",
         "simplesoftwareio/simple-qrcode": "~2",
+        "socialiteproviders/facebook": "^4.1",
+        "socialiteproviders/google": "^4.1",
+        "socialiteproviders/zalo": "^4.1",
         "spatie/laravel-permission": "^3.7",
         "spatie/laravel-pjax": "^2.1",
         "tinhphp/tool": "*",
         "tinhphp/woocommerce": "*",
-        "willvincent/laravel-rateable": "^2.2",
-        "ext-curl": "*",
-        "irazasyed/telegram-bot-sdk": "^2.0"
+        "willvincent/laravel-rateable": "^2.2"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

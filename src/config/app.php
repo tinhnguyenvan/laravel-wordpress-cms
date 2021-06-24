@@ -186,8 +186,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         // qr code
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
-        // login social
-        Laravel\Socialite\SocialiteServiceProvider::class,
+
         // rating
         willvincent\Rateable\RateableServiceProvider::class,
         /*
@@ -199,6 +198,8 @@ return [
         App\Providers\EventServiceProvider::class,
         #App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        \SocialiteProviders\Manager\ServiceProvider::class
     ],
 
     /*
