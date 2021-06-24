@@ -22,7 +22,7 @@
             <div class="mb-3">
                 <label class="form-label">Email</label>
 
-                <input type="text" class="form-control" readonly value="{{ old('email', $member->email) }}">
+                <input type="text" class="form-control" @if(!empty($member->email)) readonly @endif value="{{ old('email', $member->email) }}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Phone</label>
