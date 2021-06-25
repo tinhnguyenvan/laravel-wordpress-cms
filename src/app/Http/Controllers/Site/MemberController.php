@@ -44,6 +44,7 @@ final class MemberController extends SiteController
 
     public function index()
     {
+
         $data = [
             'member' => auth(RolePermission::GUARD_NAME_WEB)->user(),
             'active_menu' => 'member',

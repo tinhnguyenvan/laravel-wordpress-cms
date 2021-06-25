@@ -19,7 +19,7 @@
         </div>
 
         @include('admin.element.form.input', ['name' => 'config_email_smtp_port', 'text' => trans('config.config_email_smtp_port'), 'value' => $config['config_email_smtp_port'] ?? ''])
-        @include('admin.element.form.check', ['name' => 'config_email_smtp_authentication', 'text' => trans('config.config_email_smtp_authentication'), 'value' => $config['config_email_smtp_authentication'] ?? ''])
+        @include('admin.element.form.check_on_off', ['name' => 'config_email_smtp_authentication', 'text' => trans('config.config_email_smtp_authentication'), 'value' => $config['config_email_smtp_authentication'] ?? ''])
 
         @include('admin.element.form.input', ['name' => 'config_email_username', 'text' => trans('config.config_email_username'), 'value' => $config['config_email_username'] ?? ''])
         @include('admin.element.form.input', ['name' => 'config_email_password', 'text' => trans('config.config_email_password'), 'value' => $config['config_email_password'] ?? '', 'type' => 'password'])

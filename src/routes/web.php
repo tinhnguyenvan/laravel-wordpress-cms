@@ -28,29 +28,33 @@ Route::namespace('Site')->group(
         Route::get('users/activemail', 'UserController@activeMail');
 
         // member
-        Route::get('member/activemail', 'MemberController@activeMail');
-        Route::get('member/login', 'MemberController@login');
-        Route::post('member/login', 'MemberController@handleLogin');
-        Route::get('member/register', 'MemberController@register');
-        Route::post('member/register', 'MemberController@handleRegister');
-        Route::get('member/forgot', 'MemberController@forgot');
-        Route::post('member/forgot', 'MemberController@handleForgot');
-        Route::get('member/login-social/{provider}', 'MemberController@loginSocial');
-        Route::get('member/callback/{provider}', 'MemberController@callbackSocial');
-
-        Route::middleware(['auth.web'])->group(
+        Route::middleware(['config.member.login'])->group(
             function () {
-                // member
-                Route::get('member', 'MemberController@index');
-                Route::get('member/update-profile', 'MemberController@updateProfile');
-                Route::post('member/update-profile', 'MemberController@handleUpdateProfile');
-                Route::get('member/change-password', 'MemberController@changePassword');
-                Route::post('member/change-password', 'MemberController@handleChangePassword');
-                Route::get('member/my-bookmark-posts', 'MemberController@myBookmarkPost');
+                Route::get('member/activemail', 'MemberController@activeMail');
+                Route::get('member/login', 'MemberController@login');
+                Route::post('member/login', 'MemberController@handleLogin');
+                Route::get('member/register', 'MemberController@register');
+                Route::post('member/register', 'MemberController@handleRegister');
+                Route::get('member/forgot', 'MemberController@forgot');
+                Route::post('member/forgot', 'MemberController@handleForgot');
+                Route::get('member/login-social/{provider}', 'MemberController@loginSocial');
+                Route::get('member/callback/{provider}', 'MemberController@callbackSocial');
 
-                Route::get('member/notifications', 'MemberController@notifications');
-                Route::put('member/notification/{id}/make-read', 'MemberController@makeReadNotification');
-                Route::get('member/logout', 'MemberController@logout');
+                Route::middleware(['auth.web'])->group(
+                    function () {
+                        // member
+                        Route::get('member', 'MemberController@index');
+                        Route::get('member/update-profile', 'MemberController@updateProfile');
+                        Route::post('member/update-profile', 'MemberController@handleUpdateProfile');
+                        Route::get('member/change-password', 'MemberController@changePassword');
+                        Route::post('member/change-password', 'MemberController@handleChangePassword');
+                        Route::get('member/my-bookmark-posts', 'MemberController@myBookmarkPost');
+
+                        Route::get('member/notifications', 'MemberController@notifications');
+                        Route::put('member/notification/{id}/make-read', 'MemberController@makeReadNotification');
+                        Route::get('member/logout', 'MemberController@logout');
+                    }
+                );
             }
         );
 

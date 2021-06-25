@@ -34,7 +34,4 @@
         <div class="fb-message alert alert-danger" style="display: none"></div>
     </div>
 </div>
-<div class="loginbox-or">
-    <div class="or-line"></div>
-    <div class="or">OR</div>
-</div>
+

@@ -4,6 +4,8 @@ namespace App\Http;
 
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CheckForMaintenanceMode;
+use App\Http\Middleware\ConfigMemberLoginMiddleware;
+use App\Http\Middleware\ConfigMiddleware;
 use App\Http\Middleware\ConsoleAuth;
 use App\Http\Middleware\EncryptCookies;
 use App\Http\Middleware\Localization;
@@ -98,6 +100,7 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'auth.console' => ConsoleAuth::class,
         'auth.web' => WebAuth::class,
+        'config.member.login' => ConfigMemberLoginMiddleware::class,
         'auth' => Authenticate::class,
         'auth.basic' => AuthenticateWithBasicAuth::class,
         'bindings' => SubstituteBindings::class,

@@ -6,6 +6,11 @@
             @include("site.member.login_social")
 
             @if(($config['login_basic_app_status'] ?? '') == 'on')
+                <div class="loginbox-or">
+                    <div class="or-line"></div>
+                    <div class="or">OR</div>
+                </div>
+
                 <form method="post" class="recaptcha" action="{{ base_url('member/login') }}">
                     @csrf
                     <div class="loginbox-textbox">
