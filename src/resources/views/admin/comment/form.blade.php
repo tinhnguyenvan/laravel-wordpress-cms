@@ -24,7 +24,7 @@
                             <label class="col-form-label" for="post_id">{{ trans('comment.post_id') }}</label>
                             <div class="controls">
                                 <input type="number" name="post_id" id="post_id"
-                                       value="{{ old('post_id', $comment->post_id ?? '') }}" class="form-control">
+                                       value="{{ old('post_id', $comment->post_id ?? request('post_id')) }}" class="form-control">
                             </div>
                         </div>
 
@@ -32,14 +32,14 @@
                             <label class="col-form-label" for="author">{{ trans('comment.author') }}</label>
                             <div class="controls">
                                 <input type="text" name="author" id="author"
-                                       value="{{ old('author', $comment->author ?? '') }}" class="form-control">
+                                       value="{{ old('author', $comment->author ?? auth('admin')->user()->name) }}" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-form-label" for="author_email">{{ trans('comment.author_email') }}</label>
                             <div class="controls">
                                 <input type="email" name="author_email" id="author_email"
-                                       value="{{ old('author_email', $comment->author_email ?? '') }}"
+                                       value="{{ old('author_email', $comment->author_email ?? auth('admin')->user()->email) }}"
                                        class="form-control">
                             </div>
                         </div>

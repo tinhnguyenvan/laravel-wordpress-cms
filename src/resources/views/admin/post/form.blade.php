@@ -77,13 +77,19 @@
                                 @csrf
                                 @method('DELETE')
                                 <a href="{{ $post->link }}" target="_blank" class="btn btn-info">
-                                    <i class="fa fa-globe"></i>
+                                    <i class="fa fa-globe"></i> Link preview
+                                </a>
+
+                                <a href="{{ admin_url('comments/create?post_id='.$post->id) }}" target="_blank" class="btn btn-success">
+                                    <i class="fa fa-comment-o"></i> Create comment
                                 </a>
 
                                 <button class="btn btn-danger" type="submit">
                                     <i class="fa fa-trash"></i>
                                     {{ trans('common.trash') }}
                                 </button>
+
+
                             </form>
                         </div>
                     </div>
