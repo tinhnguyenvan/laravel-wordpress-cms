@@ -11,12 +11,14 @@
 
 namespace App\Services;
 
+use App\Models\Language;
 use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\PostTag;
 use App\Models\PostTranslation;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -58,7 +60,7 @@ class PostService extends BaseService
 
     public function beforeSave(&$formData = [], $isNews = false)
     {
-        foreach (config('app.languages') as $code) {
+        foreach (Language::loadLanguage() as $code => $languageName) {
             // slug
             if (empty($formData[$code]['slug'])) {
                 $slug = $formData[$code]['title'] ?? '';
@@ -99,6 +101,7 @@ class PostService extends BaseService
         }
 
         $this->beforeSave($params, true);
+        Log::debug($params);
         $myObject = new Post($params);
 
         if ($myObject->save($params)) {
