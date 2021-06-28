@@ -46,7 +46,7 @@
 
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link @if($active_menu == 'member') active @endif" href="{{ base_url('member') }}">
+                        <a class="nav-link @if(!empty($active_menu) && $active_menu == 'member') active @endif" href="{{ base_url('member') }}">
                             <span data-feather="info"></span> Profile
                         </a>
                     </li>
@@ -54,7 +54,7 @@
                     @if(!empty($manifest['nav_site']) && isset(auth('web')->user()->member_type))
                         @foreach($manifest['nav_site'] as $item)
                             <li class="nav-item">
-                                <a class="nav-link @if($active_menu == $item['url']) active @endif"
+                                <a class="nav-link @if(!empty($active_menu) && $active_menu == $item['url']) active @endif"
                                    href="{{ base_url($item['url']) }}">
                                     <span data-feather="{{ $item['icon'] }}"></span>
                                     {{ trans($item['title']) }}
