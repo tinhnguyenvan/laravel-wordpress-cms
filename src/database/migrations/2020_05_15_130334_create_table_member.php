@@ -24,7 +24,7 @@ class CreateTableMember extends Migration
             $table->string('last_name')->nullable()->default('');
             $table->string('phone', 20)->nullable()->default('');
             $table->string('email', 50)->nullable()->default('');
-            $table->string('address', 50)->nullable()->default('');
+            $table->string('address')->nullable()->default('');
             $table->smallInteger('member_type')->nullable()->default(1);
             $table->smallInteger('status')->nullable()->default(1);
             $table->integer('image_id')->nullable()->default(0);
