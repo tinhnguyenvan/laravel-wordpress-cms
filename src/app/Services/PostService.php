@@ -3,12 +3,6 @@
  * @author: nguyentinh
  * @create: 11/20/19, 8:21 PM
  */
-
-/**
- * @author: nguyentinh
- * @time: 10/29/19 4:05 PM
- */
-
 namespace App\Services;
 
 use App\Models\Language;
@@ -101,9 +95,7 @@ class PostService extends BaseService
         }
 
         $this->beforeSave($params, true);
-        Log::debug($params);
         $myObject = new Post($params);
-
         if ($myObject->save($params)) {
             PostTag::insertOrUpdateTags($myObject->tags, PostTag::SOURCE_POST, $myObject->id);
 
