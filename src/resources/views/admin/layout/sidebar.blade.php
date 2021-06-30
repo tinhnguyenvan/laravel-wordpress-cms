@@ -9,8 +9,9 @@
 
             @foreach(@config('constant.MENU_ADMIN') as $item)
                 <li class="nav-item @if(!empty($item['child'])) nav-dropdown @endif">
-                    <a href="@if(!empty($item['url'])) {{ admin_url($item['url']) }} @else javascript:void(0) @endif" class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif">
-                        <i class="nav-icon {{ $item['icon'] }}"></i> {{ trans($item['title']) }}
+                    <a href="@if(!empty($item['url'])) {{ admin_url($item['url']) }} @else javascript:void(0) @endif"
+                       class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif">
+                        <i class="nav-icon {{ $item['icon'] }}"></i> @lang($item['title'], [], config('app.locale'))
                     </a>
 
                     @if(!empty($item['child']))
@@ -21,7 +22,7 @@
                                         @if($itemChild['icon'])
                                             <i class="nav-icon {{ $itemChild['icon'] }}"></i>
                                         @endif
-                                        {{ trans($itemChild['title']) }}
+                                        @lang($itemChild['title'], [], config('app.locale'))
                                     </a>
                                 </li>
                             @endforeach
@@ -38,7 +39,8 @@
                         @continue
                     @endif
                     <li class="nav-item @if(!empty($item['child'])) nav-dropdown @endif">
-                        <a href="@if(!empty($item['url'])) {{ admin_url($item['url']) }} @else javascript:void(0) @endif" class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif">
+                        <a href="@if(!empty($item['url'])) {{ admin_url($item['url']) }} @else javascript:void(0) @endif"
+                           class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif">
                             <i class="nav-icon {{ $item['icon'] }}"></i> {{ trans($item['title']) }}
                         </a>
 
@@ -46,7 +48,8 @@
                             <ul class="nav-dropdown-items">
                                 @foreach($item['child'] as $itemChild)
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ $itemChild['url'] ? admin_url($itemChild['url']) : 'javascript:void(0)'}}">
+                                        <a class="nav-link"
+                                           href="{{ $itemChild['url'] ? admin_url($itemChild['url']) : 'javascript:void(0)'}}">
                                             @if($itemChild['icon'])
                                                 <i class="nav-icon {{ $itemChild['icon'] }}"></i>
                                             @else

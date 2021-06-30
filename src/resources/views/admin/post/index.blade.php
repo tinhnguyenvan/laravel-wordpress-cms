@@ -25,13 +25,13 @@
                         <th class="text-center w50">
                             <input type="checkbox" name="check_all" id="check_all" value="1">
                         </th>
-                        <th>{{ trans('post.title') }}</th>
-                        <th class="th-category_id">{{ trans('post.category_id') }}</th>
-                        <th class="th-creator_id">{{ trans('post.creator_id') }}</th>
-                        <th class="th-created_at">{{ trans('post.created_at') }}</th>
-                        <th class="text-center">{{ trans('post.count_view') }}</th>
-                        <th class="th-image text-center">{{ trans('post.image') }}</th>
-                        <th class="th-status text-center">{{ trans('post.status') }}</th>
+                        <th>@lang('post.title', [], config('app.locale'))</th>
+                        <th class="th-category_id">@lang('post.category_id', [], config('app.locale'))</th>
+                        <th class="th-creator_id">@lang('post.creator_id', [], config('app.locale'))</th>
+                        <th class="th-created_at">@lang('post.created_at', [], config('app.locale'))</th>
+                        <th class="text-center">@lang('post.count_view', [], config('app.locale'))</th>
+                        <th class="th-image text-center">@lang('post.image', [], config('app.locale'))</th>
+                        <th class="th-status text-center">@lang('post.status', [], config('app.locale'))</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -43,10 +43,14 @@
                                     <input class="check_id" type="checkbox" name="ids[]" value="{{ $item->id }}">
                                 </td>
                                 <td>
-                                    <a href="{{ admin_url('posts/'.$item->id.'/edit') }}">
-                                        {{ $item->title }}
-                                        <i class="fa fa-edit"></i>
-                                    </a>
+                                    @foreach(\App\Models\Language::loadLanguage() as $code => $language)
+                                        @if(!empty($item->translate($code)->title))
+                                            <a href="{{ admin_url('posts/'.$item->id.'/edit') }}">
+                                                {{ $item->translate($code)->title }} [{{ $code }}]
+                                            </a>
+                                            <br/>
+                                        @endif
+                                    @endforeach
                                 </td>
                                 <td>
                                     {{!empty($item->category->title ) ? $item->category->title : '' }}

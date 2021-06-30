@@ -28,7 +28,7 @@ class Localization
         }
 
         // verify
-        if (in_array($languageRequest, ['vi', 'en']) && $languageRequest != $locale) {
+        if (in_array($languageRequest, config('app.languages')) && $languageRequest != $locale) {
             $locale = $languageRequest;
             return redirect(url()->current())->withCookie(cookie()->forever('locale', $locale));
         }
