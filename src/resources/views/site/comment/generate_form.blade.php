@@ -142,6 +142,10 @@
         height: 48px;
     }
 
+    .box-comment-item-info-img img {
+        width: 100%;
+    }
+
     .box-comment-item-info-img, .box-comment-item-info-profile {
         float: left;
         margin-bottom: 10px;
