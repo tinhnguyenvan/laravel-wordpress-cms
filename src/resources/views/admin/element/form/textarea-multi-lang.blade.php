@@ -36,25 +36,26 @@
                 <div class="input-group">
                     <textarea name="{{$lang}}[{{$name}}]"
                               placeholder="{{$text}}: {{ $textLanguage }}"
-                              id="input-lang-{{$name}}-{{$lang}}"
+                              id="textarea-lang-{{$name}}-{{$lang}}"
                               rows="{{ $rows ?? 5 }}"
                               class="form-control {{ $class ?? '' }}">{{ old($name, $value->translate($lang)->$name ?? '') }}</textarea>
                 </div>
             </div>
         @endforeach
     </div>
+
+    <style>
+        .input-language-change {
+            position: absolute;
+            right: 0;
+            z-index: 100;
+        }
+    </style>
+    <script type="text/javascript">
+        jQuery('.dropdown-item-change-language-textarea-{{$name}}').click(function (e) {
+            jQuery('.collapse-item-change-language-textarea-{{$name}}').collapse('hide');
+            let text = $(this).attr('data-text');
+            jQuery('.show-item-change-language-textarea-{{$name}}').text(text);
+        });
+    </script>
 </div>
-<style>
-    .input-language-change {
-        position: absolute;
-        right: 0;
-        z-index: 100;
-    }
-</style>
-<script type="text/javascript">
-    jQuery('.dropdown-item-change-language-textarea-{{$name}}').click(function (e) {
-        jQuery('.collapse-item-change-language-textarea-{{$name}}').collapse('hide');
-        let text = $(this).attr('data-text');
-        jQuery('.show-item-change-language-textarea-{{$name}}').text(text);
-    });
-</script>

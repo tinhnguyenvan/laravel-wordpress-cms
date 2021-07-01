@@ -11,6 +11,7 @@ use App\Models\RolePermission;
 use App\Services\MediaService;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 /**
@@ -78,15 +79,16 @@ class MediaController extends AdminController
      * upload content for ckeditor
      *
      * @param Request $request
+     * @return array
      */
     public function upload(Request $request)
     {
+        $type = $request->get('type');
         $url = '';
         if ($request->file('upload')) {
             $objectFile = $request->file('upload');
 
             $upload = $this->mediaService->upload($objectFile);
-
             if (1 == $upload['status']) {
                 $url = asset('storage' . $upload['content']['file_name']);
 
@@ -98,11 +100,19 @@ class MediaController extends AdminController
             $msg = trans('error_file_invalid');
         }
 
-        $CKEditorFuncNum = $request->input('CKEditorFuncNum');
-        $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
+        if ($type == 'ckeditor') {
+            $CKEditorFuncNum = $request->input('CKEditorFuncNum');
+            $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
 
-        @header('Content-type: text/html; charset=utf-8');
-        echo $response;
+            @header('Content-type: text/html; charset=utf-8');
+            echo $response;
+        } else {
+            return [
+                'status' => !empty($url) ? 1 : 0,
+                'url' => $url,
+                'message' => $msg,
+            ];
+        }
     }
 
     public function show($id)

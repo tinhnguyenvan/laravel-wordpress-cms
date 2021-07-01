@@ -34,7 +34,7 @@
                 <div class="input-group">
                     <input type="{{ $type ?? 'text' }}"
                            name="{{$lang}}[{{$name}}]"
-                           id="{{$name}}"
+                           id="input-lang-{{$name}}-{{$lang}}"
                            placeholder="{{$text}}: {{ $textLanguage }}"
                            value="{{ old($name, $value->translate($lang)->$name ?? '') }}"
                            class="form-control {{ $class ?? '' }}"
@@ -43,19 +43,20 @@
             </div>
         @endforeach
     </div>
-</div>
-<style>
-    .input-language-change {
-        position: absolute;
-        right: 0;
-        z-index: 100;
-    }
-</style>
-<script type="text/javascript">
-    jQuery('.dropdown-item-change-language-{{$name}}').click(function (e) {
-        jQuery('.collapse-item-change-language-{{$name}}').collapse('hide');
-        let text = $(this).attr('data-text');
-        jQuery('.show-item-change-language-{{$name}}').text(text);
-    });
-</script>
 
+    <style>
+        .input-language-change {
+            position: absolute;
+            right: 0;
+            z-index: 100;
+        }
+    </style>
+    <script type="text/javascript">
+        jQuery('.dropdown-item-change-language-{{$name}}').click(function (e) {
+            jQuery('.collapse-item-change-language-{{$name}}').collapse('hide');
+            let text = $(this).attr('data-text');
+            jQuery('.show-item-change-language-{{$name}}').text(text);
+        });
+    </script>
+
+</div>

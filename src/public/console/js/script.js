@@ -43,12 +43,7 @@ $(document).ready(function () {
         let ckeditorContent = $('.ckeditor');
         if (ckeditorContent.length > 0) {
             if (configs.ckeditor === 'ckeditor') {
-                ckeditorContent.each(function (index, item) {
-                    CKEDITOR.replace(item.name, {
-                        filebrowserUploadUrl: configs.link_media_upload,
-                        filebrowserUploadMethod: 'form'
-                    });
-                });
+                CKEDITOR.replaceAll('ckeditor');
             } else {
                 ckeditorContent.each(function (index) {
                     let $summernote = ckeditorContent.eq(index);
@@ -63,15 +58,15 @@ $(document).ready(function () {
                                 $.ajax({
                                     data: data,
                                     type: "POST",
-                                    url: configs.link_media_upload,
+                                    url: configs.link_media_upload + '&type=summernote',
                                     cache: false,
                                     contentType: false,
                                     processData: false,
-                                    success: function (data) {
-                                        if (parseInt(data.status) === 0) {
-                                            alert(data.message);
+                                    success: function (result) {
+                                        if (parseInt(result.status) === 0) {
+                                            alert(result.message);
                                         } else {
-                                            let src = data.url;
+                                            let src = result.url;
                                             $summernote.summernote('insertImage', src, function ($image) {
                                                 $image.attr('src', src);
                                             });
