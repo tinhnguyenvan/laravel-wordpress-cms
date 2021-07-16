@@ -15,12 +15,6 @@
         <li class="nav-item px-3">
             <a class="nav-link" href="{{ admin_url('dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a>
         </li>
-        <li class="nav-item px-3">
-            <a class="nav-link" href="{{ admin_url('users') }}"><i class="fa fa-users"></i> Users</a>
-        </li>
-        <li class="nav-item px-3">
-            <a class="nav-link" href="{{ admin_url('configs') }}"><i class="fa fa-cogs"></i> Settings</a>
-        </li>
     </ul>
     <ul class="nav navbar-nav ml-auto" style="margin-right: 10px">
 
