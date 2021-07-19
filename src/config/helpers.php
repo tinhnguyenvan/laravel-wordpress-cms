@@ -14,7 +14,7 @@ if (!function_exists('base_url')) {
      */
     function base_url($path = '', $parameters = []): string
     {
-        return url($path, $parameters, true);
+        return url($path, $parameters, env('APP_SSL', false));
     }
 }
 
@@ -29,7 +29,7 @@ if (!function_exists('admin_url')) {
      */
     function admin_url($path = 'dashboard', $parameters = []): string
     {
-        return url('admin/' . $path, $parameters, true);
+        return url('admin/' . $path, $parameters, env('APP_SSL', false));
     }
 }
 
