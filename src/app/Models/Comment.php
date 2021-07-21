@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -12,17 +13,13 @@ class Comment extends Model
 {
     use SoftDeletes;
 
-    const TYPE_POST = 1;
-    const TYPE_PRODUCT = 2;
-    const TYPE_CLASSIFIED = 3;
-    const TYPE_SCHOOL = 4;
-    const TYPE_SCHOOL_NEWS_FEED = 4;
+    public const TYPE_POST = 1;
 
-    const STATUS_NEW = 1; // Trạng thái mới
-    const STATUS_APPROVED = 3; // Xác nhận
-    const STATUS_REJECT = 5; // hủy
+    public const STATUS_NEW = 1; // Trạng thái mới
+    public const STATUS_APPROVED = 3; // Xác nhận
+    public const STATUS_REJECT = 5; // hủy
 
-    const STATUS_LIST = [
+    public const STATUS_LIST = [
         self::STATUS_NEW,
         self::STATUS_APPROVED,
         self::STATUS_REJECT,
@@ -80,16 +77,17 @@ class Comment extends Model
      */
     protected $dates = ['date', 'deleted_at', 'created_at', 'updated_at'];
 
-    public function rating()
+    public function rating(): BelongsTo
     {
         return $this->belongsTo(Rating::class);
     }
 
-    public function post() {
+    public function post(): BelongsTo
+    {
         return $this->belongsTo(Post::class, 'post_id');
     }
 
-    public static function dropDownStatus()
+    public static function dropDownStatus(): array
     {
         $data = self::STATUS_LIST;
 
@@ -106,7 +104,7 @@ class Comment extends Model
      *
      * @return string
      */
-    public function getStatusTextAttribute()
+    public function getStatusTextAttribute(): string
     {
         switch ($this->status) {
             case self::STATUS_REJECT:
@@ -128,7 +126,7 @@ class Comment extends Model
      *
      * @return string
      */
-    public function getStatusColorAttribute()
+    public function getStatusColorAttribute(): string
     {
         switch ($this->status) {
             case self::STATUS_REJECT:
