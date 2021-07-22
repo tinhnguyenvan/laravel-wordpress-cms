@@ -10,8 +10,6 @@ use App\Models\Config;
 use Illuminate\Support\Facades\Validator;
 
 /**
- * Class ConfigService.
- *
  * @property Config $model
  */
 class ConfigService extends BaseService
@@ -51,7 +49,7 @@ class ConfigService extends BaseService
     /**
      * @param $params
      *
-     * @return object|array|bool
+     * @return array|Config|int
      */
     public function create($params)
     {
@@ -95,7 +93,7 @@ class ConfigService extends BaseService
         return $myConfig->value ?? '';
     }
 
-    public static function getConfig()
+    public static function getConfig(): array
     {
         $items = Config::all()->sortByDesc('id');
 
