@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Jobs\CommentJob;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\RolePermission;
@@ -52,7 +53,6 @@ final class CommentController extends SiteController
             return redirect($params['redirect'])->withInput()->withErrors($validator);
         }
 
-
         $params['status'] = Comment::STATUS_NEW;
         $params['parent'] = $params['comment_id'] ?? 0;
         $params['author_ip'] = $request->ip();
@@ -65,6 +65,7 @@ final class CommentController extends SiteController
 
         if (empty($comment['message'])) {
             // push queue send mail
+            CommentJob::dispatch(['comment_id' => $comment->id]);
             $request->session()->flash('success', trans('comment.add.success'));
 
             // rating
