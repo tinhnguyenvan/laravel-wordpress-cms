@@ -31,7 +31,7 @@
                         <th class="text-center w50">
                             <input type="checkbox" name="check_all" id="check_all" value="1">
                         </th>
-                        <th>{{ trans('comment.author') }}</th>
+                        <th style="min-width: 150px">{{ trans('comment.author') }}</th>
                         <th>{{ trans('comment.content') }}</th>
                         <th style="min-width: 150px">Post</th>
                         <th style="width: 130px" class="text-center">
