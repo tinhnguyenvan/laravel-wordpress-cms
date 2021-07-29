@@ -57,7 +57,7 @@
                                     </label>
                                 </td>
                                 <td>
-                                    {{ $item->content }}
+                                    {{ strip_tags($item->content) }}
 
                                     <a href="{{ admin_url('comments/'.$item->id.'/edit') }}">
                                         <i class="fa fa-edit"></i> Edit
