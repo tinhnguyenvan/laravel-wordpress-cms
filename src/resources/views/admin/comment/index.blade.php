@@ -49,8 +49,8 @@
                                 <td>
                                     <i class="fa fa-user-circle"></i> {{ $item->author }}
                                     <br/>
-                                    <small><i class="fa fa-envelope-o"></i> {{ $item->author_email }}</small>
-
+                                    <small>{{ $item->author_email }}</small>
+                                    <br/>
                                     <label class="label label-{{ $item->status_color }}">
                                         <i class="fa fa-check-circle-o"></i>
                                         {{ $item->status_text }}
