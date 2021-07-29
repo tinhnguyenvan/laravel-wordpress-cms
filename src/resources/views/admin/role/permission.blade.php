@@ -10,13 +10,16 @@
                     </div>
                     <div class="card-body">
                         <table class="table table-responsive-sm table-bordered table-hover font12">
-                    <thead>
-                    <tr class="bg-light">
+                            <thead>
+                            <tr class="bg-light">
                                 <th></th>
                                 @if ($itemRoles->count() > 0)
                                     @foreach ($itemRoles as $role)
                                         <th class="text-primary text-center">
                                             {{ $role->description }}
+                                            <a href="{{ admin_url('roles/'.$role->id.'/edit') }}">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
                                         </th>
                                     @endforeach
                                 @endif

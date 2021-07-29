@@ -40,7 +40,9 @@
                         @foreach ($items as $item)
                             <tr>
                                 <td class="text-center">
-                                    <input class="check_id" type="checkbox" name="ids[]" value="{{ $item->id }}">
+                                    <label>
+                                        <input class="check_id" type="checkbox" name="ids[]" value="{{ $item->id }}"/>
+                                    </label>
                                 </td>
                                 <td>
                                     @foreach(\App\Models\Language::loadLanguage() as $code => $language)

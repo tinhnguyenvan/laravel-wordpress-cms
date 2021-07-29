@@ -71,6 +71,8 @@ Route::middleware(['auth.console'])->group(
         // roles
         Route::get('roles', [RoleController::class, 'index']);
         Route::get('roles/permission', [RoleController::class, 'permission']);
+        Route::get('roles/{id}/edit', [RoleController::class, 'edit']);
+        Route::put('roles/{id}', [RoleController::class, 'update']);
         Route::post('roles/permission', [RoleController::class, 'updatePermission']);
 
         // themes
