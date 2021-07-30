@@ -8,6 +8,9 @@
             </li>
 
             @foreach(@config('constant.MENU_ADMIN') as $item)
+                @if(!in_array(auth('admin')->user()->role_id, $item['role'] ?? []))
+                    @continue
+                @endif
                 <li class="nav-item @if(!empty($item['child'])) nav-dropdown @endif">
                     <a href="@if(!empty($item['url'])) {{ admin_url($item['url']) }} @else javascript:void(0) @endif"
                        class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif">
@@ -36,6 +39,10 @@
                 <li class="nav-title"> APPS</li>
                 @foreach(@config('constant.MENU_APP') as $item)
                     @if(!in_array($item['plugin'], $plugins))
+                        @continue
+                    @endif
+
+                    @if(!in_array(auth('admin')->user()->role_id, $item['role'] ?? []))
                         @continue
                     @endif
                     <li class="nav-item @if(!empty($item['child'])) nav-dropdown @endif">

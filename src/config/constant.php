@@ -4,6 +4,8 @@
  * @create: 12/28/19, 10:05 AM
  */
 
+use App\Models\Role;
+
 return [
     'MENU_APP' => [], // no remove why merge array with package
     'MENU_ADMIN' => [
@@ -11,6 +13,7 @@ return [
             'title' => 'nav.menu_left.content',
             'url' => '',
             'icon' => 'fa fa-newspaper-o',
+            'role' => [Role::ROLE_ADMIN],
             'child' => [
                 [
                     'title' => 'nav.menu_left.post_list',
@@ -53,12 +56,11 @@ return [
                 ],
             ]
         ],
-
-
         [
             'title' => 'nav.menu_left.medias',
             'url' => '',
             'icon' => 'fa fa-file-image-o',
+            'role' => [Role::ROLE_ADMIN],
             'child' => [
                 [
                     'title' => 'nav.menu_left.media_list',
@@ -76,6 +78,7 @@ return [
             'title' => 'nav.menu_left.themes',
             'url' => '',
             'icon' => 'fa fa-themeisle',
+            'role' => [Role::ROLE_ADMIN],
             'child' => [
                 [
                     'title' => 'nav.menu_left.templates',
@@ -103,6 +106,7 @@ return [
             'title' => 'nav.menu_left.user',
             'url' => '',
             'icon' => 'fa fa-users',
+            'role' => [Role::ROLE_ADMIN],
             'child' => [
                 [
                     'title' => 'nav.menu_left.member_list',
@@ -130,6 +134,7 @@ return [
             'title' => 'nav.menu_left.contact',
             'url' => '',
             'icon' => 'fa fa-envelope',
+            'role' => [Role::ROLE_ADMIN],
             'child' => [
                 [
                     'title' => 'nav.menu_left.contact_list',
@@ -147,6 +152,7 @@ return [
             'title' => 'nav.menu_left.setting',
             'url' => '',
             'icon' => 'fa fa-sliders',
+            'role' => [Role::ROLE_ADMIN],
             'child' => [
                 [
                     'title' => 'nav.menu_left.configs',
