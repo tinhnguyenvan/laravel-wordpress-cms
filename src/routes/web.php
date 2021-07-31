@@ -30,6 +30,7 @@ Route::namespace('Site')->group(
         // member
         Route::middleware(['config.member.login'])->group(
             function () {
+                Route::get('member/dashboard', 'MemberController@dashboard');
                 Route::get('member/activemail', 'MemberController@activeMail');
                 Route::get('member/login', 'MemberController@login');
                 Route::post('member/login', 'MemberController@handleLogin');

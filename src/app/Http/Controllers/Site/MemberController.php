@@ -44,13 +44,23 @@ final class MemberController extends SiteController
 
     public function index()
     {
-
         $data = [
             'member' => auth(RolePermission::GUARD_NAME_WEB)->user(),
             'active_menu' => 'member',
             'title' => trans('member.title_profile'),
         ];
         $view = $this->memberService->renderView($this->theme, 'site.member.index');
+        return view($view, $this->render($data));
+    }
+
+    public function dashboard()
+    {
+        $data = [
+            'member' => auth(RolePermission::GUARD_NAME_WEB)->user(),
+            'active_menu' => 'dashboard',
+            'title' => 'Dashboard',
+        ];
+        $view = $this->memberService->renderView($this->theme, 'site.member.dashboard');
         return view($view, $this->render($data));
     }
 
@@ -103,7 +113,7 @@ final class MemberController extends SiteController
                 if ($request->get('redirect')) {
                     return redirect($request->get('redirect'));
                 } else {
-                    return redirect(base_url('member'));
+                    return redirect(base_url('member/dashboard'));
                 }
             } else {
                 $request->session()->flash('error', trans('member.error_member_not_exist'));
@@ -465,7 +475,7 @@ final class MemberController extends SiteController
         $member = Member::find($memberId);
         $data = [
             'title' => 'Notification',
-            'active_menu' => '',
+            'active_menu' => 'member/notifications',
             'member' => $member,
         ];
         $view = $this->memberService->renderView($this->theme, 'site.member.notifications');

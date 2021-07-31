@@ -50,13 +50,27 @@
                 <ul class="nav flex-column">
                     @if(!empty(auth('web')->user()->id))
                         <li class="nav-item">
+                            <a class="nav-link @if(!empty($active_menu) && $active_menu == 'dashboard') active @endif" aria-current="page" href="{{ base_url('member/dashboard') }}">
+                                <i class="fa fa-dashboard" aria-hidden="true"></i>
+                                Dashboard
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link @if(!empty($active_menu) && $active_menu == 'member') active @endif"
                                href="{{ base_url('member') }}">
-                                <i class="fa fa-info" aria-hidden="true"></i> Profile
+                                <i class="fa fa-info-circle" aria-hidden="true"></i> Profile
                             </a>
                         </li>
 
                         @if(!empty($manifest['nav_site']) && isset(auth('web')->user()->member_type))
+                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                                <span>Saved reports</span>
+                                <a class="link-secondary" href="#" aria-label="Add a new report">
+                                    <span data-feather="plus-circle"></span>
+                                </a>
+                            </h6>
+
                             @foreach($manifest['nav_site'] as $item)
                                 <li class="nav-item">
                                     <a class="nav-link @if(!empty($active_menu) && $active_menu == $item['url']) active @endif"

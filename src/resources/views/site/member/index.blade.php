@@ -10,7 +10,7 @@
         <table class="table table-hover">
             <tr>
                 <td style="width: 150px">
-                    <label class="form-label"><i class="fa fa-user-circle" aria-hidden="true"></i> User Name</label>
+                    <label class="form-label"><i class="fa fa-user" aria-hidden="true"></i> User Name</label>
                 </td>
                 <td>{{ $member->username }}</td>
             </tr>
@@ -36,7 +36,7 @@
             <tr>
                 <td colspan="2">
                     <a class="btn btn-primary" href="{{ base_url('member/update-profile') }}">
-                        <i class="fa fa-plus-circle" aria-hidden="true"></i> Edit profile
+                        <i class="fa fa-edit" aria-hidden="true"></i> Edit profile
                     </a>
                     @if($member->member_type == 0)
                         <a class="btn btn-primary" href="{{ base_url('member/change-password') }}">

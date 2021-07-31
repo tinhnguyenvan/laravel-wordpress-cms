@@ -1,19 +1,21 @@
 @extends('site.layout.member')
 @section('content')
     <div class="content-panel">
-        <table class="table table-bordered table-hover table-striped">
-            <thead>
-            <tr>
-                <td style="width: 50px"></td>
-                <td>Title</td>
-                <td style="width: 170px">Created at</td>
-                <td style="width: 170px">Read at</td>
-                <td class="text-center" style="width: 150px">Status</td>
-                <td style="width: 200px"></td>
-            </tr>
-            </thead>
-            <tbody>
-            @if($member->notifications->count() > 0)
+
+        @if($member->notifications->count() > 0)
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                <tr>
+                    <td style="width: 50px"></td>
+                    <td>Title</td>
+                    <td style="width: 170px">Created at</td>
+                    <td style="width: 170px">Read at</td>
+                    <td class="text-center" style="width: 150px">Status</td>
+                    <td style="width: 200px"></td>
+                </tr>
+                </thead>
+                <tbody>
+
                 @foreach($member->notifications as $key => $notification)
 
                     <tr>
@@ -45,14 +47,10 @@
                         </td>
                     </tr>
                 @endforeach
-            @else
-                <tr>
-                    <td colspan="6">
-                        {{ trans('common.data_empty') }}
-                    </td>
-                </tr>
-            @endif
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        @else
+            @include('site.element.empty')
+        @endif
     </div>
 @endsection
