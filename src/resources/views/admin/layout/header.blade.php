@@ -54,7 +54,7 @@
             <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                aria-expanded="false">
                 <i class="icon-user"></i>
-                Account
+                {{ auth('admin')->user()->name ?? 'Account' }}
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <!-- <div class="dropdown-header text-center">
