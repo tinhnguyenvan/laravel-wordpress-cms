@@ -23,7 +23,7 @@
                     <tr class="bg-light">
                         <th>{{ trans('common.title') }}</th>
                         <th>{{ trans('common.position') }}</th>
-                        <th>{{ trans('common.views') }}</th>
+                        <th class="text-center">{{ trans('common.views') }}</th>
                         <th>{{ trans('common.created_at') }}</th>
                         <th class="text-center">{{ trans('common.image_url') }}</th>
                         <th class="text-center">{{ trans('common.status') }}</th>
@@ -44,7 +44,7 @@
                                 <td>
                                     {{  $item->position }}
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     {{  $item->views }}
                                 </td>
 

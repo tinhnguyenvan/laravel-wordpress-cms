@@ -3,11 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Models\Ads;
-use Illuminate\Http\Request;
 
-/**
- * Class AdsController.
- */
 final class AdsController extends SiteController
 {
     public function __construct()
@@ -15,7 +11,7 @@ final class AdsController extends SiteController
         parent::__construct();
     }
 
-    public function tracking(Request $request, $slug)
+    public function tracking($slug)
     {
         $id = base64_decode($slug);
         $ads = Ads::query()->findOrFail($id);
