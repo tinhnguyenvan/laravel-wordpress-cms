@@ -28,7 +28,7 @@ class ThemeController extends AdminController
     public function __construct(ConfigService $configService)
     {
         parent::__construct();
-        $this->middleware(['permission:'.RolePermission::SETTING_SHOW]);
+        $this->middleware(['permission:' . RolePermission::SETTING_SHOW]);
         $this->configService = $configService;
     }
 
@@ -55,7 +55,7 @@ class ThemeController extends AdminController
         if (empty($config['theme_active'])) {
             $themeActiveCss = 'default_css';
         } else {
-            $themeActiveCss = $config['theme_active'].'_css';
+            $themeActiveCss = $config['theme_active'] . '_css';
         }
 
         $data = [
@@ -80,6 +80,7 @@ class ThemeController extends AdminController
 
         Config::query()->updateOrCreate($dataCondition, $dataUpdate);
 
+        $request->session()->flash('success', trans('common.edit.success'));
         return back()->withInput()->withCookie('theme', $theme, config('constant.COOKIE_EXPIRED'), '/');
     }
 }

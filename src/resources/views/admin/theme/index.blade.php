@@ -21,8 +21,13 @@
                                                     name="theme_active"
                                                     value="{{$dir}}"
                                                     class="btn btn-sm {{ $theme_active == $dir ? 'btn-primary': 'btn-default' }}">
-                                                <i class="fa fa-check"></i>
-                                                {{trans('common.active')}} themes {{ ucfirst($dir) }}
+                                                @if($theme_active != $dir )
+                                                    <i class="fa fa-check"></i>
+                                                    {{trans('common.active')}} themes {{ ucfirst($dir) }}
+                                                @else
+                                                    <i class="fa fa-refresh"></i>
+                                                    {{trans('common.edit')}} themes {{ ucfirst($dir) }}
+                                                @endif
                                             </button>
                                         </div>
                                     </div>
