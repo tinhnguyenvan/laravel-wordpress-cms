@@ -45,9 +45,9 @@
                     @if(!in_array(auth('admin')->user()->role_id, $item['role'] ?? []))
                         @continue
                     @endif
-                    <li class="nav-item @if(!empty($item['child'])) nav-dropdown @endif">
+                    <li class="nav-item open @if(!empty($item['child'])) nav-dropdown @endif">
                         <a href="@if(!empty($item['url'])) {{ admin_url($item['url']) }} @else javascript:void(0) @endif"
-                           class="nav-link  @if(!empty($item['child'])) nav-dropdown-toggle @endif">
+                           class="nav-link active  @if(!empty($item['child'])) nav-dropdown-toggle @endif">
                             <i class="nav-icon {{ $item['icon'] }}"></i> {{ trans($item['title']) }}
                         </a>
 
