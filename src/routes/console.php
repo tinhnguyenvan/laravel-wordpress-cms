@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\NotificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ConfigController;
 use App\Http\Controllers\Admin\ContactFormController;
@@ -234,5 +235,15 @@ Route::middleware(['auth.console'])->group(
         Route::put('languages/{id}', [LanguageController::class, 'update']);
         Route::patch('languages/{id}', [LanguageController::class, 'update']);
         Route::delete('languages/{id}', [LanguageController::class, 'destroy']);
+
+        // notifications
+        Route::get('notifications', [NotificationController::class, 'index']);
+        Route::get('notifications/create', [NotificationController::class, 'create']);
+        Route::post('notifications', [NotificationController::class, 'store']);
+        Route::get('notifications/{id}', [NotificationController::class, 'show']);
+        Route::get('notifications/{id}/edit', [NotificationController::class, 'edit']);
+        Route::put('notifications/{id}', [NotificationController::class, 'update']);
+        Route::patch('notifications/{id}', [NotificationController::class, 'update']);
+        Route::delete('notifications/{id}', [NotificationController::class, 'destroy']);
     }
 );

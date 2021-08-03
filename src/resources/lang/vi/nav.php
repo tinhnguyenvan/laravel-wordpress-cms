@@ -80,6 +80,7 @@ return [
     'menu_left.cache_systems' => 'Cache System',
     'menu_left.languages' => 'Language',
     'menu_left.classified' => 'Classified Ads',
+    'menu_left.notifications' => 'Thông báo',
 
     'setting' => 'Setting',
     'user_profile' => 'Hồ sơ của bạn',
