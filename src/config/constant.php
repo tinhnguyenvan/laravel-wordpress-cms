@@ -56,12 +56,12 @@ return [
                 ],
             ]
         ],
-        [
-            'title' => 'nav.menu_left.notifications',
-            'url' => 'notifications',
-            'icon' => 'icon-bell',
-            'role' => [Role::ROLE_ADMIN],
-        ],
+//        [
+//            'title' => 'nav.menu_left.notifications',
+//            'url' => 'notifications',
+//            'icon' => 'icon-bell',
+//            'role' => [Role::ROLE_ADMIN],
+//        ],
         [
             'title' => 'nav.menu_left.medias',
             'url' => '',
