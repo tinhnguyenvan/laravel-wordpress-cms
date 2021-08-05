@@ -63,6 +63,7 @@ Route::namespace('Site')->group(
         Route::get('/' . config('constant.URL_PREFIX_PAGE') . '/{slugCategory}', 'PageController@view');
         Route::get('404.html', 'PageController@notfound');
         Route::get('maintenance', 'PageController@maintenance');
+        Route::get('resume', 'PageController@resume');
 
 
         // tag

@@ -41,4 +41,11 @@ final class PageController extends SiteController
 
         return view($this->layout . 'page.maintenance', $this->render($data));
     }
+
+    public function resume()
+    {
+        $data = [];
+
+        return view($this->layout . 'page.resume', $this->render($data));
+    }
 }
