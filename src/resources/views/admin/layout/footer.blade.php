@@ -8,6 +8,6 @@
     </div>
     <div class="ml-auto">
         <span>Powered by</span>
-        <a target="_blank" href="https://me.tweb.com.vn?utm_source=laravel-wordpress-cms">TINH NGUYEN</a>
+        <a target="_blank" href="https://tweb.com.vn?utm_source=laravel-wordpress-cms">TINH NGUYEN</a>
     </div>
 </footer>
