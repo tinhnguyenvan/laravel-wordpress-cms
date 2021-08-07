@@ -104,7 +104,7 @@ Route::middleware(['auth.console'])->group(
         Route::get('posts/{id}/edit', [PostController::class, 'edit']);
         Route::put('posts/{id}', [PostController::class, 'update']);
         Route::patch('posts/{id}', [PostController::class, 'update']);
-        Route::patch('posts/destroy-multi', [PostController::class, 'destroyMulti']);
+        Route::delete('posts/destroy-multi', [PostController::class, 'destroyMulti']);
 
         // post tag
         Route::get('post_tags', [PostTagController::class, 'index']);
