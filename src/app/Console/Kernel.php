@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\NotificationCreateCommand;
 use App\Console\Commands\TestCommand;
 use App\Console\Commands\ThemeInstallCommand;
 use App\Console\Commands\ThemeRemoveCommand;
@@ -20,6 +21,7 @@ class Kernel extends ConsoleKernel
         TestCommand::class,
         ThemeInstallCommand::class,
         ThemeRemoveCommand::class,
+        NotificationCreateCommand::class,
     ];
 
     /**
@@ -32,7 +34,7 @@ class Kernel extends ConsoleKernel
     {
         set_time_limit(0);
 
-        // $schedule->job(new SchedulerJob(['command' => 'demo']))->everyMinute();
+        $schedule->job(new SchedulerJob(['command' => 'notification:create']))->hourly();
     }
 
     /**

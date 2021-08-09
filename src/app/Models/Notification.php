@@ -22,6 +22,7 @@ class Notification extends DatabaseNotification
      * @var array
      */
     protected $fillable = [
+        'id',
         'notification_subject_id',
         'type',
         'notifiable_type',
