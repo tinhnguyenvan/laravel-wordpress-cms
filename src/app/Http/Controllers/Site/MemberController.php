@@ -14,11 +14,12 @@ use App\Services\MediaService;
 use App\Services\MemberService;
 use App\Services\PostService;
 use Exception;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
+use Illuminate\View\View;
 use Laravel\Socialite\Facades\Socialite;
 
 /**
@@ -482,7 +483,26 @@ final class MemberController extends SiteController
         return view($view, $this->render($data));
     }
 
-    public function makeReadNotification(Request $request, $id): RedirectResponse
+    /**
+     * @param $id
+     * @return Factory|View
+     */
+    public function notificationDetail($id)
+    {
+        $notification = Notification::query()->findOrFail($id);
+        $notification->read_at = now();
+        $notification->save();
+
+        $data = [
+            'title' => $notification->subject->title,
+            'active_menu' => 'member/notifications',
+            'notification' => $notification,
+        ];
+        $view = $this->memberService->renderView($this->theme, 'site.member.notification_detail');
+        return view($view, $this->render($data));
+    }
+
+    public function makeReadNotification($id): RedirectResponse
     {
         $notification = Notification::query()->findOrFail($id);
         $notification->read_at = now();

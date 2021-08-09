@@ -52,6 +52,7 @@ Route::namespace('Site')->group(
                         Route::get('member/my-bookmark-posts', 'MemberController@myBookmarkPost');
 
                         Route::get('member/notifications', 'MemberController@notifications');
+                        Route::get('member/notification/show/{id}', 'MemberController@notificationDetail');
                         Route::put('member/notification/{id}/make-read', 'MemberController@makeReadNotification');
                         Route::get('member/logout', 'MemberController@logout');
                     }

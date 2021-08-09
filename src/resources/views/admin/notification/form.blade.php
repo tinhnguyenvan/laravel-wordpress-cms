@@ -23,13 +23,15 @@
                     <div class="card-body collapse show" id="collapseExample">
                         @include('admin.element.form.input', ['name' => 'title', 'text' => trans('common.title'), 'value' => $object->title ?? ''])
 
-                        @include('admin.element.form.textarea', ['name' => 'content', 'text' => trans('common.description'), 'value' => $object->content ?? ''])
+                        @include('admin.element.form.textarea', ['name' => 'content', 'class' => 'ckeditor', 'text' => trans('common.description'), 'value' => $object->content ?? ''])
 
                         <div class="form-group">
                             <label class="col-form-label" for="status">{{ trans('common.status') }}</label>
                             <div class="controls">
-                                @include('admin.element.form.radio', ['name' => 'status', 'text' => trans('common.status.new'), 'valueDefault' => 1, 'value' => $object->status ?? 1])
                                 @include('admin.element.form.radio', ['name' => 'status', 'text' => trans('common.status.disable'), 'valueDefault' => 0, 'value' => $object->status ?? 0])
+                                @include('admin.element.form.radio', ['name' => 'status', 'text' => trans('common.status.new'), 'valueDefault' => 1, 'value' => $object->status ?? 1])
+                                @include('admin.element.form.radio', ['name' => 'status', 'text' => trans('common.status.processing'), 'valueDefault' => 2, 'value' => $object->status ?? 0])
+                                @include('admin.element.form.radio', ['name' => 'status', 'text' => trans('common.status.success'), 'valueDefault' => 3, 'value' => $object->status ?? 0])
                             </div>
                         </div>
 

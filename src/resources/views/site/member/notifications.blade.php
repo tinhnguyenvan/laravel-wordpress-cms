@@ -8,10 +8,10 @@
                 <tr>
                     <td style="width: 50px"></td>
                     <td>Title</td>
-                    <td style="width: 170px">Created at</td>
-                    <td style="width: 170px">Read at</td>
+                    <td style="width: 150px">Created at</td>
+                    <td style="width: 150px">Read at</td>
                     <td class="text-center" style="width: 150px">Status</td>
-                    <td style="width: 200px"></td>
+                    <td style="width: 150px"></td>
                 </tr>
                 </thead>
                 <tbody>
@@ -21,10 +21,20 @@
                     <tr>
                         <td class="text-center">{{ ($key + 1 ) }}</td>
                         <td>
-                            {{ $notification->data['title'] ?? '' }}
+                            <a href="{{ base_url('member/notification/show/'.$notification->id) }}">
+                                {{ $notification->subject->title ?? '' }}
+                            </a>
                         </td>
-                        <td>{{ !empty($notification->created_at) ? $notification->created_at->format('d/m/Y H:i A') : '' }}</td>
-                        <td>{{ !empty($notification->read_at) ? $notification->read_at->format('d/m/Y H:i A') : '' }}</td>
+                        <td>
+                            <small>
+                                {{ !empty($notification->created_at) ? $notification->created_at->format('d/m/Y H:i A') : '' }}
+                            </small>
+                        </td>
+                        <td>
+                            <small>
+                                {{ !empty($notification->read_at) ? $notification->read_at->format('d/m/Y H:i A') : '' }}
+                            </small>
+                        </td>
                         <td class="text-center">
                             @if(empty($notification->read_at))
                                 <label class="label label-warning">Unread</label>

@@ -56,6 +56,11 @@ class Notification extends DatabaseNotification
      */
     protected $dates = ['read_at', 'created_at', 'updated_at'];
 
+    public function subject()
+    {
+        return $this->belongsTo(NotificationSubject::class, 'notification_subject_id');
+    }
+
     /**
      * @return string
      */
