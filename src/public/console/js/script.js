@@ -29,15 +29,24 @@ $(document).ready(function () {
         /**
          * set menu sidebar-minimizer
          */
+        let sidebar_minimizer = $.cookie('sidebar_minimizer');
+
+        if (parseInt(sidebar_minimizer) === 1) {
+            $('body').addClass('brand-minimized sidebar-minimized');
+            $('.sidebar-nav').removeClass('ps ps--active-y');
+        } else {
+            $('body').removeClass('brand-minimized sidebar-minimized');
+            $('.sidebar-nav').addClass('ps ps--active-y');
+        }
+
         $('.sidebar-minimizer').on('click', function () {
-            let value_sidebar = $.cookie('sidebar_minimizer');
-            if (parseInt(value_sidebar) === 1) {
-                value_sidebar = 0;
+            if (parseInt(sidebar_minimizer) === 1) {
+                sidebar_minimizer = 0;
             } else {
-                value_sidebar = 1;
+                sidebar_minimizer = 1;
             }
 
-            $.cookie('sidebar_minimizer', value_sidebar, {expires: 365, path: '/'});
+            $.cookie('sidebar_minimizer', sidebar_minimizer, {expires: 365, path: '/'});
         });
 
         let ckeditorContent = $('.ckeditor');

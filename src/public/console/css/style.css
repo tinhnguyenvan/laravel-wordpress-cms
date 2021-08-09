@@ -13542,7 +13542,6 @@ canvas {
 
 .sidebar > .sidebar-nav {
     overflow-x: hidden;
-    overflow-y: auto !important;
 }
 
 .sidebar .nav {
@@ -13570,7 +13569,6 @@ canvas {
     position: relative;
     margin: 0;
     transition: background .3s ease-in-out;
-    text-indent: 8px;
 }
 
 .sidebar .nav-dropdown-items {
@@ -13588,7 +13586,7 @@ canvas {
 
 .sidebar .nav-link {
     display: block;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1rem;
     color: #fff;
     text-decoration: none;
     background: transparent;
@@ -13998,7 +13996,6 @@ canvas {
 
     .sidebar-minimized .sidebar .nav-item {
         width: 50px;
-        margin-left: 0;
         overflow: hidden;
     }
 
