@@ -156,9 +156,12 @@ return [
     'deleted_at' => 'Ngày xóa',
 
     'status.active' => 'Public',
-    'status.disable' => 'Private',
+    'status.disable' => 'Disable',
     'status.approved' => 'Approved',
     'status.reject' => 'Reject',
     'status.register' => 'Register',
     'status.review' => 'Review',
+    'status.new' => 'New',
+    'status.processing' => 'Processing',
+    'status.success' => 'Success',
 ];

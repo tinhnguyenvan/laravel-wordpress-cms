@@ -6,7 +6,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Notification;
+use App\Models\NotificationSubject;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -19,7 +19,7 @@ class NotificationController extends AdminController
 
     public function index()
     {
-        $items = Notification::query()->paginate();
+        $items = NotificationSubject::query()->paginate();
 
         $data = [
             'items' => $items,
@@ -31,7 +31,7 @@ class NotificationController extends AdminController
     public function create()
     {
         $data = [
-            'notification' => new Notification(),
+            'notification' => new NotificationSubject(),
         ];
 
         return view('admin.notification.form', $this->render($data));
@@ -39,8 +39,8 @@ class NotificationController extends AdminController
 
     public function store(Request $request)
     {
-        $params = $request->only(['name', 'code', 'status']);
-        $result = Notification::query()->create($params);
+        $params = $request->only(['title', 'content', 'status']);
+        $result = NotificationSubject::query()->create($params);
         if (empty($result['message'])) {
             $request->session()->flash('success', trans('common.add.success'));
             return redirect(admin_url('notifications'), 302);
@@ -54,7 +54,7 @@ class NotificationController extends AdminController
     public function edit($id)
     {
         $data = [
-            'notification' => Notification::query()->findOrFail($id),
+            'object' => NotificationSubject::query()->findOrFail($id),
         ];
 
         return view('admin.notification.form', $this->render($data));
@@ -68,9 +68,9 @@ class NotificationController extends AdminController
      */
     public function update(Request $request, $id): RedirectResponse
     {
-        $params = $request->only(['name', 'code', 'status']);
+        $params = $request->only(['title', 'content', 'status']);
 
-        if (Notification::query()->where('id', $id)->update($params)) {
+        if (NotificationSubject::query()->where('id', $id)->update($params)) {
             $request->session()->flash('success', trans('common.edit.success'));
             return redirect(admin_url('notifications'), 302);
         } else {
@@ -82,9 +82,9 @@ class NotificationController extends AdminController
 
     public function destroy(Request $request, $id)
     {
-        $myObject = Notification::query()->findOrFail($id);
+        $myObject = NotificationSubject::query()->findOrFail($id);
         if (!empty($myObject->id)) {
-            Notification::destroy($id);
+            NotificationSubject::destroy($id);
             $request->session()->flash('success', trans('common.delete.success'));
         } else {
             $request->session()->flash('error', trans('common.delete.error'));

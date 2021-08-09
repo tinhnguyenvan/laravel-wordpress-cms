@@ -56,12 +56,6 @@ return [
                 ],
             ]
         ],
-//        [
-//            'title' => 'nav.menu_left.notifications',
-//            'url' => 'notifications',
-//            'icon' => 'icon-bell',
-//            'role' => [Role::ROLE_ADMIN],
-//        ],
         [
             'title' => 'nav.menu_left.medias',
             'url' => '',
@@ -114,6 +108,12 @@ return [
             'icon' => 'fa fa-users',
             'role' => [Role::ROLE_ADMIN],
             'child' => [
+                [
+                    'title' => 'nav.menu_left.notifications',
+                    'url' => 'notifications',
+                    'icon' => 'icon-bell',
+                    'role' => [Role::ROLE_ADMIN],
+                ],
                 [
                     'title' => 'nav.menu_left.member_list',
                     'url' => 'members',
