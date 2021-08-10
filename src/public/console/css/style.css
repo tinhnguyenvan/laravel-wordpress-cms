@@ -13542,6 +13542,11 @@ canvas {
 
 .sidebar > .sidebar-nav {
     overflow-x: hidden;
+    overflow-y: auto !important;
+}
+
+.sidebar-minimized .sidebar > .sidebar-nav {
+    overflow-y: unset !important;
 }
 
 .sidebar .nav {
