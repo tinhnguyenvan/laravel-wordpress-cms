@@ -122,12 +122,7 @@ return [
                 [
                     'title' => 'nav.menu_left.user_list',
                     'url' => 'users',
-                    'icon' => 'icon-list',
-                ],
-                [
-                    'title' => 'nav.menu_left.user_profile',
-                    'url' => 'users/profile',
-                    'icon' => 'icon-user',
+                    'icon' => 'icon-people',
                 ],
                 [
                     'title' => 'nav.menu_left.roles',
