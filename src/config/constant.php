@@ -77,13 +77,13 @@ return [
         [
             'title' => 'nav.menu_left.themes',
             'url' => '',
-            'icon' => 'fa fa-themeisle',
+            'icon' => 'icon-screen-desktop',
             'role' => [Role::ROLE_ADMIN],
             'child' => [
                 [
-                    'title' => 'nav.menu_left.templates',
+                    'title' => 'Template',
                     'url' => 'themes',
-                    'icon' => 'fa fa-themeisle',
+                    'icon' => 'icon-equalizer',
                 ],
                 [
                     'title' => 'nav.menu_left.menu',
