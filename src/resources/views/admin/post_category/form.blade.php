@@ -45,6 +45,14 @@
                             </div>
                         </div>
 
+                        @if(!empty($post_category->id))
+                        <div class="form-group">
+                            <label class="col-form-label" for="parent_id">{{ trans('common.parent_id') }}</label>
+                            <div class="controls">
+                                @include('admin.element.form.select', ['name' => 'parent_id', 'empty' => 1, 'data' => $dropDownCategoryParent, 'selected' => old('parent_id', ($post_category->parent_id ?? 0))])
+                            </div>
+                        </div>
+                        @endif
 
                         <div class="form-group">
                             <label class="col-form-label"
