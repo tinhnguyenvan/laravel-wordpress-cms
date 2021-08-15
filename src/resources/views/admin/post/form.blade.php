@@ -30,7 +30,8 @@
                                 @include('admin.element.form.select', ['name' => 'category_id', 'data' => $dropdownCategory, 'selected' => old('category_id', ($post->category_id ?? 0))])
                             </div>
                             @if(empty($dropdownCategory))
-                                <a target="_blank" href="{{ admin_url('post_categories/create') }}"><i class="fa fa-plus"></i> Add category</a>
+                                <a target="_blank" href="{{ admin_url('post_categories/create') }}"><i
+                                            class="fa fa-plus"></i> Add category</a>
                             @endif
                         </div>
 
@@ -51,15 +52,15 @@
                         </div>
 
                         <div class="form-actions">
-                            <button class="btn btn-success" type="submit" name="submit" value="0">
+                            <x-forms.button name="submit" type="submit" class="btn-success" value="0">
                                 <i class="fa fa-save"></i>
                                 {{ trans('common.save') }}
-                            </button>
+                            </x-forms.button>
 
-                            <button class="btn btn-default" type="submit" name="submit" value="1">
+                            <x-forms.button name="submit" type="submit" class="btn-default" value="1">
                                 <i class="fa fa-save"></i>
                                 {{ trans('common.save_close') }}
-                            </button>
+                            </x-forms.button>
                         </div>
                     </div>
                 </div>
@@ -73,23 +74,23 @@
                 <div class="row mb-5">
                     <div class="col-lg-12">
                         <div class="form-actions text-lg-right">
-                            <form method="post" onsubmit="return confirm('Do you want DELETE ?');" action="{{ admin_url('posts/'.$post->id ) }}">
+                            <form method="post" onsubmit="return confirm('Do you want DELETE ?');"
+                                  action="{{ admin_url('posts/'.$post->id ) }}">
                                 @csrf
                                 @method('DELETE')
                                 <a href="{{ $post->link }}" target="_blank" class="btn btn-info">
                                     <i class="fa fa-globe"></i> Link preview
                                 </a>
 
-                                <a href="{{ admin_url('comments/create?post_id='.$post->id) }}" target="_blank" class="btn btn-success">
+                                <a href="{{ admin_url('comments/create?post_id='.$post->id) }}" target="_blank"
+                                   class="btn btn-success">
                                     <i class="fa fa-comment-o"></i> Create comment
                                 </a>
 
-                                <button class="btn btn-danger" type="submit">
+                                <x-forms.button name="submit" type="submit" class="btn-danger" value="">
                                     <i class="fa fa-trash"></i>
                                     {{ trans('common.trash') }}
-                                </button>
-
-
+                                </x-forms.button>
                             </form>
                         </div>
                     </div>

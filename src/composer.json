@@ -25,6 +25,7 @@
         "kreait/laravel-firebase": "^1.0",
         "laracademy/generators": "^2.1",
         "laravel/framework": "^7.1",
+        "laravel/tinker": "^2.6",
         "maatwebsite/excel": "^3.1",
         "simplesoftwareio/simple-qrcode": "~2",
         "socialiteproviders/facebook": "^4.1",
