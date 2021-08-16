@@ -98,7 +98,7 @@
 
 1. **Laravel Package Woocommerce**
 
-	- [https://github.com/tinhnguyenvan/laravel-wordpress-cms-package-woocommerce](https://github.com/tinhnguyenvan/laravel-wordpress-cms-package-woocommerce)
+	- [https://github.com/tinhnguyenvan/package-woocommerce](https://github.com/tinhnguyenvan/package-woocommerce)
 
 		[![Latest Version on Packagist](https://img.shields.io/packagist/v/tinhphp/woocommerce.svg?style=flat-square)](https://packagist.org/packages/tinhphp/woocommerce)
 		
