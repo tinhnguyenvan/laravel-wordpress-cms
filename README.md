@@ -56,7 +56,7 @@
 
 ### 1. Create new theme
 
-- **Step 1**: Download theme default example: [https://github.com/tinhnguyenvan/laravel-wordpress-cms-theme-default](https://github.com/tinhnguyenvan/laravel-wordpress-cms-theme-default)
+- **Step 1**: Create Theme default
 
 ```
 	default/
