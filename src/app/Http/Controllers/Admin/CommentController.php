@@ -30,7 +30,7 @@ class CommentController extends AdminController
     public function index(Request $request)
     {
         $this->commentService->buildCondition($request->all(), $condition, $sortBy, $sortType);
-        $items = Comment::query()->where($condition)->orderBy($sortBy, $sortType)->paginate($this->page_number);
+        $items = Comment::query()->with(['post'])->where($condition)->orderBy($sortBy, $sortType)->paginate($this->page_number);
         $filter = $this->commentService->filter($request->all());
         $data = [
             'title' => trans('common.list'),

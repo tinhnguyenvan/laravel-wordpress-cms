@@ -36,7 +36,7 @@ final class PostController extends SiteController
             // set seo
             $this->seo($postCategory, $this->data);
         } else {
-            $items = Post::active()->orderByDesc('id')->paginate($this->page_number);
+            $items = Post::active()->with(['comment'])->orderByDesc('id')->paginate($this->page_number);
             $this->data['title'] = $this->data['config']['company_name'];
         }
 
@@ -52,7 +52,7 @@ final class PostController extends SiteController
 
     public function view($slugCategory, $slugPost)
     {
-        $post = Post::query()->whereTranslation('slug', $slugPost)->first();
+        $post = Post::query()->with(['comment'])->whereTranslation('slug', $slugPost)->first();
 
         if (empty($post)) {
             return redirect(base_url('404.html'));
@@ -69,9 +69,11 @@ final class PostController extends SiteController
         // update view
         Post::query()->where('id', $post->id)->increment('views');
 
-        $items = Post::query()->where(['category_id' => $post->category_id])->orderByDesc('id')->paginate(
-            $this->page_number
-        );
+        $items = Post::query()
+            ->with(['comment'])
+            ->where(['category_id' => $post->category_id])
+            ->orderByDesc('id')
+            ->paginate($this->page_number);
 
         // check bookmark
         $isBookmark = 0;

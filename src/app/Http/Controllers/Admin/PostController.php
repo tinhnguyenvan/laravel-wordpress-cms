@@ -41,7 +41,7 @@ class PostController extends AdminController
     public function index(Request $request)
     {
         $this->postService->buildCondition($request->all(), $condition, $sortBy, $sortType);
-        $object = Post::query()->where($condition);
+        $object = Post::query()->with(['category', 'user', 'translations'])->where($condition);
 
         if ($request->query('search')) {
             $object->whereTranslationLike('title', $request->get('search') . '%');

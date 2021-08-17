@@ -95,7 +95,9 @@ class ConfigService extends BaseService
 
     public static function getConfig(): array
     {
-        $items = Config::all()->sortByDesc('id');
+        $items = cache()->remember('config', 3600, function () {
+            return Config::all()->sortByDesc('id');
+        });
 
         $config = [];
         if (!empty($items)) {
