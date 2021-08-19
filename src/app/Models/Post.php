@@ -93,7 +93,7 @@ class Post extends Model implements TranslatableContract
      * @param $query
      * @return mixed
      */
-    public function scopeActive($query)
+    public function scopeActive($query): mixed
     {
         return $query->where('status', 1);
     }

@@ -63,6 +63,13 @@ class Region extends Model
 
     public static function getRegion($parentId = 0, $limit = 10)
     {
-        return Region::query()->where('parent_id', $parentId)->limit($limit)->get(['id', 'code', 'name']);
+        $key = 'region_' . $parentId . '_' . $limit;
+        return cache()->remember(
+            $key,
+            3600,
+            function () use ($parentId, $limit) {
+                return Region::query()->where('parent_id', $parentId)->limit($limit)->get(['id', 'code', 'name']);
+            }
+        );
     }
 }
