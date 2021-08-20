@@ -40,14 +40,9 @@ class PostController extends AdminController
 
     public function index(Request $request)
     {
-        $this->postService->buildCondition($request->all(), $condition, $sortBy, $sortType);
-        $object = Post::query()->with(['category', 'user', 'translations'])->where($condition);
+        $object = Post::query()->with(['category', 'user', 'translations'])->filter($request->all());
 
-        if ($request->query('search')) {
-            $object->whereTranslationLike('title', $request->get('search') . '%');
-        }
-
-        $items = $object->orderBy($sortBy, $sortType)->paginate($this->page_number);
+        $items = $object->orderBy('id', 'desc')->paginate($this->page_number);
 
         $filter = $this->postService->filter($request->all());
         $data = [
