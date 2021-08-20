@@ -89,11 +89,8 @@ class Post extends Model implements TranslatableContract
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
     protected $with = ['translations', 'category'];
-    /**
-     * @param $query
-     * @return mixed
-     */
-    public function scopeActive($query): mixed
+
+    public function scopeActive($query)
     {
         return $query->where('status', 1);
     }
