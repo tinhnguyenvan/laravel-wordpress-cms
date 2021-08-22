@@ -46,7 +46,7 @@
                                     </tr>
                                     <tr>
                                         <td class="th-created_at">{{ trans('contact.request_content_form') }}</td>
-                                        <td>{{ $contact->request_content_form  }}</td>
+                                        <td>{!! $contact->request_content_form !!}</td>
                                     </tr>
                                     </tbody>
                                     <tfoot>
