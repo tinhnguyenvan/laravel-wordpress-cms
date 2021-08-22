@@ -56,12 +56,7 @@ class AdsService extends BaseService
 
     public function beforeSave(&$formData = [], $isNews = false)
     {
-        if (empty($formData['slug']) && $isNews) {
-            $formData['slug'] = $formData['title'];
-        }
-
         $formData['theme'] = Cookie::get('theme');
-        $formData['slug'] = Str::slug($formData['slug']);
     }
 
     /**
