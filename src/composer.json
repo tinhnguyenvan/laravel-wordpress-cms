@@ -22,6 +22,8 @@
         "haruncpi/laravel-id-generator": "^1.0",
         "intervention/image": "^2.5",
         "irazasyed/telegram-bot-sdk": "^2.0",
+        "itsgoingd/clockwork": "^5.1",
+        "jenssegers/agent": "^2.6",
         "kreait/laravel-firebase": "^1.0",
         "laracademy/generators": "^2.1",
         "laravel/framework": "^7.1",
