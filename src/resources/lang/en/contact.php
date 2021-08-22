@@ -7,6 +7,7 @@ return [
     'contact_form_id' => 'Form',
     'created_at' => 'Created at',
     'updated_at' => 'Updated at',
+    'request_title_form' => 'Title',
     'request_content_form' => 'Content',
     'fullname_register_email' => 'Customer register email',
     'add.success' => 'Register email success',
