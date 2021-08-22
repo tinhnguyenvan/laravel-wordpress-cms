@@ -7,6 +7,7 @@ use App\Services\ConfigService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
+use Jenssegers\Agent\Agent;
 
 /**
  * Class SiteController.
@@ -45,6 +46,9 @@ class SiteController extends Controller
         $this->data['success'] = session('success');
         $this->data['error'] = session('error');
         $this->data['theme'] = $this->theme;
+
+        $agent = new Agent();
+        $this->data['isMobile'] = $agent->isMobile();
 
         return array_merge($this->data, $data);
     }
