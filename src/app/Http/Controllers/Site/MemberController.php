@@ -111,6 +111,9 @@ final class MemberController extends SiteController
             if (!empty($member) && !empty($memberSocialAccount)) {
                 /** @var Member $member */
                 auth(RolePermission::GUARD_NAME_WEB)->login($member);
+
+                session()->regenerate();
+
                 if ($request->get('redirect')) {
                     return redirect($request->get('redirect'));
                 } else {

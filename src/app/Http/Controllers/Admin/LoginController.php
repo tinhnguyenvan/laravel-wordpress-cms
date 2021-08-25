@@ -70,6 +70,9 @@ class LoginController extends Controller
 
         if (!empty($myUser) && $myUser->id > 0) {
             if (Auth::guard('admin')->attempt($credentials, true)) {
+
+                session()->regenerate();
+
                 $theme = ConfigService::getValue('theme_active');
                 $plugin = Plugin::query()->where('status', 1)->get(['code'])->toArray();
                 if (!empty($plugin)) {
