@@ -175,6 +175,11 @@ return [
                     'icon' => 'fa fa-globe',
                 ],
                 [
+                    'title' => 'Log',
+                    'url' => 'log-viewer',
+                    'icon' => 'fa fa-archive',
+                ],
+                [
                     'title' => 'Cache System',
                     'url' => 'cache-systems',
                     'icon' => 'fa fa-database',
