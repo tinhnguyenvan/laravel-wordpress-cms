@@ -16,6 +16,7 @@
         "ext-curl": "*",
         "ext-gettext": "*",
         "ext-json": "*",
+        "arcanedev/log-viewer": "7.x",
         "astrotomic/laravel-translatable": "^11.9",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.5",

@@ -188,6 +188,8 @@ return [
         // agent
         Jenssegers\Agent\AgentServiceProvider::class,
 
+        Arcanedev\LogViewer\LogViewerServiceProvider::class,
+
         /*
          * Application Service Providers...
          */

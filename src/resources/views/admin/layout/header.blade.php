@@ -2,8 +2,8 @@
     <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="{{ admin_url('dashboard') }}">
-        CMS
+    <a class="navbar-brand" href="{{ admin_url() }}">
+        <i class="fa fa-fw fa-book"></i> CMS
     </a>
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
         <span class="navbar-toggler-icon"></span>
@@ -13,7 +13,7 @@
             <a class="nav-link" target="_blank" href="{{ url('/') }}"><i class="fa fa-globe"></i> Web</a>
         </li>
         <li class="nav-item px-3">
-            <a class="nav-link" href="{{ admin_url('dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a>
+            <a class="nav-link" href="{{ admin_url() }}"><i class="fa fa-dashboard"></i> Dashboard</a>
         </li>
     </ul>
     <ul class="nav navbar-nav ml-auto" style="margin-right: 10px">
