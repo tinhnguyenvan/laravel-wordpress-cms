@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Site\HomeController;
 use App\Models\Plugin;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +26,7 @@ Route::namespace('Site')->group(
         try {
             $countPlugin = Plugin::query()->where('status', 1)->where('is_home_route', 1)->count();
             if ($countPlugin == 0) {
-                Route::get('/', 'HomeController@index');
+                Route::get('/', [HomeController::class, 'index']);
             }
         } catch (Exception $exception) {
         }
