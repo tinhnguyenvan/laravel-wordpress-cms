@@ -182,7 +182,7 @@ return [
         // image
         Intervention\Image\ImageServiceProvider::class,
         // qr code
-        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+        #SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         // rating
         willvincent\Rateable\RateableServiceProvider::class,
         // agent
