@@ -81,6 +81,7 @@ return [
     'menu_left.languages' => 'Language',
     'menu_left.classified' => 'Classified Ads',
     'menu_left.notifications' => 'Thông báo',
+    'menu_left.crm' => 'CRM',
 
     'setting' => 'Setting',
     'user_profile' => 'Hồ sơ của bạn',
