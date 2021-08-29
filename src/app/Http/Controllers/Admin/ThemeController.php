@@ -17,6 +17,7 @@ use App\Services\ConfigService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * Class ConfigController.
@@ -79,7 +80,7 @@ class ThemeController extends AdminController
         ];
 
         Config::query()->updateOrCreate($dataCondition, $dataUpdate);
-
+        Cache::pull('config');
         $request->session()->flash('success', trans('common.edit.success'));
         return back()->withInput()->withCookie('theme', $theme, config('constant.COOKIE_EXPIRED'), '/');
     }
