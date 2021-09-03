@@ -6,7 +6,7 @@
             <i class="fa fa-align-justify"></i> {{ trans('common.list') }} ({{ $items->total() }})
 
             <div class="card-header-actions">
-                <a class="btn btn-sm btn-primary" href="{{ admin_url('medias/create') }}">
+                <a class="btn btn-sm btn-primary" href="{{ admin_url('medias/create') }}" target="_top">
                     <small>
                         <i class="fa fa-upload"></i>
                         {{ trans('common.btn.upload') }}

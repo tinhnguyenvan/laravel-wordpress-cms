@@ -1,5 +1,5 @@
+@props(['max_file' => 1])
 <style>
-
     .dropzone {
         border: 2px dashed #0087F7 !important;
         border-radius: 5px;
@@ -41,7 +41,7 @@
         url: "{{ admin_url('media/upload') }}",
         paramName: "upload",
         uploadMultiple: false,
-        maxFiles: 10, // 10 file
+        maxFiles: {{ $max_file }}, // 10 file
         maxFilesize: 2, // 2MB
         // autoProcessQueue: false,
         addRemoveLinks: true,
