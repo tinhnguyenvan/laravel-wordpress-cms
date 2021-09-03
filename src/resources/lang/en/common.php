@@ -164,4 +164,7 @@ return [
     'status.new' => 'New',
     'status.processing' => 'Processing',
     'status.success' => 'Success',
+
+    'Drop files here to upload' => 'Drop files here to upload',
+    'You can also click to open file browser' => 'You can also click to open file browser',
 ];

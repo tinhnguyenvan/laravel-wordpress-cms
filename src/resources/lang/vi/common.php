@@ -164,4 +164,7 @@ return [
     'status.new' => 'New',
     'status.processing' => 'Processing',
     'status.success' => 'Success',
+
+    'Drop files here to upload' => 'Kéo thả hình ảnh vào đây để upload',
+    'You can also click to open file browser' => 'Hoặc nhấp để mở trình duyệt chọn hình ảnh',
 ];

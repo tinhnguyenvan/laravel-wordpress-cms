@@ -26,8 +26,8 @@
                                 <div class="dropzone-previews"></div>
 
                                 <div class="dz-default dz-message">
-                                    <h3 class="sbold">Drop files here to upload</h3>
-                                    <span>You can also click to open file browser</span>
+                                    <h3 class="sbold">{{ trans('common.Drop files here to upload') }}</h3>
+                                    <span>{{ trans('common.You can also click to open file browser') }}</span>
                                 </div>
                             </div>
                         </div>
