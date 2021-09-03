@@ -93,7 +93,7 @@ class Media extends Model
      */
     protected $dates = ['created_at', 'updated_at'];
 
-    public function getObjectTypeNameAttribute()
+    public function getObjectTypeNameAttribute(): string
     {
         return self::OBJECT_TYPE_NAME[$this->object_type] ?? '-';
     }

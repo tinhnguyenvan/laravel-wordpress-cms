@@ -52,15 +52,15 @@
                         </div>
 
                         <div class="form-actions">
-                            <x-forms.button name="submit" type="submit" class="btn-success" value="0">
+                            <button class="btn btn-success" type="submit" name="submit" value="0">
                                 <i class="fa fa-save"></i>
                                 {{ trans('common.save') }}
-                            </x-forms.button>
+                            </button>
 
-                            <x-forms.button name="submit" type="submit" class="btn-default" value="1">
+                            <button class="btn btn-default" type="submit" name="submit" value="1">
                                 <i class="fa fa-save"></i>
                                 {{ trans('common.save_close') }}
-                            </x-forms.button>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -87,10 +87,10 @@
                                     <i class="fa fa-comment-o"></i> Create comment
                                 </a>
 
-                                <x-forms.button name="submit" type="submit" class="btn-danger" value="">
+                                <button class="btn btn-danger" type="submit">
                                     <i class="fa fa-trash"></i>
                                     {{ trans('common.trash') }}
-                                </x-forms.button>
+                                </button>
                             </form>
                         </div>
                     </div>

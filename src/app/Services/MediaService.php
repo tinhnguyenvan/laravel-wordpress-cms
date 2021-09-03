@@ -13,6 +13,7 @@ use App\Models\Post;
 use App\Models\PostCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -30,7 +31,7 @@ class MediaService extends BaseService
     {
         parent::__construct();
         $this->model = $model;
-        $this->destinationPath = storage_path() . '/app/public';
+        $this->destinationPath = storage_path().'/app/public';
     }
 
     /**
@@ -96,28 +97,20 @@ class MediaService extends BaseService
         $extension = File::extension($objectFile->getClientOriginalName());
 
         if ($this->allowExtension($extension)) {
-            $prefixPath = '/upload/' . date('Y/m/d');
-            $fileName = 'upload_' . date('YmdHms') . '_' . uniqid() . '.' . $extension;
-            $fileInfo = $objectFile->move($this->destinationPath . $prefixPath, $fileName);
+            $prefixPath = '/upload/'.date('Y/m/d');
+            $fileName = 'upload_'.date('YmdHms').'_'.uniqid().'.'.$extension;
+            $fileInfo = $objectFile->move($this->destinationPath.$prefixPath, $fileName);
             $size = $fileInfo->getSize();
 
             if ($fileInfo->getSize() > 0) {
                 $params = [
                     'collection_name' => '',
                     'name' => $objectFile->getClientOriginalName(),
-                    'file_name' => $prefixPath . '/' . $fileName,
+                    'file_name' => $prefixPath.'/'.$fileName,
                     'size' => $size,
                     'mime_type' => $fileInfo->getType(),
-                    'disk' => $prefixPath . '/' . $fileName,
-                    'custom_properties' => json_encode(
-                        [
-                            'path' => $fileInfo->getPath(),
-                            'base_name' => $fileInfo->getBasename(),
-                            'path_name' => $fileInfo->getPathname(),
-                            'extension' => $fileInfo->getExtension(),
-                            'real_path' => $fileInfo->getRealPath(),
-                        ]
-                    ),
+                    'disk' => '',
+                    'custom_properties' => null,
                     'created_at' => date('Y-m-d H:i:s'),
                     'model_id' => 0,
                     'model_type' => '',
@@ -147,21 +140,21 @@ class MediaService extends BaseService
         ];
     }
 
-    public function upload(UploadedFile $objectFile, $params = [])
+    public function upload(UploadedFile $objectFile, $params = []): array
     {
         $status = 0;
         $content = '';
 
         $mimeType = $objectFile->getMimeType();
         if ($this->allowFileUpload($mimeType)) {
-            $prefixPath = '/upload/' . date('Y/m/d');
-            $fileName = 'upload_' . date('YmdHms') . '_' . uniqid() . '.' . $this->getExtensionFromMineType($mimeType);
-            $fileInfo = $objectFile->move($this->destinationPath . $prefixPath, $fileName);
+            $prefixPath = '/upload/'.date('Y/m/d');
+            $fileName = 'upload_'.date('YmdHms').'_'.uniqid().'.'.$this->getExtensionFromMineType($mimeType);
+            $fileInfo = $objectFile->move($this->destinationPath.$prefixPath, $fileName);
             $size = $fileInfo->getSize();
 
             // resize file
             if (empty($params['is_full']) && $this->allowImageUpload($mimeType)) {
-                $image = $this->resizeImage($this->destinationPath . $prefixPath . '/' . $fileName);
+                $image = $this->resizeImage($this->destinationPath.$prefixPath.'/'.$fileName);
                 $size = $image['size'] ?? 0;
             }
 
@@ -169,19 +162,11 @@ class MediaService extends BaseService
                 $params = [
                     'collection_name' => '',
                     'name' => $objectFile->getClientOriginalName(),
-                    'file_name' => $prefixPath . '/' . $fileName,
+                    'file_name' => $prefixPath.'/'.$fileName,
                     'size' => $size,
                     'mime_type' => $fileInfo->getType(),
-                    'disk' => $prefixPath . '/' . $fileName,
-                    'custom_properties' => json_encode(
-                        [
-                            'path' => $fileInfo->getPath(),
-                            'base_name' => $fileInfo->getBasename(),
-                            'path_name' => $fileInfo->getPathname(),
-                            'extension' => $fileInfo->getExtension(),
-                            'real_path' => $fileInfo->getRealPath(),
-                        ]
-                    ),
+                    'disk' => '',
+                    'custom_properties' => null,
                     'created_at' => date('Y-m-d H:i:s'),
                     'model_id' => 0,
                     'model_type' => '',
@@ -235,13 +220,13 @@ class MediaService extends BaseService
             }
 
             if (!empty($myObject)) {
-                $myObject->{$name . '_id'} = $upload['content']['id'];
-                $myObject->{$name . '_url'} = $upload['content']['file_name'];
+                $myObject->{$name.'_id'} = $upload['content']['id'];
+                $myObject->{$name.'_url'} = $upload['content']['file_name'];
                 $myObject->save();
 
                 return [
-                    $name . '_id' => $myObject->{$name . '_id'},
-                    $name . '_url' => $myObject->{$name . '_url'},
+                    $name.'_id' => $myObject->{$name.'_id'},
+                    $name.'_url' => $myObject->{$name.'_url'},
                 ];
             } else {
                 return $upload['content'];
@@ -308,7 +293,7 @@ class MediaService extends BaseService
             'application/pdf',
         ];
 
-        return (int)in_array($mineType, $imageMineTypes);
+        return (int) in_array($mineType, $imageMineTypes);
     }
 
     public function allowExtension($mineType)
@@ -319,7 +304,7 @@ class MediaService extends BaseService
             'csv',
         ];
 
-        return (int)in_array($mineType, $mineTypes);
+        return (int) in_array($mineType, $mineTypes);
     }
 
     public function allowImageUpload($mineType)
@@ -330,7 +315,7 @@ class MediaService extends BaseService
             'image/png',
         ];
 
-        return (int)in_array($mineType, $imageMineTypes);
+        return (int) in_array($mineType, $imageMineTypes);
     }
 
     public function getExtensionFromMineType($mineType)
@@ -363,5 +348,18 @@ class MediaService extends BaseService
                 $condition = array_merge($condition, $search);
             }
         }
+    }
+
+    public function delete($id): int
+    {
+        $myFile = Media::query()->where('id', $id)->first();
+
+        if (!empty($myFile->id)) {
+            Storage::disk('public')->delete($myFile->file_name);
+            Media::destroy($id);
+            return 1;
+        }
+
+        return 0;
     }
 }

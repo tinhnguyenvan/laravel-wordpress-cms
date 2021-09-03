@@ -38,7 +38,7 @@
                         @foreach ($items as $item)
                             <tr>
                                 <td class="text-center">
-                                    <input class="check_id" type="checkbox" name="ids[]" value="{{ $item->id }}">
+                                    <input class="check_id" type="checkbox" name="ids[]" value="{{ $item->id }}" />
                                 </td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->object_type_name }}</td>
@@ -46,6 +46,7 @@
                                 <td class="text-center">
                                     @if($item->file_name)
                                         <img src="{{ asset('storage'.$item->file_name) }}"
+                                             alt="Image"
                                              class="img-table img-thumbnail"/>
                                     @endif
                                 </td>

@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Site\MediaController;
 use App\Http\Controllers\Site\HomeController;
 use App\Models\Plugin;
 use Illuminate\Support\Facades\Route;
@@ -62,6 +63,10 @@ Route::namespace('Site')->group(
                         Route::get('member/notification/show/{id}', 'MemberController@notificationDetail');
                         Route::put('member/notification/{id}/make-read', 'MemberController@makeReadNotification');
                         Route::get('member/logout', 'MemberController@logout');
+
+                        // media
+                        Route::post('api/media/upload', [MediaController::class, 'upload']);
+                        Route::delete('api/media/{id}', [MediaController::class, 'destroy']);
                     }
                 );
             }
