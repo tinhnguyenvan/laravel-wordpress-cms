@@ -164,29 +164,20 @@ final class MemberController extends SiteController
 
         $request->validate($rules);
 
-
         $params = $request->only(['email', 'password', 'password_confirmation']);
         $member = Member::query()->where('email', $params['email'])->first();
-        if (!empty($member->id)) {
-            if (empty($member->socials)) {
+        if (!empty($member->id) && !empty($member->socials)) {
+            foreach ($member->socials as $social) {
+                if ($social->provider == MemberSocialAccount::PROVIDER_EMAIL) {
+                    $isValidator = false;
+                    break;
+                }
+
                 $isValidator = true;
             }
-
-            if (empty(!$member->socials)) {
-                foreach ($member->socials as $social) {
-                    if ($social->provider == MemberSocialAccount::PROVIDER_EMAIL) {
-                        $isValidator = false;
-                        break;
-                    }
-
-                    $isValidator = true;
-                }
-            }
-        } else {
-            $isValidator = true;
         }
 
-        if ($isValidator) {
+        if (!$isValidator) {
             $params['member_type'] = Member::MEMBER_TYPE_NORMAL;
             if (empty($member)) {
                 $member = $this->memberService->create($params);
@@ -197,7 +188,7 @@ final class MemberController extends SiteController
             }
 
             if (!empty($member->id)) {
-                MemberSocialAccount::query()->create(
+                MemberSocialAccount::query()->updateOrCreate(
                     [
                         'member_id' => $member->id,
                         'provider_id' => $member->id,
@@ -210,7 +201,7 @@ final class MemberController extends SiteController
                 // send mail active
                 $this->memberService->activeMember($member);
 
-                $request->session()->flash('success', trans('common.add.success'));
+                $request->session()->flash('success', trans('common.add.user.success'));
 
                 return redirect(base_url('member/register'), 302);
             } else {
@@ -302,7 +293,7 @@ final class MemberController extends SiteController
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @return RedirectResponse|Redirector
      */
     public function activeMail(Request $request)
@@ -355,7 +346,7 @@ final class MemberController extends SiteController
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @return RedirectResponse|Redirector
      */
     public function handleForgot(Request $request)
@@ -527,7 +518,7 @@ final class MemberController extends SiteController
         $data = [
             'items' => $items,
             'title' => 'My bookmark',
-            'active_menu' => 'my-bookmarks_' . $type,
+            'active_menu' => 'my-bookmarks_'.$type,
         ];
 
         $view = $this->memberService->renderView($this->theme, 'site.member.my_bookmark');

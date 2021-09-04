@@ -36,6 +36,7 @@ return [
     'push_notification.error' => 'Push notification error',
     'add.error' => 'Add error',
     'add.success' => 'Add success',
+    'add.user.success' => 'Register success, please check email active member.',
     'edit.success' => 'Edit success',
     'edit.error' => 'Edit error',
     'approved.success' => 'Approved success',

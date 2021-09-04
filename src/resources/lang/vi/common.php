@@ -35,6 +35,7 @@ return [
     'push_notification.success' => 'Push notification success',
     'push_notification.error' => 'Push notification error',
     'add.error' => 'Thêm mới thất bại',
+    'add.user.success' => 'Đăng ký tài khoản thành công, vui lòng check email kích hoạt tài khoản',
     'add.success' => 'Thêm mới thành công',
     'approved.success' => 'Duyệt thành công',
     'approved.error' => 'Duyệt thất bại',
