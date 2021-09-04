@@ -2,8 +2,6 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-
-
             <div class="card">
                 <div class="card-header">
                     <i class="fa fa-edit"></i> {{ trans('common.form') }}
@@ -33,14 +31,13 @@
                         </div>
 
                         <script>
-
                             Dropzone.autoDiscover = false;
 
                             let dropzone = new Dropzone("#my-awesome-dropzone", {
                                 url: "{{ admin_url('media/upload') }}",
                                 paramName: "upload",
                                 uploadMultiple: false,
-                                maxFiles: {{ $maxFile }}, // 10 file
+                                maxFiles: 10, // 10 file
                                 maxFilesize: 2, // 2MB
                                 // autoProcessQueue: false,
                                 addRemoveLinks: true,
@@ -64,8 +61,6 @@
                     </form>
                 </div>
             </div>
-
         </div>
-
     </div>
 @endsection
