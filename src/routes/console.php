@@ -84,6 +84,7 @@ Route::middleware(['auth.console'])->group(
         // plugins
         Route::get('plugins', [PluginController::class, 'index']);
         Route::put('plugins/{id}/update-status', [PluginController::class, 'updateStatus']);
+        Route::put('plugins/{id}/update-router', [PluginController::class, 'updateRouter']);
 
         // config
         Route::get('configs', [ConfigController::class, 'index']);

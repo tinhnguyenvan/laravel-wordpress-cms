@@ -44,10 +44,6 @@ class PluginController extends AdminController
         $params = $request->only(['id', 'status']);
 
         $plugin = Plugin::query()->findOrFail($params['id']);
-        if (empty($plugin)) {
-            $request->session()->flash('error', trans('common.edit.error'));
-            return back();
-        }
         $plugin->status = !empty($params['status']) && $params['status'] == 'on' ? 1 : 0;
         $plugin->save();
 
@@ -59,5 +55,16 @@ class PluginController extends AdminController
 
         $request->session()->flash('success', trans('common.edit.success'));
         return redirect(admin_url('plugins'))->withCookie('plugin', $plugins, config('constant.COOKIE_EXPIRED'), '/');
+    }
+
+    public function updateRouter(Request $request)
+    {
+        $params = $request->only(['id', 'is_home_route']);
+        $plugin = Plugin::query()->findOrFail($params['id']);
+
+        $plugin->is_home_route = !empty($params['is_home_route']) && $params['is_home_route'] == 'on' ? 1 : 0;
+        $plugin->save();
+        $request->session()->flash('success', trans('common.edit.success'));
+        return redirect(admin_url('plugins'));
     }
 }
