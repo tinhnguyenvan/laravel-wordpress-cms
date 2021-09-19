@@ -4,11 +4,6 @@
  * @create: 11/20/19, 7:39 PM
  */
 
-/**
- * @author: nguyentinh
- * @create: 11/18/19, 10:46 AM
- */
-
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Plugin;
