@@ -1,28 +1,40 @@
 @extends('site.layout.member')
 @section('content')
     <div class="content-panel">
-        <table class="table table-bordered table-hover table-striped">
-            <thead>
-            <tr>
-                <td style="width: 50px"></td>
-                <td>Title</td>
-                <td style="width: 170px">Created at</td>
-                <td style="width: 170px">Read at</td>
-                <td class="text-center" style="width: 150px">Status</td>
-                <td style="width: 200px"></td>
-            </tr>
-            </thead>
-            <tbody>
-            @if($member->notifications->count() > 0)
+
+        @if($member->notifications->count() > 0)
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                <tr>
+                    <td style="width: 50px"></td>
+                    <td>Title</td>
+                    <td style="width: 150px">Created at</td>
+                    <td style="width: 150px">Read at</td>
+                    <td class="text-center" style="width: 150px">Status</td>
+                    <td style="width: 150px"></td>
+                </tr>
+                </thead>
+                <tbody>
+
                 @foreach($member->notifications as $key => $notification)
 
                     <tr>
                         <td class="text-center">{{ ($key + 1 ) }}</td>
                         <td>
-                            {{ $notification->data['title'] ?? '' }}
+                            <a href="{{ base_url('member/notification/show/'.$notification->id) }}">
+                                {{ $notification->subject->title ?? '' }}
+                            </a>
                         </td>
-                        <td>{{ !empty($notification->created_at) ? $notification->created_at->format('d/m/Y H:i A') : '' }}</td>
-                        <td>{{ !empty($notification->read_at) ? $notification->read_at->format('d/m/Y H:i A') : '' }}</td>
+                        <td>
+                            <small>
+                                {{ !empty($notification->created_at) ? $notification->created_at->format('d/m/Y H:i A') : '' }}
+                            </small>
+                        </td>
+                        <td>
+                            <small>
+                                {{ !empty($notification->read_at) ? $notification->read_at->format('d/m/Y H:i A') : '' }}
+                            </small>
+                        </td>
                         <td class="text-center">
                             @if(empty($notification->read_at))
                                 <label class="label label-warning">Unread</label>
@@ -45,14 +57,10 @@
                         </td>
                     </tr>
                 @endforeach
-            @else
-                <tr>
-                    <td colspan="6">
-                        {{ trans('common.data_empty') }}
-                    </td>
-                </tr>
-            @endif
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        @else
+            @include('site.element.empty')
+        @endif
     </div>
 @endsection

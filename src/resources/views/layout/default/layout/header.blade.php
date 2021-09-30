@@ -12,7 +12,7 @@
                 @foreach(\App\Models\Nav::menu('menu_top', 0) as $myMenu)
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ base_url($myMenu->value) }}">
-                            {{$myMenu->title}}
+                            {!! $myMenu->title !!}
                         </a>
                     </li>
                 @endforeach

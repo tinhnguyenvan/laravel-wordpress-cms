@@ -11,6 +11,7 @@ use App\Models\RolePermission;
 use App\Services\MediaService;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 /**
@@ -23,12 +24,12 @@ class MediaController extends AdminController
     public function __construct(MediaService $mediaService)
     {
         parent::__construct();
-        $this->middleware(['permission:' . RolePermission::MEDIA_SHOW]);
+        $this->middleware(['permission:'.RolePermission::MEDIA_SHOW]);
         $this->mediaService = $mediaService;
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @return Factory|View
      */
     public function index(Request $request)
@@ -77,18 +78,19 @@ class MediaController extends AdminController
     /**
      * upload content for ckeditor
      *
-     * @param Request $request
+     * @param  Request  $request
+     * @return array
      */
     public function upload(Request $request)
     {
+        $type = $request->get('type');
         $url = '';
         if ($request->file('upload')) {
             $objectFile = $request->file('upload');
 
             $upload = $this->mediaService->upload($objectFile);
-
             if (1 == $upload['status']) {
-                $url = asset('storage' . $upload['content']['file_name']);
+                $url = asset('storage'.$upload['content']['file_name']);
 
                 $msg = 'Image uploaded successfully';
             } else {
@@ -98,16 +100,27 @@ class MediaController extends AdminController
             $msg = trans('error_file_invalid');
         }
 
-        $CKEditorFuncNum = $request->input('CKEditorFuncNum');
-        $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
+        if ($type == 'ckeditor') {
+            $CKEditorFuncNum = $request->input('CKEditorFuncNum');
+            $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
 
-        @header('Content-type: text/html; charset=utf-8');
-        echo $response;
+            @header('Content-type: text/html; charset=utf-8');
+            echo $response;
+        } else {
+            return [
+                'status' => !empty($url) ? 1 : 0,
+                'name' => $upload['content']['name'] ?? '',
+                'file_name' => $upload['content']['file_name'] ?? '',
+                'file_id' => $upload['content']['id'] ?? 0,
+                'url' => $url,
+                'message' => $msg,
+            ];
+        }
     }
 
     public function show($id)
     {
-        return redirect(admin_url('medias/' . $id . '/edit'), 302);
+        return redirect(admin_url('medias/'.$id.'/edit'), 302);
     }
 
     public function edit($id)
@@ -139,11 +152,7 @@ class MediaController extends AdminController
 
     public function destroy(Request $request, $id)
     {
-        $myFile = Media::query()->findOrFail($id);
-
-        if (!empty($myFile->id)) {
-            Media::destroy($id);
-        }
+        $this->mediaService->delete($id);
 
         $request->session()->flash('success', trans('common.delete.success'));
 
@@ -157,10 +166,7 @@ class MediaController extends AdminController
         if (!empty($params['ids'])) {
             $items = Media::query()->whereIn('id', $params['ids'])->get();
             foreach ($items as $item) {
-                if (file_exists($this->mediaService->destinationPath . $item->file_name)) {
-                    unlink($this->mediaService->destinationPath . $item->file_name);
-                }
-                $item->delete();
+                $this->mediaService->delete($item->id);
             }
             $request->session()->flash('success', trans('common.delete.success'));
         } else {

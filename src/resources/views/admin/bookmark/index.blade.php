@@ -9,9 +9,8 @@
             @include('admin.element.filter')
 
             <table class="table table-responsive-sm table-bordered table-hover font12">
-                    <thead>
-                    <tr class="bg-light">
-                    <th>Type</th>
+                <thead>
+                <tr class="bg-light">
                     <th>Title</th>
                     <th>Author</th>
                     <th>Created at</th>
@@ -22,14 +21,20 @@
                 @if ($items->count() > 0)
                     @foreach ($items as $item)
                         <tr>
-                            <td>{{ $item->model_type }}</td>
-                            <td>{{ $item->model_id }}</td>
-                            <td>{{ $item->member_id }}</td>
+                            <td>
+                                <a target="_blank" href="{{ $item->link }}">
+                                    {{ $item->title }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ $item->member->username ?? '--' }}
+                            </td>
                             <td>
                                 {{ $item->created_at ? $item->created_at->format(config('app.date_format')) : '--' }}
                             </td>
                             <td class="text-center">
-                                <form method="post" onsubmit="return confirm('Do you want DELETE ?');" action="{{ admin_url('bookmarks/'.$item->id ) }}">
+                                <form method="post" onsubmit="return confirm('Do you want DELETE ?');"
+                                      action="{{ admin_url('bookmarks/'.$item->id ) }}">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger btn-sm" type="submit">

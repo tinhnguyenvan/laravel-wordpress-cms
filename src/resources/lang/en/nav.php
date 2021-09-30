@@ -15,7 +15,7 @@ return [
     'menu_left.orders' => 'Order',
     'menu_left.orders_list' => 'List Order',
     'menu_left.orders_report' => 'Report',
-    'menu_left.product_list' => 'All product',
+    'menu_left.product_list' => 'Products',
     'menu_left.product_categories' => 'Category',
     'menu_left.user' => 'Member',
     'menu_left.user_list' => 'Administrators',
@@ -80,6 +80,8 @@ return [
     'menu_left.cache_systems' => 'Cache System',
     'menu_left.languages' => 'Language',
     'menu_left.classified' => 'Classified Ads',
+    'menu_left.notifications' => 'Notification',
+    'menu_left.crm' => 'CRM',
 
     'setting' => 'Setting',
     'user_profile' => 'Profile',

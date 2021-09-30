@@ -11,8 +11,13 @@
                     <div class="media-body">
                         <div class="box-comment-item-info">
                             <div class="box-comment-item-info-img">
-                                <img class="media-object" alt="{{ $comment->author }}"
-                                     src="{{ asset('site/img/gravatar.jpg') }}">
+                                @if(!empty($logo))
+                                    <img class="media-object" alt="{{ $comment->author }}"
+                                         src="{{ $logo }}" />
+                                @else
+                                    <img class="media-object" alt="{{ $comment->author }}"
+                                         src="{{ asset('site/img/gravatar.jpg') }}" />
+                                @endif
                             </div>
 
                             <div class="box-comment-item-info-profile">
@@ -48,8 +53,13 @@
                                         <div class="row">
                                             <div class="col-lg-1 hidden-xs">
                                                 <div class="box-comment-item-info-img">
-                                                    <img class="media-object" alt="{{ $comment->author }}"
-                                                         src="{{ asset('site/img/gravatar.jpg') }}">
+                                                    @if(!empty($logo))
+                                                        <img class="media-object" alt="{{ $comment->author }}"
+                                                             src="{{ $logo }}" />
+                                                    @else
+                                                        <img class="media-object" alt="{{ $comment->author }}"
+                                                             src="{{ asset('site/img/gravatar.jpg') }}" />
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="col-lg-11 col-xs-12">
@@ -79,17 +89,21 @@
                                                               placeholder="Type content reply">{{ old('content') }}</textarea>
                                                     </label>
                                                     <div class="form-group" style="margin-bottom: 10px">
-                                                        <label style="color: #000" class="label" for="author_email">Email
+                                                        <label style="color: #000" class="label"
+                                                               for="author_email_{{ $comment->id ?? 0 }}">Email
                                                             (*)</label>
                                                         <input type="email" class="form-control" autocomplete="off"
-                                                               name="author_email" id="author_email"
+                                                               name="author_email"
+                                                               id="author_email_{{ $comment->id ?? 0 }}"
                                                                value="{{ old('author_email', auth('web')->user()->email ?? '') }}">
                                                     </div>
                                                     <div class="form-group" style="margin-bottom: 10px">
                                                         <label style="color: #000" class="label"
-                                                               for="author">{{ trans('common.fullname') }} (*)</label>
+                                                               for="author_{{ $comment->id ?? 0 }}">{{ trans('common.fullname') }}
+                                                            (*)</label>
                                                         <input type="text" class="form-control form-control-xs"
-                                                               autocomplete="off" name="author" id="author"
+                                                               autocomplete="off" name="author"
+                                                               id="author_{{ $comment->id ?? 0 }}"
                                                                value="{{ old('author', auth('web')->user()->first_name ?? '') }}">
                                                     </div>
                                                     @if(config('services.recaptcha.enable'))

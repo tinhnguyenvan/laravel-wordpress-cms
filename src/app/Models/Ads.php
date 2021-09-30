@@ -135,6 +135,6 @@ class Ads extends Model
      */
     public function getHrefAttribute()
     {
-        return base_url('ads/tracking/'.base64_encode($this->id));
+        return base_url('banner/tracking/'.base64_encode($this->id));
     }
 }

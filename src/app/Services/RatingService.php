@@ -21,20 +21,27 @@ class RatingService extends BaseService
     {
         $data = [];
 
-        $totalAll = Rating::query()
-            ->where('rateable_type', $rateableType)
-            ->where('rateable_id', $rateableId)
-            ->count();
-        for ($i = 1; $i < 6; $i++) {
+
+        $type = \TinhPHP\School\Models\Rating::type();
+
+        foreach ($type as $idType => $textType) {
+            $totalSum = Rating::query()
+                ->where('rateable_type', $rateableType)
+                ->where('rateable_id', $rateableId)
+                ->where('type', $idType)
+                ->where('rating', '>', 0)
+                ->sum('rating');
+
             $totalAllItem = Rating::query()
                 ->where('rateable_type', $rateableType)
                 ->where('rateable_id', $rateableId)
-                ->where('rating', $i)
+                ->where('type', $idType)
+                ->where('rating', '>', 0)
                 ->count();
 
-            $data[$i] = [
+            $data[$idType] = [
                 'count' => $totalAllItem,
-                'percent' => $totalAllItem > 0 ? ($totalAllItem * 100) / $totalAll : 0,
+                'avg' => $totalAllItem > 0 ? round($totalSum / $totalAllItem, 1) : 0,
             ];
         }
 

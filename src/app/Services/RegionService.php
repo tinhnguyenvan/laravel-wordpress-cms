@@ -118,7 +118,7 @@ class RegionService extends BaseService
         return $html;
     }
 
-    public function dropdownItemOfCountryByDefault(): array
+    public function dropDownItemOfCountryByDefault(): array
     {
         $data = Region::query()
             ->whereRaw('parent_id in(SELECT id FROM master_regions WHERE parent_id = 0 AND is_primary_location = 1)')
@@ -174,7 +174,7 @@ class RegionService extends BaseService
         return $html;
     }
 
-    public function dropdownCityOfCountryByDefault($parentId): array
+    public function dropDownCityOfCountryByDefault($parentId): array
     {
         if ($parentId == 0) {
             return [];

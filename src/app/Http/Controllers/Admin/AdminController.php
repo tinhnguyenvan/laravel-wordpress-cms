@@ -28,6 +28,8 @@ class AdminController extends Controller
             $this->theme = $config['theme_active'];
         }
         $manifest = @json_decode(file_get_contents(public_path('layout/' . $this->theme . '/manifest.json')), true);
+
+
         $this->data = [
             'manifest' => $manifest,
             'title' => ucfirst(str_replace('_', ' ', request()->segment(2))),
@@ -42,7 +44,6 @@ class AdminController extends Controller
     {
         $this->data['success'] = session('success');
         $this->data['error'] = session('error');
-
         return array_merge($this->data, $data);
     }
 }

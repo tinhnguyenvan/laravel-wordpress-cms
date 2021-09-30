@@ -16,8 +16,6 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 
 /**
- * Class PostCategoryController.
- *
  * @property PostCategoryService $postCategoryService
  * @property MediaService $mediaService
  */
@@ -86,8 +84,10 @@ class PostCategoryController extends AdminController
 
     public function edit($id)
     {
+        $postCategory = PostCategory::query()->findOrFail($id);
         $data = [
-            'post_category' => PostCategory::query()->findOrFail($id),
+            'post_category' => $postCategory,
+            'dropDownCategoryParent' => $this->postCategoryService->dropDownCategoryParent($id),
         ];
 
         return view('admin/post_category/form', $this->render($data));

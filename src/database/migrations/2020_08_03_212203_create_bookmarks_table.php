@@ -13,14 +13,19 @@ class CreateBookmarksTable extends Migration
      */
     public function up()
     {
-        Schema::create('web_bookmarks', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('model_type');
-            $table->integer('model_id');
-            $table->bigInteger('member_id')->default(0);
-            $table->bigInteger('user_id')->default(0);
-            $table->timestamps();
-        });
+        Schema::create(
+            'web_bookmarks',
+            function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->string('model_type');
+                $table->integer('model_id');
+                $table->string('sub_model_type');
+                $table->integer('sub_model_id');
+                $table->bigInteger('member_id')->default(0);
+                $table->bigInteger('user_id')->default(0);
+                $table->timestamps();
+            }
+        );
     }
 
     /**

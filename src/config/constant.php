@@ -4,6 +4,8 @@
  * @create: 12/28/19, 10:05 AM
  */
 
+use App\Models\Role;
+
 return [
     'MENU_APP' => [], // no remove why merge array with package
     'MENU_ADMIN' => [
@@ -11,6 +13,7 @@ return [
             'title' => 'nav.menu_left.content',
             'url' => '',
             'icon' => 'fa fa-newspaper-o',
+            'role' => [Role::ROLE_ADMIN],
             'child' => [
                 [
                     'title' => 'nav.menu_left.post_list',
@@ -53,12 +56,11 @@ return [
                 ],
             ]
         ],
-
-
         [
             'title' => 'nav.menu_left.medias',
             'url' => '',
             'icon' => 'fa fa-file-image-o',
+            'role' => [Role::ROLE_ADMIN],
             'child' => [
                 [
                     'title' => 'nav.menu_left.media_list',
@@ -75,12 +77,13 @@ return [
         [
             'title' => 'nav.menu_left.themes',
             'url' => '',
-            'icon' => 'fa fa-themeisle',
+            'icon' => 'icon-screen-desktop',
+            'role' => [Role::ROLE_ADMIN],
             'child' => [
                 [
-                    'title' => 'nav.menu_left.templates',
+                    'title' => 'Template',
                     'url' => 'themes',
-                    'icon' => 'fa fa-themeisle',
+                    'icon' => 'icon-equalizer',
                 ],
                 [
                     'title' => 'nav.menu_left.menu',
@@ -103,7 +106,14 @@ return [
             'title' => 'nav.menu_left.user',
             'url' => '',
             'icon' => 'fa fa-users',
+            'role' => [Role::ROLE_ADMIN],
             'child' => [
+                [
+                    'title' => 'nav.menu_left.notifications',
+                    'url' => 'notifications',
+                    'icon' => 'icon-bell',
+                    'role' => [Role::ROLE_ADMIN],
+                ],
                 [
                     'title' => 'nav.menu_left.member_list',
                     'url' => 'members',
@@ -112,12 +122,7 @@ return [
                 [
                     'title' => 'nav.menu_left.user_list',
                     'url' => 'users',
-                    'icon' => 'icon-list',
-                ],
-                [
-                    'title' => 'nav.menu_left.user_profile',
-                    'url' => 'users/profile',
-                    'icon' => 'icon-user',
+                    'icon' => 'icon-people',
                 ],
                 [
                     'title' => 'nav.menu_left.roles',
@@ -130,6 +135,7 @@ return [
             'title' => 'nav.menu_left.contact',
             'url' => '',
             'icon' => 'fa fa-envelope',
+            'role' => [Role::ROLE_ADMIN],
             'child' => [
                 [
                     'title' => 'nav.menu_left.contact_list',
@@ -147,6 +153,7 @@ return [
             'title' => 'nav.menu_left.setting',
             'url' => '',
             'icon' => 'fa fa-sliders',
+            'role' => [Role::ROLE_ADMIN],
             'child' => [
                 [
                     'title' => 'nav.menu_left.configs',
@@ -166,6 +173,11 @@ return [
                     'title' => 'nav.menu_left.regions',
                     'url' => 'regions',
                     'icon' => 'fa fa-globe',
+                ],
+                [
+                    'title' => 'Log',
+                    'url' => 'log-viewer',
+                    'icon' => 'fa fa-archive',
                 ],
                 [
                     'title' => 'Cache System',

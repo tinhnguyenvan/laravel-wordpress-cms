@@ -36,6 +36,7 @@ return [
     'push_notification.error' => 'Push notification error',
     'add.error' => 'Add error',
     'add.success' => 'Add success',
+    'add.user.success' => 'Register success, please check email active member.',
     'edit.success' => 'Edit success',
     'edit.error' => 'Edit error',
     'approved.success' => 'Approved success',
@@ -156,9 +157,15 @@ return [
     'deleted_at' => 'Deleted at',
 
     'status.active' => 'Public',
-    'status.disable' => 'Private',
+    'status.disable' => 'Disable',
     'status.approved' => 'Approved',
     'status.reject' => 'Reject',
     'status.register' => 'Register',
     'status.review' => 'Review',
+    'status.new' => 'New',
+    'status.processing' => 'Processing',
+    'status.success' => 'Success',
+
+    'Drop files here to upload' => 'Drop files here to upload',
+    'You can also click to open file browser' => 'You can also click to open file browser',
 ];

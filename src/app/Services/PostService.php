@@ -10,6 +10,7 @@ use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\PostTag;
 use App\Models\PostTranslation;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -180,15 +181,15 @@ class PostService extends BaseService
      *
      * @return object
      */
-    public static function newest($limit = 5)
+    public static function newest($limit = 5): object
     {
         return Post::active()->orderByRaw('id desc')->get()->take($limit);
     }
 
-    public function getPostBySlugCategory($slugCategory, $paramRequest)
+    public function getPostBySlugCategory($slugCategory, $paramRequest): LengthAwarePaginator
     {
         $this->buildCondition($paramRequest, $condition, $sortBy, $sortType);
-        $object = Post::query();
+        $object = Post::query()->with(['comment']);
         $object->where($condition);
         if (!empty($slugCategory)) {
             $object->whereHas(

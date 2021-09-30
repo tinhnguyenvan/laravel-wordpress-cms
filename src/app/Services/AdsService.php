@@ -36,7 +36,7 @@ class AdsService extends BaseService
      *
      * @return array
      */
-    public function validator($params)
+    public function validator($params): array
     {
         $error = [];
 
@@ -56,12 +56,7 @@ class AdsService extends BaseService
 
     public function beforeSave(&$formData = [], $isNews = false)
     {
-        if (empty($formData['slug'])) {
-            $formData['slug'] = $formData['title'];
-        }
-
         $formData['theme'] = Cookie::get('theme');
-        $formData['slug'] = Str::slug($formData['slug']);
     }
 
     /**
@@ -109,7 +104,7 @@ class AdsService extends BaseService
      *
      * @return array
      */
-    public function filter($params = [])
+    public function filter($params = []): array
     {
         $active = [
             'status' => $params['status'] ?? 0,
@@ -156,27 +151,29 @@ class AdsService extends BaseService
     /**
      * @param      $position
      * @param      $theme
-     * @param null $limit
+     * @param  $limit
      *
      * @return Builder[]|Collection
+     * @throws \Exception
      */
-    public static function load($position, $theme, $limit = null)
+    public static function load($position, $theme, $limit = 0)
     {
-        $model = Ads::query();
-        $model->where(
-            [
-                'status' => Ads::STATUS_ACTIVE,
-                'position' => $position,
-                'theme' => $theme,
-            ]
+        $key = $theme . '_' . $position . '_' . $limit;
+        return cache()->remember(
+            $key,
+            3600,
+            function () use ($position, $theme, $limit) {
+                $model = Ads::query();
+                $model->where('status', Ads::STATUS_ACTIVE);
+                $model->where('position', $position);
+                $model->where('theme', $theme);
+
+                if ($limit == 1) {
+                    return $model->first();
+                } else {
+                    return $model->get();
+                }
+            }
         );
-
-        if ($limit == 1) {
-            $data = $model->first();
-        } else {
-            $data = $model->get();
-        }
-
-        return $data;
     }
 }

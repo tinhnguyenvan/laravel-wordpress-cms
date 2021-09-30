@@ -21,11 +21,6 @@ class ThemeInstallCommand extends Command
      */
     protected $description = 'Install template frontend';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         parent::__construct();
@@ -34,7 +29,6 @@ class ThemeInstallCommand extends Command
     public function handle()
     {
         $theme = $this->option('name');
-        $env = config('app.env');
         if (empty($theme)) {
             $this->error('Required name theme');
             return null;
@@ -50,14 +44,11 @@ class ThemeInstallCommand extends Command
         $this->warn('- from: ' . $targetAsset);
         $this->warn('- to: ' . $linkAsset);
 
-        if ($env != 'production') {
-            if (is_dir($linkAsset)) {
-                unlink($linkAsset);
-            }
-            symlink($targetAsset, $linkAsset);
-        } else {
-            File::copyDirectory($targetAsset, $linkAsset);
+        if (is_dir($linkAsset)) {
+            unlink($linkAsset);
         }
+        symlink($targetAsset, $linkAsset);
+
         $this->info('- Completed copy file asset');
 
         // resource view
@@ -67,14 +58,11 @@ class ThemeInstallCommand extends Command
 
         $this->warn('- from: ' . $targetView);
         $this->warn('- to: ' . $linkAsset);
-        if ($env != 'production') {
-            if (is_dir($linkAsset)) {
-                unlink($linkAsset);
-            }
-            symlink($targetView, $linkAsset);
-        } else {
-            File::copyDirectory($targetView, $linkAsset);
+        if (is_dir($linkAsset)) {
+            unlink($linkAsset);
         }
+        symlink($targetView, $linkAsset);
+
         $this->info('- COMPLETED COPY RESOURCES VIEWS');
         $this->info('|');
 

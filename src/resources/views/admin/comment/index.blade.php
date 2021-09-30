@@ -31,10 +31,12 @@
                         <th class="text-center w50">
                             <input type="checkbox" name="check_all" id="check_all" value="1">
                         </th>
-                        <th width="250">{{ trans('comment.author') }}</th>
-                        <th>Post</th>
+                        <th style="min-width: 150px">{{ trans('comment.author') }}</th>
                         <th>{{ trans('comment.content') }}</th>
-                        <th style="width: 130px" class="text-center">{{ trans('comment.status') }}</th>
+                        <th style="min-width: 150px">Post</th>
+                        <th style="width: 130px" class="text-center">
+                            Submitted one
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -45,12 +47,21 @@
                                     <input class="check_id" type="checkbox" name="ids[]" value="{{ $item->id }}">
                                 </td>
                                 <td>
-                                    <a href="{{ admin_url('comments/'.$item->id.'/edit') }}">
-                                        <i class="fa fa-user-circle"></i> {{ $item->author }}
-                                        <i class="fa fa-edit"></i>
-                                    </a>
+                                    <i class="fa fa-user-circle"></i> {{ $item->author }}
                                     <br/>
-                                    <i class="fa fa-envelope-o"></i> {{ $item->author_email }}
+                                    <small>{{ $item->author_email }}</small>
+                                    <br/>
+                                    <label class="label label-{{ $item->status_color }}">
+                                        <i class="fa fa-check-circle-o"></i>
+                                        {{ $item->status_text }}
+                                    </label>
+                                </td>
+                                <td>
+                                    {{ strip_tags($item->content) }}
+
+                                    <a href="{{ admin_url('comments/'.$item->id.'/edit') }}">
+                                        <i class="fa fa-edit"></i> Edit
+                                    </a>
                                 </td>
                                 <td>
                                     @if(!empty($item->post->id))
@@ -59,15 +70,8 @@
                                         </a>
                                     @endif
                                 </td>
-                                <td>
-                                    {!! $item->content !!}
-                                </td>
-
                                 <td class="text-center">
-                                    <label class="btn btn-{{ $item->status_color }} btn-sm">
-                                        <i class="fa fa-check-circle-o"></i>
-                                        {{ $item->status_text }}
-                                    </label>
+                                    {{ $item->created_at->format(config('app.date_format')) }}
                                 </td>
                             </tr>
                         @endforeach

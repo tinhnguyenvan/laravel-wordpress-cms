@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Jobs\CommentJob;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\RolePermission;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
-use TinhPHP\School\Models\School;
 use App\Services\CommentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -16,8 +14,6 @@ use willvincent\Rateable\Rating;
 use Illuminate\Support\Facades\Validator;
 
 /**
- * Class CommentController.
- *
  * @property CommentService $commentService
  */
 final class CommentController extends SiteController
@@ -57,7 +53,6 @@ final class CommentController extends SiteController
             return redirect($params['redirect'])->withInput()->withErrors($validator);
         }
 
-
         $params['status'] = Comment::STATUS_NEW;
         $params['parent'] = $params['comment_id'] ?? 0;
         $params['author_ip'] = $request->ip();
@@ -70,17 +65,13 @@ final class CommentController extends SiteController
 
         if (empty($comment['message'])) {
             // push queue send mail
-            //CommentJob::dispatch(['action' => CommentJob::ACTION_FORM, 'params' => $result->toArray()]);
+            CommentJob::dispatch(['comment_id' => $comment->id]);
             $request->session()->flash('success', trans('comment.add.success'));
 
             // rating
             $objectRating = null;
             if ($comment['type'] == Comment::TYPE_POST) {
                 $objectRating = Post::query()->where('id', $params['post_id'])->first();
-            }
-
-            if ($comment['type'] == Comment::TYPE_SCHOOL) {
-                $objectRating = School::query()->where('id', $params['post_id'])->first();
             }
 
             if (!empty(auth(RolePermission::GUARD_NAME_WEB)->id()) && $objectRating) {

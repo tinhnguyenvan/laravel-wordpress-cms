@@ -35,6 +35,7 @@ return [
     'push_notification.success' => 'Push notification success',
     'push_notification.error' => 'Push notification error',
     'add.error' => 'Thêm mới thất bại',
+    'add.user.success' => 'Đăng ký tài khoản thành công, vui lòng check email kích hoạt tài khoản',
     'add.success' => 'Thêm mới thành công',
     'approved.success' => 'Duyệt thành công',
     'approved.error' => 'Duyệt thất bại',
@@ -156,9 +157,15 @@ return [
     'deleted_at' => 'Ngày xóa',
 
     'status.active' => 'Public',
-    'status.disable' => 'Private',
+    'status.disable' => 'Disable',
     'status.approved' => 'Approved',
     'status.reject' => 'Reject',
     'status.register' => 'Register',
     'status.review' => 'Review',
+    'status.new' => 'New',
+    'status.processing' => 'Processing',
+    'status.success' => 'Success',
+
+    'Drop files here to upload' => 'Kéo thả hình ảnh vào đây để upload',
+    'You can also click to open file browser' => 'Hoặc nhấp để mở trình duyệt chọn hình ảnh',
 ];

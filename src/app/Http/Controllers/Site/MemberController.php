@@ -14,11 +14,12 @@ use App\Services\MediaService;
 use App\Services\MemberService;
 use App\Services\PostService;
 use Exception;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
+use Illuminate\View\View;
 use Laravel\Socialite\Facades\Socialite;
 
 /**
@@ -44,13 +45,23 @@ final class MemberController extends SiteController
 
     public function index()
     {
-
         $data = [
             'member' => auth(RolePermission::GUARD_NAME_WEB)->user(),
             'active_menu' => 'member',
             'title' => trans('member.title_profile'),
         ];
         $view = $this->memberService->renderView($this->theme, 'site.member.index');
+        return view($view, $this->render($data));
+    }
+
+    public function dashboard()
+    {
+        $data = [
+            'member' => auth(RolePermission::GUARD_NAME_WEB)->user(),
+            'active_menu' => 'dashboard',
+            'title' => 'Dashboard',
+        ];
+        $view = $this->memberService->renderView($this->theme, 'site.member.dashboard');
         return view($view, $this->render($data));
     }
 
@@ -100,10 +111,13 @@ final class MemberController extends SiteController
             if (!empty($member) && !empty($memberSocialAccount)) {
                 /** @var Member $member */
                 auth(RolePermission::GUARD_NAME_WEB)->login($member);
+
+                session()->regenerate();
+
                 if ($request->get('redirect')) {
                     return redirect($request->get('redirect'));
                 } else {
-                    return redirect(base_url('member'));
+                    return redirect(base_url('member/dashboard'));
                 }
             } else {
                 $request->session()->flash('error', trans('member.error_member_not_exist'));
@@ -150,29 +164,20 @@ final class MemberController extends SiteController
 
         $request->validate($rules);
 
-
         $params = $request->only(['email', 'password', 'password_confirmation']);
         $member = Member::query()->where('email', $params['email'])->first();
-        if (!empty($member->id)) {
-            if (empty($member->socials)) {
+        if (!empty($member->id) && !empty($member->socials)) {
+            foreach ($member->socials as $social) {
+                if ($social->provider == MemberSocialAccount::PROVIDER_EMAIL) {
+                    $isValidator = false;
+                    break;
+                }
+
                 $isValidator = true;
             }
-
-            if (empty(!$member->socials)) {
-                foreach ($member->socials as $social) {
-                    if ($social->provider == MemberSocialAccount::PROVIDER_EMAIL) {
-                        $isValidator = false;
-                        break;
-                    }
-
-                    $isValidator = true;
-                }
-            }
-        } else {
-            $isValidator = true;
         }
 
-        if ($isValidator) {
+        if (!$isValidator) {
             $params['member_type'] = Member::MEMBER_TYPE_NORMAL;
             if (empty($member)) {
                 $member = $this->memberService->create($params);
@@ -183,7 +188,7 @@ final class MemberController extends SiteController
             }
 
             if (!empty($member->id)) {
-                MemberSocialAccount::query()->create(
+                MemberSocialAccount::query()->updateOrCreate(
                     [
                         'member_id' => $member->id,
                         'provider_id' => $member->id,
@@ -196,7 +201,7 @@ final class MemberController extends SiteController
                 // send mail active
                 $this->memberService->activeMember($member);
 
-                $request->session()->flash('success', trans('common.add.success'));
+                $request->session()->flash('success', trans('common.add.user.success'));
 
                 return redirect(base_url('member/register'), 302);
             } else {
@@ -288,7 +293,7 @@ final class MemberController extends SiteController
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @return RedirectResponse|Redirector
      */
     public function activeMail(Request $request)
@@ -341,7 +346,7 @@ final class MemberController extends SiteController
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @return RedirectResponse|Redirector
      */
     public function handleForgot(Request $request)
@@ -465,14 +470,33 @@ final class MemberController extends SiteController
         $member = Member::find($memberId);
         $data = [
             'title' => 'Notification',
-            'active_menu' => '',
+            'active_menu' => 'member/notifications',
             'member' => $member,
         ];
         $view = $this->memberService->renderView($this->theme, 'site.member.notifications');
         return view($view, $this->render($data));
     }
 
-    public function makeReadNotification(Request $request, $id): RedirectResponse
+    /**
+     * @param $id
+     * @return Factory|View
+     */
+    public function notificationDetail($id)
+    {
+        $notification = Notification::query()->findOrFail($id);
+        $notification->read_at = now();
+        $notification->save();
+
+        $data = [
+            'title' => $notification->subject->title,
+            'active_menu' => 'member/notifications',
+            'notification' => $notification,
+        ];
+        $view = $this->memberService->renderView($this->theme, 'site.member.notification_detail');
+        return view($view, $this->render($data));
+    }
+
+    public function makeReadNotification($id): RedirectResponse
     {
         $notification = Notification::query()->findOrFail($id);
         $notification->read_at = now();
@@ -494,7 +518,7 @@ final class MemberController extends SiteController
         $data = [
             'items' => $items,
             'title' => 'My bookmark',
-            'active_menu' => 'my-bookmarks_' . $type,
+            'active_menu' => 'my-bookmarks_'.$type,
         ];
 
         $view = $this->memberService->renderView($this->theme, 'site.member.my_bookmark');

@@ -21,7 +21,17 @@ class Notification extends DatabaseNotification
      *
      * @var array
      */
-    protected $fillable = ['type', 'notifiable_type', 'notifiable_id', 'data', 'read_at', 'created_at', 'updated_at'];
+    protected $fillable = [
+        'id',
+        'notification_subject_id',
+        'type',
+        'notifiable_type',
+        'notifiable_id',
+        'data',
+        'read_at',
+        'created_at',
+        'updated_at'
+    ];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -46,10 +56,15 @@ class Notification extends DatabaseNotification
      */
     protected $dates = ['read_at', 'created_at', 'updated_at'];
 
+    public function subject()
+    {
+        return $this->belongsTo(NotificationSubject::class, 'notification_subject_id');
+    }
+
     /**
      * @return string
      */
-    public function getTitleAttribute() : string
+    public function getTitleAttribute(): string
     {
         $title = '';
         if (!empty($this->data)) {
@@ -63,7 +78,7 @@ class Notification extends DatabaseNotification
     /**
      * @return string
      */
-    public function getStatusTextAttribute() : string
+    public function getStatusTextAttribute(): string
     {
         $title = 'Read';
         if (empty($this->read_at)) {
@@ -76,7 +91,7 @@ class Notification extends DatabaseNotification
     /**
      * @return string
      */
-    public function getStatusColorAttribute() : string
+    public function getStatusColorAttribute(): string
     {
         $title = 'warning';
         if (empty($this->read_at)) {

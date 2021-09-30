@@ -2,7 +2,7 @@ version: '3.5'
 services:
   website:
     container_name: laravan_wordpres_cms
-    image: 'tinhnguyenvan/php:7.2'
+    image: 'tinhnguyenvan/php:7.4'
     volumes:
       - '../etc/apache2/apache2.conf:/etc/apache2/apache2.conf'
       - '../etc/apache2/sites-enabled/000-default.conf:/etc/apache2/sites-enabled/000-default.conf'

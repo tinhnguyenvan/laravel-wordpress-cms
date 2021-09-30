@@ -33,7 +33,6 @@
                                 <td>
                                     <a href="{{ admin_url('contacts/'.$item->id.'') }}">
                                         {{ $item->fullname }}
-                                        <i class="fa fa-edit"></i>
                                     </a>
                                 </td>
                                 <td>{{ $item->phone }}</td>

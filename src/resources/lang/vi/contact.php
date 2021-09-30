@@ -7,6 +7,7 @@ return [
     'contact_form_id' => 'Form',
     'created_at' => 'Ngày tạo',
     'updated_at' => 'Ngày cập nhật',
+    'request_title_form' => 'Tiêu đề',
     'request_content_form' => 'Nội dung',
     'fullname_register_email' => 'Khách hàng đăng ký nhận mail',
     'add.success' => 'Đăng ký nhận mail thành công',

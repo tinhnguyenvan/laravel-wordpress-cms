@@ -32,9 +32,12 @@ class PostCategoryService extends BaseService
     {
         $error = [];
 
-        $validator = Validator::make($params, [
-            'title' => 'required|min:2|max:255',
-        ]);
+        $validator = Validator::make(
+            $params,
+            [
+                'title' => 'required|min:2|max:255',
+            ]
+        );
 
         if ($validator->fails()) {
             static::convertErrorValidator($validator->errors()->toArray(), $error);
@@ -111,7 +114,9 @@ class PostCategoryService extends BaseService
      */
     public function dropdown()
     {
-        $data = PostCategory::query()->orderByRaw('CASE WHEN parent_id = 0 THEN id ELSE parent_id END, parent_id,id')->get();
+        $data = PostCategory::query()->orderByRaw(
+            'CASE WHEN parent_id = 0 THEN id ELSE parent_id END, parent_id,id'
+        )->get();
         $html = [];
         if (!empty($data)) {
             foreach ($data as $key => $myCategory) {
@@ -138,5 +143,16 @@ class PostCategoryService extends BaseService
                 $condition = array_merge($condition, $search);
             }
         }
+    }
+
+    public function dropDownCategoryParent($idIgnore)
+    {
+        $items = PostCategory::query()->where('parent_id', 0)->where('id', '<>', $idIgnore)->get()->toArray();
+
+        if (!empty($items)) {
+            return array_column($items, 'title', 'id');
+        }
+
+        return [];
     }
 }

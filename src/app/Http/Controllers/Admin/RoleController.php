@@ -12,10 +12,10 @@ use App\Services\PageService;
 use App\Services\RoleService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role as RoleAlias;
 
 /**
- * Class PageController.
- *
  * @property PageService $pageService
  */
 class RoleController extends AdminController
@@ -55,6 +55,35 @@ class RoleController extends AdminController
         return view('admin/role/permission', $this->render($data));
     }
 
+    public function edit($id)
+    {
+        $role = RoleAlias::query()->findOrFail($id);
+        $data = [
+            'role' => $role,
+            'title' => 'Edit Role',
+        ];
+        return view('admin/role/form', $this->render($data));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate(['description']);
+
+        $role = RoleAlias::query()->findOrFail($id);
+        $params = $request->only(['description']);
+        $role->description = $params['description'];
+
+        if ($role->save()) {
+            $request->session()->flash('success', trans('common.edit.success'));
+        } else {
+            $request->session()->flash('error', trans('common.edit.error'));
+
+            return back()->withInput();
+        }
+
+        return redirect(admin_url('roles/permission'), 302);
+    }
+
     public function updatePermission(Request $request)
     {
         $params = $request->all();
@@ -62,8 +91,8 @@ class RoleController extends AdminController
         DB::beginTransaction();
         try {
             // lay data full
-            $permissions = \Spatie\Permission\Models\Permission::all();
-            $roles = \Spatie\Permission\Models\Role::all();
+            $permissions = Permission::all();
+            $roles = RoleAlias::all();
             if (!empty($roles)) {
                 foreach ($roles as $role) {
                     $arrRole = $params['role'] ?? [];

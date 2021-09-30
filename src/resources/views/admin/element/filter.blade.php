@@ -70,6 +70,11 @@
     @endif
     <div class="col-md-6">
         <form method="get">
+            @if(!empty($filter['active']))
+                @foreach($filter['active'] as $key => $value)
+                    <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                @endforeach
+            @endif
             <div class="input-group">
                 <input class="form-control" id="filter-key" name="search" value="{{ request('search') }}"
                        placeholder="{{ trans('common.search.keyword') }}"/>

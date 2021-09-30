@@ -79,7 +79,7 @@ class Nav extends Model
 
     public static function menu($position, $parentId = 0)
     {
-        $keyCategory = 'nav_' . $position . '_' . $parentId;
+        $keyCategory = 'nav_'.$position.'_'.$parentId;
         $data = Cache::get($keyCategory);
         if (empty($data)) {
             $data = Nav::query()
@@ -93,20 +93,17 @@ class Nav extends Model
         return $data;
     }
 
-    public static function getMenu($position, $parentId = 0)
+    public static function getMenu($position, $parentId = 0): array
     {
-        $keyCategory = 'get_nav_' . $position . '_' . $parentId;
-        $data = Cache::get($keyCategory);
-        if (empty($data)) {
-            $data = Nav::query()
+        $keyCategory = 'get_nav_'.$position.'_'.$parentId;
+
+        return Cache::remember($keyCategory, 18000, function () use ($position, $parentId) {
+            return $data = Nav::query()
                 ->where(['position' => $position, 'parent_id' => $parentId])
                 ->orderBy('order_by', 'ASC')
                 ->get()
                 ->toArray();
-            Cache::put($keyCategory, $data, now()->addHours(5));
-        }
-
-        return $data;
+        });
     }
 
     public static function menuTree($position)

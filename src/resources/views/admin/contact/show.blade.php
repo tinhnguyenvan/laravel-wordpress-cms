@@ -45,8 +45,13 @@
                                         <td>{{ $contact->created_at->format('d/m/Y H:s')  }}</td>
                                     </tr>
                                     <tr>
+                                        <td class="th-created_at">{{ trans('contact.request_title_form') }}</td>
+                                        <td>{!! $contact->request_title !!}</td>
+                                    </tr>
+
+                                    <tr>
                                         <td class="th-created_at">{{ trans('contact.request_content_form') }}</td>
-                                        <td>{{ $contact->request_content_form  }}</td>
+                                        <td>{!! $contact->request_content_form !!}</td>
                                     </tr>
                                     </tbody>
                                     <tfoot>

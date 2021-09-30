@@ -201,10 +201,12 @@ class UserController extends AdminController
      */
     public function updateResetPassword(Request $request, $id)
     {
-        $request->validate([
-            'password' => 'required|min:6',
-            'password_confirm' => 'required|same:password|min:6',
-        ]);
+        $request->validate(
+            [
+                'password' => 'required|min:6',
+                'password_confirm' => 'required|same:password|min:6',
+            ]
+        );
 
         $params = $request->only(['password', 'password_confirm']);
 
@@ -219,8 +221,8 @@ class UserController extends AdminController
 
     public function logout()
     {
+        cache()->flush();
         Auth::guard('admin')->logout();
-
         return redirect(admin_url('login'));
     }
 }

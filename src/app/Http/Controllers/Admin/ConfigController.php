@@ -13,6 +13,7 @@ use App\Services\ConfigService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 
 /**
@@ -80,6 +81,8 @@ class ConfigController extends AdminController
             $myConfig->value = $item;
             $myConfig->save();
         }
+
+        Cache::pull('config');
 
         $request->session()->flash('success', trans('common.edit.success'));
 

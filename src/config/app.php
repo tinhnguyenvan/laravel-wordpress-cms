@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => env('APP_LOCALE', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en_US'),
 
     /*
     |--------------------------------------------------------------------------
@@ -119,8 +119,7 @@ return [
     |
     */
 
-     'faker_locale' => 'en_US',
-//    'faker_locale' => 'vi_VN',
+     'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
 
     /*
     |--------------------------------------------------------------------------
@@ -178,23 +177,25 @@ return [
         /*
          * Package Service Providers...
          */
-        // role => create 2019-12-19
+        // role
         Spatie\Permission\PermissionServiceProvider::class,
-        // cart => create 2020-01-01
-        #Darryldecode\Cart\CartServiceProvider::class,
-        // image => create 2020-02-07
+        // image
         Intervention\Image\ImageServiceProvider::class,
         // qr code
-        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
-
+        #SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         // rating
         willvincent\Rateable\RateableServiceProvider::class,
+        // agent
+        Jenssegers\Agent\AgentServiceProvider::class,
+
+        Arcanedev\LogViewer\LogViewerServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        #App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         #App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
@@ -250,5 +251,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
     ],
 ];

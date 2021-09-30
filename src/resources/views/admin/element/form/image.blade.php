@@ -1,9 +1,9 @@
 <div class="form-group">
     <label class="col-form-label" for="{{ $name }}">
-        {{ $text ?? trans('common.image_url') }}
+        <i class="fa fa-image" aria-hidden="true"></i> {{ $text ?? trans('common.image_url') }}
 
         <span class="text-sm-left text-warning">
-            (File max size upload {{ @config('constant.MAX_FILE_SIZE_UPLOAD') }}pixel)
+            (File max size upload {{ @config('constant.MAX_FILE_SIZE_UPLOAD') }} pixel)
         </span>
     </label>
     <div class="controls">

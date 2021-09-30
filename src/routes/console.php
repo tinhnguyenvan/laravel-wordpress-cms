@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\NotificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ConfigController;
 use App\Http\Controllers\Admin\ContactFormController;
@@ -71,6 +72,8 @@ Route::middleware(['auth.console'])->group(
         // roles
         Route::get('roles', [RoleController::class, 'index']);
         Route::get('roles/permission', [RoleController::class, 'permission']);
+        Route::get('roles/{id}/edit', [RoleController::class, 'edit']);
+        Route::put('roles/{id}', [RoleController::class, 'update']);
         Route::post('roles/permission', [RoleController::class, 'updatePermission']);
 
         // themes
@@ -81,6 +84,7 @@ Route::middleware(['auth.console'])->group(
         // plugins
         Route::get('plugins', [PluginController::class, 'index']);
         Route::put('plugins/{id}/update-status', [PluginController::class, 'updateStatus']);
+        Route::put('plugins/{id}/update-router', [PluginController::class, 'updateRouter']);
 
         // config
         Route::get('configs', [ConfigController::class, 'index']);
@@ -101,7 +105,7 @@ Route::middleware(['auth.console'])->group(
         Route::get('posts/{id}/edit', [PostController::class, 'edit']);
         Route::put('posts/{id}', [PostController::class, 'update']);
         Route::patch('posts/{id}', [PostController::class, 'update']);
-        Route::patch('posts/destroy-multi', [PostController::class, 'destroyMulti']);
+        Route::delete('posts/destroy-multi', [PostController::class, 'destroyMulti']);
 
         // post tag
         Route::get('post_tags', [PostTagController::class, 'index']);
@@ -232,5 +236,15 @@ Route::middleware(['auth.console'])->group(
         Route::put('languages/{id}', [LanguageController::class, 'update']);
         Route::patch('languages/{id}', [LanguageController::class, 'update']);
         Route::delete('languages/{id}', [LanguageController::class, 'destroy']);
+
+        // notifications
+        Route::get('notifications', [NotificationController::class, 'index']);
+        Route::get('notifications/create', [NotificationController::class, 'create']);
+        Route::post('notifications', [NotificationController::class, 'store']);
+        Route::get('notifications/{id}', [NotificationController::class, 'show']);
+        Route::get('notifications/{id}/edit', [NotificationController::class, 'edit']);
+        Route::put('notifications/{id}', [NotificationController::class, 'update']);
+        Route::patch('notifications/{id}', [NotificationController::class, 'update']);
+        Route::delete('notifications/{id}', [NotificationController::class, 'destroy']);
     }
 );

@@ -12,10 +12,10 @@ use willvincent\Rateable\Rateable;
 use Astrotomic\Translatable\Translatable;
 
 /**
- * Class Post
  * @package App\Models
  *
  * @method static active()
+ * @method static filter()
  */
 class Post extends Model implements TranslatableContract
 {
@@ -88,13 +88,39 @@ class Post extends Model implements TranslatableContract
      */
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
-    /**
-     * @param $query
-     * @return mixed
-     */
+    protected $with = ['translations', 'category'];
+
     public function scopeActive($query)
     {
-        return $query->where('status', 1);
+        return $query->where('status', self::STATUS_ACTIVE);
+    }
+
+    /**
+     * Docs: https://laracasts.com/series/laravel-8-from-scratch/episodes/38
+     *
+     * @param $query
+     * @param  array  $filters
+     */
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            $query->whereTranslationLike('title', '%'.$search.'%');
+        });
+
+        $query->when($filters['status'] ?? false, function ($query, $status) {
+            $query->where('status', $status);
+        });
+
+        $query->when($filters['category_id'] ?? false, function ($query, $categoryId) {
+            $query->where('category_id', $categoryId);
+        });
+
+        // filter slug category
+        $query->when($filters['slug_category'] ?? false, function ($query, $slugCategory) {
+            $query->whereHas('category', function ($query) use ($slugCategory) {
+                $query->where('slug', $slugCategory);
+            });
+        });
     }
 
     public function comment(): HasMany
@@ -110,9 +136,6 @@ class Post extends Model implements TranslatableContract
         return $this->belongsTo(PostCategory::class, 'category_id', 'id');
     }
 
-    /**
-     * @return BelongsTo
-     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'creator_id', 'id');
@@ -124,7 +147,7 @@ class Post extends Model implements TranslatableContract
 
         $html = [];
         foreach ($data as $value) {
-            $html[$value] = trans('post.status.' . $value);
+            $html[$value] = trans('post.status.'.$value);
         }
 
         return $html;
@@ -138,7 +161,7 @@ class Post extends Model implements TranslatableContract
             $this->slug = '1';
         }
 
-        return base_url($prefix . '/' . $this->slug . '.html');
+        return base_url($prefix.'/'.$this->slug.'.html');
     }
 
     public static function image($item)
@@ -193,7 +216,7 @@ class Post extends Model implements TranslatableContract
     public function getFullImageUrlAttribute(): string
     {
         if ($this->image_id > 0) {
-            return asset('storage' . $this->image_url);
+            return asset('storage'.$this->image_url);
         } else {
             if (!empty($this->image_url)) {
                 return $this->image_url;

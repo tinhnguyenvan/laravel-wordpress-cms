@@ -7,13 +7,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Bookmark;
+use App\Models\Post;
 use App\Models\RolePermission;
 use App\Services\BookmarkService;
 use Illuminate\Http\Request;
 
 /**
- * Class BookmarkController.
- *
  * @property BookmarkService $bookmarkService
  */
 class BookmarkController extends AdminController
@@ -28,6 +27,7 @@ class BookmarkController extends AdminController
     public function index(Request $request)
     {
         $this->bookmarkService->buildCondition($request->all(), $condition, $sortBy, $sortType);
+        $condition['model_type'] = Post::class;
         $items = Bookmark::query()->where($condition)->orderBy($sortBy, $sortType)->paginate($this->page_number);
         $filter = $this->bookmarkService->filter($request->all());
         $data = [
