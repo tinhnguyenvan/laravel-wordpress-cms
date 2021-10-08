@@ -63,7 +63,7 @@ class PostTag extends Model
      */
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
-    public static function link($object)
+    public static function link($object): string
     {
         $prefix = config('constant.URL_PREFIX_TAG');
 
@@ -75,12 +75,12 @@ class PostTag extends Model
      * @param $source
      * @param $sourceId
      *
-     * @return null
+     * @return int
      */
-    public static function insertOrUpdateTags($tags, $source, $sourceId)
+    public static function insertOrUpdateTags($tags, $source, $sourceId): int
     {
         if (empty($tags)) {
-            return null;
+            return 0;
         }
 
         $tags = explode(',', $tags);
@@ -102,6 +102,8 @@ class PostTag extends Model
             $myObject = new self($formData);
             $myObject->save($formData);
         }
+
+        return 1;
     }
 
     /**
@@ -109,7 +111,7 @@ class PostTag extends Model
      *
      * @return string
      */
-    public function getSourceTextAttribute()
+    public function getSourceTextAttribute(): string
     {
         switch ($this->source) {
             case self::SOURCE_PRODUCT:
