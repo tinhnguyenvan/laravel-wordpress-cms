@@ -26,10 +26,9 @@ mix.styles([
     "public/common/plugin/select2/css/select2.min.css",
     "public/common/plugin/select2/css/select2-bootstrap4.min.css",
     "public/common/plugin/flatpickr/css/flatpickr.min.css",
-    "public/common/plugin/summernote-0.8.18/summernote.css",
     // end common
 
-    "public/console/css/custom.css",
+    "public/console/css/custom.css"
 ], "public/console/vendor/app.css");
 
 mix.scripts([
@@ -48,12 +47,10 @@ mix.scripts([
     "public/common/plugin/highcharts/exporting.js",
     "public/common/plugin/select2/js/select2.full.min.js",
     "public/common/plugin/flatpickr/js/flatpickr.min.js",
-    "public/common/plugin/summernote-0.8.18/summernote.js",
     //end common
 
     "public/console/js/jquery.pjax.js",
     "public/console/js/function.js",
     "public/console/js/clipboard.min.js",
-    "public/console/js/jquery.cookie.js",
-    "public/console/js/script.js",
+    "public/console/js/jquery.cookie.js"
 ], "public/console/vendor/app.js");

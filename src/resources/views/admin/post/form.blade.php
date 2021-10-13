@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12">
 
-            <form method="post" enctype="multipart/form-data"
+            <form method="post" class="submit" enctype="multipart/form-data"
                   action="{{ admin_url('posts') }}{{ ($post->id ?? 0) > 0 ?'/'.$post->id: '' }}">
                 @csrf
                 @if (!empty($post->id))
@@ -22,6 +22,7 @@
                     </div>
 
                     <div class="card-body collapse show" id="collapseExample">
+
                         @include('admin.element.form.input-multi-lang', ['name' => 'title', 'text' => trans('post.title'), 'value' => $post ?? '', 'is_multi_lang' => true])
 
                         <div class="form-group">

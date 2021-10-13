@@ -50,10 +50,29 @@ $(document).ready(function () {
         });
 
         let ckeditorContent = $('.ckeditor');
+
         if (ckeditorContent.length > 0) {
             if (configs.ckeditor === 'ckeditor') {
                 CKEDITOR.replaceAll('ckeditor');
-            } else {
+            }
+
+            if (configs.ckeditor === 'ckeditor5') {
+                DecoupledEditor
+                    .create(document.querySelector('.ckeditor5'))
+                    .then(editor => {
+                        const toolbarContainer = document.querySelector('#toolbar-container');
+                        toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+
+                        let content = $('.ckeditor5').closest('.box-ckeditor5').children('.text-ckeditor5').val();
+                        editor.setData(content);
+                    })
+                    .catch(error => {
+
+                    });
+            }
+
+
+            if (configs.ckeditor === 'summernote') {
                 ckeditorContent.each(function (index) {
                     let $summernote = ckeditorContent.eq(index);
                     $summernote.summernote({

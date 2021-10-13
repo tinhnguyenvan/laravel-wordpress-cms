@@ -2,15 +2,17 @@
     <label class="col-form-label" for="{{$name}}">
         {{$text}}
     </label>
-    <div class="input-language-change">
-        <ul class="nav nav-pills">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle show-item-change-language-{{$name}}" data-toggle="dropdown" href="#"
-                   role="button"
-                   aria-haspopup="true" aria-expanded="false" style="text-transform: uppercase">
-                    {{ $language_content['vi'] }}
-                </a>
-                @if(count($language_content) > 1)
+    @if(count($language_content) > 1)
+        <div class="input-language-change">
+            <ul class="nav nav-pills">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle show-item-change-language-{{$name}}" data-toggle="dropdown"
+                       href="#"
+                       role="button"
+                       aria-haspopup="true" aria-expanded="false" style="text-transform: uppercase">
+                        {{ $language_content['vi'] }}
+                    </a>
+
                     <div class="dropdown-menu" style="margin: 0">
                         @foreach($language_content as $lang => $textLanguage)
                             <a data-toggle="collapse"
@@ -23,10 +25,10 @@
                             </a>
                         @endforeach
                     </div>
-                @endif
-            </li>
-        </ul>
-    </div>
+                </li>
+            </ul>
+        </div>
+    @endif
     <div class="accordion-group">
         @foreach($language_content as $lang => $textLanguage)
             <div id="input-lang-{{$name}}-{{$lang}}"
@@ -58,5 +60,4 @@
             jQuery('.show-item-change-language-{{$name}}').text(text);
         });
     </script>
-
 </div>
