@@ -57,6 +57,11 @@ $(document).ready(function () {
             }
 
             if (configs.ckeditor === 'ckeditor5') {
+                $(document).on('submit', '.submit', function () {
+                    let html = $(".ckeditor5").html();
+                    $(".text-ckeditor5").val(html)
+                })
+
                 DecoupledEditor
                     .create(document.querySelector('.ckeditor5'))
                     .then(editor => {

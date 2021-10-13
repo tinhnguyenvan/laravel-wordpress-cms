@@ -57,25 +57,6 @@
             </div>
         @endforeach
     </div>
-
-    <style type="text/css">
-
-        /*ckeditor5*/
-        .ck-editor__editable {
-            min-height: 400px !important;
-        }
-
-        .ck-editor__editable_inline {
-            background-color: #fff;
-            border: 1px solid #e4e7ea !important;
-        }
-
-        .input-language-change {
-            position: absolute;
-            right: 0;
-            z-index: 100;
-        }
-    </style>
     <script type="text/javascript">
         jQuery('.dropdown-item-change-language-textarea-{{$name}}').click(function (e) {
             jQuery('.collapse-item-change-language-textarea-{{$name}}').collapse('hide');
@@ -83,13 +64,4 @@
             jQuery('.show-item-change-language-textarea-{{$name}}').text(text);
         });
     </script>
-
-    @if(($config['editor_content'] ?? '') == 'ckeditor5')
-        <script type="text/javascript">
-            jQuery(document).on('submit', '.submit', function () {
-                let html = jQuery(".ckeditor5").html();
-                jQuery(".text-{{$config['editor_content']}}").val(html)
-            })
-        </script>
-    @endif
 </div>

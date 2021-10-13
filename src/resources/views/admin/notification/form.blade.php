@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <form method="post" enctype="multipart/form-data"
+            <form method="post" class="submit" enctype="multipart/form-data"
                   action="{{ admin_url('notifications') }}{{ ($object->id ?? 0) > 0 ?'/'.$object->id: '' }}">
                 @csrf
                 @if (!empty($object->id))
