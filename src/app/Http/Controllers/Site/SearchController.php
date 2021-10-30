@@ -34,6 +34,6 @@ final class SearchController extends SiteController
             'title' => trans('common.search'),
         ];
 
-        return view($this->layout . 'search.index', $this->render($data));
+        return view($this->layout . '.search.index', $this->render($data));
     }
 }

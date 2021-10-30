@@ -34,6 +34,6 @@ final class TagController extends SiteController
             'title' => 'Tag: ' . $postTag->title.' | '.$this->data['title'],
         ];
 
-        return view($this->layout . 'tag.index', $this->render($data));
+        return view($this->layout . '.tag.index', $this->render($data));
     }
 }
