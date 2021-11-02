@@ -16,6 +16,7 @@ use App\Models\RolePermission;
 use App\Services\ConfigService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
@@ -37,7 +38,7 @@ class ThemeController extends AdminController
     {
         $directories = [];
         if (is_dir(public_path('layout'))) {
-            $directories = scandir(public_path('layout'));
+            $directories = scandir(base_path('themes'));
         }
 
         $data = [
@@ -78,6 +79,10 @@ class ThemeController extends AdminController
             'editor_id' => Auth::id(),
             'value' => $theme
         ];
+
+        // remove
+        Artisan::call('theme:remove --name=' . $this->configService->getValue('theme_active'));
+        Artisan::call('theme:install --name=' . $theme);
 
         Config::query()->updateOrCreate($dataCondition, $dataUpdate);
         Cache::pull('config');

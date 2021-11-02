@@ -56,6 +56,8 @@
 
 ### 1. Create new theme
 
+- SOURCE in folder /themes
+  
 - **Step 1**: Download theme default example: [https://github.com/tinhnguyenvan/laravel-wordpress-cms-theme-default](https://github.com/tinhnguyenvan/laravel-wordpress-cms-theme-default)
 
 ```

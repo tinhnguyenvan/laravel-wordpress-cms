@@ -14,8 +14,8 @@ yarn-error.log
 /.php_cs.cache
 !/storage/database/
 /public/package_*
-!/themes/empty
 /themes/*
+!/themes/default/
 
 /resources/lang/vi/layout_*.php
 /resources/lang/en/layout_*.php

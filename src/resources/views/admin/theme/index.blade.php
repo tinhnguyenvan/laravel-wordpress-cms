@@ -6,12 +6,12 @@
                 @csrf
                 <div class="row">
                     @foreach($directories as $key => $dir)
-                        @if(!\Illuminate\Support\Facades\File::exists(public_path("layout/".$dir."/screen_shot.png")))
+                        @if(!\Illuminate\Support\Facades\File::exists(base_path("themes/".$dir."/public/screen_shot.png")))
                             @continue
                         @endif
                         <div class="col-sm-6">
                             <div class="thumbnail" style="margin-bottom: 50px">
-                                <img src="{{ asset("layout/".$dir."/screen_shot.png") }}" alt="default"
+                                <img src="{{ 'data:image/png;base64,'.base64_encode(file_get_contents(base_path("themes/".$dir."/public/screen_shot.png"))) }}" alt="default"
                                      class="img-thumbnail">
                                 <div class="caption text-center" style="margin: 10px auto">
                                     <div class="text-primary">
