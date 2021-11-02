@@ -72,9 +72,11 @@ class ThemeInstallCommand extends Command
             $fileLanguage = 'layout_' . $theme . '.php';
             $targetLanguage = base_path('themes/' . $theme . '/lang/' . $language . '/' . $fileLanguage);
             $linkLanguage = base_path('resources/lang/' . $language . '/' . $fileLanguage);
-            $this->warn('- from: ' . $targetLanguage);
-            $this->warn('- to: ' . $linkLanguage);
-            File::copy($targetLanguage, $linkLanguage);
+            if (is_dir(base_path($targetLanguage))) {
+                $this->warn('- from: ' . $targetLanguage);
+                $this->warn('- to: ' . $linkLanguage);
+                File::copy($targetLanguage, $linkLanguage);
+            }
         }
         $this->info('- COMPLETED COPY LANGUAGE');
 

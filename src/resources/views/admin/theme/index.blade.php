@@ -25,8 +25,8 @@
                                                     <i class="fa fa-check"></i>
                                                     {{trans('common.active')}} themes {{ ucfirst($dir) }}
                                                 @else
-                                                    <i class="fa fa-refresh"></i>
-                                                    {{trans('common.edit')}} themes {{ ucfirst($dir) }}
+                                                    <i class="fa fa-flag-checkered"></i>
+                                                    {{trans('common.active')}} themes {{ ucfirst($dir) }}
                                                 @endif
                                             </button>
                                         </div>
