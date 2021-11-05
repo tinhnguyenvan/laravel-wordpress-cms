@@ -47,7 +47,7 @@ final class PostController extends SiteController
             'slugCategory' => $slugCategory,
         ];
 
-        return view($this->layout . 'post.index', $this->render($data));
+        return view($this->layout . '.post.index', $this->render($data));
     }
 
     public function view($slugCategory, $slugPost)
@@ -92,7 +92,7 @@ final class PostController extends SiteController
         // set seo
         $this->seo($post, $this->data);
 
-        return view($this->layout . 'post.view', $this->render($data));
+        return view($this->layout . '.post.view', $this->render($data));
     }
 
     public function show($slugPost)
@@ -135,7 +135,7 @@ final class PostController extends SiteController
         // set seo
         $this->seo($post, $this->data);
 
-        return view($this->layout . 'post.view', $this->render($data));
+        return view($this->layout . '.post.view', $this->render($data));
     }
 
     public function postBookmark(Request $request)

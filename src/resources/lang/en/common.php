@@ -66,6 +66,7 @@ return [
     'seo_keyword' => 'SEO keyword',
     'seo_description' => 'SEO description',
     'config_seo' => 'Config SEO',
+    'seo_url' => 'SEO Url',
     'config_seo_sub' => 'Setting up description tags makes it easy for customers to find this category on a search engine like Google.',
     'form_header_general' => 'Details',
     'detail' => 'Detail',

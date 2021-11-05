@@ -24,7 +24,7 @@ class SiteController extends Controller
     {
         $this->data['config'] = ConfigService::getConfig();
         $this->theme = $this->data['config']['theme_active'] ?? 'default';
-        $this->layout = 'layout/' . $this->theme . '/';
+        $this->layout = 'layout.' . $this->theme;
 
         // check basic auth
         $this->isBasicAuth($this->data['config']);

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PostCategory extends Model
@@ -39,12 +41,12 @@ class PostCategory extends Model
         'updated_at',
     ];
 
-    public function parent()
+    public function parent(): BelongsTo
     {
         return $this->belongsTo(PostCategory::class, 'parent_id', 'id');
     }
 
-    public function children()
+    public function children(): HasMany
     {
         return $this->hasMany(PostCategory::class, 'id', 'parent_id');
     }
@@ -70,12 +72,12 @@ class PostCategory extends Model
      */
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
-    public function posts()
+    public function posts(): HasMany
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class, 'category_id');
     }
 
-    public function getLinkAttribute()
+    public function getLinkAttribute(): string
     {
         return base_url($this->slug);
     }

@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12">
 
-            <form method="POST"
+            <form method="POST" class="submit"
                   action="{{ admin_url('pages') }}{{ ($page->id ?? 0) > 0 ?'/'.$page->id: '' }}">
                 @csrf
                 @if (!empty($page->id))

@@ -29,7 +29,8 @@ class PostController extends AdminController
         PostService $postService,
         PostCategoryService $postCategoryService,
         MediaService $mediaService
-    ) {
+    )
+    {
         parent::__construct();
         $this->middleware(['permission:' . RolePermission::POST_SHOW]);
 
@@ -65,27 +66,25 @@ class PostController extends AdminController
 
     public function store(Request $request)
     {
-        $params = $request->all();
-        if (!empty($params['_token'])) {
-            $result = $this->postService->create($params);
-            if (empty($result['message'])) {
-                $this->mediaService->uploadModule(
-                    [
-                        'file' => $request->file('file'),
-                        'object_type' => Media::OBJECT_TYPE_POST,
-                        'object_id' => $result['id'],
-                    ]
-                );
+        $params = $request->except(['_token', 'submit']);
+        $result = $this->postService->create($params);
+        if (empty($result['message'])) {
+            $this->mediaService->uploadModule(
+                [
+                    'file' => $request->file('file'),
+                    'object_type' => Media::OBJECT_TYPE_POST,
+                    'object_id' => $result['id'],
+                ]
+            );
 
-                $request->session()->flash('success', trans('common.add.success'));
-                if (!empty($params['submit'])) {
-                    return redirect(admin_url('posts'), 302);
-                } else {
-                    return redirect(admin_url('posts/' . $result['id'] . '/edit'));
-                }
+            $request->session()->flash('success', trans('common.add.success'));
+            if (!empty($params['submit'])) {
+                return redirect(admin_url('posts'), 302);
             } else {
-                $request->session()->flash('error', $result['message']);
+                return redirect(admin_url('posts/' . $result['id'] . '/edit'));
             }
+        } else {
+            $request->session()->flash('error', $result['message']);
         }
 
         return back()->withInput();
@@ -114,35 +113,34 @@ class PostController extends AdminController
      */
     public function update(Request $request, $id)
     {
-        $params = $request->all();
-        if (!empty($params['_token'])) {
-            // remove image
-            if (!empty($params['file_remove'])) {
-                $params['image_id'] = 0;
-                $params['image_url'] = '';
-            }
-
-            $result = $this->postService->update($id, $params);
-
-            if (empty($result['message'])) {
-                $this->mediaService->uploadModule(
-                    [
-                        'file' => $request->file('file'),
-                        'object_type' => Media::OBJECT_TYPE_POST,
-                        'object_id' => $id,
-                    ]
-                );
-
-                $request->session()->flash('success', trans('common.edit.success'));
-                if (!empty($params['submit'])) {
-                    return redirect(admin_url('posts'), 302);
-                } else {
-                    return redirect(admin_url('posts/' . $id . '/edit'));
-                }
-            } else {
-                $request->session()->flash('error', $result['message']);
-            }
+        $params = $request->except(['_token', 'submit']);
+        // remove image
+        if (!empty($params['file_remove'])) {
+            $params['image_id'] = 0;
+            $params['image_url'] = '';
         }
+
+        $result = $this->postService->update($id, $params);
+
+        if (empty($result['message'])) {
+            $this->mediaService->uploadModule(
+                [
+                    'file' => $request->file('file'),
+                    'object_type' => Media::OBJECT_TYPE_POST,
+                    'object_id' => $id,
+                ]
+            );
+
+            $request->session()->flash('success', trans('common.edit.success'));
+            if (!empty($params['submit'])) {
+                return redirect(admin_url('posts'), 302);
+            } else {
+                return redirect(admin_url('posts/' . $id . '/edit'));
+            }
+        } else {
+            $request->session()->flash('error', $result['message']);
+        }
+
 
         return back()->withInput();
     }

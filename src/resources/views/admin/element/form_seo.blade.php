@@ -31,6 +31,13 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <label class="col-form-label" for="slug">{{ trans('common.seo_url') }}</label>
+            <div class="controls">
+                <input type="text" maxlength="160" name="slug" id="slug" value="{{ old('slug', $info->slug ?? '') }}" class="form-control">
+            </div>
+        </div>
+
         <hr/>
 
         <div class="form-actions">

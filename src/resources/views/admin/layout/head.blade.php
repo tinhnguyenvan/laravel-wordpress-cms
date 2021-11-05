@@ -17,10 +17,20 @@
             'ckeditor': '{{ $config['editor_content'] ?? '' }}',
         };
     </script>
-    <script src="{{ asset("console/vendor/app.js") }}" type="text/javascript"></script>
+    <script src="{{ asset("console/vendor/app.js?v=1.0.1") }}" type="text/javascript"></script>
+
+    @if(!empty($config['editor_content']) && $config['editor_content'] == 'summernote' )
+        <link href="{{ asset('common/plugin/summernote-0.8.18/summernote.css') }}" rel="stylesheet"/>
+        <script src="{{ asset("common/plugin/summernote-0.8.18/summernote.js") }}" type="text/javascript"></script>
+    @endif
 
     @if(!empty($config['editor_content']) && $config['editor_content'] == 'ckeditor' )
         <script src="{{ asset("common/plugin/ckeditor4/ckeditor.js") }}" type="text/javascript"></script>
     @endif
+
+    @if(!empty($config['editor_content']) && $config['editor_content'] == 'ckeditor5' )
+        <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/decoupled-document/ckeditor.js"></script>
+    @endif
+    <script src="{{ asset("console/js/script.js?v=1.0.1") }}" type="text/javascript"></script>
 
 </head>

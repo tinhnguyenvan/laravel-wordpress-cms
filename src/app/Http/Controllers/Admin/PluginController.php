@@ -9,6 +9,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Plugin;
 use App\Services\PluginService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 /**
  * Class PluginController.

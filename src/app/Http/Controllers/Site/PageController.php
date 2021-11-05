@@ -25,27 +25,27 @@ final class PageController extends SiteController
             'page' => $page,
         ];
 
-        return view($this->layout . 'page.view', $this->render($data));
+        return view($this->layout . '.page.view', $this->render($data));
     }
 
     public function notfound()
     {
         $data['title'] = 'notfound page';
 
-        return view($this->layout . 'page.notfound', $this->render($data));
+        return view($this->layout . '.page.notfound', $this->render($data));
     }
 
     public function maintenance()
     {
         $data['title'] = trans('comment.maintenance');
 
-        return view($this->layout . 'page.maintenance', $this->render($data));
+        return view($this->layout . '.page.maintenance', $this->render($data));
     }
 
     public function resume()
     {
         $data = [];
 
-        return view($this->layout . 'page.resume', $this->render($data));
+        return view($this->layout . '.page.resume', $this->render($data));
     }
 }
