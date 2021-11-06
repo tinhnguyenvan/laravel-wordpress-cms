@@ -57,10 +57,10 @@ class PostService extends BaseService
     {
         foreach (Language::loadLanguage() as $code => $languageName) {
             // slug
-            if (empty($formData[$code]['slug'])) {
+            if (empty($formData['slug'])) {
                 $slug = $formData[$code]['title'] ?? '';
             } else {
-                $slug = $formData[$code]['slug'];
+                $slug = $formData['slug'];
             }
 
             $slug = Str::slug($slug);
