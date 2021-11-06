@@ -63,6 +63,7 @@ class PostService extends BaseService
                 $slug = $formData[$code]['slug'];
             }
 
+            $slug = Str::slug($slug);
             if ($isNews) {
                 $myPost = PostTranslation::query()->where('locale', $code)->where('slug', $slug)->first();
                 if (!empty($myPost->slug)) {
@@ -70,7 +71,7 @@ class PostService extends BaseService
                 }
             }
 
-            $formData[$code]['slug'] = Str::slug($slug);
+            $formData[$code]['slug'] = $slug;
         }
 
 
