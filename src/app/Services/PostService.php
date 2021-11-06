@@ -74,6 +74,7 @@ class PostService extends BaseService
             $formData[$code]['slug'] = $slug;
         }
 
+        unset($formData['slug']);
 
         if ($isNews) {
             $formData['creator_id'] = Auth::id() ?? 0;
