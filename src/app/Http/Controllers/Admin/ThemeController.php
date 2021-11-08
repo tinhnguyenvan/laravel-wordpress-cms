@@ -37,7 +37,7 @@ class ThemeController extends AdminController
     public function index()
     {
         $directories = [];
-        if (is_dir(public_path('layout'))) {
+        if (is_dir(base_path('themes'))) {
             $directories = scandir(base_path('themes'));
         }
 
