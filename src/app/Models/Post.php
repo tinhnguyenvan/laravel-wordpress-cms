@@ -15,6 +15,7 @@ use Astrotomic\Translatable\Translatable;
  * @package App\Models
  *
  * @method static active()
+ * @method static home()
  * @method static filter()
  */
 class Post extends Model implements TranslatableContract
@@ -93,6 +94,11 @@ class Post extends Model implements TranslatableContract
     public function scopeActive($query)
     {
         return $query->where('status', self::STATUS_ACTIVE);
+    }
+
+    public function scopeHome($query)
+    {
+        return $query->where('status', self::STATUS_ACTIVE)->where('is_hot', 1);
     }
 
     /**
@@ -228,6 +234,11 @@ class Post extends Model implements TranslatableContract
         return $text;
     }
 
+    /**
+     * column name: full_image_url
+     *
+     * @return string
+     */
     public function getFullImageUrlAttribute(): string
     {
         if ($this->image_id > 0) {
