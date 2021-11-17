@@ -8,9 +8,11 @@ final class HomeController extends SiteController
 {
     public function index()
     {
-        $data = [];
+        $data = [
+            'is_home' => 1,
+        ];
         if (View::exists($this->layout . '.home.index')) {
-            return view($this->layout . '..home.index', $this->render($data));
+            return view($this->layout . '.home.index', $this->render($data));
         } else {
             return redirect(admin_url())->withErrors('Please login admin select template');
         }
