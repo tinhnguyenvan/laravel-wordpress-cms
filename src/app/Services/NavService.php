@@ -10,6 +10,7 @@ use App\Models\Nav;
 use App\Models\Page;
 use App\Models\PostCategory;
 use Illuminate\Support\Facades\Validator;
+use TinhPHP\Woocommerce\Models\ProductCategory;
 
 /**
  * Class NavService.
@@ -133,8 +134,34 @@ class NavService extends BaseService
                     $value = $data->link;
                 }
                 break;
+
+            case Nav::TYPE_CATEGORY_PRODUCT:
+                $data = ProductCategory::query()->findOrFail($formData['type_category_product']);
+                if (!empty($data->id)) {
+                    $value = $data->link;
+                }
+                break;
         }
 
         return $value;
+    }
+
+    /**
+     * @return array
+     */
+    public function dropdownProductCategory(): array
+    {
+        $data = ProductCategory::query()
+            ->orderByRaw('CASE WHEN parent_id = 0 THEN id ELSE parent_id END, parent_id,id')
+            ->get();
+
+        $html = [];
+        if (!empty($data)) {
+            foreach ($data as $key => $myCategory) {
+                $html[$myCategory->id] = create_line($myCategory->level) . ' ' . $myCategory->title;
+            }
+        }
+
+        return $html;
     }
 }
