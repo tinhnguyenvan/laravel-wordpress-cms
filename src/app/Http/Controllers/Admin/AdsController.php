@@ -14,6 +14,7 @@ use App\Services\MediaService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * Class AdsController.
@@ -77,6 +78,9 @@ class AdsController extends AdminController
 
                 $request->session()->flash('success', trans('common.add.success'));
 
+                // remove cache
+                Cache::pull($this->data['theme'].'_'.$result['position'].'_0');
+
                 return redirect(admin_url('ads'), 302);
             } else {
                 $request->session()->flash('error', $result['message']);
@@ -131,6 +135,9 @@ class AdsController extends AdminController
 
                 $request->session()->flash('success', trans('common.edit.success'));
 
+                // remove cache
+                Cache::pull($this->data['theme'].'_'.$params['position'].'_0');
+
                 return redirect(admin_url('ads'));
             } else {
                 $request->session()->flash('error', $result['message']);
@@ -145,6 +152,9 @@ class AdsController extends AdminController
         $myObject = Ads::query()->findOrFail($id);
 
         if (!empty($myObject->id)) {
+            // remove cache
+            Cache::pull($this->data['theme'].'_'.$myObject->position.'_0');
+
             Ads::destroy($id);
         }
 
