@@ -21,6 +21,7 @@ final class PostController extends SiteController
     public function __construct(PostService $postService)
     {
         parent::__construct();
+        $this->data['is_blog'] = 1;
         $this->postService = $postService;
     }
 
@@ -42,6 +43,7 @@ final class PostController extends SiteController
 
         // update view
         $data = [
+            'is_blog_list' => 1,
             'postCategory' => $postCategory,
             'items' => $items,
             'slugCategory' => $slugCategory,
@@ -83,6 +85,7 @@ final class PostController extends SiteController
         }
 
         $data = [
+            'is_blog_detail' => 1,
             'title' => $post->title,
             'post' => $post,
             'isBookmark' => $isBookmark,
