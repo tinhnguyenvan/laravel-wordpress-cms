@@ -52,7 +52,9 @@ final class PageController extends SiteController
 
     public function page($slug)
     {
-        $data = [];
+        $data = [
+            'is_page_' . $slug => 1,
+        ];
 
         return view($this->layout . '.page.' . $slug, $this->render($data));
     }
