@@ -74,6 +74,7 @@ class Nav extends Model
             self::TYPE_LINK => trans('nav.type.link'),
             self::TYPE_PAGE => trans('nav.type.page'),
             self::TYPE_CATEGORY_POST => trans('nav.type.category_post'),
+            self::TYPE_CATEGORY_PRODUCT => trans('nav.type.category_product'),
         ];
     }
 

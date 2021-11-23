@@ -169,10 +169,7 @@ class PostController extends AdminController
         $params = $request->all();
 
         if (!empty($params['ids'])) {
-            $items = Post::query()->whereIn('id', $params['ids'])->get();
-            foreach ($items as $item) {
-                $item->delete();
-            }
+            Post::query()->whereIn('id', $params['ids'])->delete();
             $request->session()->flash('success', trans('common.delete.success'));
         } else {
             $request->session()->flash('error', trans('common.error_check_ids'));

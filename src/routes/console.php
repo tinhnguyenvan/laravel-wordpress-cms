@@ -140,7 +140,6 @@ Route::middleware(['auth.console'])->group(
         Route::delete('comments/{comment}', [CommentController::class, 'destroy']);
         Route::delete('comments/destroy-multi', [CommentController::class, 'destroyMulti']);
 
-
         // bookmark BookmarkController
         Route::get('bookmarks', [BookmarkController::class, 'index']);
         Route::get('bookmarks/create', [BookmarkController::class, 'create']);
@@ -225,7 +224,7 @@ Route::middleware(['auth.console'])->group(
 
         // cache-systems
         Route::get('cache-systems', [CacheSystemController::class, 'index']);
-        Route::delete('cache-systems/{slug}', [CacheSystemController::class, 'delete']);
+        Route::delete('cache-systems/destroy-multi', [CacheSystemController::class, 'destroyMulti']);
 
         // languages
         Route::get('languages', [LanguageController::class, 'index']);

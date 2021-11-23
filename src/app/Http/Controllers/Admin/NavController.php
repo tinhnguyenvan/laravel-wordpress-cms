@@ -70,6 +70,7 @@ class NavController extends AdminController
     public function create()
     {
         $data = [
+            'dropdownProductCategory' => $this->navService->dropdownProductCategory(),
             'dropdownPostCategory' => $this->postCategoryService->dropdown(),
             'dropdownPage' => $this->pageService->dropdown(),
             'dropdown' => $this->navService->dropdown(),
@@ -104,6 +105,7 @@ class NavController extends AdminController
     public function edit($id)
     {
         $data = [
+            'dropdownProductCategory' => $this->navService->dropdownProductCategory(),
             'dropdownPostCategory' => $this->postCategoryService->dropdown(),
             'dropdownPage' => $this->pageService->dropdown(),
             'dropdown' => $this->navService->dropdown(),

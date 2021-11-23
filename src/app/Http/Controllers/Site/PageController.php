@@ -10,6 +10,7 @@ final class PageController extends SiteController
     public function __construct()
     {
         parent::__construct();
+        $this->data['is_page'] = 1;
     }
 
     public function view(Request $request, $slug)
@@ -47,5 +48,14 @@ final class PageController extends SiteController
         $data = [];
 
         return view($this->layout . '.page.resume', $this->render($data));
+    }
+
+    public function page($slug)
+    {
+        $data = [
+            'is_page_' . $slug => 1,
+        ];
+
+        return view($this->layout . '.page.' . $slug, $this->render($data));
     }
 }

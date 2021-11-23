@@ -57,12 +57,13 @@ class PostService extends BaseService
     {
         foreach (Language::loadLanguage() as $code => $languageName) {
             // slug
-            if (empty($formData[$code]['slug'])) {
+            if (empty($formData['slug'])) {
                 $slug = $formData[$code]['title'] ?? '';
             } else {
-                $slug = $formData[$code]['slug'];
+                $slug = $formData['slug'];
             }
 
+            $slug = Str::slug($slug);
             if ($isNews) {
                 $myPost = PostTranslation::query()->where('locale', $code)->where('slug', $slug)->first();
                 if (!empty($myPost->slug)) {
@@ -70,9 +71,10 @@ class PostService extends BaseService
                 }
             }
 
-            $formData[$code]['slug'] = Str::slug($slug);
+            $formData[$code]['slug'] = $slug;
         }
 
+        unset($formData['slug']);
 
         if ($isNews) {
             $formData['creator_id'] = Auth::id() ?? 0;
