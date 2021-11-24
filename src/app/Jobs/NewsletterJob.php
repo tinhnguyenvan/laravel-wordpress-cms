@@ -30,18 +30,18 @@ class NewsletterJob implements ShouldQueue
 
     public function handle(): bool
     {
-        if ('' == $this->data['email'] || !filter_var($this->data['email'], FILTER_VALIDATE_EMAIL)) {
+        if ('' == $this->data['email']
+            || !filter_var($this->data['email'], FILTER_VALIDATE_EMAIL)
+            || empty(config('services.mailchimp.key'))) {
             return false;
         }
 
+        $config = [
+            'apiKey' => config('services.mailchimp.key'),
+            'server' => 'us5'
+        ];
         $mailchimp = new ApiClient();
-
-        $mailchimp->setConfig(
-            [
-                'apiKey' => config('services.mailchimp.key'),
-                'server' => 'us5'
-            ]
-        );
+        $mailchimp->setConfig($config);
 
         try {
             $mailchimp->lists->addListMember(
