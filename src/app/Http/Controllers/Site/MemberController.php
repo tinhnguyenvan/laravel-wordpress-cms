@@ -183,8 +183,6 @@ final class MemberController extends SiteController
             if (empty($member)) {
                 $member = $this->memberService->create($params);
 
-                NewsletterJob::dispatch(['email' => $params['email']]);
-
             } else {
                 $params['status'] = Member::STATUS_WAITING_ACTIVE;
                 $params['password'] = Hash::make($params['password']);
@@ -438,10 +436,10 @@ final class MemberController extends SiteController
                         ]
                     );
 
-                    NewsletterJob::dispatch(['email' => $email]);
-
                     Member::query()->where('id', $member->id)->update(['id_hash' => md5($member->id)]);
                 }
+
+                NewsletterJob::dispatch(['email' => $email]);
 
                 $memberSocialAccountAccount->member()->associate($member);
                 $memberSocialAccountAccount->save();
