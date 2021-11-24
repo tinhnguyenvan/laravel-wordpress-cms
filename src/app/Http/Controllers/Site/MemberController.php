@@ -439,8 +439,6 @@ final class MemberController extends SiteController
                     Member::query()->where('id', $member->id)->update(['id_hash' => md5($member->id)]);
                 }
 
-                NewsletterJob::dispatch(['email' => $email]);
-
                 $memberSocialAccountAccount->member()->associate($member);
                 $memberSocialAccountAccount->save();
             }
@@ -448,6 +446,9 @@ final class MemberController extends SiteController
             if (!empty($member->id)) {
                 /** @var Member $myMember */
                 $myMember = Member::query()->where('id', $member->id)->first();
+
+                NewsletterJob::dispatch(['email' => $getInfo->getEmail()]);
+
                 auth(RolePermission::GUARD_NAME_WEB)->login($myMember);
             }
         } catch (Exception $e) {
