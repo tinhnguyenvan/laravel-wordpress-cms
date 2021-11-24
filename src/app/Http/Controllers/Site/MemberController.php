@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Jobs\MemberJob;
+use App\Jobs\NewsletterJob;
 use App\Models\Bookmark;
 use App\Models\Media;
 use App\Models\Member;
@@ -181,6 +182,9 @@ final class MemberController extends SiteController
             $params['member_type'] = Member::MEMBER_TYPE_NORMAL;
             if (empty($member)) {
                 $member = $this->memberService->create($params);
+
+                NewsletterJob::dispatch(['email' => $params['email']]);
+
             } else {
                 $params['status'] = Member::STATUS_WAITING_ACTIVE;
                 $params['password'] = Hash::make($params['password']);
@@ -433,6 +437,8 @@ final class MemberController extends SiteController
                             'image_url' => $getInfo->getAvatar(),
                         ]
                     );
+
+                    NewsletterJob::dispatch(['email' => $email]);
 
                     Member::query()->where('id', $member->id)->update(['id_hash' => md5($member->id)]);
                 }

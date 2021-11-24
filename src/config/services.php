@@ -52,4 +52,11 @@ return [
         'site_key' => env('GOOGLE_RECAPTCHA_KEY'),
         'secret' => env('GOOGLE_RECAPTCHA_SECRET'),
     ],
+
+    'mailchimp' => [
+        'key' => env('MAILCHIMP_KEY'),
+        'lists' => [
+            'subscribers' => env('MAILCHIMP_LIST_SUBSCRIBERS')
+        ]
+    ]
 ];

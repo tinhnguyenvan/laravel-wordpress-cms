@@ -56,13 +56,13 @@ class MemberJob implements ShouldQueue
      *
      * @param $id
      *
-     * @return null
+     * @return bool
      */
-    public function activeMail($id)
+    public function activeMail($id): bool
     {
         $member = Member::query()->find($id);
         if (empty($member->id)) {
-            return null;
+            return false;
         }
 
         $config = Config::query()->where('name', 'company_name')->first();

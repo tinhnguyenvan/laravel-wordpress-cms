@@ -30,6 +30,8 @@
         "spatie/laravel-pjax": "^2.1",
         "willvincent/laravel-rateable": "^2.2",
         "irazasyed/telegram-bot-sdk": "^2.0",
+        "mailchimp/marketing": "^3.0",
+        "friendsofphp/php-cs-fixer": "^2.16",
         "tinhphp/woocommerce": "dev-master"
     },
     "require-dev": {
