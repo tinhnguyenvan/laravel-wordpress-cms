@@ -297,6 +297,7 @@
 .ck-editor__editable_inline {
     background-color: #fff;
     border: 1px solid #e4e7ea !important;
+    max-height: 500px;
 }
 
 .input-language-change {
