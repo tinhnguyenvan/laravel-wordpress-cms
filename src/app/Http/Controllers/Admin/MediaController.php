@@ -11,7 +11,6 @@ use App\Models\RolePermission;
 use App\Services\MediaService;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 /**

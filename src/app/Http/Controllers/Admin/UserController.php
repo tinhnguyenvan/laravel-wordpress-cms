@@ -6,6 +6,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Jobs\NewsletterJob;
 use App\Models\Role;
 use App\Models\RolePermission;
 use App\Models\User;
@@ -69,6 +70,8 @@ class UserController extends AdminController
             $result = $this->userService->create($params);
 
             if (empty($result['message'])) {
+                NewsletterJob::dispatch(['email' => $params['email']]);
+
                 $request->session()->flash('success', trans('common.add.success'));
 
                 return redirect(admin_url('users'), 302);

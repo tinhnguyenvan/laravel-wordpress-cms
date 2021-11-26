@@ -1,8 +1,9 @@
 {
-  "nav": {
-    "menu_top": "Menu Top"
-  },
-  "banner_position": {
-    "banner": "Banner"
-  }
+    "theme_slug": "default",
+    "nav": {
+        "menu_top": "Menu Top"
+    },
+    "banner_position": {
+        "banner": "Banner"
+    }
 }

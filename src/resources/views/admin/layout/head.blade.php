@@ -7,7 +7,7 @@
 
     <title>{{ $title }} | Module</title>
 
-    <link href="{{ asset("console/vendor/app.css") }}" rel="stylesheet">
+    <link href="{{ asset("console/vendor/app.css?v=".config('constant.VERSION')) }}" rel="stylesheet">
     <script type="text/javascript">
         let configs = {
             'base_url': '{{ base_url() }}',
@@ -17,7 +17,7 @@
             'ckeditor': '{{ $config['editor_content'] ?? '' }}',
         };
     </script>
-    <script src="{{ asset("console/vendor/app.js?v=1.0.1") }}" type="text/javascript"></script>
+    <script src="{{ asset("console/vendor/app.js?v=".config('constant.VERSION')) }}" type="text/javascript"></script>
 
     @if(!empty($config['editor_content']) && $config['editor_content'] == 'summernote' )
         <link href="{{ asset('common/plugin/summernote-0.8.18/summernote.css') }}" rel="stylesheet"/>
@@ -31,6 +31,6 @@
     @if(!empty($config['editor_content']) && $config['editor_content'] == 'ckeditor5' )
         <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/decoupled-document/ckeditor.js"></script>
     @endif
-    <script src="{{ asset("console/js/script.js?v=1.0.1") }}" type="text/javascript"></script>
+    <script src="{{ asset("console/js/script.js?v=".config('constant.VERSION')) }}" type="text/javascript"></script>
 
 </head>

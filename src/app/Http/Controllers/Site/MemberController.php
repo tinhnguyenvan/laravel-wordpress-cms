@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Jobs\MemberJob;
+use App\Jobs\NewsletterJob;
 use App\Models\Bookmark;
 use App\Models\Media;
 use App\Models\Member;
@@ -181,6 +182,7 @@ final class MemberController extends SiteController
             $params['member_type'] = Member::MEMBER_TYPE_NORMAL;
             if (empty($member)) {
                 $member = $this->memberService->create($params);
+
             } else {
                 $params['status'] = Member::STATUS_WAITING_ACTIVE;
                 $params['password'] = Hash::make($params['password']);
@@ -444,6 +446,9 @@ final class MemberController extends SiteController
             if (!empty($member->id)) {
                 /** @var Member $myMember */
                 $myMember = Member::query()->where('id', $member->id)->first();
+
+                NewsletterJob::dispatch(['email' => $getInfo->getEmail()]);
+
                 auth(RolePermission::GUARD_NAME_WEB)->login($myMember);
             }
         } catch (Exception $e) {
