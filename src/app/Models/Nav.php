@@ -103,8 +103,8 @@ class Nav extends Model
     {
         $keyCategory = 'get_nav_'.$position.'_'.$parentId;
 
-        return Cache::remember($keyCategory, 18000, function () use ($position, $parentId) {
-            return $data = Nav::query()
+        return Cache::remember($keyCategory, 3600, function () use ($position, $parentId) {
+            return Nav::query()
                 ->where(['position' => $position, 'parent_id' => $parentId])
                 ->orderBy('order_by', 'ASC')
                 ->get()
