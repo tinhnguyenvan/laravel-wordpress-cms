@@ -9,6 +9,7 @@ return [
     'updated_at' => 'Updated at',
     'request_title_form' => 'Title',
     'request_content_form' => 'Content',
+    'status' => 'Status',
     'fullname_register_email' => 'Customer register email',
     'add.success' => 'Register email success',
     'error.email_is_required' => 'Email is required',
@@ -23,4 +24,9 @@ return [
     'form_fullname' => 'Fullname',
     'form_email' => 'Email',
     'form_phone' => 'Phone',
+
+    'status.completed' => 'Completed',
+    'status.new' => 'New',
+
+    'button.make_completed' => 'Make completed',
 ];

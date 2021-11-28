@@ -53,6 +53,16 @@
                                         <td class="th-created_at">{{ trans('contact.request_content_form') }}</td>
                                         <td>{!! $contact->request_content_form !!}</td>
                                     </tr>
+
+                                    <tr>
+                                        <td class="th-created_at">{{ trans('contact.status') }}</td>
+                                        <td>
+                                            <label class="btn btn-{{ $contact->status_color }} btn-sm">
+                                                <i class="fa fa-check-circle-o"></i>
+                                                {{ $contact->status_text }}
+                                            </label>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                     <tfoot>
                                     <tr>
@@ -61,6 +71,13 @@
                                                 <i class="fa fa-arrow-left"></i>
                                                 {{trans('common.btn_back')}}
                                             </a>
+
+                                            <form style="display: inline-block" method="post" action="{{ admin_url('contacts/'.$contact->id) }}">
+                                                @csrf
+                                                @method('PUT')
+                                                <button
+                                                    class="btn btn-default">{{ trans('contact.button.make_completed') }}</button>
+                                            </form>
                                         </td>
                                     </tr>
                                     </tfoot>
