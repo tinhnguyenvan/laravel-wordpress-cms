@@ -33,15 +33,6 @@
                                        value="{{ old('title', $post_category->title ?? '') }}"
                                        class="form-control @error('title') is-invalid @enderror"
                                 />
-
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-form-label" for="slug">{{ trans('post.slug') }}</label>
-                            <div class="controls">
-                                <input type="text" name="slug" id="slug"
-                                       value="{{ old('slug', $post_category->slug ?? '') }}" class="form-control">
                             </div>
                         </div>
 
