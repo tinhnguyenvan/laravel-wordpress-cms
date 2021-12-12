@@ -46,7 +46,10 @@ class ThemeInstallCommand extends Command
 
         if (is_dir($linkAsset)) {
             unlink($linkAsset);
+        } else {
+            File::makeDirectory(base_path('public/layout/'), $mode = 0777, true, true);
         }
+
         symlink($targetAsset, $linkAsset);
 
         $this->info('- Completed copy file asset');
@@ -60,7 +63,10 @@ class ThemeInstallCommand extends Command
         $this->warn('- to: ' . $linkAsset);
         if (is_dir($linkAsset)) {
             unlink($linkAsset);
+        }else {
+            File::makeDirectory(base_path('resources/views/layout/'), $mode = 0777, true, true);
         }
+
         symlink($targetView, $linkAsset);
 
         $this->info('- COMPLETED COPY RESOURCES VIEWS');
