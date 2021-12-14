@@ -21,17 +21,26 @@ class CreateTablePost extends Migration
         Schema::create('web_posts', function (Blueprint $table) {
             $table->bigInteger('id')->unsigned()->autoIncrement();
             $table->integer('category_id')->nullable()->default(0)->index();
+            $table->string('title')->nullable();
+            $table->string('slug')->nullable();
+            $table->text('summary')->nullable();
+            $table->text('detail')->nullable();
             $table->integer('image_id')->nullable()->default(0);
             $table->string('image_url', 255)->nullable();
             $table->smallInteger('status')->nullable()->default(1);
-            $table->integer('creator_id')->nullable()->default(0);
-            $table->integer('editor_id')->nullable()->default(0);
             $table->tinyInteger('is_hot')->nullable()->default(0);
             $table->integer('views')->nullable()->default(0);
-            $table->string('tags', 255)->nullable();
-            $table->timestamp('deleted_at')->nullable();
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
+            $table->text('tags')->nullable();
+            $table->text('seo_title')->nullable();
+            $table->text('seo_description')->nullable();
+            $table->integer('creator_id')->nullable()->default(0);
+            $table->integer('editor_id')->nullable()->default(0);
+
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->index('category_id', 'category_id');
+            $table->index('status', 'status');
         });
     }
 
@@ -42,6 +51,6 @@ class CreateTablePost extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('web_posts');
     }
 }

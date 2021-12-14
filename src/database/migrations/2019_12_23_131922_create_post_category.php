@@ -32,9 +32,9 @@ class CreatePostCategory extends Migration
             $table->string('seo_description', 255)->nullable();
             $table->integer('creator_id')->nullable()->default(0);
             $table->integer('editor_id')->nullable()->default(0);
-            $table->timestamp('deleted_at')->nullable();
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
+
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -45,6 +45,6 @@ class CreatePostCategory extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_categories');
+        Schema::dropIfExists('web_post_categories');
     }
 }
