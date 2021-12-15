@@ -52,6 +52,67 @@ $(document).ready(function () {
         let ckeditorContent = $('.ckeditor');
 
         if (ckeditorContent.length > 0) {
+            if (configs.ckeditor === 'tinymce') {
+                tinymce.init({
+                    selector: '.ckeditor',
+                    plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor insertdatetime advlist lists wordcount textpattern noneditable help charmap quickbars emoticons',
+                    menubar: 'file edit view insert format tools table help',
+                    toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+                    toolbar_sticky: true,
+                    autosave_ask_before_unload: true,
+                    autosave_interval: '30s',
+                    autosave_prefix: '{path}{query}-{id}-',
+                    autosave_restore_when_empty: false,
+                    autosave_retention: '2m',
+                    image_advtab: true,
+                    link_list: [
+                        { title: 'My page 1', value: 'https://www.tiny.cloud' },
+                        { title: 'My page 2', value: 'http://www.moxiecode.com' }
+                    ],
+                    image_list: [
+                        { title: 'My page 1', value: 'https://www.tiny.cloud' },
+                        { title: 'My page 2', value: 'http://www.moxiecode.com' }
+                    ],
+                    image_class_list: [
+                        { title: 'None', value: '' },
+                        { title: 'Some class', value: 'class-name' }
+                    ],
+                    importcss_append: true,
+                    file_picker_callback: function (callback, value, meta) {
+                        /* Provide file and text for the link dialog */
+                        if (meta.filetype === 'file') {
+                            callback('https://www.google.com/logos/google.jpg', { text: 'My text' });
+                        }
+
+                        /* Provide image and alt text for the image dialog */
+                        if (meta.filetype === 'image') {
+                            callback('https://www.google.com/logos/google.jpg', { alt: 'My alt text' });
+                        }
+
+                        /* Provide alternative source and posted for the media dialog */
+                        if (meta.filetype === 'media') {
+                            callback('movie.mp4', { source2: 'alt.ogg', poster: 'https://www.google.com/logos/google.jpg' });
+                        }
+                    },
+                    templates: [
+                        { title: 'New Table', description: 'creates a new table', content: '<div class="mceTmpl"><table width="98%%"  border="0" cellspacing="0" cellpadding="0"><tr><th scope="col"> </th><th scope="col"> </th></tr><tr><td> </td><td> </td></tr></table></div>' },
+                        { title: 'Starting my story', description: 'A cure for writers block', content: 'Once upon a time...' },
+                        { title: 'New list with dates', description: 'New List with dates', content: '<div class="mceTmpl"><span class="cdate">cdate</span><br /><span class="mdate">mdate</span><h2>My List</h2><ul><li></li><li></li></ul></div>' }
+                    ],
+                    template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
+                    template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
+                    width: "100%",
+                    height: 600,
+                    image_caption: true,
+                    quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+                    noneditable_noneditable_class: 'mceNonEditable',
+                    toolbar_mode: 'sliding',
+                    contextmenu: 'link image table',
+                    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+                });
+
+            }
+
             if (configs.ckeditor === 'ckeditor') {
                 CKEDITOR.replaceAll('ckeditor');
             }
@@ -64,7 +125,7 @@ $(document).ready(function () {
 
                 DecoupledEditor
                     .create(document.querySelector('.ckeditor5'), {
-                        extraPlugins: [ MyCustomUploadAdapterPlugin ],
+                        extraPlugins: [MyCustomUploadAdapterPlugin],
                     })
                     .then(editor => {
                         const toolbarContainer = document.querySelector('#toolbar-container');
@@ -239,7 +300,7 @@ $(document).ready(function () {
 });
 
 class MyUploadAdapter {
-    constructor( loader ) {
+    constructor(loader) {
         // The file loader instance to use during the upload.
         this.loader = loader;
     }
@@ -247,16 +308,16 @@ class MyUploadAdapter {
     // Starts the upload process.
     upload() {
         return this.loader.file
-            .then( file => new Promise( ( resolve, reject ) => {
+            .then(file => new Promise((resolve, reject) => {
                 this._initRequest();
-                this._initListeners( resolve, reject, file );
-                this._sendRequest( file );
-            } ) );
+                this._initListeners(resolve, reject, file);
+                this._sendRequest(file);
+            }));
     }
 
     // Aborts the upload process.
     abort() {
-        if ( this.xhr ) {
+        if (this.xhr) {
             this.xhr.abort();
         }
     }
@@ -269,19 +330,19 @@ class MyUploadAdapter {
         // integration to choose the right communication channel. This example uses
         // a POST request with JSON as a data structure but your configuration
         // could be different.
-        xhr.open( 'POST', configs.link_media_upload , true );
+        xhr.open('POST', configs.link_media_upload, true);
         xhr.responseType = 'json';
     }
 
     // Initializes XMLHttpRequest listeners.
-    _initListeners( resolve, reject, file ) {
+    _initListeners(resolve, reject, file) {
         const xhr = this.xhr;
         const loader = this.loader;
-        const genericErrorText = `Couldn't upload file: ${ file.name }.`;
+        const genericErrorText = `Couldn't upload file: ${file.name}.`;
 
-        xhr.addEventListener( 'error', () => reject( genericErrorText ) );
-        xhr.addEventListener( 'abort', () => reject() );
-        xhr.addEventListener( 'load', () => {
+        xhr.addEventListener('error', () => reject(genericErrorText));
+        xhr.addEventListener('abort', () => reject());
+        xhr.addEventListener('load', () => {
             const response = xhr.response;
 
             // This example assumes the XHR server's "response" object will come with
@@ -290,38 +351,38 @@ class MyUploadAdapter {
             //
             // Your integration may handle upload errors in a different way so make sure
             // it is done properly. The reject() function must be called when the upload fails.
-            if ( !response || response.error ) {
-                return reject( response && response.error ? response.error.message : genericErrorText );
+            if (!response || response.error) {
+                return reject(response && response.error ? response.error.message : genericErrorText);
             }
 
             // If the upload is successful, resolve the upload promise with an object containing
             // at least the "default" URL, pointing to the image on the server.
             // This URL will be used to display the image in the content. Learn more in the
             // UploadAdapter#upload documentation.
-            resolve( {
+            resolve({
                 default: response.url
-            } );
-        } );
+            });
+        });
 
         // Upload progress when it is supported. The file loader has the #uploadTotal and #uploaded
         // properties which are used e.g. to display the upload progress bar in the editor
         // user interface.
-        if ( xhr.upload ) {
-            xhr.upload.addEventListener( 'progress', evt => {
-                if ( evt.lengthComputable ) {
+        if (xhr.upload) {
+            xhr.upload.addEventListener('progress', evt => {
+                if (evt.lengthComputable) {
                     loader.uploadTotal = evt.total;
                     loader.uploaded = evt.loaded;
                 }
-            } );
+            });
         }
     }
 
     // Prepares the data and sends the request.
-    _sendRequest( file ) {
+    _sendRequest(file) {
         // Prepare the form data.
         const data = new FormData();
 
-        data.append( 'upload', file );
+        data.append('upload', file);
 
         // Important note: This is the right place to implement security mechanisms
         // like authentication and CSRF protection. For instance, you can use
@@ -329,13 +390,13 @@ class MyUploadAdapter {
         // the CSRF token generated earlier by your application.
 
         // Send the request.
-        this.xhr.send( data );
+        this.xhr.send(data);
     }
 }
 
-function MyCustomUploadAdapterPlugin( editor ) {
-    editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
+function MyCustomUploadAdapterPlugin(editor) {
+    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
         // Configure the URL to the upload script in your back-end here!
-        return new MyUploadAdapter( loader );
+        return new MyUploadAdapter(loader);
     };
 }

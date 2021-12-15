@@ -31,6 +31,11 @@
     @if(!empty($config['editor_content']) && $config['editor_content'] == 'ckeditor5' )
         <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/decoupled-document/ckeditor.js"></script>
     @endif
+
+    @if(!empty($config['editor_content']) && $config['editor_content'] == 'tinymce' )
+        <script src="https://cdn.tiny.cloud/1/yjd2qxbt6dsg8xysu2ywc02omox3yux54r5uvg0ldhx6i3wn/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    @endif
+
     <script src="{{ asset("console/js/script.js?v=".config('constant.VERSION')) }}" type="text/javascript"></script>
 
 </head>
