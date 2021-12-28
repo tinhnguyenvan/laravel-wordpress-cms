@@ -125,15 +125,6 @@
     - create job
         + php artisan make:job ShoppingCartJob
 
-
-
-# PHP auto fix cs
-    - preview
-        + ./vendor/bin/php-cs-fixer fix --diff --dry-run -v
-
-    - auto fixed
-        + ./vendor/bin/php-cs-fixer fix
-
 # Queue
 
 - default:
