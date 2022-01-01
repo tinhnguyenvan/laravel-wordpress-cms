@@ -26,7 +26,7 @@ final class TagController extends SiteController
             return redirect(base_url('404.html'));
         }
 
-        $itemPosts = Post::active()->where('tags', 'LIKE', '%' . $slug . '%')->orderByDesc('id')->paginate(10);
+        $itemPosts = Post::active()->whereTranslationLike('tags', 'LIKE', '%' . $slug . '%')->orderByDesc('id')->paginate(10);
 
         $data = [
             'postTag' => $postTag,
