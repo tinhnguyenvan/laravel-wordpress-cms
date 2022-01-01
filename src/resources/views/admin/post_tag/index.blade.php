@@ -32,11 +32,11 @@
                             </a>
                         </th>
 
-                        <th>{{ trans('post.description') }}</th>
                         <th>{{ trans('post.slug') }}</th>
                         <th>{{ trans('post.source') }}</th>
-                        <th>{{ trans('post.total_usage') }}</th>
+                        <th class="text-center">{{ trans('post.total_usage') }}</th>
                         <th>{{ trans('post.updated_at') }}</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -53,19 +53,21 @@
                                     </a>
                                 </td>
                                 <td>
-                                    {{ $item->description }}
-                                </td>
-                                <td>
                                     {{ $item->slug }}
                                 </td>
                                 <td>
                                     {{ $item->source_text }}
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     {{ $item->total_usage }}
                                 </td>
                                 <td>
                                     {{ $item->updated_at->format(config('app.date_format')) }}
+                                </td>
+                                <td class="text-center">
+                                    <a href="{{ $item->link }}" target="_blank" class="btn btn-info btn-sm">
+                                        <i class="fa fa-globe"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach

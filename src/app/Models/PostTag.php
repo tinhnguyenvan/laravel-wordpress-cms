@@ -127,4 +127,10 @@ class PostTag extends Model
 
         return $text;
     }
+
+
+    public function getLinkAttribute(): string
+    {
+        return base_url('tag/' . $this->slug);
+    }
 }

@@ -38,7 +38,7 @@ class SiteController extends Controller
         $this->data['og_image'] = $this->data['config']['logo'] ?? '';
         $manifest = @json_decode(file_get_contents(public_path('layout/' . $this->theme . '/manifest.json')), true);
         $this->data['manifest'] = $manifest;
-        $this->page_number = config('constant.PAGE_NUMBER');
+        $this->page_number = $manifest['PAGE_NUMBER'] ?? config('constant.PAGE_NUMBER');
     }
 
     public function render($data)
