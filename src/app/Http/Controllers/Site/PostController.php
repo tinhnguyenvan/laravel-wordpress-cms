@@ -86,7 +86,7 @@ final class PostController extends SiteController
 
         $data = [
             'is_blog_detail' => 1,
-            'title' => $post->title,
+            'title' => $post->title ?? $this->data['config']['seo_title'],
             'post' => $post,
             'isBookmark' => $isBookmark,
             'items' => $items,
