@@ -43,7 +43,7 @@ final class PostController extends SiteController
             'postCategory' => $postCategory,
             'items' => $items,
             'slugCategory' => $slugCategory,
-            'title' => $postCategory->title ?? '',
+            'title' => $postCategory->title ?? $this->data['config']['seo_title'],
         ];
 
         // set seo
