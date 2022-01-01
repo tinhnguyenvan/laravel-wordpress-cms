@@ -70,10 +70,16 @@ class SiteController extends Controller
         }
     }
 
-    public function seo($object, &$data = []) {
-        $data['title'] = $object->seo_title ?: $data['config']['seo_title'];
-        $data['description'] = $object->seo_description ?: $data['config']['seo_description'];
-        $data['keyword'] = $object->tags ?: $data['config']['seo_keyword'];
-        $data['og_image'] = $object->full_image_url ?: $data['config']['logo'];
+    public function seo($object, &$data = [])
+    {
+        if (!empty($object->id)) {
+            if (empty($data['title'])) {
+                $data['title'] = $object->seo_title ?: $this->data['config']['seo_title'];
+            }
+
+            $data['description'] = $object->seo_description ?: $this->data['config']['seo_description'];
+            $data['keyword'] = $object->tags ?: $this->data['config']['seo_keyword'];
+            $data['og_image'] = $object->full_image_url ?: $this->data['config']['logo'];
+        }
     }
 }
