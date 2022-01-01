@@ -4,6 +4,7 @@
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Site\MediaController;
 use App\Http\Controllers\Site\HomeController;
+use App\Http\Controllers\Site\SearchController;
 use App\Models\Plugin;
 use Illuminate\Support\Facades\Route;
 
@@ -23,13 +24,17 @@ Route::post('admin/auth', [LoginController::class, 'auth'])->name('admin.auth');
 
 Route::namespace('Site')->group(
     function () {
-        // check show plugin
-        try {
-            $countPlugin = Plugin::query()->where('status', 1)->where('is_home_route', 1)->count();
-            if ($countPlugin == 0) {
-                Route::get('/', [HomeController::class, 'index']);
+        if (!empty(request('s'))) {
+            Route::get('/', [SearchController::class, 'index']);
+        } else {
+            // check show plugin
+            try {
+                $countPlugin = Plugin::query()->where('status', 1)->where('is_home_route', 1)->count();
+                if ($countPlugin == 0) {
+                    Route::get('/', [HomeController::class, 'index']);
+                }
+            } catch (Exception $exception) {
             }
-        } catch (Exception $exception) {
         }
 
         // user
@@ -80,7 +85,6 @@ Route::namespace('Site')->group(
 
         // tag
         Route::get('/' . config('constant.URL_PREFIX_TAG') . '/{slug}', 'TagController@index');
-        Route::get('search', 'SearchController@index');
 
         // sitemap
         Route::get('sitemap.xml', 'SitemapController@index');

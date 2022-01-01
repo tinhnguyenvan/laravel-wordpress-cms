@@ -26,7 +26,7 @@ final class SearchController extends SiteController
 
         if (!empty($params['s'])) {
             $keyword = $params['s'];
-            $itemPosts = Post::active()->whereTranslationLike('title', '%'. $keyword . '%')->orderByDesc('id')->paginate(10);
+            $itemPosts = Post::active()->whereTranslationLike('title', '%' . $keyword . '%')->orderByDesc('id')->paginate(10);
         }
 
         $data = [
@@ -34,6 +34,11 @@ final class SearchController extends SiteController
             'title' => trans('common.search'),
         ];
 
-        return view($this->layout . '.search.index', $this->render($data));
+        $view = 'index';
+        if ($request->get('type') == 'product') {
+            $view = 'product';
+        }
+
+        return view($this->layout . '.search.' . $view, $this->render($data));
     }
 }
