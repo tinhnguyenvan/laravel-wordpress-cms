@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" style="margin: 20px 0 ">
     <div class="card-header">
         <i class="fa fa-cog"></i>
         {{ trans('common.config_seo') }}
@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <div class="card-body collapse" id="collapseExample2">
+    <div class="card-body collapse @if(!empty($info->seo_title)) in show @endif" id="collapseExample2">
         <div class="form-group">
             <label class="col-form-label" for="seo_title">{{ trans('common.seo_title') }}</label>
             <div class="controls">

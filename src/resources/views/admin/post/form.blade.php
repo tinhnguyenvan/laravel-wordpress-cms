@@ -1,8 +1,14 @@
 @extends('admin.layout.app')
 @section('content')
-    <div class="row">
-        <div class="col-lg-12">
-
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            @foreach($language_content as $lang => $textLanguage)
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">{{ $textLanguage }}</a>
+            @endforeach
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
             <form method="post" class="submit" enctype="multipart/form-data"
                   action="{{ admin_url('posts') }}{{ ($post->id ?? 0) > 0 ?'/'.$post->id: '' }}">
                 @csrf
@@ -10,20 +16,15 @@
                     @method('PUT')
                 @endif
 
-                <div class="card">
-                    <div class="card-header">
-                        <i class="fa fa-edit"></i> {{ trans('common.form') }}
-                        <div class="card-header-actions">
-                            <a class="btn btn-minimize" href="#" data-toggle="collapse" data-target="#collapseExample"
-                               aria-expanded="true">
-                                <i class="icon-arrow-up"></i>
-                            </a>
-                        </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        @include('admin.element.form.input-multi-lang', ['name' => 'title', 'text' => trans('post.title'), 'value' => $post ?? '', 'is_multi_lang' => true])
+                        @include('admin.element.form.textarea-multi-lang', ['name' => 'summary', 'text' => trans('post.summary'), 'value' => $post ?? ''])
+                        @include('admin.element.form.textarea-multi-lang', ['name' => 'detail', 'class' => 'ckeditor', 'text' => trans('post.detail'), 'value' => $post ?? ''])
+                        @include('admin.element.form_seo', ['info' => $post ?? ''])
                     </div>
 
-                    <div class="card-body collapse show" id="collapseExample">
-
-                        @include('admin.element.form.input-multi-lang', ['name' => 'title', 'text' => trans('post.title'), 'value' => $post ?? '', 'is_multi_lang' => true])
+                    <div class="col-lg-4">
 
                         <div class="form-group">
                             <label class="col-form-label required" for="title">{{ trans('post.category_id') }}</label>
@@ -35,9 +36,6 @@
                                             class="fa fa-plus"></i> Add category</a>
                             @endif
                         </div>
-
-                        @include('admin.element.form.textarea-multi-lang', ['name' => 'summary', 'text' => trans('post.summary'), 'value' => $post ?? ''])
-                        @include('admin.element.form.textarea-multi-lang', ['name' => 'detail', 'class' => 'ckeditor', 'text' => trans('post.detail'), 'value' => $post ?? ''])
 
                         @include('admin.element.form.image', ['name' => 'image_id', 'image_id' => $post->image_id ?? '', 'image_url' => $post->image_url ?? ''])
                         @include('admin.element.form.tags', ['name' => 'tags', 'text' => trans('common.tags'), 'value' => $post->tags ?? ''])
@@ -63,18 +61,15 @@
                                 {{ trans('common.save_close') }}
                             </button>
                         </div>
+
                     </div>
                 </div>
-
-                <!-- seo form -->
-                @include('admin.element.form_seo', ['info' => $post ?? ''])
-
             </form>
 
             @if (!empty($post->id))
-                <div class="row mb-5">
+                <div class="row">
                     <div class="col-lg-12">
-                        <div class="form-actions text-lg-right">
+                        <div class="form-actions">
                             <form method="post" onsubmit="return confirm('Do you want DELETE ?');"
                                   action="{{ admin_url('posts/'.$post->id ) }}">
                                 @csrf
@@ -98,5 +93,4 @@
                 </div>
             @endif
         </div>
-    </div>
 @endsection

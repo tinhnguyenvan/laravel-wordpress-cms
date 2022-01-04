@@ -103,7 +103,7 @@ return [
             ]
         ],
         [
-            'title' => 'nav.menu_left.user',
+            'title' => 'nav.menu_left.members',
             'url' => '',
             'icon' => 'fa fa-users',
             'role' => [Role::ROLE_ADMIN],

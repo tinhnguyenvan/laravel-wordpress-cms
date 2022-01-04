@@ -22,6 +22,8 @@
                 <tr class="bg-light">
                     <th>ID</th>
                     <th>{{ trans('member.fullname') }}</th>
+                    <th>{{ trans('member.email') }}</th>
+                    <th>{{ trans('member.phone') }}</th>
                     <th>{{ trans('member.source') }}</th>
                     <th style="width: 150px">{{ trans('common.updated_at') }}</th>
                     <th style="width: 100px"></th>
@@ -32,14 +34,9 @@
                     @foreach ($items as $item)
                         <tr>
                             <td>{{ $item->id }}</td>
-                            <td>
-                                {{ !empty($item->fullname) ? $item->fullname : 'No name' }}
-                                <p>
-                                    <i class="fa fa-phone"></i> {{ !empty($item->phone) ? $item->phone : '--' }}
-                                    <br>
-                                    <i class="fa fa-envelope"></i> {{ !empty($item->email) ? $item->email : '--' }}
-                                </p>
-                            </td>
+                            <td>{{ !empty($item->fullname) ? $item->fullname : 'No name' }}</td>
+                            <td><i class="fa fa-phone"></i> {{ !empty($item->phone) ? $item->phone : '--' }}</td>
+                            <td><i class="fa fa-envelope"></i> {{ !empty($item->email) ? $item->email : '--' }}</td>
                             <td>
                                 @if(!empty($item->socials))
                                     @foreach($item->socials as $social)

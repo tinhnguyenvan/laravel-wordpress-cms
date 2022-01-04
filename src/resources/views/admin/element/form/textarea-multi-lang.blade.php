@@ -40,7 +40,6 @@
                         <div class="ckeditor5"></div>
                         <textarea style="display: none"
                                   name="{{$lang}}[{{$name}}]"
-                                  placeholder="{{$text}}: {{ $textLanguage }}"
                                   id="textarea-lang-{{$name}}-{{$lang}}"
                                   rows="{{ $rows ?? 5 }}"
                                   class="text-{{ $config['editor_content'] ?? '' }} form-control {{ $class ?? '' }}">{{ old($name, $value->translate($lang)->$name ?? '') }}</textarea>
@@ -48,7 +47,6 @@
                 @else
                     <div class="input-group">
                     <textarea name="{{$lang}}[{{$name}}]"
-                              placeholder="{{$text}}: {{ $textLanguage }}"
                               id="textarea-lang-{{$name}}-{{$lang}}"
                               rows="{{ $rows ?? 5 }}"
                               class="form-control {{ $class ?? '' }}">{{ old($name, $value->translate($lang)->$name ?? '') }}</textarea>

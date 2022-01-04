@@ -1,49 +1,83 @@
 <header class="app-header navbar">
-    <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="{{ admin_url() }}">
-        <i class="fa fa-fw fa-book"></i> CMS
-    </a>
-    <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
-        <span class="navbar-toggler-icon"></span>
-    </button>
     <ul class="nav navbar-nav d-md-down-none">
-        <li class="nav-item px-3">
-            <a class="nav-link" target="_blank" href="{{ url('/') }}"><i class="fa fa-globe"></i> Web</a>
+        <li class="nav-item">
+            <a class="nav-link px-3" href="{{ admin_url() }}"><i class="fa fa-dashboard"></i> Home</a>
         </li>
-        <li class="nav-item px-3">
-            <a class="nav-link" href="{{ admin_url() }}"><i class="fa fa-dashboard"></i> Dashboard</a>
-        </li>
-    </ul>
-    <ul class="nav navbar-nav ml-auto" style="margin-right: 10px">
 
-        <!--
+        @if(!empty(@config('constant.MENU_APP')))
+            @php($plugins = explode(',', Cookie::get('plugin')))
+            @foreach(@config('constant.MENU_APP') as $item)
+                @if(!in_array($item['plugin'], $plugins))
+                    @continue
+                @endif
+
+                @if(!in_array(auth('admin')->user()->role_id, $item['role'] ?? []))
+                    @continue
+                @endif
+                <li class="nav-item px-3">
+                    <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        <i class="nav-icon {{ $item['icon'] }}"></i> {{ trans($item['title']) }}
+                    </a>
+
+                    @if(!empty($item['child']))
+                        <div class="dropdown-menu">
+                            @foreach($item['child'] as $itemChild)
+                                <a class="dropdown-item" href="{{ admin_url($itemChild['url'])}}">
+                                    @if($itemChild['icon'])
+                                        <i class="nav-icon {{ $itemChild['icon'] }}"></i>
+                                    @endif
+                                    @lang($itemChild['title'], [], config('app.locale'))
+                                </a>
+                            @endforeach
+                        </div>
+                    @endif
+                </li>
+            @endforeach
+        @endif
+
+        @foreach(@config('constant.MENU_ADMIN') as $item)
+            @if(!in_array(auth('admin')->user()->role_id, $item['role'] ?? []))
+                @continue
+            @endif
+            <li class="nav-item px-3">
+                <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                   aria-expanded="false">
+                    <i class="nav-icon {{ $item['icon'] }}"></i> @lang($item['title'], [], config('app.locale'))
+                </a>
+                @if(!empty($item['child']))
+                    <div class="dropdown-menu">
+                        @foreach($item['child'] as $itemChild)
+                            <a class="dropdown-item" href="{{ admin_url($itemChild['url'])}}">
+                                @if($itemChild['icon'])
+                                    <i class="nav-icon {{ $itemChild['icon'] }}"></i>
+                                @endif
+                                @lang($itemChild['title'], [], config('app.locale'))
+                            </a>
+                        @endforeach
+                    </div>
+                @endif
+            </li>
+        @endforeach
+    </ul>
+
+    <ul class="nav navbar-nav ml-auto" style="margin-right: 10px">
         <li class="nav-item d-md-down-none">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ admin_url('comments?status=1') }}">
                 <i class="icon-bell"></i>
-                <span class="badge badge-pill badge-danger">5</span>
+                <span class="badge badge-pill badge-danger">{{ $countComment }}</span>
             </a>
         </li>
-        <li class="nav-item d-md-down-none">
-            <a class="nav-link" href="#">
-                <i class="icon-list"></i>
-            </a>
-        </li>
-        <li class="nav-item d-md-down-none">
-            <a class="nav-link" href="#">
-                <i class="icon-location-pin"></i>
-            </a>
-        </li>
-        -->
+
         <li class="c-header-nav-item dropdown d-md-down-none mx-2 show">
             <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                aria-expanded="false">
-                {{config('app.language_text')[config('app.locale')] }}   |
+                {{config('app.language_text')[config('app.locale')] }} |
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 @foreach(config('app.language_text') as $lang => $textLanguage)
-                    <a target="_top" class="dropdown-item @if(request()->cookie('locale') == $lang) text-danger @endif"
+                    <a target="_top"
+                       class="dropdown-item @if(request()->cookie('locale') == $lang) text-danger @endif"
                        href="{{ request()->fullUrlWithQuery(['lang'=> $lang]) }}">
                         {{ $textLanguage }}
                     </a>
@@ -57,26 +91,6 @@
                 {{ auth('admin')->user()->name ?? 'Account' }}
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <!-- <div class="dropdown-header text-center">
-                    <strong>Account</strong>
-                </div>
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-bell-o"></i> Updates
-                    <span class="badge badge-info">42</span>
-                </a>
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-envelope-o"></i> Messages
-                    <span class="badge badge-success">42</span>
-                </a>
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-tasks"></i> Tasks
-                    <span class="badge badge-danger">42</span>
-                </a>
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-comments"></i> Comments
-                    <span class="badge badge-warning">42</span>
-                </a>
-                -->
                 <div class="dropdown-header text-center">
                     <strong>{{ trans('nav.setting') }}</strong>
                 </div>
