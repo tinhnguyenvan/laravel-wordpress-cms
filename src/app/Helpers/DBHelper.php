@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 class DBHelper
 {
     /**
-     * @param     $name
+     * @param string $name
      * @param int $timeout
      *
      * @return bool
@@ -26,7 +26,7 @@ class DBHelper
     }
 
     /**
-     * @param $name
+     * @param string $name
      */
     public static function releaseLock($name)
     {
@@ -34,7 +34,7 @@ class DBHelper
     }
 
     /**
-     * @param $name
+     * @param string $name
      */
     public static function isFreeLock($name)
     {
@@ -42,7 +42,7 @@ class DBHelper
     }
 
     /**
-     * @param $name
+     * @param string $name
      */
     public static function isUsedLock($name)
     {

@@ -25,7 +25,7 @@ class RegionService extends BaseService
     }
 
     /**
-     * @param $params
+     * @param array $params
      *
      * @return array
      */
@@ -68,9 +68,9 @@ class RegionService extends BaseService
     }
 
     /**
-     * @param $params
+     * @param array $params
      *
-     * @return array|bool|object
+     * @return array
      */
     public function create($params)
     {
@@ -80,20 +80,15 @@ class RegionService extends BaseService
         }
 
         $this->beforeSave($params, true);
-        $myObject = new Region($params);
 
-        if ($myObject->save($params)) {
-            return $myObject;
-        }
-
-        return 0;
+        return Region::query()->create($params)->toArray();
     }
 
     /**
-     * @param $id
-     * @param $params
+     * @param int $id
+     * @param array $params
      *
-     * @return array|bool
+     * @return array|bool|int
      */
     public function update($id, $params)
     {
@@ -107,11 +102,11 @@ class RegionService extends BaseService
         return Region::query()->findOrFail($id)->update($params);
     }
 
-    public function dropdownCountry()
+    public function dropDownCountry()
     {
         $data = Region::query()->where('parent_id', 0)->orderBy('order_by')->get(['id', 'name']);
         $html = [];
-        if (!empty($data)) {
+        if ($data->count() > 0) {
             $html = array_column($data->toArray(), 'name', 'id');
         }
 
@@ -125,7 +120,7 @@ class RegionService extends BaseService
             ->orderBy('order_by')
             ->get(['id', 'name']);
         $html = [];
-        if (!empty($data)) {
+        if ($data->count() > 0) {
             $html = array_column($data->toArray(), 'name', 'id');
         }
 
@@ -133,7 +128,7 @@ class RegionService extends BaseService
     }
 
 
-    public function dropdownRegion(): array
+    public function dropDownRegion(): array
     {
         $items = Region::query()
             ->whereRaw('parent_id in(SELECT id FROM master_regions WHERE parent_id = 0 AND is_primary_location = 1)')
@@ -141,7 +136,7 @@ class RegionService extends BaseService
             ->get(['id', 'name', 'parent_id']);
 
         $html = [];
-        if (!empty($items)) {
+        if ($items->count() > 0) {
             foreach ($items as $item) {
                 foreach ($item->subItem as $sub) {
                     $html[$item->name][$sub->id] = $sub->name;
@@ -158,12 +153,12 @@ class RegionService extends BaseService
      *
      * @return array
      */
-    public function dropdown(): array
+    public function dropDown(): array
     {
-        $items = Region::query()->where('parent_id',0)->orderBy('order_by')->get(['id', 'name', 'parent_id']);
+        $items = Region::query()->where('parent_id', 0)->orderBy('order_by')->get(['id', 'name', 'parent_id']);
 
         $html = [];
-        if (!empty($items)) {
+        if ($items->count()) {
             foreach ($items as $item) {
                 foreach ($item->subItem as $sub) {
                     $html[$item->name][$sub->id] = $sub->name;
@@ -179,19 +174,23 @@ class RegionService extends BaseService
         if ($parentId == 0) {
             return [];
         }
-        $data = Region::query()
-            ->where('parent_id', $parentId)
-            ->orderBy('order_by')
-            ->get(['id', 'name']);
+        $data = Region::query()->where('parent_id', $parentId)->orderBy('order_by')->get(['id', 'name']);
         $html = [];
-        if (!empty($data)) {
+        if ($data->count() > 0) {
             $html = array_column($data->toArray(), 'name', 'id');
         }
 
         return $html;
     }
 
-    public function buildCondition($params = [], &$condition = [], &$sortBy = 'id', &$sortType = 'asc')
+    /**
+     * @param array $params
+     * @param array $condition
+     * @param string $sortBy
+     * @param string $sortType
+     * @return mixed|void
+     */
+    public function buildCondition($params = [], &$condition = [], &$sortBy = '', &$sortType = '')
     {
         if (!empty($params['search'])) {
             $search = [

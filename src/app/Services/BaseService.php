@@ -52,12 +52,10 @@ class BaseService
     /**
      * @param array $params
      * @param array $condition
-     * @param null  $sortBy
-     * @param null  $sortType
-     *
-     * @return mixed
+     * @param string $sortBy
+     * @param string $sortType
      */
-    public function buildCondition($params = [], &$condition = [], &$sortBy = null, &$sortType = null)
+    public function buildCondition($params = [], &$condition = [], &$sortBy = '', &$sortType = '')
     {
         $sortBy = 'id';
         $sortType = 'desc';

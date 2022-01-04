@@ -22,11 +22,11 @@ class RoleService extends BaseService
     }
 
     /**
-     * @param $params
+     * @param array $params
      *
      * @return array
      */
-    public function validator($params)
+    public function validator($params = [])
     {
         $error = [];
 
@@ -40,8 +40,9 @@ class RoleService extends BaseService
     {
         $data = Role::all();
         $html = [];
-        if (!empty($data)) {
+        if ($data->count() > 0) {
             foreach ($data as $key => $myRole) {
+                /** @var mixed $myRole */
                 $html[$myRole->id] = $myRole->description . ' [' . $myRole->name . ']';
             }
         }
