@@ -68,7 +68,12 @@
     </ul>
 
     <ul class="nav navbar-nav ml-auto" style="margin-right: 10px">
-        <li class="nav-item d-md-down-none">
+        <li class="nav-item" style="min-width: auto" title="View Website">
+            <a class="nav-link" target="_blank" href="{{ base_url('/?ref=admin') }}">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li class="nav-item d-md-down-none" title="Comment">
             <a class="nav-link" href="{{ admin_url('comments?status=1') }}">
                 <i class="icon-bell"></i>
                 <span class="badge badge-pill badge-danger">{{ $countComment }}</span>
