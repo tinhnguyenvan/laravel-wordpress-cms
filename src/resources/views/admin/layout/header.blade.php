@@ -18,6 +18,9 @@
                     <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                        aria-expanded="false">
                         <i class="nav-icon {{ $item['icon'] }}"></i> {{ trans($item['title']) }}
+                        @if(!empty($item['child']))
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        @endif
                     </a>
 
                     @if(!empty($item['child']))
@@ -44,6 +47,9 @@
                 <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                    aria-expanded="false">
                     <i class="nav-icon {{ $item['icon'] }}"></i> @lang($item['title'], [], config('app.locale'))
+                    @if(!empty($item['child']))
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    @endif
                 </a>
                 @if(!empty($item['child']))
                     <div class="dropdown-menu">
