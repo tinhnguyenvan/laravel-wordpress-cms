@@ -14,9 +14,6 @@ Route::get('/install/migrate', 'InstallController@migrate');
 
 Route::get('admin', [LoginController::class, 'index'])->name('admin.login');
 Route::get('admin/login', [LoginController::class, 'index'])->name('admin.login.index');
-Route::get('admin/auth', function () {
-    return redirect(route('admin.login'));
-});
 Route::post('admin/auth', [LoginController::class, 'auth'])->name('admin.auth');
 
 Route::namespace('Site')->group(
