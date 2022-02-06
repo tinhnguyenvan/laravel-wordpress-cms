@@ -1,7 +1,7 @@
 <div class="form-group">
     <label class="col-form-label" for="title">Editor Content</label>
     <div class="controls">
-        @include('admin.element.form.select', ['name' => 'editor_content', 'data' => ['summernote' => 'Summernote', 'ckeditor' => 'Ckeditor', 'ckeditor5' => 'Ckeditor 5'], 'selected' => old('editor_content', ($config['editor_content'] ?? ''))])
+        @include('admin.element.form.select', ['name' => 'editor_content', 'data' => ['summernote' => 'Summernote', 'ckeditor' => 'Ckeditor', 'ckeditor5' => 'Ckeditor 5', 'tinymce' => 'tinymce'], 'selected' => old('editor_content', ($config['editor_content'] ?? ''))])
     </div>
 </div>
 

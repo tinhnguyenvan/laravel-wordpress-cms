@@ -1,6 +1,6 @@
 <footer class="app-footer">
     <div>
-        <a href="https://github.com/tinhnguyenvan/laravel-wordpress-cms" target="_blank">
+        <a href="https://tinhnguyenvan.github.io/laravel-wordpress-cms" target="_blank">
             <i class="fa fa-github"></i>
             Laravel Wordpress CMS
         </a>

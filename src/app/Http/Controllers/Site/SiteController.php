@@ -38,7 +38,7 @@ class SiteController extends Controller
         $this->data['og_image'] = $this->data['config']['logo'] ?? '';
         $manifest = @json_decode(file_get_contents(public_path('layout/' . $this->theme . '/manifest.json')), true);
         $this->data['manifest'] = $manifest;
-        $this->page_number = config('constant.PAGE_NUMBER');
+        $this->page_number = $manifest['PAGE_NUMBER'] ?? config('constant.PAGE_NUMBER');
     }
 
     public function render($data)
@@ -70,10 +70,14 @@ class SiteController extends Controller
         }
     }
 
-    public function seo($object, &$data = []) {
-        $data['title'] = $object->seo_title ?: $data['config']['seo_title'];
-        $data['description'] = $object->seo_description ?: $data['config']['seo_description'];
-        $data['keyword'] = $object->tags ?: $data['config']['seo_keyword'];
-        $data['og_image'] = $object->full_image_url ?: $data['config']['logo'];
+    public function seo($object, &$data = [])
+    {
+        if (!empty($object->seo_title)) {
+            $data['title'] = $object->seo_title ?: $this->data['config']['seo_title'];
+        }
+
+        $data['description'] = $object->seo_description ?? $this->data['config']['seo_description'];
+        $data['keyword'] = $object->tags ?? $this->data['config']['seo_keyword'];
+        $data['og_image'] = $object->full_image_url ?? $this->data['config']['logo'];
     }
 }

@@ -26,12 +26,12 @@ final class TagController extends SiteController
             return redirect(base_url('404.html'));
         }
 
-        $itemPosts = Post::query()->where(['status' => Post::STATUS_ACTIVE])->orderByDesc('id')->get()->take(10);
+        $itemPosts = Post::active()->where('tags', 'LIKE', '%' . $postTag->title . '%')->orderByDesc('id')->paginate(10);
 
         $data = [
             'postTag' => $postTag,
             'itemPosts' => $itemPosts,
-            'title' => 'Tag: ' . $postTag->title.' | '.$this->data['title'],
+            'title' => 'Tag: ' . $postTag->title . ' | ' . $this->data['title'],
         ];
 
         return view($this->layout . '.tag.index', $this->render($data));

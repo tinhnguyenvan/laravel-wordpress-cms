@@ -29,6 +29,7 @@ return [
     'button.edit' => 'Cập nhật',
     'button.send_test' => 'Send test',
     'button.history' => 'Trờ về',
+    'button.login' => 'Đăng nhập',
 
     'upload.success' => 'Upload thành công',
     'upload.error' => 'Upload thất bại',

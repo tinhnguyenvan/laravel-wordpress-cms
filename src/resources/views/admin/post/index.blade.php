@@ -23,7 +23,9 @@
                     <thead>
                     <tr class="bg-light">
                         <th class="text-center w50">
-                            <input type="checkbox" name="check_all" id="check_all" value="1">
+                            <label for="check_all">
+                                <input type="checkbox" name="check_all" id="check_all" value="1"/>
+                            </label>
                         </th>
                         <th>@lang('post.title', [], config('app.locale'))</th>
                         <th class="th-category_id">@lang('post.category_id', [], config('app.locale'))</th>
@@ -48,14 +50,16 @@
                                     @foreach(\App\Models\Language::loadLanguage() as $code => $language)
                                         @if(!empty($item->translate($code)->title))
                                             <a href="{{ admin_url('posts/'.$item->id.'/edit') }}">
-                                                {{ $item->translate($code)->title }} [{{ $code }}]
+                                                {{ $item->translate($code)->title }}
                                             </a>
-                                            <br/>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td>
-                                    {{!empty($item->category->title ) ? $item->category->title : '' }}
+                                    @if(!empty($item->category->title))
+                                        <a target="_blank"
+                                           href="{{$item->category->link}}">{{ $item->category->title }}</a>
+                                    @endif
                                 </td>
                                 <td>
                                     {{ $item->creator_id > 0 && !empty($item->user->name) ?  $item->user->name : '--' }}

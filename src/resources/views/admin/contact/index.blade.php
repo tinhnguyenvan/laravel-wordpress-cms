@@ -21,6 +21,7 @@
                         <th>{{ trans('contact.phone') }}</th>
                         <th>{{ trans('contact.email') }}</th>
                         <th class="th-created_at">{{ trans('contact.created_at') }}</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -28,7 +29,9 @@
                         @foreach ($items as $item)
                             <tr>
                                 <td class="text-center">
-                                    <input class="check_id" type="checkbox" name="ids[]" value="{{ $item->id }}">
+                                    <label>
+                                        <input class="check_id" type="checkbox" name="ids[]" value="{{ $item->id }}">
+                                    </label>
                                 </td>
                                 <td>
                                     <a href="{{ admin_url('contacts/'.$item->id.'') }}">
@@ -39,6 +42,12 @@
                                 <td>{{ $item->email }}</td>
                                 <td>
                                     {{ $item->created_at->format(config('app.date_format')) }}
+                                </td>
+                                <td class="text-center">
+                                    <label class="btn btn-{{ $item->status_color }} btn-sm">
+                                        <i class="fa fa-check-circle-o"></i>
+                                        {{ $item->status_text }}
+                                    </label>
                                 </td>
                             </tr>
                         @endforeach

@@ -9,6 +9,13 @@ class Contact extends Model
 {
     use SoftDeletes;
 
+    public const STATUS_NEW = 1;
+    public const STATUS_COMPLETED = 2;
+    public const STATUS_LIST = [
+        self::STATUS_NEW,
+        self::STATUS_COMPLETED,
+    ];
+
     /**
      * The database table used by the model.
      *
@@ -54,4 +61,50 @@ class Contact extends Model
      * @var array
      */
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
+
+
+    /**
+     * text status.
+     *
+     * @return string
+     */
+    public function getStatusTextAttribute(): string
+    {
+        switch ($this->status) {
+            case self::STATUS_COMPLETED:
+                $text = trans('contact.status.completed');
+                break;
+            case self::STATUS_NEW:
+                $text = trans('contact.status.new');
+                break;
+            default:
+                $text = '--';
+                break;
+        }
+
+        return $text;
+    }
+
+    /**
+     * color status.
+     *
+     * @return string
+     */
+    public function getStatusColorAttribute(): string
+    {
+        switch ($this->status) {
+            case self::STATUS_COMPLETED:
+                $text = 'success';
+                break;
+            case self::STATUS_NEW:
+                $text = 'warning';
+                break;
+            default:
+                $text = 'default';
+                break;
+        }
+
+        return $text;
+    }
+
 }

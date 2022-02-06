@@ -33,12 +33,8 @@ final class PostController extends SiteController
         if (!empty($postCategory->id)) {
             $items = $this->postService->getPostBySlugCategory($slugCategory, $request->all());
             PostCategory::query()->where('id', $postCategory->id)->increment('views');
-
-            // set seo
-            $this->seo($postCategory, $this->data);
         } else {
             $items = Post::active()->with(['comment'])->orderByDesc('id')->paginate($this->page_number);
-            $this->data['title'] = $this->data['config']['company_name'];
         }
 
         // update view
@@ -47,7 +43,11 @@ final class PostController extends SiteController
             'postCategory' => $postCategory,
             'items' => $items,
             'slugCategory' => $slugCategory,
+            'title' => $postCategory->title ?? $this->data['config']['seo_title'],
         ];
+
+        // set seo
+        $this->seo($postCategory ?? null, $data);
 
         return view($this->layout . '.post.index', $this->render($data));
     }
@@ -86,14 +86,14 @@ final class PostController extends SiteController
 
         $data = [
             'is_blog_detail' => 1,
-            'title' => $post->title,
+            'title' => $post->title ?? $this->data['config']['seo_title'],
             'post' => $post,
             'isBookmark' => $isBookmark,
             'items' => $items,
         ];
 
         // set seo
-        $this->seo($post, $this->data);
+        $this->seo($post, $data);
 
         return view($this->layout . '.post.view', $this->render($data));
     }
@@ -136,7 +136,7 @@ final class PostController extends SiteController
         ];
 
         // set seo
-        $this->seo($post, $this->data);
+        $this->seo($post, $data);
 
         return view($this->layout . '.post.view', $this->render($data));
     }

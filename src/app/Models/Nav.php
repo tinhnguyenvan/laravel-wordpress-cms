@@ -68,7 +68,12 @@ class Nav extends Model
      */
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
-    public static function dropDownType()
+    public function sub(): HasMany
+    {
+        return $this->hasMany(Nav::class, 'parent_id', 'id');
+    }
+
+    public static function dropDownType(): array
     {
         return [
             self::TYPE_LINK => trans('nav.type.link'),
@@ -88,7 +93,7 @@ class Nav extends Model
                 ->orderBy('order_by', 'ASC')
                 ->get();
 
-            Cache::put($keyCategory, $data, now()->addHours(5));
+            Cache::put($keyCategory, $data, now()->addMinutes(5));
         }
 
         return $data;
@@ -98,8 +103,8 @@ class Nav extends Model
     {
         $keyCategory = 'get_nav_'.$position.'_'.$parentId;
 
-        return Cache::remember($keyCategory, 18000, function () use ($position, $parentId) {
-            return $data = Nav::query()
+        return Cache::remember($keyCategory, 3600, function () use ($position, $parentId) {
+            return Nav::query()
                 ->where(['position' => $position, 'parent_id' => $parentId])
                 ->orderBy('order_by', 'ASC')
                 ->get()

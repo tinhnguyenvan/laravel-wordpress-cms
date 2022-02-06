@@ -16,6 +16,7 @@ use App\Services\PostCategoryService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
 
 /**
@@ -88,6 +89,9 @@ class NavController extends AdminController
             if (empty($result['message'])) {
                 $request->session()->flash('success', trans('common.add.success'));
 
+                // remove cache
+                $keyCategory = 'nav_'.$params['position'].'_0';
+                Cache::pull($keyCategory, '');
                 return redirect(admin_url('navs?position=' . $params['position']), 302);
             } else {
                 $request->session()->flash('error', $result['message']);
@@ -129,6 +133,9 @@ class NavController extends AdminController
             if (empty($result['message'])) {
                 $request->session()->flash('success', trans('common.edit.success'));
 
+                // remove cache
+                $keyCategory = 'nav_'.$params['position'].'_0';
+                Cache::pull($keyCategory, '');
                 return redirect(admin_url('navs?position=' . $params['position']), 302);
             } else {
                 $request->session()->flash('error', $result['message']);

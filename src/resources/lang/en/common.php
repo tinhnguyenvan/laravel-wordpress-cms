@@ -29,6 +29,7 @@ return [
     'button.edit' => 'Update',
     'button.send_test' => 'Send test',
     'button.history' => 'Back',
+    'button.login' => 'Login',
 
     'upload.success' => 'Upload success',
     'upload.error' => 'Upload fail',

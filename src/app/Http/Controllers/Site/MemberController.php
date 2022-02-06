@@ -42,6 +42,7 @@ final class MemberController extends SiteController
         $this->memberService = $memberService;
         $this->mediaService = $mediaService;
         $this->data['active_menu'] = '';
+        $this->data['is_member'] = 1;
     }
 
     public function index()
@@ -73,6 +74,7 @@ final class MemberController extends SiteController
         }
 
         $data = [
+            'is_member_login' => 1,
             'title' => 'Login',
             'active_menu' => ''
         ];
@@ -137,6 +139,7 @@ final class MemberController extends SiteController
         }
 
         $data = [
+            'is_member_register' => 1,
             'active_menu' => ''
         ];
 

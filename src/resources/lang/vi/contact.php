@@ -9,6 +9,7 @@ return [
     'updated_at' => 'Ngày cập nhật',
     'request_title_form' => 'Tiêu đề',
     'request_content_form' => 'Nội dung',
+    'status' => 'Trang thái',
     'fullname_register_email' => 'Khách hàng đăng ký nhận mail',
     'add.success' => 'Đăng ký nhận mail thành công',
     'error.email_is_required' => 'Email bắt buộc',
@@ -23,4 +24,9 @@ return [
     'form_fullname' => 'Họ tên',
     'form_email' => 'Email',
     'form_phone' => 'Điện thoại',
+
+    'status.completed' => 'Đã xử lý',
+    'status.new' => 'Yêu cầu mới',
+
+    'button.make_completed' => 'Xác nhận xử lý',
 ];

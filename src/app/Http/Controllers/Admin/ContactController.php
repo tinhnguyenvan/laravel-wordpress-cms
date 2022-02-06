@@ -59,8 +59,17 @@ class ContactController extends AdminController
     {
     }
 
-    public function update(Request $request, Contact $contact)
+    public function update($id, Request $request): RedirectResponse
     {
+        $contact = Contact::query()->findOrFail($id);
+
+        $contact->status = Contact::STATUS_COMPLETED;
+
+        $contact->save();
+
+        $request->session()->flash('success', trans('common.edit.success'));
+
+        return back()->withInput();
     }
 
     public function destroy(Contact $contact)

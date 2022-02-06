@@ -29,10 +29,10 @@
                                                     class="btn btn-sm {{ $theme_active == $dir ? 'btn-primary': 'btn-default' }}">
                                                 @if($theme_active != $dir )
                                                     <i class="fa fa-check"></i>
-                                                    {{trans('common.active')}} theme {{ ucfirst($manifest['theme_slug'] ?? $dir) }}
+                                                    {{trans('common.active')}} theme {{ ucfirst($dir) }}
                                                 @else
                                                     <i class="fa fa-flag-checkered"></i>
-                                                    {{trans('common.active')}} theme {{ ucfirst($manifest['theme_slug'] ?? $dir) }}
+                                                    {{trans('common.active')}} theme {{ ucfirst($dir) }}
                                                 @endif
                                             </button>
                                         </div>

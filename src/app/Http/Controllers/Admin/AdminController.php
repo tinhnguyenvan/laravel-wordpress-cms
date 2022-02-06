@@ -10,9 +10,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Language;
 use App\Services\ConfigService;
 
-/**
- * Class SiteController.
- */
 class AdminController extends Controller
 {
     public $page_number;

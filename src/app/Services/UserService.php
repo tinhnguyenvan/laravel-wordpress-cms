@@ -29,7 +29,7 @@ class UserService extends BaseService
     }
 
     /**
-     * @param $params
+     * @param array $params
      *
      * @return array
      */
@@ -55,7 +55,7 @@ class UserService extends BaseService
     }
 
     /**
-     * @param $params
+     * @param array $params
      *
      * @return array
      */
@@ -71,7 +71,7 @@ class UserService extends BaseService
         if (!empty($myObject->id)) {
             $payload = [
                 'iss' => env('APP_NAME'), // Issuer of the token
-                'sub' => $data['id'] ?? time(), // Subject of the token
+                'sub' => $params['id'] ?? time(), // Subject of the token
                 'iat' => time(), // Time when JWT was issued.
                 'exp' => time() + env('JWT_TOKEN_EXPIRED'), // Expiration time
                 'data' => $myObject->toArray(),
@@ -101,7 +101,7 @@ class UserService extends BaseService
     }
 
     /**
-     * @param $params
+     * @param array $params
      *
      * @return User|array|int
      */
@@ -126,8 +126,8 @@ class UserService extends BaseService
     }
 
     /**
-     * @param $id
-     * @param $params
+     * @param int $id
+     * @param array $params
      *
      * @return array|bool
      */
@@ -147,7 +147,7 @@ class UserService extends BaseService
     /**
      * 1/ init menu website frontend.
      *
-     * @param $template
+     * @param string $template
      */
     public function initData($template = 'default')
     {
@@ -189,7 +189,7 @@ class UserService extends BaseService
     }
 
     /**
-     * @param $user
+     * @param object $user
      *
      * @return string
      */

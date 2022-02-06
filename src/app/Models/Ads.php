@@ -72,7 +72,7 @@ class Ads extends Model
     /**
      * @return array
      */
-    public static function dropDownStatus()
+    public static function dropDownStatus(): array
     {
         $data = self::STATUS_LIST;
 
@@ -89,7 +89,7 @@ class Ads extends Model
      *
      * @return string
      */
-    public function getStatusTextAttribute()
+    public function getStatusTextAttribute(): string
     {
         switch ($this->status) {
             case self::STATUS_DISABLE:
@@ -111,7 +111,7 @@ class Ads extends Model
      *
      * @return string
      */
-    public function getStatusColorAttribute()
+    public function getStatusColorAttribute(): string
     {
         switch ($this->status) {
             case self::STATUS_DISABLE:
@@ -133,7 +133,7 @@ class Ads extends Model
      *
      * @return string
      */
-    public function getHrefAttribute()
+    public function getHrefAttribute(): string
     {
         return base_url('banner/tracking/'.base64_encode($this->id));
     }
