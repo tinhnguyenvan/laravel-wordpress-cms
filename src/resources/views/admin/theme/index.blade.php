@@ -13,7 +13,7 @@
                         @php
                             $manifest = json_decode(file_get_contents(base_path("themes/".$dir."/public/manifest.json")), true);
                         @endphp
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <div class="thumbnail" style="margin-bottom: 50px">
                                 <img
                                     src="{{ 'data:image/png;base64,'.base64_encode(file_get_contents(base_path("themes/".$dir."/public/screen_shot.png"))) }}"

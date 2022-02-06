@@ -31,7 +31,7 @@
                         <th class="th-category_id">@lang('post.category_id', [], config('app.locale'))</th>
                         <th class="th-creator_id">@lang('post.creator_id', [], config('app.locale'))</th>
                         <th class="th-created_at">@lang('post.created_at', [], config('app.locale'))</th>
-                        <th class="text-center">@lang('post.count_view', [], config('app.locale'))</th>
+                        <th class="text-center w-100px">@lang('post.count_view', [], config('app.locale'))</th>
                         <th class="th-image text-center">@lang('post.image', [], config('app.locale'))</th>
                         <th class="th-status text-center">@lang('post.status', [], config('app.locale'))</th>
                     </tr>

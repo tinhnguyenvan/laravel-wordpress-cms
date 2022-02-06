@@ -37,7 +37,6 @@
                     <input type="{{ $type ?? 'text' }}"
                            name="{{$lang}}[{{$name}}]"
                            id="input-lang-{{$name}}-{{$lang}}"
-                           placeholder="{{$text}}: {{ $textLanguage }}"
                            value="{{ old($name, $value->translate($lang)->$name ?? '') }}"
                            class="form-control {{ $class ?? '' }}"
                            autocomplete="off"/>

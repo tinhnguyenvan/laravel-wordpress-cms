@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('admin.layout.head')
-<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<body class="app header-fixed">
 @include('admin.layout.header')
 <div class="app-body ">
-    @include('admin.layout.sidebar', ['sidebar_minimizer' => $sidebar_minimizer])
     <main class="main" id="pjax-container">
         <!-- Breadcrumb-->
         <ol class="breadcrumb no-print">
