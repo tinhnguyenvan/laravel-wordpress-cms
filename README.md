@@ -138,6 +138,11 @@
 
 - ***Nếu không dùng rabbitmq thì config .env `QUEUE_CONNECTION=sync`***
 
+# Clean code
+
+    - /vendor/bin/phpstan analyse --memory-limit=2G
+
+
 # Integrate third-party
 - generators: [https://github.com/laracademy/generators](https://github.com/laracademy/generators)
 
@@ -172,4 +177,5 @@
 - multi language: [https://docs.astrotomic.info/laravel-translatable/](https://docs.astrotomic.info/laravel-translatable/)
 
 - select2: [https://select2.org/getting-started/basic-usage](https://select2.org/getting-started/basic-usage)
+
 - select2-bootstrap4-theme: [https://github.com/ttskch/select2-bootstrap4-theme](https://github.com/ttskch/select2-bootstrap4-theme)
