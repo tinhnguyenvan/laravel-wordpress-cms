@@ -7,6 +7,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Language;
 use App\Services\ConfigService;
 
@@ -34,6 +35,7 @@ class AdminController extends Controller
             'theme' => $this->theme,
             'sidebar_minimizer' => request()->cookie('sidebar_minimizer'),
             'language_content' => Language::loadLanguage(),
+            'countComment' => Comment::query()->where('status', 1)->count(),
         ];
     }
 
