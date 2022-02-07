@@ -13,40 +13,44 @@ const mix = require("laravel-mix");
 
 // CONSOLE
 mix.styles([
-    "public/layout/classified/css/bootstrap.min.css",
-    "public/layout/classified/css/normalize.css",
-    "public/layout/classified/css/font-awesome.min.css",
-    "public/layout/classified/css/icomoon.css",
-    "public/layout/classified/css/transitions.css",
-    "public/layout/classified/css/flags.css",
-    "public/layout/classified/css/owl.carousel.css",
-    "public/layout/classified/css/prettyPhoto.css",
-    "public/layout/classified/css/jquery-ui.css",
-    "public/layout/classified/css/scrollbar.css",
-    "public/layout/classified/css/chartist.css",
-    "public/layout/classified/css/main.css",
-    "public/layout/classified/css/color.css",
-    "public/layout/classified/css/responsive.css",
+    "public/console/css/coreui-icons.min.css",
+    "public/console/css/flag-icon.min.css",
+    "public/console/css/font-awesome.min.css",
+    "public/console/css/simple-line-icons.css",
+    "public/console/css/pace.min.css",
+    "public/console/css/style.css",
+    "public/console/css/bootstrap-tagsinput.css",
+    "public/console/css/toastr.min.css",
+    "public/console/css/easy-autocomplete.min.css",
+    // common
     "public/common/plugin/select2/css/select2.min.css",
     "public/common/plugin/select2/css/select2-bootstrap4.min.css",
-], "public/layout/classified/vendor/app.css");
+    "public/common/plugin/flatpickr/css/flatpickr.min.css",
+    // end common
+
+    "public/console/css/custom.css"
+], "public/console/vendor/app.css");
 
 mix.scripts([
-    "public/layout/classified/js/modernizr-2.8.3-respond-1.4.2.min.js",
-    "public/layout/classified/js/jquery-library.js",
-    "public/layout/classified/js/bootstrap.min.js",
-    "public/layout/classified/js/clipboard.min.js",
-    "public/layout/classified/js/jquery.flagstrap.min.js",
-    "public/layout/classified/js/backgroundstretch.js",
-    "public/layout/classified/js/owl.carousel.min.js",
-    "public/layout/classified/js/jquery.vide.min.js",
-    "public/layout/classified/js/jquery.collapse.js",
-    "public/layout/classified/js/prettyPhoto.js",
-    "public/layout/classified/js/jquery-ui.js",
-    "public/layout/classified/js/countTo.js",
-    "public/layout/classified/js/appear.js",
-    "public/layout/classified/js/gmap3.js",
-    "public/layout/classified/js/jquery-scrolltofixed-min.js",
-    "public/layout/classified/js/main.js",
+    "public/console/js/jquery.min.js",
+    "public/console/js/coreui.min.js",
+    "public/console/js/popper.min.js",
+    "public/console/js/bootstrap.min.js",
+    "public/console/js/jquery.easy-autocomplete.min.js",
+    "public/console/js/bootstrap-tagsinput.js",
+    "public/console/js/jquery-simple-tree-table.js",
+    "public/console/js/pace.min.js",
+    "public/console/js/perfect-scrollbar.min.js",
+
+    // common
+    "public/common/plugin/highcharts/highcharts.js",
+    "public/common/plugin/highcharts/exporting.js",
     "public/common/plugin/select2/js/select2.full.min.js",
-], "public/layout/classified/vendor/app.js");
+    "public/common/plugin/flatpickr/js/flatpickr.min.js",
+    //end common
+
+    "public/console/js/jquery.pjax.js",
+    "public/console/js/function.js",
+    "public/console/js/clipboard.min.js",
+    "public/console/js/jquery.cookie.js"
+], "public/console/vendor/app.js");
