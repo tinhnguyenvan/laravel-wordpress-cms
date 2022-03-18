@@ -11,7 +11,7 @@ return [
     'MENU_ADMIN' => [
         [
             'title' => 'nav.menu_left.content',
-            'url' => '',
+            'url' => 'posts',
             'icon' => 'fa fa-newspaper-o',
             'role' => [Role::ROLE_ADMIN],
             'child' => [
@@ -58,7 +58,7 @@ return [
         ],
         [
             'title' => 'nav.menu_left.medias',
-            'url' => '',
+            'url' => 'medias',
             'icon' => 'fa fa-file-image-o',
             'role' => [Role::ROLE_ADMIN],
             'child' => [
