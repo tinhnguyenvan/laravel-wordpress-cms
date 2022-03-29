@@ -31,3 +31,5 @@ yarn-error.log
 
 /public/layout/
 !/public/layout/default/
+/composer-dev.json
+/composer-dev.lock
