@@ -1,6 +1,5 @@
 <title>{{ !empty($title) ? strip_tags($title) : '' }}</title>
 <base href="./">
-<link rel="canonical" href="{{ request()->fullUrl() }}"/>
 <meta charset="utf-8">
 <meta http-equiv="content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
