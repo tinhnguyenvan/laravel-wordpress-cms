@@ -28,7 +28,7 @@
 <meta property="twitter:description" content="{{ $description ?? '' }}">
 <meta property="twitter:image" content="{{ $og_image ?? ''}}">
 
-<link rel="canonical" href="{{ base_url() }}"/>
+<link rel="canonical" href="{{ @request()->fullUrl() }}"/>
 <link rel="shortcut icon" href="{{  $config['favicon'] ?? base_url('favicon.ico') }}" type="image/x-icon">
 <link rel="icon" href="{{ $config['favicon'] ?? base_url('favicon.ico') }}" type="image/x-icon">
 
