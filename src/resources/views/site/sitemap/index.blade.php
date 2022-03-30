@@ -27,7 +27,7 @@
 
     @foreach ($tags as $tag)
         <url>
-            <loc>{{ \App\Models\PostTag::link($tag) }}</loc>
+            <loc>{{ $tag->link }}</loc>
             <lastmod>{{ gmdate('Y-m-d\TH:i:s\Z',strtotime($tag->updated_at)) }}</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.6</priority>
