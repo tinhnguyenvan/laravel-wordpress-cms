@@ -112,7 +112,6 @@ class Kernel extends HttpKernel
         'throttle' => ThrottleRequests::class,
         'verified' => EnsureEmailIsVerified::class,
         'locale' => Localization::class,
-        'error_from_session' => ShareErrorsFromSession::class,
 
         // integrate role: 2020-02-16
         'role' => RoleMiddleware::class,
