@@ -31,7 +31,7 @@
         "willvincent/laravel-rateable": "^2.2",
         "irazasyed/telegram-bot-sdk": "^3.6",
         "mailchimp/marketing": "^3.0",
-        "tinhphp/woocommerce": "dev-master"
+        "tinhphp/woocommerce": "v1.0.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
