@@ -78,11 +78,5 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ]
-    },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "./packages/*/*"
-        }
-    ]
+    }
 }
