@@ -9,7 +9,6 @@
 
             @if(!empty(@config('constant.MENU_APP')))
                 @php($plugins = explode(',', Cookie::get('plugin')))
-                <li class="nav-title"> APPS</li>
                 @foreach(@config('constant.MENU_APP') as $item)
                     @if(!in_array($item['plugin'], $plugins))
                         @continue
@@ -45,7 +44,6 @@
                 @endforeach
             @endif
 
-            <li class="nav-title"> Website</li>
             @foreach(@config('constant.MENU_ADMIN') as $item)
                 @if(!in_array(auth('admin')->user()->role_id, $item['role'] ?? []))
                     @continue

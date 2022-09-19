@@ -25,10 +25,11 @@ yarn-error.log
 
 /config/config_package*.php
 .php_cs.cache
-/composer.lock
 
 /resources/views/layout/
 !/resources/views/layout/default/
 
 /public/layout/
 !/public/layout/default/
+/composer-dev.json
+/composer-dev.lock

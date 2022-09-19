@@ -9,195 +9,195 @@ namespace App\Traits;
 
 trait ExcelTrait
 {
-    public function colA()
+    public function colA(): int
     {
         return 0;
     }
 
-    public function colB()
+    public function colB(): int
     {
         return 1;
     }
 
-    public function colC()
+    public function colC(): int
     {
         return 2;
     }
 
-    public function colD()
+    public function colD(): int
     {
         return 3;
     }
 
-    public function colE()
+    public function colE(): int
     {
         return 4;
     }
 
-    public function colF()
+    public function colF(): int
     {
         return 5;
     }
 
-    public function colG()
+    public function colG(): int
     {
         return 6;
     }
 
-    public function colH()
+    public function colH(): int
     {
         return 7;
     }
 
-    public function colI()
+    public function colI(): int
     {
         return 8;
     }
 
-    public function colJ()
+    public function colJ(): int
     {
         return 9;
     }
 
-    public function colK()
+    public function colK(): int
     {
         return 10;
     }
 
-    public function colL()
+    public function colL(): int
     {
         return 11;
     }
 
-    public function colM()
+    public function colM(): int
     {
         return 12;
     }
 
-    public function colN()
+    public function colN(): int
     {
         return 13;
     }
 
-    public function colO()
+    public function colO(): int
     {
         return 14;
     }
 
-    public function colP()
+    public function colP(): int
     {
         return 15;
     }
 
-    public function colQ()
+    public function colQ(): int
     {
         return 16;
     }
 
-    public function colR()
+    public function colR(): int
     {
         return 17;
     }
 
-    public function colS()
+    public function colS(): int
     {
         return 18;
     }
 
-    public function colT()
+    public function colT(): int
     {
         return 19;
     }
 
-    public function colU()
+    public function colU(): int
     {
         return 20;
     }
 
-    public function colV()
+    public function colV(): int
     {
         return 21;
     }
 
-    public function colW()
+    public function colW(): int
     {
         return 22;
     }
 
-    public function colX()
+    public function colX(): int
     {
         return 23;
     }
 
-    public function colY()
+    public function colY(): int
     {
         return 24;
     }
 
-    public function colZ()
+    public function colZ(): int
     {
         return 25;
     }
 
-    public function colAA()
+    public function colAA(): int
     {
         return 26;
     }
 
-    public function colAB()
+    public function colAB(): int
     {
         return 27;
     }
 
-    public function colAC()
+    public function colAC(): int
     {
         return 28;
     }
 
-    public function colAD()
+    public function colAD(): int
     {
         return 29;
     }
 
-    public function colAE()
+    public function colAE(): int
     {
         return 30;
     }
 
-    public function colAF()
+    public function colAF(): int
     {
         return 31;
     }
 
-    public function colAG()
+    public function colAG(): int
     {
         return 32;
     }
 
-    public function colAH()
+    public function colAH(): int
     {
         return 33;
     }
 
-    public function colAI()
+    public function colAI(): int
     {
         return 34;
     }
 
-    public function colAJ()
+    public function colAJ(): int
     {
         return 35;
     }
 
     /**
-     * @param $string
+     * @param string $string
      * -    format excel: ngay/thang/nam gio:phut
-     * @return string|null
+     * @return string
      */
-    private function formatDateTime($string)
+    private function formatDateTime(string $string): string
     {
         if (empty($string)) {
-            return null;
+            return '';
         }
 
         $string = trim($string);
@@ -212,14 +212,15 @@ trait ExcelTrait
     }
 
     /**
-     * @param $string
+     * @param string $string
      * -    format excel: ngay/thang/nam
-     * @return string|null
+     *
+     * @return string
      */
-    private function formatDate($string)
+    private function formatDate(string $string): string
     {
         if (empty($string)) {
-            return null;
+            return '';
         }
 
         $string = trim($string);

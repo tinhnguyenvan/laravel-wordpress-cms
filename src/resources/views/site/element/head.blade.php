@@ -1,6 +1,5 @@
 <title>{{ !empty($title) ? strip_tags($title) : '' }}</title>
 <base href="./">
-<link rel="canonical" href="{{ request()->fullUrl() }}"/>
 <meta charset="utf-8">
 <meta http-equiv="content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +18,7 @@
 <meta property="og:image" content="{{ $og_image ?? '' }}">
 <meta property="og:image:secure_url" content="{{ $og_image ?? '' }}">
 <meta property="og:description" content="{{ $description ?? '' }}">
-<meta property="og:url" content="{{ @request()->fullUrl() }}">
+<meta property="og:url" content="{{ base_url(request()->getRequestUri()) }}">
 <meta property="og:site_name" content="{{ $config['company_name'] ?? '' }}">
 
 <!-- twitter -->
@@ -27,8 +26,7 @@
 <meta property="twitter:title" content="{{ !empty($title) ? strip_tags($title) : '' }}">
 <meta property="twitter:description" content="{{ $description ?? '' }}">
 <meta property="twitter:image" content="{{ $og_image ?? ''}}">
-
-<link rel="canonical" href="{{ base_url() }}"/>
+<link rel="canonical" href="{{ base_url(request()->getRequestUri()) }}"/>
 <link rel="shortcut icon" href="{{  $config['favicon'] ?? base_url('favicon.ico') }}" type="image/x-icon">
 <link rel="icon" href="{{ $config['favicon'] ?? base_url('favicon.ico') }}" type="image/x-icon">
 

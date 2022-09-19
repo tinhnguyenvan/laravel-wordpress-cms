@@ -6,7 +6,7 @@
                 <li>
                     <a href="{{ base_url()}}">{{ trans('common.home') }}</a>
                 </li>
-                <li class="active hidden-xs">{{ $postCategory->title }}</li>
+                <li class="active hidden-xs">{{ $postCategory->title ?? 'TWEB' }}</li>
             </ol>
         </div>
         <div class="row">

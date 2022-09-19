@@ -29,7 +29,7 @@
 + for dev
 
 
-	COMPOSER_MEMORY_LIMIT=-1 COMPOSER=composer-local.json composer update
+	COMPOSER_MEMORY_LIMIT=-1 COMPOSER=composer-dev.json composer update
 
 
 - **Step 2**: Install from command

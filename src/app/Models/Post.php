@@ -179,7 +179,7 @@ class Post extends Model implements TranslatableContract
         $prefix = $this->category->slug ?? 'no-category';
 
         if (empty($this->slug)) {
-            $this->slug = '1';
+            $this->slug = $this->id;
         }
 
         return base_url($prefix . '/' . $this->slug . '.html');
