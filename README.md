@@ -7,8 +7,6 @@
 
 - Laravel Admin same CMS Wordpress :)
 
-- Demo link: [https://cms.tweb.com.vn](https://cms.tweb.com.vn)
-
 
 # Install & setup
 
@@ -43,10 +41,6 @@
 	- todo update path "/var/www/html"
 
 # Login Admin
-
-- Demo link: [https://cms.tweb.com.vn/admin](https://cms.tweb.com.vn/admin)
-    - **user**: admin@gmail.com
-    - **password**: 123456789
 
 	![](https://user-images.githubusercontent.com/6789649/101598079-32c8f400-3a2a-11eb-82e9-29b1c227ba81.png)
 
